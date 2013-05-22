@@ -15,7 +15,8 @@
 \fancyfoot[c]{\textbf{\thepage}}
 \fancyhead[l]{\textbf{\@coursecode}}
 \fancyhead[r]{\textbf{\leftmark}}
-
+\renewcommand{\chaptermark}[1]{%
+ \markboth{Lab \thechapter:\ #1}{}}
 
 % === Macros relating to front page.
 
