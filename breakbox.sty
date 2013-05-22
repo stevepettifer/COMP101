@@ -1,0 +1,242 @@
+\usepackage{lettrine}
+\usepackage{newfloat}
+\usepackage{caption}
+\DeclareFloatingEnvironment[fileext=frm,placement={hb},name=Breakout]{myfloat}
+\DeclareFloatingEnvironment[fileext=frm,placement={hb},name=Pi Fact]{pifloat}
+
+\captionsetup[myfloat]{labelfont=bf,font=bf,size=large,skip=2pt}
+\captionsetup[pifloat]{font=bf}
+
+\usepackage{xcolor}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\definecolor{light-gray}{gray}{0.95}
+
+\newenvironment{floatframe}{%
+  \begin{myfloat}[tb]%
+  \begin{mdframed}[outerlinewidth=0,%
+ %   leftmargin=10,%
+  %  rightmargin=10,%
+%    innertopmargin=\topskip,%
+ %   splittopskip=\topskip,skipbelow=\baselineskip,%
+    roundcorner=2pt,linecolor=gray,%
+  %  skipabove=\baselineskip,%
+    backgroundcolor=light-gray]%
+%    \begin{minipage}[c]{0.8\linewidth}%
+      \setlength{\parskip}{4pt plus 1pt}%
+    }%
+  {%\end{minipage}
+  \end{mdframed}\end{myfloat}}%
+
+\newenvironment{staticframe}{%
+  \begin{myfloat}[H]%
+  \begin{mdframed}[outerlinewidth=0,%
+ %   leftmargin=10,%
+  %  rightmargin=10,%
+%    innertopmargin=\topskip,%
+ %   splittopskip=\topskip,skipbelow=\baselineskip,%
+    roundcorner=2pt,linecolor=gray,%
+  %  skipabove=\baselineskip,%
+    backgroundcolor=light-gray]%
+%    \begin{minipage}[c]{0.8\linewidth}%
+      \setlength{\parskip}{4pt plus 1pt}%
+    }%
+  {%\end{minipage}
+  \end{mdframed}\end{myfloat}}%
+
+\newenvironment{diversion}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/diversion}}{}}
+  {\end{floatframe}}
+
+\newenvironment{diversion*}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/diversion}}{}}
+  {\end{staticframe}}
+
+
+\newenvironment{wikip}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/Wikipedia-logo}}{}}
+  {\end{floatframe}}
+
+\newenvironment{wikip*}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/Wikipedia-logo}}{}}%
+  {\end{staticframe}}
+
+\newenvironment{danger}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/bomb}}{}}%
+  {\end{staticframe}}
+
+\newenvironment{question}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/question-mark}}{}}%
+  {\end{staticframe}}
+
+
+\newenvironment{rpi}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/rpi}}{}}%
+  {\end{floatframe}}
+
+\newenvironment{rpi*}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/rpi}}{}}%
+  {\end{staticframe}}
+
+\newenvironment{coffee}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/coffee}}{}}%
+  {\end{floatframe}}
+
+\newenvironment{coffee*}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/coffee}}{}}%
+  {\end{staticframe}}
+
+\newenvironment{linux}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/Tux}}{}}%
+  {\end{floatframe}}
+
+\newenvironment{linux*}[1]{%
+  \begin{staticframe}
+    \caption{#1}
+    \lettrine[lines=4]{\includegraphics[width=2cm]{images/Tux}}{}}%
+  {\end{staticframe}}
+
+\endinput
+
+\newenvironment{breakoutfloat}[1]{%
+  \begin{myfloat}[tb]%
+  \begin{mdframed}[outerlinewidth=0,%
+ %   leftmargin=10,%
+  %  rightmargin=10,%
+%    innertopmargin=\topskip,%
+ %   splittopskip=\topskip,skipbelow=\baselineskip,%
+    roundcorner=2pt,linecolor=gray,%
+  %  skipabove=\baselineskip,%
+    backgroundcolor=light-gray]%
+    \parpic(2cm,2cm){\includegraphics[width=2cm]{images/#1}}%
+%    \begin{minipage}[c]{0.8\linewidth}%
+      \setlength{\parskip}{4pt plus 1pt}%
+    }%
+  {%\end{minipage}
+  \end{mdframed}\end{myfloat}}%
+
+\newenvironment{floatframe}{%
+  \begin{myfloat}[tb]%
+  \begin{mdframed}[outerlinewidth=0,%
+ %   leftmargin=10,%
+  %  rightmargin=10,%
+%    innertopmargin=\topskip,%
+ %   splittopskip=\topskip,skipbelow=\baselineskip,%
+    roundcorner=2pt,linecolor=gray,%
+  %  skipabove=\baselineskip,%
+    backgroundcolor=light-gray]%
+%    \begin{minipage}[c]{0.8\linewidth}%
+    \setlength{\parskip}{4pt plus 1pt}%
+
+    }%
+  {%\end{minipage}
+  \end{mdframed}\end{myfloat}}%
+
+\newenvironment{staticframe}{%
+  \begin{myfloat}[H]%
+  \begin{mdframed}[outerlinewidth=0,%
+ %   leftmargin=10,%
+  %  rightmargin=10,%
+%    innertopmargin=\topskip,%
+ %   splittopskip=\topskip,skipbelow=\baselineskip,%
+    roundcorner=2pt,linecolor=gray,%
+  %  skipabove=\baselineskip,%
+    backgroundcolor=light-gray]%
+%    \begin{minipage}[c]{0.8\linewidth}%
+      \setlength{\parskip}{4pt plus 1pt}%
+    }%
+  {%\end{minipage}
+  \end{mdframed}\end{myfloat}}%
+
+\newenvironment{breakoutstatic}[1]{%
+  \begin{myfloat}[H]%
+  \begin{mdframed}[outerlinewidth=0,%
+    leftmargin=10,%
+    rightmargin=0,%
+    innertopmargin=\topskip,%
+    splittopskip=\topskip,skipbelow=\baselineskip,%
+    roundcorner=2pt,linecolor=gray,%
+    skipabove=\baselineskip,backgroundcolor=light-gray]%
+    \parpic{\includegraphics[width=2cm]{images/#1}}%
+%    \includegraphics[width=2cm]{images/#1}\quad\quad%
+    %\begin{minipage}[c]{0.8\linewidth}%
+      \setlength{\parskip}{2pt plus 1pt}}%
+    {%
+      % \end{minipage}
+    \end{mdframed}\end{myfloat}}%
+
+\newenvironment{diversion}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \parpic{\includegraphics[width=2cm]{images/diversion}}}%
+  {\end{floatframe}}
+
+\newenvironment{diversion}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \parpic{\includegraphics[width=2cm]{images/diversion}}}%
+  {\end{floatframe}}
+
+
+\newenvironment{diversion}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \parpic{\includegraphics[width=2cm]{images/diversion}}}%
+  {\end{floatframe}}
+
+\newenvironment{diversion}[1]{%
+  \begin{floatframe}
+    \caption{#1}
+    \parpic{\includegraphics[width=2cm]{images/diversion}}}%
+  {\end{floatframe}}
+
+
+  \newcommand{\newbreakoutfloat}[2]{\newenvironment{#1}{%
+  \begin{breakoutfloat}{#2}}%
+  {\end{breakoutfloat}}}
+
+\newcommand{\newbreakoutstatic}[2]{\newenvironment{#1}{%
+  \begin{breakoutstatic}{#2}}%
+  {\end{breakoutstatic}}}
+
+\newbreakoutfloat{wikip}{Wikipedia-logo}
+\newbreakoutstatic{wikip*}{Wikipedia-logo}
+
+\newbreakoutstatic{danger}{bomb}
+
+%\newbreakoutfloat{diversion}{diversion}
+\newbreakoutstatic{diversion*}{diversion}
+
+\newbreakoutstatic{question}{question-mark}
+
+\newbreakoutfloat{rpi}{rpi}
+\newbreakoutstatic{rpi*}{rpi}
+
+\newbreakoutfloat{linux}{Tux}
+\newbreakoutstatic{linux*}{Tux}
+
+\newbreakoutfloat{coffee}{coffee}
+\newbreakoutstatic{coffee*}{coffee}
+

@@ -1,0 +1,72 @@
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{alltt}
+\usepackage{palatino}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{a4-mancs}
+\usepackage{handout}
+\usepackage{textcomp}
+\usepackage{lipsum}
+\usepackage{breakbox}
+\usepackage{placeins}
+\usepackage{tikz}
+
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    natbib=true,
+    url=false, 
+    doi=true,
+    eprint=false
+]{biblatex}
+\setlength\bibitemsep{1.5\itemsep}
+
+\newenvironment{ttoutenv}{\begin{alltt}\small}{\end{alltt}}
+\newcommand{\totype}[1]{\texttt{\small #1}}
+\newcommand{\ttout}[1]{\texttt{\small #1}}
+\newcommand{\fname}[1]{\texttt{\small #1}}
+
+\definecolor{light-gray}{gray}{0.9}
+\definecolor{dark-gray}{gray}{0.3}
+
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small,
+  numbers=none,
+  keywordstyle=\color{black},
+  commentstyle=\color{black},
+  identifierstyle=\color{black},
+  stringstyle=\color{black},
+  backgroundcolor=\color{white},
+%  xleftmargin=.1in,
+%  xrightmargin=.1in,
+  showstringspaces=false
+}
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+\def\tinsy{\fontsize{4pt}{4pt}\selectfont}
+
+% added by Toby 21/5/13: \circled{N} draws N in white in black filled circle.
+% This cmd needs to be \protect'ed inside captions.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt,fill=black] (char) {\footnotesize\color{white}#1};}}
+
+\newcommand{\wikipedia}[2]{\textbf{\href{http://en.wikipedia.org/wiki/#1}{#2}}\textsuperscript{{\color{gray}\tinsy{W}}}}
+
+\setlength{\parskip}{4pt plus 1pt}%
+\setlength{\parindent}{0pt}
+
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
