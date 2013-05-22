@@ -5,16 +5,17 @@ PDF=${addsuffix .pdf,${TEXNOSUFF}}
 
 default: ${PDF}
 
-${ROOT}.pdf: ${ROOT}.tex ${TEX}
-	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT}
+101labs.pdf: ${ROOT}.tex ${TEX}
+	echo > includes.tex
+	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT};mv ${ROOT}.pdf $@
 
 
 %.pdf: %.tex ${ROOT}.tex includes.tex
 	echo '\includeonly{'$*'}' > includes.tex
 	pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ;mv ${ROOT}.pdf $@
 
-all: ${PDF}
+all: ${PDF} 101labs.pdf
 
 clean:
-	rm -f ${ROOT}.pdf ${PDF} *.aux *.log *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf
+	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf
 

@@ -53,10 +53,11 @@
 % added by Toby 21/5/13: \circled{N} draws N in white in black filled circle.
 % This cmd needs to be \protect'ed inside captions.
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=1pt,fill=black] (char) {\footnotesize\color{white}#1};}}
+            \node[shape=circle,draw,inner sep=1pt,fill=black] (char) {\footnotesize\color{white}\textsf{#1}};}}
 
 \newcommand{\wikipedia}[2]{\textbf{\href{http://en.wikipedia.org/wiki/#1}{#2}}\textsuperscript{{\color{gray}\tinsy{W}}}}
 
+\renewcommand{\chaptername}{Lab Session}
 \setlength{\parskip}{4pt plus 1pt}%
 \setlength{\parindent}{0pt}
 
