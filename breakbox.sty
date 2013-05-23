@@ -11,9 +11,7 @@
 \usepackage[framemethod=TikZ]{mdframed}
 
 \definecolor{light-gray}{gray}{0.95}
-
-\newenvironment{floatframe}{%
-  \begin{myfloat}[tb]%
+\newenvironment{stdframe}{%
   \begin{mdframed}[outerlinewidth=0,%
  %   leftmargin=10,%
   %  rightmargin=10,%
@@ -22,11 +20,16 @@
     roundcorner=2pt,linecolor=gray,%
   %  skipabove=\baselineskip,%
     backgroundcolor=light-gray]%
-%    \begin{minipage}[c]{0.8\linewidth}%
       \setlength{\parskip}{4pt plus 1pt}%
     }%
+    {\end{mdframed}}
+  
+\newenvironment{floatframe}{%
+  \begin{myfloat}[tb]%
+  \begin{stdframe}[tb]%
+    }%
   {%\end{minipage}
-  \end{mdframed}\end{myfloat}}%
+  \end{stdframe}\end{myfloat}}%
 
 \newenvironment{staticframe}{%
   \begin{myfloat}[H]%
@@ -44,6 +47,11 @@
   {%\end{minipage}
   \end{mdframed}\end{myfloat}}%
 
+\newenvironment{note}{%
+  \begin{stdframe}%
+  \itshape\bfseries \large{\huge Note to writers:\\[1ex]}}%
+  {\end{stdframe}}
+  
 \newenvironment{diversion}[1]{%
   \begin{floatframe}
     \caption{#1}
