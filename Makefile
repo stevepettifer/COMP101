@@ -11,7 +11,7 @@ default: ${PDF}
 	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT};mv ${ROOT}.pdf $@
 
 
-%.pdf: %.tex ${ROOT}.tex includes.tex ${STY}
+%.pdf: %.tex ${ROOT}.tex ${STY}
 	echo '\includeonly{'$*'}' > includes.tex
 	pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ;mv ${ROOT}.pdf $@
 
