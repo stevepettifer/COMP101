@@ -49,11 +49,11 @@ Here are some other very useful command line tricks:
 
 \begin{itemize}
 \item You can use the up and down cursor keys to cycle back and forth through the list of commands you've typed previously.
-\item The left and right cursors do what you expect, and move the insertion point back and forth. Pressing <ctrl>+a will move you to the start of the line, and <ctrl>+e to the end of the line (much faster than moving backwards and forwards character-by-character). 
-\item <ctrl>+c aborts the current line, so if you've typed a line of gibberish, don't waste time deleting it one character at at time, just <ctrl>+c it!
+\item The left and right cursors do what you expect, and move the insertion point back and forth. Pressing \ctrl{a} will move you to the start of the line, and \ctrl{e} to the end of the line (much faster than moving backwards and forwards character-by-character). 
+\item \ctrl{c} aborts the current line, so if you've typed a line of gibberish, don't waste time deleting it one character at at time, just \ctrl{c} it!
 \item Typing \ttout{history} lists all the commands you've typed in the past, useful if you've forgotten something.
-\item Pressing <ctrl>+r allows you to retrieve a command from your history by typing part of the line (e.g. if you searched for `whi' now, it'll probably find the `which mutt' line you typed a while back). 
-\item Pressing <ctrl>+t swaps the two characters before your cursor around. What, really? Yes: you'll be surprised how often you type characters in the wrong order! 
+\item Pressing \ctrl{r} allows you to retrieve a command from your history by typing part of the line (e.g. if you searched for `whi' now, it'll probably find the `which mutt' line you typed a while back). 
+\item Pressing \ctrl{t} swaps the two characters before your cursor around. What, really? Yes: you'll be surprised how often you type characters in the wrong order! 
 \end{itemize}
 
 Back to configuring your email client! Before we use mutt, we need to point it at the incoming and outgoing email servers, and we'll do this by creating a configuration file.
@@ -71,6 +71,10 @@ BLAH
 
 The \ttout{more} command is used to display textual content from files and other sources. The reason that the \ttout{more} command is called more will become clear later. 
 
+\begin{note}
+  Should they be using 'more' or 'less'
+\end{note}
+
 Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see how what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the Fundamentals of Distributed Computing course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But lets play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. Type
 
 \begin{ttoutenv}
@@ -86,7 +90,7 @@ To modify the file, you'll need to use a text editor. Type
 $ nano my-mutt-template
 \end{ttoutenv}
 
-to invoke the \ttout{nano} editor, and use it to change the text in square brackets the the correct values for you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (the caret symbol (\^) is shorthand for `ctrl', so \^X means '<ctrl> + X').
+to invoke the \ttout{nano} editor, and use it to change the text in square brackets the the correct values for you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
 
 \begin{itemize}
 \item $[$USERNAME$]$ should be replaced with your university user name (which will be 8 characters, and will start with an m). Note you'll need to replace this on the lines with \ttout{imap\_user} and \ttout{smtp\_url}.

@@ -14,6 +14,10 @@
 \usepackage{placeins}
 \usepackage{tikz}
 
+\usepackage{ifthen}
+\newboolean{@shownotes}
+\setboolean{@shownotes}{false}
+
 \usepackage[
     backend=biber,
     style=authoryear,
@@ -71,3 +75,20 @@
 \setcounter{bottomnumber}{9}
 \setcounter{totalnumber}{20}
 \setcounter{dbltopnumber}{9}
+
+\newcommand{\ctrl}[1]{$<$ctrl$>$+#1}
+
+\usepackage{comment}
+
+\excludecomment{note}
+
+\DeclareOption{shownotes}{%
+\setboolean{@shownotes}{true}%
+\specialcomment{note}{
+  \begin{stdframe}%
+  \bfseries {\Large Note to authors:\\[1ex]}\itshape}%
+{\end{stdframe}}}
+
+\ProcessOptions
+  
+
