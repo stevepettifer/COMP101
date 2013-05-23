@@ -18,5 +18,5 @@ default: ${PDF}
 all: ${PDF} 101labs.pdf
 
 clean:
-	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf
+	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf comment.cut
 
