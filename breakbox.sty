@@ -11,7 +11,7 @@
 \usepackage[framemethod=TikZ]{mdframed}
 
 \definecolor{light-gray}{gray}{0.95}
-\newenvironment{stdframe}{%
+\newenvironment{stdframe}[1]{%
   \begin{mdframed}[outerlinewidth=0,%
  %   leftmargin=10,%
   %  rightmargin=10,%
@@ -19,14 +19,14 @@
  %   splittopskip=\topskip,skipbelow=\baselineskip,%
     roundcorner=2pt,linecolor=gray,%
   %  skipabove=\baselineskip,%
-    backgroundcolor=light-gray]%
+    backgroundcolor=#1]%
       \setlength{\parskip}{4pt plus 1pt}%
     }%
     {\end{mdframed}}
   
 \newenvironment{floatframe}{%
   \begin{myfloat}[tb]%
-  \begin{stdframe}%
+  \begin{stdframe}{light-gray}%
     }%
   {%\end{minipage}
   \end{stdframe}\end{myfloat}}%
