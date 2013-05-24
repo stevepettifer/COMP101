@@ -1,4 +1,6 @@
 auto
+.DS_Store
+images/.DS_Store
 labs.run.xml
 labs.bcf
 rpi1.pdf
