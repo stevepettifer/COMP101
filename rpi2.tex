@@ -75,7 +75,7 @@ The \ttout{more} command is used to display textual content from files and other
   Should they be using 'more' or 'less'
 \end{note}
 
-Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see how what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the Fundamentals of Distributed Computing course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But lets play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. Type
+Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see how what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the Fundamentals of Distributed Computing course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But lets play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. Enter
 
 \begin{ttoutenv}
 $ cp mutt-template my-mutt-template
@@ -116,9 +116,31 @@ Using this switch on \ttout{ls} will reveal several other so-called `dotfiles' t
 
 If you're confident that you now have a file called \fname{.muttrc} containing the correct configuration, you can now type \ttout{mutt} to start the program. 
 
-It should be reasonably clear how you use \ttout{mutt} to send and receive email; if you get stuck there are plenty of online tutorials to help you out. Send yourself a test email to make sure that everything is working, and when you're confident you've mastered the basics of sending and reading using this too, drop back to the command line. 
+It should be reasonably clear how you use \ttout{mutt} to send and receive email; if you get stuck there are plenty of online tutorials to help you out. Send yourself a test email to make sure that everything is working, and when you're confident you've mastered the basics of sending and reading using this tool, drop back to the command line. One thing you should note is that \ttout{mutt} doesn't have its own editor for writing email, so will use \ttout{nano} to compose emails unless you change this to something else in the \fname{.muttrc} file. 
 
-\
+\section{Browsing the Web}
+
+Although you will have experienced The Web so far as a highly graphical system, the technology that underpins it is for the most part text-based, and it is (just about!) possible to browse web pages using a console-mode application. It might seem like an odd thing to do, but there's an important point to be made here, so bear with us and install the \ttout{lynx} package using \ttout{apt-get} (remembering you'll need also to use \ttout{sudo} to get root privileges). 
+
+Once the package is installed, try browsing the School's web pages using \ttout{lynx} by typing
+
+\begin{ttoutenv}
+$ lynx http://www.cs.manchester.ac.uk
+\end{ttoutenv}
+
+Rather like \ttout{mutt}, the \ttout{lynx} program has just about enough on-screen help for you to be able to browse around a little without any additional instructions from us.
+
+You may find that when you follow some links, nothing very much appears to have happened; but scroll further down the page and you'll see the content that you're looking for. 
+
+You'll probably find using \ttout{lynx} an unsatisfying experience: tolerable, and probably okay in an emergency, but not how you'd ideally like to browse the web. And you might be wondering why we've even bothered to get you to try `seeing' the web through a text-only interface. Apart from the absence of images and videos etc., the main difference between using something like \ttout{lynx} and a regular browser such as Firefox, Safari or Internet Explorer, is that you'll notice that web pages have been made into much more linear affairs than when they are rendered in a graphical environment. While you might expect to see the navigation links neatly arranged on the left or top of the page with the main content prominently displayed in the centre, seen through a purely textual interface its all one big stream of stuff, and its very hard to distinguish between the navigation links and the main content. 
+
+Now consider what the web `looks' like if you are visually impaired or blind, and use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \ttout{lynx}. 
+
+You'll soon be designing your own web-based systems as part of the Group Project in this course unit; making them accessible to visually impaired readers something you should keep in mind. Try using \ttout{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
+
+
+
+
 
 
 
