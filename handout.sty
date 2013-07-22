@@ -12,11 +12,20 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \setlength{\headheight}{15pt}
-\fancyfoot[c]{\textbf{\thepage}}
+\fancyfoot[r]{\textbf{\thepage}}
+\fancyfoot[l]{\textbf{\leftmark}}
+\fancyfoot[c]{}
 \fancyhead[l]{\textbf{\@coursecode}}
-\fancyhead[r]{\textbf{\leftmark}}
+\fancyhead[r]{\textbf{\@chapname}}
+
+\newcommand{\@chapname}
+
 \renewcommand{\chaptermark}[1]{%
- \markboth{Lab \thechapter:\ #1}{}}
+  \markboth{Lab \thechapter:\ #1}{}  
+  \renewcommand{\@chapname}{#1}}
+
+\renewcommand{\sectionmark}[1]{%
+ \markboth{#1}{}}
 
 % === Macros relating to front page.
 
