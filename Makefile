@@ -1,5 +1,5 @@
 ROOT=labs
-TEX=linux1.tex rpi1.tex rpi2.tex linux2.tex
+TEX=welcome.tex rpi1.tex rpi2.tex desktop1.tex desktop2.tex
 TEXNOSUFF=${basename ${TEX}}
 PDF=${addsuffix .pdf,${TEXNOSUFF}}
 STY=${wildcard *.sty}
