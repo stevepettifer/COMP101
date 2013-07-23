@@ -2,8 +2,7 @@
 \usepackage{array}
 \usepackage{alltt}
 \usepackage{palatino}
-\usepackage{url}
-\usepackage{hyperref}
+%\usepackage{url}
 \usepackage{color}
 \usepackage{listings}
 \usepackage{a4-mancs}
@@ -17,6 +16,10 @@
 \usepackage{ifthen}
 \newboolean{@shownotes}
 \setboolean{@shownotes}{false}
+
+
+\usepackage{hyperref}
+\newcommand{\urlnop}[1]{\href{http://#1}{\texttt{#1}}}
 
 \usepackage[
     backend=biber,
