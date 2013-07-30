@@ -191,14 +191,118 @@ mankyweather
 to see the result. Okay, so this probably won't replace your favourite weather webpage or app, but its early days yet! 
 
 
+\section{X Windows and Gnome} 
+
+Next you're going to start up one of Linux's many graphical user interfaces. Type:
+
+\begin{ttoutenv}
+startx
+\end{ttoutenv}
+
+You'll see a chunk of text scroll up the screen briefly before being presented with something that looks like the screenshot in Figure \ref{figure:gnome-desktop}.
+
+\begin{figure}[t]
+\centerline{\includegraphics[width=15cm]{images/gnome-desktop}}
+\caption{Scientific Linux's default graphical user interface and window manager, Gnome.}\label{figure:gnome-desktop}.
+\end{figure}
+
+Take a few minutes to explore the graphical environment. Even if you've never used Linux before, you'll probably find the general principles of this environment quite familiar: there are icons on the desktop giving you access to the computer via a graphical file browser, and at the top of the screen a menu-bar allows you to start various applications and utilities. The full manual for this environment---which is called Gnome---is available online at \url{http://personal.us.es/rledesma/descargas/gnome2.6-user-guide.pdf}, but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have nothing to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
+
+Find out how to:
+\begin{itemize}
+\item Find two ways of starting the Firefox web-browser.
+\item Work out how to change the desktop theme. 
+\item Find Application Blahdeblah. \ref{thingyblobbs}
+\item Something else, and when you're done with these
+\item Figure out how to log out of the graphical environment.
+\end{itemize}
+
+If you've completed step \ref{blah} you should now be back at the command prompt where you typed `startx' a little while back. Before returning to the graphical environment where you'll spend most of your time during your degree, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system. 
+
+If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
+
+But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press return at a shell prompt, the program that is the shell checks that what you've typed has a valid syntax, and then starts up a new \textit{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of the machine, but rather just out of the graphical environment. 
+
+Now, if you're going to use the graphical environment as your primary interface (and, as the jobs we ask you to do get more complex, you're going to need to!), you may find it slightly annoying to have to log into a lab machine, start the graphical environment, log out of the graphical environment when you're done \textit{and then remember to also log out of the console environment before you leave (because if you don't do this, other people will have access to your account!)}. 
+
+Type the following:
+
+\begin{ttoutenv}
+exec ls
+\end{ttoutenv}
+
+You should find that the \texttt{ls} command has done exactly what you normally would expect, but that instead of returning you to the command prompt, you've been unceremoniously logged out! Log back in again (sorry about that). 
+
+The \texttt{exec} command changes the way in which the shell deals with whatever command follows it. Instead of starting a new process in which to run your command and waiting in the background for that command to complete, the shell gives up the process in which it itself is running, and hands it over to the command you've issued. So when that command finishes, there is no shell to come back to. And because in this case the shell was the first program that got run when you logged in, the Unix system logs you out since there's nothing else you can do. 
+
+Experiment by running \texttt{exec startx} and then logging out of the graphical environment as you did a moment ago; this time you should find that you've automatically been logged out of the console too.
+
+But although that's one step closer to what we want, there's still the issue of having to type \texttt{exec startx} every time you log in. Of course this isn't a huge deal (it's certainly not as annoying as accidentally leaving yourself logged in at a console!), we can do better than this. 
+
+When you first run the bash shell, it looks for a file in your home directory called \texttt{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard. Use the \texttt{ls -a} command to confirm that there's already a file in your home directory called \texttt{.bash\_profile}, and then use \texttt{less} to look at its contents.
+
+It should look something like this:
+
+\begin{ttoutenv}
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH
+\end{ttoutenv}
+
+though don't worry if there are slight differences. We'll come back to what these instructions mean a little later one. For now, fire up the \texttt{nano} editor, and use it to add a new line at the end of your \texttt{.bash\_profile} that reads 
+
+\begin{ttoutenv}
+exec startx
+\end{ttoutenv}
+
+Now log out (either type \texttt{logout} or press Ctrl+D), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you select `logout' from the menu, you should be returned to the Linux login prompt. \ref{figure:Xstructure}
+
+Hurray!
+
+\section{A quick tour of Gnome}
+
+\begin{itemize}
+\item terminal
+\item editors
+\end{itemize}
+
+\section{X Windows}
+
+Let's take a step back now and look at what the \texttt{startx} command has actually done. Unlike operating systems such as OS X and Windows, Linux doesn't really `have' a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to give create the familiar WIMP environment. 
 
 
 
 
 
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=12cm]{images/graphics-stack.pdf}
+  \end{center}
+\caption{The layered structure of Linux's graphical system, with software nearest to the underlying hardware at the bottom, and software closest to the user at the top.}
+\label{figure:Xstructure}
+\end{figure}
 
 
- 
+When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a program called the XServer, which also communicates with the computers graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with the XServer, a window manager (in this case, called Gnome) was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. You'll explore the architecture and features of the XServer in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows things to be drawn on regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized. 
+
+One of the interesting effects of this architecture is that you can use different window managers on Linux, and can choose the one that best suits the way you work. So although in Gnome you can change the theme of the desktop, it's actually possible to replace Gnome with something else entirely. 
+
+To demonstrate this, use nano to create a file in your home directory called \texttt{.xinitrc}, and in that file put a single line that reads:
+
+\begin{ttoutevn}
+BLAAAAAAAH
+\end{ttoutenv}
+
+
 
 
 
