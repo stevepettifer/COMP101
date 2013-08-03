@@ -4,7 +4,7 @@
 % TODO: References, references.
 % TODO: Wikipedia links
 
-The Raspberry Pi is an astonishing piece of hardware. Not because it is super-fast or super-powerful---it's actually quite a slow computer by today's standards---but because it is small, cheap and needs very little energy to run. Because it's cheap, you can experiment with it safe in the knowledge that if you mess it up, lose it, or drop it into the canal, getting hold of a replacement isn't going to cost you much more than a text-book or a night out at the cinema. Because it's small and has fairly modest power requirements, it can be put to use in lots of applications where a regular-sized PC would be impractical.  We hope this will encourage you to experiment and explore, and to take risks playing with both its hardware and software that you might be reluctant to do on your own computer or tablet, or using the School's lab machines. 
+The Raspberry Pi is an astonishing piece of hardware. Not because it is super-fast or super-powerful---it's actually quite a slow computer by today's standards---but because it is small, cheap and needs very little energy to run. Its cheapness means you can experiment with it safe in the knowledge that if you mess it up, lose it, or drop it into the canal, getting hold of a replacement isn't going to cost you much more than a text-book or a night out at the cinema. Its small size and fairly modest power requirements mean you can be put to use in lots of applications where a regular-sized PC would be impractical.  We hope this will encourage you to experiment and explore, and to take risks playing with both its hardware and software that you might be reluctant to do on your own computer or tablet, or simply can't do with the School's lab machines. 
 
 This lab session is designed to get you familiar with the Raspberry Pi itself, and with some of the basics of the Linux operating system it uses. We're going to be covering a lot of ground quite quickly, and it's important that you read these notes carefully and follow the instructions precisely for now. As the lab sessions progress, the instructions will become much less prescriptive, and we'll be encouraging you to experiment and explore much more, and to find out things for yourself. But for now, just follow our lead. 
 
@@ -95,7 +95,7 @@ Debian GNU/Linux wheezy/sid raspberrypi tty1
 raspberrypi login:
 \end{ttoutenv}
 
-At the login line enter \totype{pi} as the username, and when prompted for the password, type \totype{raspberry}. Note that the username will appear on screen as you type it, but the password will not (so make sure you're typing carefully!) You should see:
+At the login line enter \totype{pi} as the username, and when prompted for the password, type \totype{raspberry}. \textbf{Note that the username will appear on screen as you type it, but the password will not} (so make sure you're typing carefully!) You should see:
 
 \input{./startuptext.tex}
 
@@ -103,7 +103,7 @@ At the login line enter \totype{pi} as the username, and when prompted for the p
 
 The last line of this text (which is shown in bold here but will be green and blue on your screen) is the command prompt. It might look innocent enough, but in the right hands, the command prompt is one of the most powerful ways of controlling a computer. It may feel a bit odd at first if you're used to a graphical interface, but being comfortable with issuing instructions to a machine via a textual command-line rather is a crucial skill that you'll need during your studies here at University, and also in your future career.
 
-\begin{diversion}{Don't be a WIMP.}
+\begin{diversion}{Don't be a WIMP}
 The familiar Windows, Icons, Menus and Pointer (WIMP) paradigm used on most graphical desktop environments is enormously powerful, but it's not suitable for every task, and understanding when you're better off using the command-line or a keyboard shortcut instead will make you a lot more efficient.
 
 Sometimes the clumisness of the GUI comes from the fact that there's no convenient visual metaphor for a particular action; how do you graphically represent the concept of `rename all the files I created yesterday so they start with a capital letter'? 
@@ -178,6 +178,27 @@ Each of the lines starting with `\ttout{64 bytes}' represents a short response f
 \begin{diversion}{Ping}
   The \totype{ping} command is named after its use in the field of active sonar, where an actual `ping' sound was sent through water, and distance calculated by listening for the echo to return. It's the classic boingy pingy noise associated with submarine movies! 
 \end{diversion}
+
+\section{The Unix Shell}
+
+Before doing anything else, let's take a step back and look in a bit more detail at what you've just done. You have been
+interacting with a \wikipedia{Shell_(computing)}{shell}: a program that prompts
+the user for commands, accepts them, executes them and displays the
+results. A shell is just a program running on the Linux operating system like any other program---it's not `built in' to the operating system in any special way, it just happens that by default, the Pi is set up so that when a user logs in, the first program that gets executed on behalf of that user is an interactive shell that allows the user to execute further programs themselves. Later in this course we'll look at the file that determines which program gets executed first for a user, and indeed at the order in which programs are run by the operating system as it boots up, because in Linux all of these things can be easily configured by changing a few lines in the appropriate text file. But for now, it's enough to understand that the shell is just a program that interacts with the user via the keyboard and display, and allows you to execute commands to do useful things.
+
+\begin{diversion}
+Unix has many shells: the first shell was called the `Thompson' shell (also known as just `sh', and pronounced ``shell''), written by Ken Thompson for the first Unix system; then came the `Bourne' shell (also called `sh'), written for a later commercial version of Unix by Stephen Bourne. You have just been using the Free Software Foundation's `Bourne Again' shell (another pun-name taking a dig at its commercial fore-runner), or `bash'. The various different shells offer the user different facilities: `sh' is rather
+primitive compared to the more modern ones. However, their basic
+functionality is always the same: they accept commands from the
+\textbf{standard input} (for now, we can treat that as meaning `the keyboard'), execute them, and display
+the results on the \textbf{standard output} (i.e. for now `the screen', which in
+this case was the entire screen, or \textbf{console}). Shells repeat
+this process until they have reached the end of their input, and then
+they die. Unix shells are rather like \textbf{Command Prompt} windows in Microsoft
+Windows, except that Unix shells are considerably more sophisticated.
+\end{diversion}
+
+\section{The Unix File System}
 
 Next we're going to explore the Pi's filesystem a little. You'll be familiar with the idea of a hierarchy of files and folders from whatever graphical environment you're used to using on desktop or mobile devices: files represents things that you've created or downloaded such as documents, images or movies, and folders are a way of organising these into related collections. By putting folders inside folders, you can organise your stuff starting with general concepts such as `Photographs' and ending up with much more specific collections, e.g. `Holidays', then `Bognor Regis 2013'. 
 
