@@ -2,9 +2,9 @@
 
 Today we're going to explore some of the features of UNIX in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical UNIX system is organised. Almost everything that you learn today using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
 
-\section{Reading email in a console}
+\section{Reading email at the console}
 
-You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your university email when logged into Unix at a console. The email client we're going to use is called Mutt, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to Mutt or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
+You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called Mutt, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to Mutt or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
 
 First, let's confirm that Mutt is actually installed. Make sure the desktop PC is booted into Linux, and log in using your University username and password (not the username and password you used on the Pi). You should be greeted with a similar command prompt to the one you saw in the previous lab.
 
@@ -28,11 +28,11 @@ $ ls /usr/bin/m*
 
 and you should be given a much smaller list of things from the \fname{/usr/bin} directory; only those starting with the letter m. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/usr/bin} directory, showing only files that start with the letter m and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results). 
 
-You could narrow this down even further by typing \ttout{ls /usr/bin/mu*}, in which case you'll only get files from \fname{/usr/bin} that start with the letters mu. Note that if you leave off the asterisk from your command, you'll be asking for files that are called \textit{exactly} m or mu. 
+You could narrow this down even further by typing \ttout{ls /usr/bin/mu*}, in which case you'll only get files from \fname{/usr/bin} that start with the letters mu. Note that if you leave off the asterisk from your command, you'll be asking for files that are called \textit{exactly} m or mu, which isn't what you want here.
 
 So far we've been getting you to do a fair amount of typing, and now we have to admit that you've been typing a lot more than you actually need to (it's good practise though, so we're not feeling too guilty at this stage). The default Linux command line has a feature similar to autocomplete that you'll have seen on web forms and in graphical tools, that saves you typing full commands by suggesting possible alternatives. 
 
-Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of directories that are in the system's root. Now type the letter u (so that the line you've typed so far should read \ttout{ls /u}) and hit Tab once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press Tab twice now, and you'll get shown the contents of \fname{/usr/}. Type b, and press Tab to expand the command to \fname{/usr/bin/}, and then press Enter to execute the command.
+Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of directories that are in the system's root directory. Now type the letter u (so that the line you've typed so far should read \ttout{ls /u}) and hit Tab once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press Tab twice now, and you'll get shown the contents of \fname{/usr/}. Type b, and press Tab to expand the command to \fname{/usr/bin/}, and then press Enter to execute the command.
 
 The `autocomplete' function you're using here is more commonly called `tab complete' by UNIX users. If you press Tab once and there's only one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then pressing Tab a second time shows you those, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
 
@@ -49,22 +49,42 @@ Here are some other very useful command line tricks:
 
 Back to configuring your email client. Before we use mutt, we need to point it at the incoming and outgoing email servers, and we'll do this by creating a configuration file.
 
-We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from \url{http://pod.cs.man.ac.uk/COMP101/mutt-template}. Remember, you're going to need to use a switch parameter to tell \ttout{curl} what it should call the file it's fetched (call it anything you like, but \fname{mutt-template} is a perfectly good name). Let's look at the file to see what's in it. Type
+\begin{diversion}{File extensions}
+\label{diversion:file-extensions}
+If you've mostly used Windows or OS X via a GUI, then you're probably used to files such as \fname{cheese.jpg}, where you would interpret \fname{cheese} as being the file \textit{name} and \textit{jpg} as being the file \textit{extension}. Some operating systems---notably Windows---have the notion of a \wikipedia{Filename_extension}{filename extension} of a particular number of characters built in; for example things ending with \fname{exe}, \fname{bat} or \fname{com} mean that they are executable files. In UNIX, a file extension is merely a convention that's not enforced or meaningful to the operating system. so although its common to give files a suffix that makes it easy for a human to guess what kind of file it is, Unix itself just treats these as part of the file name. In fact, you can have multiple `file extensions' in a name, to indicate a nesting of file types. In the previous lab the file \fname{quake3.tar.gz} is a `tar' archive that has been `gzipped', but the presence of the \fname{.tar} and \fname{.gz} parts are really just there to tell the user how to treat the file.
+\end{diversion}
+
+We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from \url{http://pod.cs.man.ac.uk/COMP101/mutt-template}. Remember, you're going to need to use a switch parameter to tell \ttout{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
 
 \begin{ttoutenv}
-$ more ./mutt-template
+$ less ./mutt-template
 \end{ttoutenv}
 
 and you should see the following written to the screen:
 \begin{ttoutenv}
-BLAH
+# Change the following six lines to match your University of Manchester account details
+set imap_user = "mbnoodle"
+set smtp_url = "smtp://mbnoodle@outgoing.manchester.ac.uk:587"
+set from = "mister.noodle@stud.manchester.ac.uk"
+set realname = "Mister Noodle"
+set folder = "imaps://email.manchester.ac.uk:993"
+set hostname = email.manchester.ac.uk
+
+# Change the following line to a different editor you prefer.
+set editor = "nano"
 \end{ttoutenv}
 
-The \ttout{more} command is used to display textual content from files and other sources. The reason that the \ttout{more} command is called more will become clear later. 
+The \ttout{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at \ref{diversion:less}). 
 
 \begin{note}
   Should they be using 'more' or 'less'
 \end{note}
+
+\begin{diversion}{Less is more}
+As we've mentioned before, many of UNIX's commands are plays on words, puns, or jokes that seemed funny to the command's creator at the time. Though this gives UNIX a rich historical background, it does rather obscure the purpose of some commands. A prime example of this is the \texttt{less} command, used to page through text files that are too large to fit on a single screen without scrolling. 
+
+Early versions of UNIX included a command called \texttt{more}, written by Daniel Halbert from University of California, Berkeley in 1978, which would display a page's worth of text before prompting the user to press the space bar in order to see \textit{more} of the file. A more sophisticated paging tool, called \texttt{less} on the jokey premis that `less is more' was written by Mark Nudelman in the mid 1980s, and has since replaced \texttt{more} in most Unix systems, including Linux. 
+\end{diversion}
 
 Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see how what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the COMP18112 (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But lets play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. Enter
 
@@ -85,7 +105,7 @@ $ nano my-mutt-template
 to invoke the \ttout{nano} editor, and use it to change the text in square brackets the the correct values for you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
 
 \begin{itemize}
-\item $[$USERNAME$]$ should be replaced with your university user name (which will be 8 characters, and will start with an m). Note you'll need to replace this on the lines with \ttout{imap\_user} and \ttout{smtp\_url}.
+\item $[$USERNAME$]$ should be replaced with your University username (which will be 8 characters, and will start with an m). Note you'll need to replace this on the lines with \ttout{imap\_user} and \ttout{smtp\_url}.
 \item $[$FROM$]$ should be DUNNO!
 \item $[$REALNAME$]$ is just your real name, in whatever way you want it to appear in outgoing emails.
 \end{itemize}
@@ -207,11 +227,11 @@ $ startx
 You'll see a chunk of text scroll up the screen briefly before being presented with something that looks like the screenshot in Figure \ref{figure:gnome-desktop}.
 
 \begin{figure}[t]
-\centerline{\includegraphics[width=15cm]{images/gnome-desktop}}
-\caption{Scientific Linux's default graphical user interface and window manager, Gnome.}\label{figure:gnome-desktop}
+\centerline{\includegraphics[width=16cm]{images/gnome-desktop}}
+\caption{Scientific Linux's default graphical user interface and window manager, Gnome 2. \protect\circled{1} the top panel contains a menu of applications and system controls, as well as shortcuts to some frequently-used tools. You can easily configure the shortcuts to include your favourite things. \protect\circled{2} a graphical file-browser called `Nautilus' gives you graphical access to your files much like Explorer on Windows or Finder on OSX. \protect\circled{3} Clicking on your name shows the `log out' option. \protect\circled{4} The `wastebasket' and virtual desktop controls}\label{figure:gnome-desktop}
 \end{figure}
 
-Take a few minutes to explore the graphical environment. Even if you've never used Linux before, you'll probably find the general principles of this environment quite familiar: there are icons on the desktop giving you access to the computer via a graphical file browser, and at the top of the screen a menu-bar allows you to start various applications and utilities. The full manual for this environment --which is called Gnome --is available online at \url{http://personal.us.es/rledesma/descargas/gnome2.6-user-guide.pdf}, but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have nothing to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
+Take a few minutes to explore the graphical environment. Even if you've never used Linux before, you'll probably find the general principles of this environment quite familiar: there are icons on the desktop giving you access to the computer via a graphical file browser, and at the top of the screen a menu-bar allows you to start various applications and utilities. The full manual for this environment---which is called Gnome 2---is available online at \url{http://personal.us.es/rledesma/descargas/gnome2.6-user-guide.pdf}, but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have nothing to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
 
 Find out how to:
 \begin{enumerate}
@@ -273,12 +293,8 @@ Now log out (either type \texttt{logout} or press Ctrl+D), and log back in again
 
 Hurray!
 
-\section{A quick tour of Gnome}
 
-\begin{itemize}
-\item terminal
-\item editors
-\end{itemize}
+
 
 \section{X Windows}
 
@@ -293,9 +309,9 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 \end{figure}
 
 
-When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a program called the XServer, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with the XServer, a window manager (in this case, called Gnome) was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. You'll explore the architecture and features of the XServer in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows things to be drawn on regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized. 
+When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} (in this case, called Gnome) was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming COMP101, and you'll explore the architecture of X Windows in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized. 
 
-One of the interesting effects of this architecture is that you can use different window managers on Linux, and can choose the one that best suits the way you work. So although in Gnome you can change the theme of the desktop, it's actually possible to replace Gnome with something else entirely. 
+One of the interesting effects of this architecture is that you can use different window managers on Linux, and can choose the one that best suits the way you work; some people like `rich' environments like Gnome, whereas others like `lean' cut-down window managers. 
 
 To demonstrate this, use nano to create a file in your home directory called \texttt{.xinitrc}, and in that file put a single line that reads:
 
@@ -303,4 +319,24 @@ To demonstrate this, use nano to create a file in your home directory called \te
 BLAAAAAAAH
 \end{ttoutenv}
 
+
+\begin{note}
+Test out which other WMs are installed; can you kill X server from the keyboard?
+\end{note}
+
 %\printbibliography
+
+\section{Terminal stuff}
+
+Run some commands in an xterm, including mutt.
+
+\section{Graphical Editors}
+
+
+
+\section{Configuring Thunderbird}
+
+\section{Exploring the CS UNIX environment -- which RPMs are installed}
+
+
+
