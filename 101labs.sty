@@ -3,7 +3,13 @@
 \usepackage{alltt}
 \usepackage{palatino}
 %\usepackage{url}
-\usepackage{color}
+\usepackage{xcolor}
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{light-gray}{gray}{0.9}
+\definecolor{dark-gray}{gray}{0.3}
+\definecolor{capgrey}{gray}{0.4}
+
 \usepackage{listings}
 
 \usepackage{amsmath}
@@ -15,6 +21,10 @@
 \usepackage{breakbox}
 \usepackage{placeins}
 \usepackage{tikz}
+
+\usepackage{caption}
+\DeclareCaptionFont{capgrey}{\color{capgrey}}
+\captionsetup[figure]{labelfont={capgrey,bf},width=0.9\textwidth,textfont={capgrey,sf},size=small,skip=2pt}
 
 \usepackage{ifthen}
 \newboolean{@shownotes}
@@ -39,9 +49,6 @@
 \newcommand{\ttout}[1]{\texttt{\small #1}}
 \newcommand{\fname}[1]{\texttt{\small #1}}
 
-\definecolor{light-gray}{gray}{0.9}
-\definecolor{dark-gray}{gray}{0.3}
-
 \lstset{
   language=bash,
   basicstyle=\ttfamily\small,
@@ -55,8 +62,6 @@
 %  xrightmargin=.1in,
   showstringspaces=false
 }
-
-\definecolor{gray}{rgb}{0.4,0.4,0.4}
 
 \def\tinsy{\fontsize{4pt}{4pt}\selectfont}
 

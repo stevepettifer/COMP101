@@ -76,10 +76,6 @@ set editor = "nano"
 
 The \ttout{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). 
 
-\begin{note}
-  Should they be using 'more' or 'less'
-\end{note}
-
 \begin{diversion}{Less is more}
 \label{diversion:less}
 As we've mentioned before, many of UNIX's commands are plays on words, puns, or jokes that seemed funny to the command's creator at the time. Though this gives UNIX a rich historical background, it does rather obscure the purpose of some commands. A prime example of this is the \texttt{less} command, used to page through text files that are too large to fit on a single screen without scrolling. 
@@ -95,7 +91,7 @@ $ cp mutt-template my-mutt-template
 
 Did you type all of that? If so, you've wasted several precious keypresses! You could have typed \ttout{cp mu}, and then pressed Tab to expand it to \ttout{cp mutt-template}, and then added on the \ttout{my-mutt-template} bit yourself. It's a good habit to get into and will save you a lot of time over the next few years.
 
-The basic form of the \ttout{cp} command takes two parameters, the first being the file you want to copy, and the second being the name of the file that will be created. Confirm that there is indeed a new file in your home directory using \ttout{ls}, and that its contents are what you expect using \ttout{more} (how would you find out what else the \ttout{cp} command could do?). 
+The basic form of the \ttout{cp} command takes two parameters, the first being the file you want to copy, and the second being the name of the file that will be created. Confirm that there is indeed a new file in your home directory using \ttout{ls}, and that its contents are what you expect using \ttout{less} (how would you find out what else the \ttout{cp} command could do?). 
 
 To modify the file, you'll need to use a text editor. Type 
 \begin{ttoutenv}
@@ -110,7 +106,7 @@ to invoke the \ttout{nano} editor, and use it to change the text in square brack
 \item $[$REALNAME$]$ is just your real name, in whatever way you want it to appear in outgoing emails.
 \end{itemize}
 
-When you've made the changes, write the file to your filestore and quit back to the command line. Then use \ttout{more} to confirm that the file now looks exactly as you want it to. 
+When you've made the changes, write the file to your filestore and quit back to the command line. Then use \ttout{less} to confirm that the file now looks exactly as you want it to. 
 
 Now, \ttout{mutt} expects the file containing its configuration information to have a particular name, and that's not \ttout{my-mutt-template}, so we'll need to do something about that. The UNIX \ttout{mv} command is used to rename files or directories (it's short for `move'), so use that to change the name of the file to \fname{.muttrc} by typing
 
@@ -124,7 +120,7 @@ Type \ttout{ls} to confirm that the file name has changed as you'd expect.
 
 Oh. But it's gone! Actually, no, it's still there, but it's just hidden! There's a UNIX convention that files that start with a full-stop symbol don't appear when you type \ttout{ls} in its basic form, because these are normally configuration files that you don't need to see on a day to day basis (the `rc' part of the '.muttrc' name stands for 'resource configuration', another UNIX convention). So to see these files you'll need to add an extra switch parameter to \ttout{ls}. Use the \ttout{man} command to find out what this switch is, and then use the switch to confirm that the \fname{.muttrc} file does indeed exist. 
 
-Using this switch on \ttout{ls} will reveal several other so-called `dotfiles' that have been lurking in your home directory all along. Use \ttout{more} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
+Using this switch on \ttout{ls} will reveal several other so-called `dotfiles' that have been lurking in your home directory all along. Use \ttout{less} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
 
 If you're confident that you now have a file called \fname{.muttrc} containing the correct configuration, you can now type \ttout{mutt} to start the program. 
 
@@ -156,14 +152,14 @@ You'll soon be designing your own web-based systems as part of the Group Project
 
 One of the fundamental philosophies of Unix---and one that is a sensible philosophy when you're building any computer system really---is that the operating system is composed from lots of simple sub-systems, each of which performs one clearly defined task. To do something more complex than any of the individual tools allows you to do on its own, you are expected to combine components yourself. At the command line, Unix makes this quite simple, so let's give it a go. 
 
-First, use lynx to look at the BBC's weather page at \url{http://www.bbc.co.uk/weather} and have a quick browse around to get familiar with what it looks like. Then quit lynx and get back to the command prompt before typing:
+First, use lynx to look at the BBC's weather page at \url{http://www.bbc.co.uk/weather} and have a quick browse around to get familiar with what it looks like. Then quit \ttout{lynx} and get back to the command prompt before typing:
 
 Type:
 \begin{ttoutenv}
 $ lynx -dump http://www.bbc.co.uk/weather
 \end{ttoutenv}
 
-Note the addition of the \ttout{-dump} parameter before the URL this time. Instead of running as an interactive browser, \ttout{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through lynx's output in a more controlled manner. Type:
+Note the addition of the \ttout{-dump} parameter before the URL this time. Instead of running as an interactive browser, \ttout{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through \ttout{lynx}'s output in a more controlled manner. Type:
 
 \begin{ttoutenv}
 $ lynx -dump http://www.bbc.co.uk/weather | less
@@ -183,7 +179,7 @@ Instead of joining commands together, you can use the idea of manipulating stand
 $ lynx -dump http://www.bbc.co.uk/weather > weather.txt
 \end{ttoutenv}
 
-and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol redirects the standard out of the lynx command so that instead of going to the console display it gets put into a named file. 
+and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol redirects the standard out of the \ttout{lynx} command so that instead of going to the console display it gets put into a named file. 
 
 To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!) 
 
@@ -193,9 +189,9 @@ Grep is a hugely powerful and useful utility, designed for searching through pla
 $ grep BBC weather.txt
 \end{ttoutenv}
 
-and you should see a list of all the lines from \ttout{weather.txt} that contain the word `BBC'. Use \ttout{less} to have a look for other terms to `grep' for (you might want to try something like `Sunny' to give you a list of all the places where the weather is nice, for example). 
+and you should see a list of all the lines from \ttout{weather.txt} that contain the word `BBC'. Use \ttout{less} to have a look for other terms to `\ttout{grep}' for (you might want to try something like `Sunny' to give you a list of all the places where the weather is nice, for example). 
 
-Rather like \ttout{less}, if grep isn't given the name of a file as its last command-line parameter (in this case we used \ttout{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together lynx and grep so that the output is a single line describing the weather in Manchester right now. The output should look something like:
+Rather like \ttout{less}, if \ttout{grep} isn't given the name of a file as its last command-line parameter (in this case we used \ttout{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \ttout{lynx} and \ttout{grep} so that the output is a single line describing the weather in Manchester right now. The output should look something like:
 
 \begin{ttoutenv}
    [33]Manchester 22°C 72°F
@@ -223,12 +219,22 @@ Next you're going to start up one of Linux's many graphical user interfaces. Typ
 \begin{ttoutenv}
 $ startx
 \end{ttoutenv}
+% $
 
 You'll see a chunk of text scroll up the screen briefly before being presented with something that looks like the screenshot in Figure \ref{figure:gnome-desktop}.
 
 \begin{figure}[t]
 \centerline{\includegraphics[width=16cm]{images/gnome-desktop}}
-\caption{Scientific Linux's default graphical user interface and window manager, Gnome 2. \protect\circled{1} the top panel contains a menu of applications and system controls, as well as shortcuts to some frequently-used tools. You can easily configure the shortcuts to include your favourite things. \protect\circled{2} a graphical file-browser called `Nautilus' gives you graphical access to your files much like Explorer on Windows or Finder on OSX. \protect\circled{3} Clicking on your name shows the `log out' option. \protect\circled{4} The `wastebasket' and virtual desktop controls}\label{figure:gnome-desktop}
+\caption{Scientific Linux's default graphical user interface and
+  window manager, Gnome 2. \protect\circled{1} the top panel contains
+  a menu of applications and system controls, as well as shortcuts to
+  some frequently-used tools. You can easily configure the shortcuts
+  to include your favourite things. \protect\circled{2} a graphical
+  file-browser called `Nautilus' gives you graphical access to your
+  files much like Explorer on Windows or Finder on
+  OSX. \protect\circled{3} Clicking on your name shows the `log out'
+  option. \protect\circled{4} The `wastebasket' and virtual desktop
+  controls}\label{figure:gnome-desktop}
 \end{figure}
 
 Take a few minutes to explore the graphical environment. Even if you've never used Linux before, you'll probably find the general principles of this environment quite familiar: there are icons on the desktop giving you access to the computer via a graphical file browser, and at the top of the screen a menu-bar allows you to start various applications and utilities. The full manual for this environment---which is called Gnome 2---is available online at \url{http://personal.us.es/rledesma/descargas/gnome2.6-user-guide.pdf}, but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have nothing important to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
@@ -289,7 +295,7 @@ though don't worry if there are slight differences. We'll come back to what thes
 exec startx
 \end{ttoutenv}
 
-Now log out (either type \texttt{logout} or press Ctrl+D), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you select `logout' from the menu, you should be returned to the Linux login prompt. 
+Now log out (either type \texttt{logout} or press \ctrl{d}), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you select `logout' from the menu, you should be returned to the Linux login prompt. 
 
 Hurray!
 
@@ -331,8 +337,11 @@ Run some commands in an xterm, including mutt.
 
 \section{Graphical Editors}
 
-Fix .bash profile
+\begin{note}
+ Fix .bash profile
+\end{note}
 
+ 
 
 \section{Configuring Thunderbird}
 
