@@ -42,7 +42,15 @@ Check out the hostname of the lab machine on your desk; it'll be written \ref{WH
 $ ssh USERNAME@HOSTNAME.cs.man.ac.uk
 \end{ttoutenv}
 
-obviously replacing USERNAME with your Univeristy username, and HOSTNAME with the name of the machine in front of you. You'll need to enter your university password, and should then be given a command prompt: notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. The \ttout{ssh} command stands for `Secure Shell', and allows you to issue instructions to a remote machine as though you had logged in at that machine's console.
+obviously replacing USERNAME with your Univeristy username, and HOSTNAME with the name of the machine in front of you. You'll need to enter your university password, and will most likely be presented with text something like this:
+
+\begin{ttoutenv}
+The authenticity of host 'lf012 (130.88.197.112)' can't be established.
+RSA key fingerprint is 20:6d:2d:90:5e:8f:9f:19:39:70:ce:48:a6:93:ec:4c.
+Are you sure you want to continue connecting (yes/no)? yes
+\end{ttoutenv}
+
+Type `yes' in response to the question, you should then be given a command prompt (you'll learn more about what this message actually means in COMP\ref{securityguffs}). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. The \ttout{ssh} command stands for `Secure Shell', and allows you to issue instructions to a remote machine as though you had logged in at that machine's console.
 
 Type \ttout{ls -a} to confirm that your \fname{.muttrc} file is still where you expect it to be, and if all is well then press Ctrl+D to log out of the remote shell and get back to a shell running locally on your Pi (you'll see the command prompt change back to being `pi' again). Now we know the file is there, we want to copy it from your Computer Science filestore onto your Pi's local filestore.
 
@@ -80,7 +88,7 @@ Log back in to the lab PC using the \ttout{ssh} command, but this time include a
 $ ssh -X USERNAME@HOSTNAME.cs.man.ac.uk
 \end{ttoutenv}
 
-The \ttout{-X} switch tells the \ttout{ssh} program to redirect any X Windows requests back through the network from the remote machine to the X Server running on the local machine.
+The \ttout{-X} switch (note that its an uppercase X) tells the \ttout{ssh} program to redirect any X Windows requests back through the network from the remote machine to the X Server running on the local machine.
 
 Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \ttout{ls} to make sure the files in your home directory are the ones you'd expect, and then type:
 
@@ -92,7 +100,33 @@ Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not h
 
 How could you use this feature to your advantage to give you a temporary graphical mail client (or perhaps to use Firefox as a web browser, rather than Midori) on the Pi, without needing to install any packages on the Pi itself?
 
+\section{A Simple Web Server}
 
+This next exercise involves setting up a simple web server on the Pi, but before we can do that you'll need to create some basic web pages to display. 
+
+Create a directory called \ref{something} your home directory, and in that create a file called \fname{index.hmlt} with the following content:
+
+\begin{ttoutenv}
+<html>
+<body>
+Hello world!
+</body>
+</html>
+\end{ttoutenv}
+
+From within that directory, run the command
+
+\begin{ttoutenv}
+python -m SimpleHTTPServer
+\end{ttoutenv}
+
+and then use Midori to browse to the following URL:
+
+\begin{ttoutenv}
+http://localhost:8000
+\end{ttoutenv}
+
+If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine' (you could for example, \ttout{ping} or \ttout{ssh} a machine called \texttt{localhost}, though neither is a very useful thing to do). The section of the URL that follows \texttt{localhost} may be even less familiar. This is the \textit{port} on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to operate on port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in COMP18112. 
 
 
 
