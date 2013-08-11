@@ -264,7 +264,7 @@ Set up keyboard shortcuts
 
 If you've completed step 5 you should now be back at the command prompt where you typed `startx' a little while back. Before returning to the graphical environment where you'll spend most of your time, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system. 
 
-If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar -- just a program (or actually, collection of programs) that runs on the operating system.
+If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
 
 But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press return at a shell prompt, the program that is the shell checks that what you've typed has a valid syntax, and then starts up a new \textit{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of the machine, but rather just out of the graphical environment. 
 
@@ -313,9 +313,6 @@ Now log out (either type \texttt{logout} or press \ctrl{d}), and log back in aga
 
 Hurray!
 
-
-
-
 \section{X Windows}
 
 Let's take a step back now and look at what the \texttt{startx} command has actually done. Unlike OS X and Windows and most mobile operating systems, Linux doesn't really `have' a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to give create the familiar WIMP environment. 
@@ -360,7 +357,18 @@ There's no doubt that Awesome is at the hard-core end of the window manager spec
 
 As you become more familiar with Unix principles, keep the fact that you can easily swap window managers in mind. Most likely there will come a point where the graphical niceties of environments like Gnome become unnecessary, and perhaps even a distraction from getting work done, and you might find that a slimmed down window manager suits you better as a more experienced `power user'. For the rest of these exercises, though, we'll assume you're using Gnome (if you're confident enough to use something else, then translating our instructions to make sense in whatever environment you've chosen won't be too big a problem). 
 
+\begin{note}
+Could be link to JTL's ALU tutorial here
+\end{note}
 
+
+\begin{note}
+Where does backgrounding and nohuping go?
+\end{note}
+
+\begin{note}
+What about virtual consoles? This could be a link to JTL's extended 
+\end{note}
 
 \begin{note}
 Test out which other WMs are installed; can you kill X server from the keyboard?
