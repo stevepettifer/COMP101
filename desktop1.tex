@@ -60,7 +60,7 @@ Back to configuring your email client. Before we use mutt, we need to point it a
 If you've mostly used Windows or OS X via a GUI, then you're probably used to files such as \fname{cheese.jpg}, where you would interpret \fname{cheese} as being the file \textit{name} and \textit{jpg} as being the file \textit{extension}. Some operating systems---notably Windows---have the notion of a \wikipedia{Filename_extension}{filename extension} of a particular number of characters built in; for example things ending with \fname{exe}, \fname{bat} or \fname{com} mean that they are executable files. In UNIX, a file extension is merely a convention that's not enforced or meaningful to the operating system. so although its common to give files a suffix that makes it easy for a human to guess what kind of file it is, Unix itself just treats these as part of the file name. In fact, you can have multiple `file extensions' in a name, to indicate a nesting of file types. In the previous lab the file \fname{quake3.tar.gz} is a `tar' archive that has been `gzipped', but the presence of the \fname{.tar} and \fname{.gz} parts are really just there to tell the user how to treat the file.
 \end{diversion}
 
-We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from \url{http://pod.cs.man.ac.uk/COMP101/mutt-template}. Remember, you're going to need to use a switch parameter to tell \ttout{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out Breakout \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
+We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from \url{http://studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/labscripts/mutt-template}. Remember, you're going to need to use a switch parameter to tell \ttout{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out Breakout \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
 
 \begin{ttoutenv}
 $ less ./mutt-template
@@ -68,13 +68,14 @@ $ less ./mutt-template
 
 and you should see the following written to the screen:
 \begin{ttoutenv}
-# Change the following six lines to match your University of Manchester account details
+# Change the following six lines to match your University account details
 set imap_user = "mbnoodle"
 set smtp_url = "smtp://mbnoodle@outgoing.manchester.ac.uk:587"
 set from = "mister.noodle@stud.manchester.ac.uk"
 set realname = "Mister Noodle"
 set folder = "imaps://email.manchester.ac.uk:993"
 set hostname = email.manchester.ac.uk
+set spoolfile="+INBOX"
 
 # Change the following line to a different editor you prefer.
 set editor = "nano"
@@ -107,9 +108,9 @@ $ nano my-mutt-template
 to invoke the \ttout{nano} editor, and use it to change the text in square brackets to values appropriate to you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
 
 \begin{itemize}
-\item $[$USERNAME$]$ should be replaced with your University username (which will be 8 characters, and will start with an m). Note you'll need to replace this on the lines with \ttout{imap\_user} and \ttout{smtp\_url}.
-\item $[$FROM$]$ should be DUNNO!
-\item $[$REALNAME$]$ is just your real name, in whatever way you want it to appear in outgoing emails.
+\item \ttout{mbnoodle} should be replaced with your University username (which will be 8 characters, and will start with an m). Note you'll need to replace this on the lines with \ttout{imap\_user} and \ttout{smtp\_url}.
+\item \ttout{mister.noodle} should be your university email address (usually \ttout{firstname.secondname})
+\item \ttout{Mister Noodle} is just your real name, in whatever way you want it to appear in outgoing emails.
 \end{itemize}
 
 When you've made the changes, write the file to your filestore and quit back to the command line. Then use \ttout{less} to confirm that the file now looks exactly as you want it to. 
@@ -145,6 +146,10 @@ Try browsing the School's web pages using \ttout{lynx} by typing
 \begin{ttoutenv}
 $ lynx http://www.cs.manchester.ac.uk
 \end{ttoutenv}
+
+\begin{note}
+  Would studentnet.cs.manchester.ac.uk be better than www.cs.. here?
+\end{note}
 
 Rather like \ttout{mutt}, the \ttout{lynx} program has just about enough on-screen help for you to be able to browse around a little without any additional instructions from us.  You may find that when you follow some links, nothing very much appears to have happened; but scroll further down the page and you'll see the content that you're looking for.
 
@@ -243,11 +248,14 @@ You'll see a chunk of text scroll up the screen briefly before being presented w
   controls}\label{figure:gnome-desktop}
 \end{figure}
 
-Take a few minutes to explore the graphical environment. Even if you've never used Linux before, you'll probably find the general principles of this environment quite familiar: there are icons on the desktop giving you access to the computer via a graphical file browser, and at the top of the screen a menu-bar allows you to start various applications and utilities. The full manual for this environment---which is called Gnome 2---is available online at \url{http://personal.us.es/rledesma/descargas/gnome2.6-user-guide.pdf}, but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have nothing important to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
+Take a few minutes to explore the graphical environment. Even if you've never used Linux before, you'll probably find the general principles of this environment quite familiar: there are icons on the desktop giving you access to the computer via a graphical file browser, and at the top of the screen a menu-bar allows you to start various applications and utilities. The full manual for this environment---which is called Gnome 2---is available online at \url{http://personal.us.es/rledesma/descargas/gnome2.6-user-guide.pdf}, but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have very little important stuff to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
 
 Find out how to:
 \begin{enumerate}
 \item Find two ways of starting the Firefox web-browser.
+\item Use Firefox to visit the School UG home page
+  \url{http://studentnet.cs.manchester.ac.uk/ugt/} and make this your
+  home page in Firefox.
 \item Work out how to change the desktop theme. 
 \item Find Application Blahdeblah. \ref{thingyblobbs}
 \item Something else, and when you're done with these
@@ -329,7 +337,7 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 
 When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} (in this case, called Gnome) was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming COMP101, and you'll explore the architecture of X Windows in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized. 
 
-\begin{danger}
+\begin{danger}{Killing X}
 You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
 \end{danger}
 
@@ -347,7 +355,7 @@ then quit Gnome, and log back in; this time, instead of Gnome (which is set to b
 
 Awesome is a very minimalist window manager, probably quite unlike anything you've used before. Most WIMP environments that you'll have used so far make you the user responsible for the position and size/shape of the windows that represent tools and applications on the desktop. The upside of this is that you can arrange things exactly as you like them; the downside is that you probably use up an amount of time doing that arrangement, and often end up with a layout that wastes some of the desktop's usable space. Awesome is what's called a `tiling' window manager; instead of giving you detailed control over the exact shape of windows, it lays them out on the screen in one of several configurations designed to maximise the use of space. Because you can't drag or resize windows with the mouse, there's no need for the usual window decorations, so you save a few pixels this way too. To create a window, use the icon in the top-left of the Awesome desktop. Make a few terminal windows, and then cycle through the different layouts available using the icon in the top right. 
 
-There's no doubt that Awesome is at the hard-core end of the window manager spectrum, and its designed for experienced users that needs very large numbers of windows open at once, probably spread over several physical displays (as in Figure \ref{figure:awesome}). Apart from the `tiling' aspect, it gives you virtually no visual cues as to how perform various actions, most of which are designed to be invoked via keyboard shortcuts (in fact, Awesome is designed so that you can use all of it's features without needing to touch the mouse at all.) Once you've remembered all the keyboard combinations, using a window manager like Awesome can be extremely efficient in terms of time and screen-space, but you may find using this at the same time as learning your way around Unix a bit daunting right now, so feel free to swap back to using the rather more friendly environment provided by Gnome. To do this, use one of the terminals to delete the \fname{.xinitrc} file you created a moment ago (the command \ttout{rm .xinitrc} will do this), and quit Awesome using the option available via the top-left menu. Log back in again, and you should have Gnome once more. 
+There's no doubt that Awesome is at the hard-core end of the window manager spectrum, and its designed for experienced users that needs very large numbers of windows open at once, probably spread over several physical displays (as in Figure \ref{figure:awesome}). Apart from the `tiling' aspect, it gives you virtually no visual cues as to how perform various actions, most of which are designed to be invoked via keyboard shortcuts (in fact, Awesome is designed so that you can use all of its features without needing to touch the mouse at all.) Once you've remembered all the keyboard combinations, using a window manager like Awesome can be extremely efficient in terms of time and screen-space, but you may find using this at the same time as learning your way around Unix a bit daunting right now, so feel free to swap back to using the rather more friendly environment provided by Gnome. To do this, use one of the terminals to delete the \fname{.xinitrc} file you created a moment ago (the command \ttout{rm .xinitrc} will do this), and quit Awesome using the option available via the top-left menu. Log back in again, and you should have Gnome once more. 
 
 \begin{figure}[htb]
   \begin{center}
@@ -385,7 +393,15 @@ Run some commands in an xterm, including mutt.
 \section{Graphical Editors}
 
 \begin{note}
- Fix .bash profile
+  Fix .bash profile
+
+  Minimal change seems to be
+
+\begin{alltt}
+case `tty` in
+/dev/tty*) exec startx
+esac
+\end{alltt}
 \end{note}
 
 

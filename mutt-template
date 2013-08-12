@@ -1,0 +1,11 @@
+# Change the following six lines to match your University account details
+set imap_user = "mbnoodle"
+set smtp_url = "smtp://mbnoodle@outgoing.manchester.ac.uk:587"
+set from = "mister.noodle@stud.manchester.ac.uk"
+set realname = "Mister Noodle"
+set folder = "imaps://email.manchester.ac.uk:993"
+set hostname = email.manchester.ac.uk
+set spoolfile="+INBOX"
+
+# Change the following line to a different editor you prefer.
+set editor = "nano"
