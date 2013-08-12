@@ -1,5 +1,5 @@
 ROOT=labs
-TEX=welcome.tex rpi1.tex rpi2.tex desktop1.tex desktop2.tex desktop3.tex desktop4.tex latex-exercise.tex desktop5.tex 
+TEX=welcome.tex rpi1.tex rpi2.tex desktop1.tex desktop2.tex desktop3.tex desktop4.tex latex-exercise.tex desktop5.tex appendix.tex
 TEXNOSUFF=${basename ${TEX}}
 PDF=${addsuffix .pdf,${TEXNOSUFF}}
 STY=${wildcard *.sty}
