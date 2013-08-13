@@ -54,7 +54,7 @@ Next, we need to insert the \wikipedia{Secure_Digital}{Secure Digital} (SD) card
 \begin{rpi}{Raspbian}
   The SD card we've provided for you has already had the standard Raspbian version of Linux written onto it (it's a version of the Debian release of Linux, tuned for the Pi). If you do manage to corrupt the operating system, or just want to start from scratch, then re-writing the SD card with a fresh image is reasonably straightforward: there are plenty of instructions online on how to do this, and we've provided you with a USB multi-card reader/writer that you can use for the job. The process does require access to what's called the `raw' device though, and on Linux that requires administrator access to the machine, so you'll have to use your home machine or someone else's Raspberry Pi to do this.
 
-  Instructions on how to get hold of the files you'll need, and how to write them to the SD card on various operating systems are available at \url{http://www.raspberrypi.org/downloads}. You might want to think about getting a larger SD card in any case; the one we've given you is fine for the labwork we've set, but probably a bit on the small side for anything else. SD cards are widely available in shops and online, and aren't expensive. But you should check whether the specific card you're going to buy is compatible with the Pi before parting with any money---differences in the read/write speeds of some cards mean they don't play nicely with the Pi.
+  Instructions on how to get hold of the files you'll need, and how to write them to the SD card on various operating systems are available at \urlnop{www.raspberrypi.org/downloads}. You might want to think about getting a larger SD card in any case; the one we've given you is fine for the labwork we've set, but probably a bit on the small side for anything else. SD cards are widely available in shops and online, and aren't expensive. But you should check whether the specific card you're going to buy is compatible with the Pi before parting with any money---differences in the read/write speeds of some cards mean they don't play nicely with the Pi.
 \end{rpi}
 
 Now you're ready to power up the Pi. From the back of the monitor you'll notice a Micro USB cable (the same connector that you'll find on many modern smartphones and tablet devices). This goes into the socket marked \circled{3} on Figure \ref{figure:bare-rpi}. There is no power switch on the Pi, so as soon as the power cable goes in, it will start to boot (this strange term is explained in breakout box~\ref{boot box}): the red PWR LED should light up and stay on, and you'll also notice that the OK LED (which indicates SD-card activity) to its left also flickers. If any of the other three LEDs marked FDX, LNK, or 10M are lit, then that means you've already plugged a network cable into your Pi, in which case please unplug that now!
@@ -149,7 +149,7 @@ Before we do any real work on the Pi, we should make it a bit more secure than i
 
 \begin{figure}
 \centerline{\includegraphics[width=13.5cm]{images/xkcd-password-strength}}
-\caption{XKCD's take on password creation \url{http://xkcd.com/936/}}\label{figure:xkcd-password}
+\caption{XKCD's take on password creation \urlnop{xkcd.com/936/}}\label{figure:xkcd-password}
 \end{figure}
 
 The command to change the password is \totype{passwd}; typing this at the command prompt and entering your current (i.e. `raspberry') and new password (twice, to be sure), should look like this:
@@ -333,7 +333,7 @@ We're now going to explore a bit of computing history, and install and play one 
 
 \begin{figure}[t]
 \centerline{\includegraphics[width=14cm]{images/cern-pdp10+pi.png}}
-\caption{A PDP-10 from CERN, circa 1974, reproduced with permission. \url{http://cds.cern.ch/record/916840}. We've taken the liberty of crudely superimposing a Raspberry Pi to approximately the right scale on the operator's desk, just to give a sense of the difference in size between the two machines.}\label{figure:cern-pdp-10}
+\caption{A PDP-10 from CERN, circa 1974, reproduced with permission. \urlnop{cds.cern.ch/record/916840}. We've taken the liberty of crudely superimposing a Raspberry Pi to approximately the right scale on the operator's desk, just to give a sense of the difference in size between the two machines.}\label{figure:cern-pdp-10}
 \end{figure}
 
 Although the original FORTRAN source code for Colossal Cave still exists, the version you're going to play with is based on a re-implementation of the game on what became known as the \wikipedia{Z-machine}{Z-Machine}: a virtual machine specifically for running interactive fiction games.\footnote{Don't confuse the Z-machine, which is a virtual machine for adventure games, with the Z Machine, which is the largest X-ray generator in the world. Doing so is likely to make your lamp melt, and the trolls very grumpy.}
@@ -385,7 +385,7 @@ The various repositories that contain the packages for your Pi are updated regul
 You should also at some point run \totype{apt-get upgrade}, which will cause all the packages that have already been installed to be upgraded to the latest version that the APT system can find. This lab will work just fine with the versions of software that are pre-installed on your Pi, and the upgrade process can take quite some time (hours, possibly), so you mustn't do it now or you won't be able to complete this lab in time. Try it at home, or outside of a lab session. 
 \end{rpi}
 
-The frotz system on its own is just a virtual machine into which you can load adventure game data, so we'll need to fetch the Colossal Cave datafile before we can play anything. We've put a copy of the game at \url{http://studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/files/Advent.z5} so you can fetch it from there.
+The frotz system on its own is just a virtual machine into which you can load adventure game data, so we'll need to fetch the Colossal Cave datafile before we can play anything. We've put a copy of the game at \urlnop{studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/files/Advent.z5} so you can fetch it from there.
 
 Oh, hang on. No web browser. Oh dear.
 
@@ -409,7 +409,7 @@ Earlier, we referred to Colossal Cave as a work of Interactive Fiction (IF). In 
 
 We'll finish this lab session off with one more game. 
 
-Use {\tt curl} to fetch the file hosted at \url{http://pod.cs.man.ac.uk/COMP101/quake3.tar.gz}, making sure you save it in your home directory. 
+Use {\tt curl} to fetch the file hosted at \urlnop{studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/files/quake3.tar.gz}, making sure you save it in your home directory. 
 
 Notice that this file ends with \fname{.tar.gz}. The \fname{.gz} suffix tells us that this file has been compressed using a utility called \totype{gzip}, so the first task is to uncompress the file. Type:
 
