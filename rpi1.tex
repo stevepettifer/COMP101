@@ -186,10 +186,19 @@ Each of the lines starting with `\ttout{64 bytes}' represents a short response f
 
 \section{The Unix Shell}
 
-Before doing anything else, let's take a step back and look in a bit more detail at what you've just done. You have been
-interacting with a \wikipedia{Shell_(computing)}{shell}: a program that prompts
+Before doing anything else, let's take a few steps back and look in a bit more detail at what you've just done; you may be surprised how much stuff happened as a result of that simple command you've just typed. 
+
+The first concept you'll need to understand is that you have been
+interacting with what is known in Unix circles as a \wikipedia{Shell_(computing)}{shell}: a program that prompts
 the user for commands, accepts them, executes them and displays the
-results. A shell is just a program running on the Linux operating system like any other program---it's not `built in' to the operating system in any special way, it just happens that by default, the Pi is set up so that when a user logs in, the first program that gets executed on behalf of that user is an interactive shell that allows the user to execute further programs themselves. Later in this course we'll look at the file that determines which program gets executed first for a user, and indeed at the order in which programs are run by the operating system as it boots up, because in Linux all of these things can be easily configured by changing a few lines in the appropriate text file. But for now, it's enough to understand that the shell is just a program that interacts with the user via the keyboard and display, and allows you to execute commands to do useful things.
+results. A shell is just a program running on the Linux operating system like any other program---it's not `built in' to the computer or the operating system in any special way, it just happens that by default, the Pi is set up so that when a user logs in, the first program that gets executed on behalf of that user is an interactive shell that allows the user to execute further programs themselves. Later in this course we'll look at the file that determines which program gets executed first for a user, and indeed at the order in which programs are run by the operating system as it boots up, because in Linux all of these things can be easily configured by changing a few lines in the appropriate text file. For now, it's enough to understand that the shell is just a program that interacts with the user via the keyboard and display, and allows you to execute commands to do useful things.
+
+But what do we mean by `execute commands'? And if the shell is `just a program', how does it get to communicate with the keyboard and monitor? What is a `command' anyway, where do commands come from?
+
+To understand what's going on here you'll need to make sense of a concept that's fundamental to pretty-much any operating system; that of a \wikipedia{Process_(computing)}{process}. As you no-doubt know, modern computers have one or more Central Processing Units which are capable of carrying out simple instructions; a basic computer like your Pi will have a single CPU, whereas a big server machine or supercomputer may have several tens of CPUs in a single box. To a first approximation, each CPU is only capable of following one instruction at a time, and the illusion that a computer is capable of doing a very large number of things simultaneously (streaming music, displaying web pages, downloading a video of a unicycling kitten and playing Minecraft) is achieved by the operating system arranging for each of these tasks to be given access in turn to the CPU for a tiny fraction of a second. More technically, the unit of activity that's being scheduled to run on the CPU is called a \textit{process}. The relationship between anything that you as a user may recognise---for example a desktop application---and what's happening in the operating system in terms of processes is quite complex, since many applications are made up of several processes, and there will be a whole load of other processes doing housekeeping jobs that aren't immediately obvious to a user. But for now we'll gloss over this detail and work on the assumption that when you ask a computer to do something for you that the operating system will start up a process to deal with that task for you. 
+
+In terms of what's just happened when you ran the ping command a moment ago, there are at least two processes involved. The shell program itself is a process that's waiting for you to type something at the keyboard; when you pressed return after having typed your command, the shell interpreted your input, and started up a second process to run the ping program for you. It handed over temporary access to the keyboard and monitor over to the process running ping, and then then went to sleep briefly to wait for the ping command to finish. When ping finished (in this case because you aborted it), the shell woke up again, took back control of the keyboard/screen, and was ready for your next instruction. 
+
 
 \begin{diversion}
 Unix has many shells: the first shell was called the `Thompson' shell (also known as just `sh', and pronounced ``shell''), written by Ken Thompson for the first Unix system; then came the `Bourne' shell (also called `sh'), written for a later commercial version of Unix by Stephen Bourne. You have just been using the Free Software Foundation's `Bourne Again' shell (another pun-name taking a dig at its commercial fore-runner), or `bash'. The various different shells offer the user different facilities: `sh' is rather
@@ -203,7 +212,11 @@ they die. Unix shells are rather like \textbf{Command Prompt} windows in Microso
 Windows, except that Unix shells are considerably more sophisticated.
 \end{diversion}
 
-\section{The Unix File System}
+\begin{note}
+Put stuff about fish here
+\end{note}
+
+\section{Files, directories and file systems}
 
 Next we're going to explore the Pi's filesystem a little. You'll be familiar with the idea of a hierarchy of files and folders from whatever graphical environment you're used to using on desktop or mobile devices: files represents things that you've created or downloaded such as documents, images or movies, and folders are a way of organising these into related collections. By putting folders inside folders, you can organise your stuff starting with general concepts such as `Photographs' and ending up with much more specific collections, e.g. `Holidays', then `Bognor Regis 2013'. 
 
@@ -300,7 +313,7 @@ $ cd bin
 $ ls
 \end{ttoutenv}
 
-\noindent You should see a fairly long list of files. Look carefully, and you'll find two names that you recognise: \totype{ls} and \totype{pwd}. These are the `binary executable' files for the commands that you've just been using (which is why they are in the `bin' directory, which is short for binary). In UNIX, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the command-line when you type things. This makes UNIX very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
+\noindent You should see a fairly long list of files. Look carefully, and you'll find two names that you recognise: \totype{ls} and \totype{pwd}. These are the `binary executable' files for the commands that you've just been using (which is why they are in the `bin' directory, which is short for binary). In UNIX, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes UNIX very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
 
 We now need to get back to our home directory. You should by now be able to think of at least four different ways of getting there!
 
@@ -325,6 +338,24 @@ You can mix in the \fname{..} notation in relative and absolute paths anywhere y
 \centerline{\includegraphics[width=13.5cm]{images/simple-navigation}}
 \caption{Given the Pi's default filesystem structure, starting in the \fname{python\_games} directory, the command \fname{cd ../../../bin} will take you to the \fname{/bin} directory (by an admittedly tortuous route!)}\label{figure:simple-navigation}
 \end{figure}
+
+\subsection{Files in more detail}
+
+The files we've looked at so far, and the commands we've used to manipulate them should feel fairly familiar---we're just doing similar things on the command line to actions that you'll have performed using a graphical interface before. But the Unix take on files is rather more sophisticated than this, and to understand that, we'll need to think in a bit more detail about what a file actually is. When we think of an image or a music track as being stored `in a file', what do we actually mean? 
+
+In abstract terms, a file is just a sequence of numbers, ultimately stored in binary on some storage device such as a hard drive. The right program can interpret these numbers, and turn them into pictures on screen, or sounds coming out of your speakers. The wrong program would be able to make no sense of a file at all; if you could `display' an audio track on screen, or `play' an image file as sound, it would just be a meaningless mess. So there's nothing very special about a file that makes its contents mean one thing or another; it's just up to a program to interpret what's in the file correctly. So what are the properties of a file? So far we've seen that files have a filename, and a location within a file system. We've seen that some files can be executed (which means their contents are instructions to the computers CPU to do something), whereas other files contain data. But in both these cases, files are just sequences of numbers. Although we've not explored this yet, some files can be written to or modified, whereas others can only be read from; but they are still just sequences of numbers which when interpreted correctly have a particular meaning. 
+
+The designers of Unix exploited this idea to create a very elegant way of representing the hardware of underlying computer, and many of the properties of the operating system by treating anything that can be thought of as behaving like a file as being a file. 
+
+What, for example, might a hard disc look like to the operating system? Well, a hard disk is a device that can store a long sequence of numbers, and if you interpret those numbers correctly, they can be made to represent a filesystem. So as far as Unix is concerned, a hard disk is a bit like a file that you can read from and write to. 
+
+What about a process? Well that's a sequence of numbers that happen to be instructions to the CPU to do useful things; so that's a file too (probably in this case a read-only file). 
+
+What about a keyboard? Surely that's not a file? Actually it can be thought of as having some file-like properties; it's a stream of numbers that represent the keys pressed by the user, so it too is a sort-of read-only file. And the console? That too is file-like\ldots because it represents a sequence of numbers that can be interpreted as the output from various processes; so it's a bit like a write-only file. 
+
+This may seem all a bit esoteric and confusing right now, but as we explore more examples of these file-like things, you'll start to see how elegant the idea is. 
+
+For now, to give this stuff about files some time to sink in a bit, let's play another game. 
 
 %\FloatBarrier
 \section{The Colossal Cave}
