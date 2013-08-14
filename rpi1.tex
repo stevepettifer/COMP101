@@ -178,6 +178,8 @@ PING waldorf.cs.manchester.ac.uk (130.88.194.191): 56 data bytes
 64 bytes from 130.88.194.191: icmp_seq=2 ttl=52 time=41.006 ms
 \end{ttoutenv}
 
+% $
+
 Each of the lines starting with `\ttout{64 bytes}' represents a short response from the machine you've just pinged, and you're shown the round-trip time for ping's data to leave your Pi, find (in this case) \fname{www.cs.manchester.ac.uk} on the network, and return back to your Pi. Since we're just using ping here to give us some confidence that the network is okay, we don't need to leave it pinging away for ages, so let's stop the ping command in its tracks. Hold down the control key (marked `ctrl' on the keyboard), and press `c'. This will signal the currently executing command that it should stop what its doing and return to the command prompt (quite often this is referred to as ``control-c'ing'' a command, and it will have the same effect on the majority of command-line tools).
 
 \begin{diversion}{Ping}
@@ -200,7 +202,7 @@ To understand what's going on here you'll need to make sense of a concept that's
 In terms of what's just happened when you ran the ping command a moment ago, there are at least two processes involved. The shell program itself is a process that's waiting for you to type something at the keyboard; when you pressed return after having typed your command, the shell interpreted your input, and started up a second process to run the ping program for you. It handed over temporary access to the keyboard and monitor over to the process running ping, and then then went to sleep briefly to wait for the ping command to finish. When ping finished (in this case because you aborted it), the shell woke up again, took back control of the keyboard/screen, and was ready for your next instruction. 
 
 
-\begin{diversion}
+\begin{diversion}{Unix shells}
 Unix has many shells: the first shell was called the `Thompson' shell (also known as just `sh', and pronounced ``shell''), written by Ken Thompson for the first Unix system; then came the `Bourne' shell (also called `sh'), written for a later commercial version of Unix by Stephen Bourne. You have just been using the Free Software Foundation's `Bourne Again' shell (another pun-name taking a dig at its commercial fore-runner), or `bash'. The various different shells offer the user different facilities: `sh' is rather
 primitive compared to the more modern ones. However, their basic
 functionality is always the same: they accept commands from the
@@ -228,6 +230,8 @@ Let's first see what stuff we already have on our Pi. The \totype{ls} command li
 $ ls
 Desktop python_games
 \end{ttoutenv}
+
+% $
 
 When we're using a command-line prompt, we have the notion of of \wikipedia{http://en.wikipedia.org/wiki/Working_directory}{current working directory} which is the directory that we're currently `in'. Any commands we issue that don't specify another directory are assumed to refer to the current working directory; so \totype{ls} on its own really meant `run the list command on my current working directory'. 
 
