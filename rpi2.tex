@@ -155,6 +155,7 @@ You've already learned several ways of getting files onto your Pi, but here's a 
 \item If the picture is on the web somewhere, you could use Midori to find and save it. 
 \item Alternatively for images on the web, you could use \ttout{curl} to fetch it directly from a URL to a file. 
 \item You could use \ttout{scp} to copy it from some other machine directly to your Pi. 
+\item Or if all else fails, you could use a USB device to copy it from one place to another (though this isn't entirely trivial on the Pi; see the instructions in Appending \ref{blah}). 
 \end{itemize}
 
 If you need guidance on how to write the web page itself, then Appendix \ref{appendix:simplehtml} contains a few pointers; though there are plenty of tutorials on the web as well. 
@@ -207,5 +208,34 @@ Next, start up Firefox using the keyboard shortcut you created in the previous l
 http://IPADDRESSOFPI:8000
 \end{ttoutenv}
 
-and you should see your web page appear, served off your Pi to the desktop machine just like a real web server. Get the person next to you to see if they can see your web page from their machine by using your Pi's address; and return the favour by checking that theirs is also working (it's worth noting that the IP addresses of the Pis are only visible within the School of Computer Science, see pages served off your Pi will not be visible on the Internet).
+and you should see your web page appear, served off your Pi to the desktop machine just like a real web server. Get the person next to you to see if they can see your web page from their machine by using your Pi's address; and return the favour by checking that theirs is also working (it's worth noting that the IP addresses of the Pis are only visible within the School of Computer Science, so pages served off your Pi will not be visible on the wider Internet).
+
+\begin{diversion}
+Some information about what's happened when you run python -m SimpleTHingy
+\end{diversion}
+
+\subsection{Apache; a proper web server}
+
+The simple Python-based web server that you've been running so far is doing the bare minimum necessary to allow HTML pages to be fetched by a browser. Although it was a handy way of getting you going with web server technology, it's a long way off being the kind of fully-featured web server you would need to run a modern website. Fortunately, the Apache HTTP Server---the software that \textit{is} used to run over half the world's websites---is Open Source and runs quite happily on a Raspberry Pi. You wouldn't want to be powering the next eBay or Facebook from a Pi, but to illustrate the principles, it'll do the job nicely. 
+
+Before we install apache on your Pi, there's a bit of housekeeping to do that will conveniently expose you to a few more Unix concepts that we've rather skated over so far. 
+
+\subsection{Permissions, users and groups}
+
+Right at the beginning of these sessions you logged in to the Pi as a particular user called `pi', and on the desktop machines you've been logging in using your University credentials. It's fairly obvious what the general principles are here---logging in with a username and password is a way of protecting `your stuff' from being seen or messed around with by other users. Roughly speaking this means two things: first, and most obviously, files created by you should be in some sense `owned' by you so that you can control who can see/modify them; second, and perhaps less obviously, processes that you start---whether from the command line or the graphical environment---are also `yours' and have certain privileges/restrictions that are associated with your user. 
+
+For this to work, it means that both the Unix file system and its process management system need to be aware of the notion of a user. Use \ttout{cd} to change to your home directory and issue \ttout{ls -l} to list the files there in what's called `long format' (the \ttout{-l} switch means `give me extra information about each file'). You'll see something like Figure \ref{figure:longformls}.
+
+\begin{figure}
+\centerline{\includegraphics[width=14cm]{images/longformls}}
+\caption{An example of the `long format' output from ls.}\label{figure:longformls}
+\end{figure}
+
+Working from right to left in Figure \ref{figure:longformls}, column \protect\circled{7} contains the filename, column \protect\circled{6} gives the date that the file was last modified (the exact format of the date will vary so as to always be `useful'; older files will have a year instead of an exact time, for example) and column \protect\circled{5} shows the size of the file in bytes. Columns \protect\circled{4} and \protect\circled{3} give the group and user to which the file belongs (often these will appear to be the same name); we'll come back to this in a moment. Column \protect\circled{2} shows the number of links associated with the file (ignore this for now, you'll cover it in \ref{blah}), and finally column \protect\circled{1} gives a synopsis of the file's permissions, which we'll look at again shortly. 
+
+In our example, the file's user (Column \ref{3}) is not surprisingly `pi', which is the username under which you logged in. Run \ttout{ls -l /} (i.e. `long format list of the root directory), and you'll see that the files at the top of the filesystem are owned by a user called \ttout{root}. 
+
+\begin{note}
+Some words here about the CS setup, i.e. how users and groups are arranged
+\end{note}
 
