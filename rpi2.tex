@@ -163,6 +163,7 @@ If you need guidance on how to write the web page itself, then Appendix \ref{app
 To finish this exercise, use Midori to check that your web page is displaying correctly.
 
 \section{Headless Pi}
+\label{section:headless}
 
 The Pi can be used as a respectable desktop machine, but it really comes into its own as a `server' or controller for other pieces of hardware. In these next few exercises we'll use the Pi in what is called `headless' mode, that is without its own screen and keyboard, to create a proper web server to host your pages. 
 
@@ -218,24 +219,131 @@ Some information about what's happened when you run python -m SimpleTHingy
 
 The simple Python-based web server that you've been running so far is doing the bare minimum necessary to allow HTML pages to be fetched by a browser. Although it was a handy way of getting you going with web server technology, it's a long way off being the kind of fully-featured web server you would need to run a modern website. Fortunately, the Apache HTTP Server---the software that \textit{is} used to run over half the world's websites---is Open Source and runs quite happily on a Raspberry Pi. You wouldn't want to be powering the next eBay or Facebook from a Pi, but to illustrate the principles, it'll do the job nicely. 
 
-Before we install apache on your Pi, there's a bit of housekeeping to do that will conveniently expose you to a few more Unix concepts that we've rather skated over so far. 
+Before we install Apache on your Pi, there's a bit of housekeeping to do that will conveniently expose you to a few more Unix concepts that we've rather skated over so far. 
 
 \subsection{Permissions, users and groups}
 
 Right at the beginning of these sessions you logged in to the Pi as a particular user called `pi', and on the desktop machines you've been logging in using your University credentials. It's fairly obvious what the general principles are here---logging in with a username and password is a way of protecting `your stuff' from being seen or messed around with by other users. Roughly speaking this means two things: first, and most obviously, files created by you should be in some sense `owned' by you so that you can control who can see/modify them; second, and perhaps less obviously, processes that you start---whether from the command line or the graphical environment---are also `yours' and have certain privileges/restrictions that are associated with your user. 
 
-For this to work, it means that both the Unix file system and its process management system need to be aware of the notion of a user. Use \ttout{cd} to change to your home directory and issue \ttout{ls -l} to list the files there in what's called `long format' (the \ttout{-l} switch means `give me extra information about each file'). You'll see something like Figure \ref{figure:longformls}.
+For this to work, it means that both the Unix file system and its process management system need to be aware of the notion of a user. Use \ttout{cd} to change to your home directory and issue \ttout{ls -l} to list the files there in what's called `long format' (the \ttout{-l} switch means `give me extra information about each file'). You'll see something like Figure \ref{figure:longformls} (but without the coloured background, which we've added to help distinguish the different columns in the figure).
 
 \begin{figure}
 \centerline{\includegraphics[width=14cm]{images/longformls}}
 \caption{An example of the `long format' output from ls.}\label{figure:longformls}
 \end{figure}
 
-Working from right to left in Figure \ref{figure:longformls}, column \protect\circled{7} contains the filename, column \protect\circled{6} gives the date that the file was last modified (the exact format of the date will vary so as to always be `useful'; older files will have a year instead of an exact time, for example) and column \protect\circled{5} shows the size of the file in bytes. Columns \protect\circled{4} and \protect\circled{3} give the group and user to which the file belongs (often these will appear to be the same name); we'll come back to this in a moment. Column \protect\circled{2} shows the number of links associated with the file (ignore this for now, you'll cover it in \ref{blah}), and finally column \protect\circled{1} gives a synopsis of the file's permissions, which we'll look at again shortly. 
+Working from right to left in Figure \ref{figure:longformls}, column \protect\circled{7} contains the filename, column \protect\circled{6} gives the date that the file was last modified (the exact format of the date will vary so as to always be `useful'; older files will have a year instead of an exact time, for example) and column \protect\circled{5} shows the size of the file in bytes. Columns \protect\circled{4} and \protect\circled{3} give the group and user to which the file belongs (often these will appear to be the same name); we'll come back to this in a moment. Column \protect\circled{2} shows the number of links associated with the file (ignore this for now, you'll cover it in \ref{blah}), and finally column \protect\circled{1} gives a summary of the file's permissions, which we'll look at again shortly. 
 
-In our example, the file's user (Column \ref{3}) is not surprisingly `pi', which is the username under which you logged in. Run \ttout{ls -l /} (i.e. `long format list of the root directory), and you'll see that the files at the top of the filesystem are owned by a user called \ttout{root}. 
+In our example, the file's user (Column \protect\circled{3}) is not surprisingly `pi', which is the username under which you logged in. Run \ttout{ls -l /} (i.e. `long format list of the root directory), and you'll see that the files at the top of the filesystem are owned by a user called \ttout{root}. 
 
 \begin{note}
 Some words here about the CS setup, i.e. how users and groups are arranged
 \end{note}
+
+As well as being owned by a particular user, each file is associated with a \textit{group} (shown in column \protect\circled{4}, which in this case is a group called `pi' too; although both the user and the group are called pi here, they are different things). Every user is a member of one or more groups. The idea of a Unix group is quite straightforward: it's a mechanism to allow collections of users to share resources with one another in a controlled way, while stopping other unwanted users from being able to access those resources. For example, you might want to say ``Only I as this file's creator am allowed to modify or delete this file, but other members of my Tutorial Group can read the file's content, and the file is inaccessible to everybody else''. Roughly speaking, in Unix each file can have three different types of access permission (read, write and execute) that can be set for three different categories of user: user, group and `other' (which means `everyone else').
+
+The file permissions shown in column \protect\circled{1} of Figure \ref{figure:longformls} consist of 10 `slots' as shown in more detail in Figure \ref{figure:fileperms}. The first slot indicates the type of the file, and appears as a \ttout{-} for a regular file or a \ttout{d} for a directory (there are actually a few other things that can appear here when the file is actually representing a device, but those aren't important for now). The next three slots represent the \textit{user}'s permissions and can consist of any combination of \ttout{r} for `readable', \ttout{w} for writable and \ttout{x} for executable. The next three slots show the read/write/execute permissions for members of the file's \textit{group}, and the last three slots show the same set of available permissions for \textit{other} (i.e. anyone with access to the system). Execute permissions when applied to a directory mean that particular set of users can list the directory's contents. 
+
+
+\begin{figure}
+\centerline{\includegraphics[width=8cm]{images/filepermissions}}
+\caption{Unix file permissions as shown with \ttout{ls -l}. In this example shows the permissions for a directory that can be read from, written to and listed by its owner, but only read and listed by group members or anyone else.}\label{figure:fileperms}
+\end{figure}
+
+
+We'll come back to file permissions in more detail shortly. In the meantime, let's look at the ownership model for processes. Type:
+\begin{ttoutenv}
+$ ps waux
+\end{ttoutenv}
+
+to list any processes that your user is currently running (you'll probably need to widen the terminal window to see the output properly). The \ttout{ps} command is unusual in that if used with no parameters, its output is largely uninformative. It's also unusual in that explaining what even the most basic parameters do and interact (i.e. the \ttout{waux} options in this case; note that there's not even a hyphen in front of the options here), is quite complex---so for now just treat this as a special recipe that does something useful. 
+
+Look at the rightmost column of the output (which has the heading `COMMAND') and you should see a few familiar process names such as bash, startx, and the ps command itself in amongst many commands that will be unfamiliar to you at the moment. The rightmost column tells you who owns the processes, and you'll see that the majority of them are owned by you (or at rather by the user `pi'), and a small number of them are owned by the root user. Most of the processes that you're seeing have been started as part of the window manager system, or are in one way or another associated with X Windows; the rest are `housekeeping' processes the details of which we don't care about for now. 
+
+If you think back to what you learned about the relationship between processes in the first Pi lab, it should be starting to become clear how the `family tree' of processes when combined with the notion of users and resource ownership knit together nicely to give a secure multi-user system. When you first log in to a Unix machine, a single process is started on your user's behalf (in most cases this is a command shell). From that shell you can start other processes, which could be individual commands like \ttout{tar} or \ttout{ls}, or could be a whole window manager system such as Gnome or LXDE; in either case though, these inherit the properties of the parent shell in terms of being owned by the same user. Then, any processes that are started by the window manager also inherit the same user properties, and so forth. 
+
+Anyway, let's get back to setting up the Apache web server. When you ran the python web server, that was a process owned by you, and because we didn't do anything special to protect it, if you closed the shell/terminal that was used to start it, it too would die. Generally speaking, you'd want a web server to continue running whether anyone was logged into the machine or not, so this isn't ideal. The other issue with starting a web server in this way is that because the process is owned by you, it has access to all your files---so if a malicious hacker was able to take control of the web server process, it would be able to read or even delete your work, which clearly isn't a good thing. 
+
+So to set up a web server properly we need to a) make sure that it can continue to function after you've logged out, and b) somehow make sure that it can only access a specific set of resources that represent the website, and not run riot around your filestore doing bad things. 
+
+Another thing that you might want to consider is giving other users access to create web pages on the server without having to log in as you (for example, when you come to do the team project, your group will need to be able to share a directory of content that represents your website). At the moment, you've only got one real user on your Pi, the one that you're using right now; but for the sake of the rest of this section, imagine that you've set up other users so that they can also log into your machine and access their own private filestore. 
+
+So let's first tackle the issue of a shared directory; this is quite easy to set up using Unix's group mechanism. 
+
+By default, the Apache package that we're going to install shortly is set up to serve web pages from a directory called \fname{/var/www} and although you can change it in Apache's configuration files to be elsewhere, that's as good a place as any for what we need. 
+
+Let's go ahead and install Apache using the command:
+
+\begin{ttoutenv}
+$ sudo apt-get install apache2
+\end{ttoutenv}
+
+It's a reasonably large package so may take a little while to install; just be patient. Once that's completed, take a look in \fname{/var} using \ttout{ls -l} and you should see a directory in there called \fname{www} which is owned by root.
+
+Before we start serving any web pages, there are a few security issues that we need to take into account. In its simplest form, where you're just serving static web pages (i.e. HTML files), Apache is secure enough, but as soon as you start creating dynamic web sites where users can add and modify content on your server, you potentially open yourself up to malicious damage, so it's best to take some initial precautions. 
+
+Take a look at the permissions for \fname{/var/www}, which was created when you installed the Apache package, and you will see that they are set to \ttout{drwxr-xr-x} which means `this is a directory that the owner can read, write and list, and which both group and other users can only read and list'. Notice too that there's a single file in that directory called \fname{index.html}, which is just a standard `it works!' declaration that you can use to test that Apache is working (and which we'll do shortly). The important thing here is that anybody or any process that is not running as the root user has only got \textit{read} and not \textit{write} access to the contents of the \fname{/var/www} directory structure---and this is exactly what we want. They can look, but not touch, and so can't break anything. 
+
+But how do we get content into the \fname{/var/www} directory so that it can be served by Apache? We could simply use \fname{sudo} to give ourselves root privilege every time we need to modify a file, but that's a rather clumsy solution: we may not want other users on our machine to have root access at all, and in any case you really do want to keep sudo commands to a minimum so that you don't accidentally do something bad to your system. So let's create a new group that will represent users on the Pi that are allowed to put content into that directory. Use the command \ttout{addgroup} to create a new group called something like \ttout{www-contrib} (for `web contributors'). The syntax is straightforward:
+
+\begin{ttoutenv}
+$ sudo addgroup www-contrib
+\end{ttoutenv}
+
+And you should see that a new group has been created with a Group Identifier (GID) probably set to 1001. 
+
+Change the group ownership of \fname{/var/www} to be \ttout{www-contrib} using the command
+
+\begin{ttoutenv}
+$ chgrp -R www-contrib /var/www
+\end{ttoutenv}
+
+and check that this has changed using \ttout{ls -l}. Note that here we have used the \ttout{-R} option to chgrp, which means `apply this change not only to /var/www itself, but to all files and directories contained within it' (`R' here stands for \wikipedia{Recursion}{Recursive}). Next we need to add the pi user to that group. Type
+
+\begin{ttoutenv}
+$ groups
+\end{ttoutenv}
+
+to see what groups your user is already a member of (you'll see things like \ttout{pi}, \ttout{adm}, \ttout{dialout}, \ttout{cdrom}, \ttout{sudo} and several others). Use the command 
+
+\begin{ttoutenv}
+$ sudo usermod -a -G www-contrib pi
+\end{ttoutenv}
+
+to add the pi user to the www-contrib group. The \ttout{usermod} command can be used to modify lots of things about a user; here we are using with the combination of \ttout{-a} and \ttout{-G} to mean `append this group to the user's list of groups'. You'll need to log out and back in again to see this change take effect, so do that now and then run the \ttout{groups} command to confirm that pi is now indeed a member of group \ttout{www-contrib} as well as the other original groups. 
+
+\begin{diversion}
+Explain what the other groups are for
+\end{diversion}
+
+We now need to make the \fname{/var/www} folder \textit{writable} by members of our new group, so do that using the command
+
+\begin{ttoutenv}
+$ chmod -R g+w /var/www
+\end{ttoutenv}
+
+which reads as `modify the permissions of the directory /var/www and any files/directories in it to add write access for members of its group'. 
+
+Now if all has gone to plan, the user pi should be able to read and write to the directory \fname{/var/www}. Try this out by editing the content of the \fname{index.html} file that's in that directory (and which was created when you installed Apache) to say something different to the default text.
+
+We're finally ready to start Apache. Use the command
+
+\begin{ttoutenv}
+$ sudo apachectl start
+\end{ttoutenv}
+
+to initialise the server (you can use a similar command with `stop' to shut it down again), and then use \ttout{ps} to confirm that you can see several processes with `apache' in the name now running. Note that although you started the server with \ttout{sudo} which runs things as root, that the owner of the apache processes is \fname{www-data}. The \ttout{apachectl} command has `downgraded' apache to running as a regular, non-root user, and you should by now be able to work out why leaving a web server running as root would be a bad thing from a security point of view.
+
+On the desktop machine use a web browser to see what content the Pi is now serving. The URL will be 
+
+\begin{ttoutenv}
+http://IPADDRESSOFPI 
+\end{ttoutenv}
+
+and since we're now using a standard web server on a standard port, there's no need to add the :8000 port number as we did in Section \ref{section:headless}. 
+
+You should see the `It works!' page appear, with whatever modification you made to it a moment ago.
+
+Finally for this exercise, copy the content from your `aboutme' directory so that its served via Apache.  
+
 
