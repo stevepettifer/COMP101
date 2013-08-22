@@ -27,9 +27,9 @@ Scattered throughout the main text of these exercises there are information boxe
 \FloatBarrier 
 \section{The Raspberry Pi}
 
-The most remarkable thing about the Pi is that, although it's a bit underpowered in many ways, it is capable of running the same full Linux Operating System as the machines that you'll be using in the labs for the duration of your studies, and which you'll undoubtedly encounter in your future careers. Actually we're going to be using slightly different flavours of Linux on the Pi and the lab machines, but the differences are fairly minor---more on that later. Let's get started. 
+The most remarkable thing about the Pi is that, although it's not the most powerful of computers, it is capable of running the same full Linux Operating System as the machines that you'll be using in the labs for the duration of your studies, and which you'll undoubtedly encounter in your future careers. We're actually going to be using slightly different flavours of Linux on the Pi and the lab machines, but the differences are fairly minor---more on that later. Let's get started. 
 
-The Raspberry Pi itself is just the circuit board shown from the top in Figure \ref{figure:bare-rpi}. The case we've put yours in is clear plastic so you can see the Pi inside, but you're welcome to change it for another style if you prefer (there are plenty available to buy online, and lots of people have made their own unique ones just for the fun of it). The Pi is reasonably robust, and you can use it without a case, but obviously it's a bit more vulnerable if its not in a box of some sort. Figure \ref{figure:bare-rpi-underside} shows the Pi's circuit board from beneath, with an SD card inserted.
+The Raspberry Pi itself is just the circuit board shown from the top in Figure \ref{figure:bare-rpi}. The case we've put yours in is clear plastic so you can see the Pi inside, but you're welcome to change it for another style if you prefer (there are plenty available to buy online, and lots of people have made their own unique ones just for the fun of it). If you do put it in your own case, please remember to transfer the `sequence number' we've written on the underside of your Pi to the new box so that if the Pi is left behind in the lab it can be returned to you. The Pi is reasonably robust, and you can use it without a case, but obviously it's a bit more vulnerable if its not in a box of some sort. Figure \ref{figure:bare-rpi-underside} shows the Pi's circuit board from beneath, with an SD card inserted.
 
 \begin{rpi}{Why Pi?}
   The Raspberry Pi apparently got its name because (a) lots of other computer systems have been named after fruit (you'll know of Apple and Blackberry, but in the past there has also been at least Apricot and Tangerine), and (b) the \wikipedia{Python_(programming_language)}{Python language} was one of the first things ported to run on it. The logo was created by Paul Beech, and is based on Buckminsterfullerene, a spherical fullerene molecule more commonly called a Buckyball. Its designer pointed out that a full buckyball has 32 faces, but that only 11 are visible in the 2D logo; and that the Raspberry Pi has a 32-bit processor and an ARM11 on board.
@@ -39,7 +39,7 @@ The ARM processor, on which the Pi and the vast majority of the world's other mo
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/bare-rpi-annotated}}
-\caption{An uncased Raspberry Pi, and an expanded view of the indicator LEDs at the board's top right. The numbered connectors are \protect\circled{1} HDMI output,  \protect\circled{2} USB,  \protect\circled{3} power,  \protect\circled{5} audio output,  \protect\circled{6} composite video out,  \protect\circled{7} General Purpose Input/Output (GPIO),  \protect\circled{8} Ethernet.}\label{figure:bare-rpi}
+\caption{An uncased Raspberry Pi, and an expanded view of the indicator LEDs at the board's top right. The numbered §connectors are \protect\circled{1} HDMI output,  \protect\circled{2} USB,  \protect\circled{3} power,  \protect\circled{5} audio output,  \protect\circled{6} composite video out,  \protect\circled{7} General Purpose Input/Output (GPIO),  \protect\circled{8} Ethernet.}\label{figure:bare-rpi}
 \end{figure}
 
 \begin{figure}
@@ -87,7 +87,7 @@ As an aside, you want to consider this: if you need a text editor to write progr
 
 Before using the Pi for real, you'll need to perform one task using this menu. Use the up and down cursor keys to move the selection bar to the \ttout{expand\_rootfs} option, and press Enter. You'll see a confirmation that `Root partition has been resized. The filesystem will be enlarged upon the next reboot'. If that doesn't mean anything much to you right now, don't worry, we'll come back to an explanation of that later (see Section~\ref{section:expandfs}). For now just press Enter again to get back to the main menu. 
 
-At this stage you could tweak various other options that affect the display and the layout of keyboard being used; but conveniently the defaults set on the Pi will do just fine for now (it is a mostly British invention after all, so it defaults to UK keyboard layout!) Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit Enter again. The Pi will reboot (an example of what this looks like is shown in Figure \ref{figure:piboot}) and this time when the process finishes you'll be presented by a UNIX login prompt which will say something like:
+At this stage you could tweak various other options that affect the display and the layout of keyboard being used; but conveniently the defaults set on the Pi will do just fine for now (it is a mostly British invention after all, so it defaults to UK keyboard layout!) Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit Enter again. The Pi will reboot (an example of what this looks like is shown in Figure \ref{figure:piboot}) and this time when the process finishes you'll be presented by a Unix login prompt which will say something like:
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/bootscreen}}
@@ -134,7 +134,7 @@ The default command prompt on the Pi consists of four components shown in Figure
 \begin{itemize}
 \item To the left of the \ttout{@} symbol is the name of the user, and in this case that's \ttout{pi}, since you've just logged in under that name
 \item To the right of the \ttout{@} is the hostname of the machine, which on a Raspberry Pi is quite reasonably set to \ttout{raspberrypi} by default.
-\item The \texttildelow{} tells you where in the filestore you're currently working. We'll explain this in a lot more detail later on, for now all you need to know is that the \texttildelow{} symbol is called a \textit{tilde} (pronounced something like till-duh, though locally its often referred to colloquially just as a `twiddle'), and is used here to refer to the `home' of the current user. 
+\item The \texttildelow{} tells you where in the Pi's file system you're currently working. We'll explain this in a lot more detail later on, for now all you need to know is that the \texttildelow{} symbol is called a \textit{tilde} (pronounced something like till-duh, though locally its often referred to colloquially just as a `twiddle'), and is used here to refer to the `home' of the current user. 
 \item the \$ symbol signifies that you can type your commands from here on. 
 \end{itemize}
 
@@ -158,18 +158,18 @@ The command to change the password is \totype{passwd}; typing this at the comman
 \begin{ttoutenv}
 $ passwd
 Changing password for pi.
-(current) UNIX password:
-Enter new UNIX password:
-Retype new UNIX password:
+(current) Unix password:
+Enter new Unix password:
+Retype new Unix password:
 \end{ttoutenv}
 
 \noindent Note in the above, we're using lines that don't start with the dollar symbol to show output as a result of what you've typed, and that none of the passwords you're typing actually appear on screen for obvious sneaky over-the-shoulder-peeking reasons. \textbf{Don't forget this password: there's no easy way to get back into your Pi without resetting everything.}
 
 \begin{danger}{Memory Loss} 
-Although the Pi uses a fairly standard UNIX operating system, it's probably not quite as secure as a normal desktop machine because of its small size and easily-removable storage media. Once the Pi has booted from the SD card, it's about as secure as any other Linux machine. But because the memory card is easily removable, it can trivially be connected to another machine as a `removable media' device; and at that point the host machine can almost certainly see its contents, including any of the files you've created, because the filesystem itself isn't encrypted. And because the Pi is small and portable, it's easier to lose it than a laptop or desktop machine; so, be careful!
+Although the Pi uses a fairly standard Unix operating system, it's probably not quite as secure as a normal desktop machine because of its small size and easily-removable storage media. Once the Pi has booted from the SD card, it's about as secure as any other Linux machine. But because the memory card is easily removable, it can trivially be connected to another machine as a `removable media' device; and at that point the host machine can almost certainly see its contents, including any of the files you've created, because the filesystem itself isn't encrypted. And because the Pi is small and portable, it's easier to lose it than a laptop or desktop machine; so, be careful!
 \end{danger}
 
-Now that your password isn't the same as the `out of the box' Pi one, it's safe to plug your Pi into the network. There's a spare ethernet cable poking out of the desk; plug that into the appropriate socket on your Pi (number \circled{8} on Figure~\ref{figure:bare-rpi}) and you should see the FDX, LNK and 10M LEDs light up. To confirm that you're now connected to the network, use the \totype{ping} command, which sends a low-level network message to a designated place and checks for a response, to see if you can reach our School's web server. 
+Now that your password isn't the same as the `out of the box' Pi one, it's safe to plug your Pi into the network. There's a spare blue ethernet cable poking out of the desk; plug that into the appropriate socket on your Pi (number \circled{8} on Figure~\ref{figure:bare-rpi}) and you should see the FDX, LNK and 10M LEDs light up. To confirm that you're now connected to the network, use the \totype{ping} command, which sends a low-level network message to a designated place and checks for a response, to see if you can reach our School's web server. 
 
 \begin{ttoutenv} 
 $ ping www.cs.manchester.ac.uk
@@ -200,14 +200,20 @@ But what do we mean by `execute commands'? And if the shell is `just a program',
 
 To understand what's going on here you'll need to make sense of a concept that's fundamental to pretty-much any operating system; that of a \wikipedia{Process_(computing)}{process}. As you no-doubt know, modern computers have one or more Central Processing Units which are capable of carrying out simple instructions; a basic computer like your Pi will have a single CPU, whereas a big server machine or supercomputer may have several tens of CPUs in a single box. To a first approximation, each CPU is only capable of following one instruction at a time, and the illusion that a computer is capable of doing a very large number of things simultaneously (streaming music, displaying web pages, downloading a video of a unicycling kitten and playing Minecraft) is achieved by the operating system arranging for each of these tasks to be given access in turn to the CPU for a tiny fraction of a second. More technically, the unit of activity that's being scheduled to run on the CPU is called a \textit{process}. The relationship between anything that you as a user may recognise---for example a desktop application---and what's happening in the operating system in terms of processes is quite complex, since many applications are made up of several processes, and there will be a whole load of other processes doing housekeeping jobs that aren't immediately obvious to a user. But for now we'll gloss over this detail and work on the assumption that when you ask a computer to do something for you that the operating system will start up a process to deal with that task for you. 
 
-In terms of what's just happened when you ran the ping command a moment ago, there are at least two processes involved. The shell program itself is a process that's waiting for you to type something at the keyboard; when you pressed return after having typed your command, the shell interpreted your input, and started up a second process to run the ping program for you. It handed over temporary access to the keyboard and monitor over to the process running ping, and then then went to sleep briefly to wait for the ping command to finish. When ping finished (in this case because you aborted it), the shell woke up again, took back control of the keyboard/screen, and was ready for your next instruction. 
+\begin{figure}
+\centerline{\includegraphics[width=7cm]{images/bashandping}}
+\caption{Running a command at a bash shell involves two process, one for the bash shell itself, and a second child process that is started by the bash shell in which to run the command: \protect\circled{1} initally, just the bash process is running. \protect\circled{2} at the point where you type the ping command and press enter, bash starts a second process and hands over its input and output to that new process, which executes the command on your behalf; at this point the bash process continues to run, but `goes to sleep' until the command finishes. \protect\circled{3} the new process starts up, and executes your command, until at \protect\circled{4} it's either aborted by the user or finishes what it's doing, at which point \protect\circled{5} the ping process terminates and hands back control to the shell, which wakes up ready to accept the next command.}\label{figure:bashandping}
+\end{figure}
+
+In terms of what's just happened when you ran the ping command a moment ago, there are at least two processes involved. The shell program itself is a process that's waiting for you to type something at the keyboard; when you pressed return after having typed your command, the shell interpreted your input, and started up a second process to run the ping program for you. It handed over temporary access to the keyboard and monitor over to the process running ping, and then then went to sleep briefly to wait for the ping command to finish. When ping finished (in this case because you aborted it), the shell woke up again, took back control of the keyboard/screen, and was ready for your next instruction. This is illustrated in Figure \ref{fig:bashandping}
+
+
 You will learn much more about processes and the way they are managed in COMP15111 and COMP25111; for now there's one more thing you need to understand about the relationship between processes. 
 
 \subsection{The process `family tree'}
 \label{section:family-tree}
 
-When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in Section \ref{section:permissions}, generally speaking the child cannot exist without its parent. If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be it's children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out): breakout \ref{breakout:background-and-nohup} explains how to change the default behaviour. 
-
+When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in Section \ref{section:permissions}, generally speaking the child cannot exist without its parent. If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be it's children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail in later in the course.
 
 
 \begin{diversion}{Unix shells}
@@ -222,15 +228,13 @@ they die. Unix shells are rather like \textbf{Command Prompt} windows in Microso
 Windows, except that Unix shells are considerably more sophisticated.
 \end{diversion}
 
-\begin{note}
-Put stuff about fish here
-\end{note}
+
 
 \section{Files systems and files}
 
 Next we're going to explore the Pi's filesystem a little. You'll be familiar with the idea of a hierarchy of files and folders from whatever graphical environment you're used to using on desktop or mobile devices: files represents things that you've created or downloaded such as documents, images or movies, and folders are a way of organising these into related collections. By putting folders inside folders, you can organise your stuff starting with general concepts such as `Photographs' and ending up with much more specific collections, e.g. `Holidays', then `Bognor Regis 2013'. 
 
-Interacting with a standard UNIX filesystem via the command-line uses similar concepts (actually, it's the graphical environment that's being `similar' here really, since the UNIX command-line existed quite some time before anything graphical appeared). Files are called files, but what are commonly represented as `folders' in graphical environments are more correctly called `directories' when we are operating at this level (and we'll call them directories from now on, because it'll make many of the command names make more sense). 
+Interacting with a standard Unix filesystem via the command-line uses similar concepts (actually, it's the graphical environment that's being `similar' here really, since the Unix command-line existed quite some time before anything graphical appeared). Files are called files, but what are commonly represented as `folders' in graphical environments are more correctly called `directories' when we are operating at this level (and we'll call them directories from now on, because it'll make many of the command names make more sense). 
 
 Let's first see what stuff we already have on our Pi. The \totype{ls} command lists files and directories. Type it now, and you should see that two folders have already been created for you, one called \fname{python\_games} and the other called \fname{Desktop}. 
 
@@ -272,9 +276,9 @@ it has now become
 to indicate that we've changed our current directory to \fname{python\_games} (remember the \texttildelow{} symbol means `home directory', so \fname{\texttildelow{}/python\_games} really means 'a subdirectory called python\_games which is in my home directory').
 
 %\FloatBarrier
-\subsection{The UNIX filesystem}
+\subsection{The Unix filesystem}
 
-In UNIX, as with most other operating systems, the files and directories you create can have more-or-less any name you like. It is very sensible to give them names which mean something and make their purpose clear. This is despite some of the traditional file names in Unix being rather cryptic---this is particularly true for most UNIX commands. You'll get used to that. 
+In Unix, as with most other operating systems, the files and directories you create can have more-or-less any name you like. It is very sensible to give them names which mean something and make their purpose clear. This is despite some of the traditional file names in Unix being rather cryptic---this is particularly true for most Unix commands. You'll get used to that. 
 
 \begin{danger}{File name formats}
 The filesystem on your Pi (which uses a type of filesystem called `ext4') is \textit{case sensitive}, which means that \fname{Hello.txt} and \fname{hello.txt} are treated as different files because they have different case letters in their names. The filesystem used by Microsoft Windows since XP (called `NTFS') is also case-sensitive. Apple's OS X, however uses `HFS Plus' (which usually appears as `Mac OS Extended (Journaled)'), and this is not a proper case-sensitive file system; although it will remember whether you called a file \fname{Hello.txt} or \fname{hello.txt} so files \textit{appear} to be case sensitive, the OS itself treats them as being \textit{the same file}! The same is true for the FAT32 filesystem used on most removable USB drives -- because it's one of the few formats that's understood by Windows, Mac and Linux. 
@@ -283,7 +287,7 @@ Most of the time this isn't a problem, but you should be careful of the effects 
 \end{danger}
 
 \begin{linux}{Spaced out filenames}
-Because of its roots in the early days of computing long before the advent of graphical user interfaces, UNIX filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their parameters. The UNIX filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new parameter. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
+Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their parameters. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new parameter. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
 \end{linux} 
 
 As you already know, directories are created within directories to create a hierarchical structure. But where is the `top' directory? Surely that has to go somewhere? On each machine, there is one directory called `/' which is referred to as the \textit{root}, which is not contained in any other directory. All other files and directories are contained in root, either directly or indirectly. The root directory is written just as \fname{/} (note this is the opposite slanting slash character to that used in Windows, which means something similar but different). 
@@ -292,7 +296,7 @@ If we wish to talk about the file \fname{y} within the directory, \fname{x} we w
 
 You can think of this structure as defining a tree, with \fname{/} as the root (hence its name), directories as branches, and other files as leaves. You will study trees as abstract data structures, later in this year, and in Year 2, but this simplified model of the Unix file system structure will do for now. 
 
-One really important, and slightly strange thing to get used to, though, is that computer science trees grow upside down, so although we call them trees, the `root' is usually thought of as being at the top, and the `leaves' at the bottom. You'll hear phrases like `go up to the root directory, and then down one level to the home directory'. We normally think of the root directory as being at the top of the tree. (For those of you who are interested: Unix actually allows links, which means the structure can really be a cyclic graph. Links are similar to, but fundamentally not the same thing as, shortcuts in Windows.)
+One really important, and slightly strange thing to get used to, though, is that computer science trees grow upside down, so although we call them trees, the `root' is usually thought of as being at the top, and the `leaves' at the bottom. You'll hear phrases like `go up to the root directory, and then down one level to the home directory'. We normally think of the root directory as being at the top of the tree. (For those of you who are interested: Unix actually allows links, which means the structure can really be a \wikipedia{Cycle_graph}{cyclic graph}. Links are similar to, but fundamentally not the same thing as, shortcuts in Windows.)
 
 Apart from \fname{/} there are two more directories of special note:
 \begin{itemize}
@@ -325,7 +329,7 @@ $ cd bin
 $ ls
 \end{ttoutenv}
 
-\noindent You should see a fairly long list of files. Look carefully, and you'll find two names that you recognise: \totype{ls} and \totype{pwd}. These are the `binary executable' files for the commands that you've just been using (which is why they are in the `bin' directory, which is short for binary). In UNIX, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes UNIX very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
+\noindent You should see a fairly long list of files. Look carefully, and you'll find two names that you recognise: \totype{ls} and \totype{pwd}. These are the `binary executable' files for the commands that you've just been using (which is why they are in the `bin' directory, which is short for binary). In Unix, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes Unix very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
 
 We now need to get back to our home directory. You should by now be able to think of at least four different ways of getting there!
 
@@ -338,7 +342,7 @@ We now need to get back to our home directory. You should by now be able to thin
 
 Now we're back in our home directory (check the command prompt to make sure), you may have noticed that our commands for navigating around the filesystem are missing one feature. We can go to the `top' of our home directory easily enough; and we can go straight to very top of the whole filestore using \totype{cd /}; and we know how to descend into a subdirectory (e.g. \totype{cd python\_games}). But how do we go up one level? If we were in some nested subdirectory several levels below our home, and wanted to go just one level back up the tree, it would be very tedious to have to start back at our home directory and traverse back down to where we wanted to be. 
 
-UNIX represents the idea of going `up' one directory with the \fname{..} symbol (that's two fullstops typed immediately after one another with no spaces). So if you are in, say, \fname{python\_games} and want to go \textit{back up} to the directory above, you could type:
+Unix represents the idea of going `up' one directory with the \fname{..} symbol (that's two fullstops typed immediately after one another with no spaces). So if you are in, say, \fname{python\_games} and want to go \textit{back up} to the directory above, you could type:
 
 \begin{ttoutenv}
 $ cd ..
@@ -388,7 +392,7 @@ Unlike the other commands that you've used so far, the program we need to be abl
 
 But first, we're going to have to understand a command called \totype{sudo}. Everything that you've done so far has involved looking at files that either belong to the `pi' user, or are parts of the system that can be read or executed by any user. But of course, installing a new piece of software involves not just reading, but \textit{modifying} the Pi's operating system in some way, and that's not something that you want to do casually since mistakes could potentially mess up whole device. 
 
-You'll be familiar with the idea of a user with Administrator privileges from Windows or OS X; on Linux the `superuser' that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of UNIX, administrators would log in as the root user to modify, update and repair the system. This had two major downsides: first, that if you accidentally left yourself logged in as the superuser when you nipped out for a coffee, the machine was vulnerable to misuse by anybody who would get at the keyboard; but second and more serious, all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disasterous effects. To avoid these problems, UNIX systems now usually recommend the use of the \totype{sudo} ('Super User Do') command to temporarily elevate a normal users' privilege that that of super user for a single command. 
+You'll be familiar with the idea of a user with Administrator privileges from Windows or OS X; on Linux the `superuser' that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had two major downsides: first, that if you accidentally left yourself logged in as the superuser when you nipped out for a coffee, the machine was vulnerable to misuse by anybody who would get at the keyboard; but second and more serious, all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disasterous effects. To avoid these problems, Unix systems now usually recommend the use of the \totype{sudo} ('Super User Do') command to temporarily elevate a normal users' privilege that that of super user for a single command. 
 
 The system that we're going to use to install this game is called \totype{apt}, which stands for Advanced Packaging Tool. The \totype{apt} maintains a list of remote \textit{repositories} in which packages have been put that contain all the executables, libraries and data files necessary to install a particular Linux program. It can deal with fetching packages over the Internet, as well as extracting and copying their contents into the right places on your system. It also performs a series of sanity-checks to make sure that what you're adding is compatible what whatever you've already got in place.
 
@@ -432,7 +436,7 @@ The frotz system on its own is just a virtual machine into which you can load ad
 
 Oh, hang on. No web browser. Oh dear.
 
-Although it is actually possible to browse the web in console mode on the Pi (we'll experiment with this in the next lab session), there's an easier way to interact with the web to get the file that we need, using a command called \totype{curl}. First, use \totype{cd} to change to your home directory if you're not there already, then
+Although it is actually possible to browse the web in console mode on the Pi (we'll experiment in another lab session because there are interesting lessons to be learned by doing so), there's an easier way to interact with the web to get the file that we need, using a command called \totype{curl}. First, use \totype{cd} to change to your home directory if you're not there already, then
 
 \begin{ttoutenv}
 $ curl http://pod.cs.man.ac.uk/COMP101/Advent.z5 -o Advent.z5
@@ -468,7 +472,7 @@ To see what's in this archive, run the command
 $ tar tf quake3.tar
 \end{ttoutenv}
 
-\noindent and you'll see a long list of the archive's contents scroll past on the screen. The first parameter to \totype{tar} is a bit of an odd one, since it's a collection of options, which unusually for UNIX are not prefixed by individual minus signs (recall the \ttout{-o} option we used for \totype{curl}; that's a far more common way of specifying options to tools). In this case the options mean:
+\noindent and you'll see a long list of the archive's contents scroll past on the screen. The first parameter to \totype{tar} is a bit of an odd one, since it's a collection of options, which unusually for Unix are not prefixed by individual minus signs (recall the \ttout{-o} option we used for \totype{curl}; that's a far more common way of specifying options to tools). In this case the options mean:
 
 \begin{itemize}
 \item the \textbf{t} causes \totype{tar} to list the `table of contents', for the archive, without extracting anything.
@@ -505,9 +509,9 @@ You can play this version of Quake3 Arena with friends over the network. We'll l
 \FloatBarrier
 \section{RTFM}
 
-Although we've introduced several UNIX commands in this lab, we've only done so quite superficially today, giving you just enough detail to get through the tasks in this tutorial. Each of the commands is much more powerful than what you've been exposed to so far. Though you won't need to know every possible option off by heart, there are a lot of useful things you can learn about them quite easily. 
+Although we've introduced several Unix commands in this lab, we've only done so quite superficially today, giving you just enough detail to get through the tasks in this tutorial. Each of the commands is much more powerful than what you've been exposed to so far. Though you won't need to know every possible option off by heart, there are a lot of useful things you can learn about them quite easily. 
 
-Most UNIX systems, including the one on your Pi have an instruction-manual system that gives more details about the available commands (and most things that you install yourself, such as \totype{frotz} also install their own manual pages).  Try running:
+Most Unix systems, including the one on your Pi have an instruction-manual system that gives more details about the available commands (and most things that you install yourself, such as \totype{frotz} also install their own manual pages).  Try running:
 
 \begin{ttoutenv}
 $ man ls
