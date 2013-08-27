@@ -61,7 +61,7 @@ RSA key fingerprint is 20:6d:2d:90:5e:8f:9f:19:39:70:ce:48:a6:93:ec:4c.
 Are you sure you want to continue connecting (yes/no)? 
 \end{ttoutenv}
 
-Type \ttout{yes} (and hit return) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in COMP\ref{securityguffs}, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. The \ttout{ssh} command stands for `Secure Shell', and allows you to issue instructions to a remote machine as though you had logged in at that machine's console. 
+Type \ttout{yes} (and hit return) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in COMP18112\ref{securityguffs}, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. The \ttout{ssh} command stands for `Secure Shell', and allows you to issue instructions to a remote machine as though you had logged in at that machine's console. 
 
 Type \ttout{ls -a} to confirm that your \fname{.muttrc} file is still where you expect it to be, and if all is well then press Ctrl+D to log out of the remote shell you just started, and you will return to the shell running locally on your Pi (you'll see the command prompt change back to being `pi' again). Now we know the file we want is there, we need to copy it from your Computer Science filestore onto your Pi's local filestore.
 
@@ -151,14 +151,19 @@ As for the photograph of you, we'd ideally like you to use something recent that
 
 You've already learned several ways of getting files onto your Pi, but here's a reminder:
 \begin{itemize}
-\item You could mail the photo to yourself, and use Mutt to save the attachment onto the Pi (more help on how to do this in Breakout \ref{breakout:attachments})
+\item You could mail the photo to yourself, and use Mutt to save the attachment onto the Pi (more help on how to do this in Breakout~\ref{breakout:attachments})
 \item If the picture is on the web somewhere, you could use Midori to find and save it. 
 \item Alternatively for images on the web, you could use \ttout{curl} to fetch it directly from a URL to a file. 
 \item You could use \ttout{scp} to copy it from some other machine directly to your Pi. 
-\item Or if all else fails, you could use a USB device to copy it from one place to another (though this isn't entirely trivial on the Pi; see the instructions in Appending \ref{blah}). 
+\item Or if all else fails, you could use a USB device to copy it from one place to another (though this isn't entirely trivial on the Pi; see the instructions in Appendix~\ref{appendix:usingUSB}.
 \end{itemize}
 
-If you need guidance on how to write the web page itself, then Appendix \ref{appendix:simplehtml} contains a few pointers; though there are plenty of tutorials on the web as well. 
+\begin{diversion}{Saving attachments with Mutt}
+\label{breakout:attachments}
+splunge
+\end{diversion}
+
+If you need guidance on how to write the web page itself, then Appendix~\ref{appendix:simplehtml} contains a few pointers; though there are plenty of tutorials on the web as well. 
 
 To finish this exercise, use Midori to check that your web page is displaying correctly.
 
@@ -211,7 +216,8 @@ http://IPADDRESSOFPI:8000
 
 and you should see your web page appear, served off your Pi to the desktop machine just like a real web server. Get the person next to you to see if they can see your web page from their machine by using your Pi's address; and return the favour by checking that theirs is also working (it's worth noting that the IP addresses of the Pis are only visible within the School of Computer Science, so pages served off your Pi will not be visible on the wider Internet).
 
-\begin{diversion}
+\begin{diversion}{Python -m}
+\label{diversion:python-m}
 Some information about what's happened when you run python -m SimpleTHingy
 \end{diversion}
 
@@ -312,7 +318,8 @@ $ sudo usermod -a -G www-contrib pi
 
 to add the pi user to the www-contrib group. The \ttout{usermod} command can be used to modify lots of things about a user; here we are using with the combination of \ttout{-a} and \ttout{-G} to mean `append this group to the user's list of groups'. You'll need to log out and back in again to see this change take effect, so do that now and then run the \ttout{groups} command to confirm that pi is now indeed a member of group \ttout{www-contrib} as well as the other original groups. 
 
-\begin{diversion}
+\begin{diversion}{About groups}
+\label{diversion:aboutgroups}
 Explain what the other groups are for
 \end{diversion}
 
