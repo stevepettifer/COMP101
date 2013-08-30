@@ -1,16 +1,18 @@
 \usepackage{lettrine}
 \usepackage{newfloat}
 \usepackage{caption}
+
 \DeclareFloatingEnvironment[fileext=frm,placement={hb},name=Breakout]{myfloat}
-\DeclareFloatingEnvironment[fileext=frm,placement={hb},name=Pi Fact]{pifloat}
-
 \captionsetup[myfloat]{labelfont=bf,font=bf,size=large,skip=2pt}
-\captionsetup[pifloat]{font=bf}
 
-\usepackage{xcolor}
+% \DeclareFloatingEnvironment[fileext=frm,placement={hb},name=Pi Fact]{pifloat}
+%\captionsetup[pifloat]{font=bf}
+
 \usepackage[framemethod=TikZ]{mdframed}
 
+\usepackage{xcolor}
 \definecolor{light-gray}{gray}{0.95}
+
 \newenvironment{stdframe}[1]{%
   \begin{mdframed}[outerlinewidth=0,%
  %   leftmargin=10,%
@@ -26,26 +28,18 @@
   
 \newenvironment{floatframe}{%
   \begin{myfloat}[tb]%
+  %\begin{myfloat}[H]%  ** This line turns off floating ***
   \begin{stdframe}{light-gray}%
     }%
-  {%\end{minipage}
-  \end{stdframe}\end{myfloat}}%
+  {\end{stdframe}\end{myfloat}}%
 
 \newenvironment{staticframe}{%
   \begin{myfloat}[H]%
-  \begin{mdframed}[outerlinewidth=0,%
- %   leftmargin=10,%
-  %  rightmargin=10,%
-%    innertopmargin=\topskip,%
- %   splittopskip=\topskip,skipbelow=\baselineskip,%
-    roundcorner=2pt,linecolor=gray,%
-  %  skipabove=\baselineskip,%
-    backgroundcolor=light-gray]%
-%    \begin{minipage}[c]{0.8\linewidth}%
-      \setlength{\parskip}{4pt plus 1pt}%
+  \begin{stdframe}{light-gray}%
     }%
-  {%\end{minipage}
-  \end{mdframed}\end{myfloat}}%
+  {\end{stdframe}\end{myfloat}}%
+
+%% Here come the breakout box definitions.
 
 \newenvironment{diversion}[1]{%
   \begin{floatframe}
@@ -122,6 +116,8 @@
   {\end{staticframe}}
 
 \endinput
+
+%% Old redundant code
 
 \newenvironment{breakoutfloat}[1]{%
   \begin{myfloat}[tb]%
