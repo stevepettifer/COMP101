@@ -314,16 +314,20 @@ Look in a directory called \ttout{~/.ssh} and you'll find two new files have bee
 \begin{ttoutenv}
 $ less ~/.ssh/id_rsa.pub
 \end{ttoutenv}
-
+% $
 to display the contents of your public key. You should see something like:
 
 \begin{ttoutenv}
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTfAF0KxG94oUJLUER5Ci5HaoEtdi8KI0S+
-iro3EvVkQebW2V3nCaCLAHLmgmINm/NFW5bvbUq7bu2CxFlVBEQqa1idZBLceXKRi1SFtG+
-EzFENyzZBsIDU0IhfQX4qyxgqe0A3ortyAwm2/+0neu74RT0YK3gQI+wyxsFFoCzbahiDJisK
-/vKmqvwowb/Rrl3OZpX9ZO3QA9lgILLVy3J4VpAhR+05MyuM/Bzh/pYk5NIQivedUEduIJXLOetj/
-UnxlH9WbEPEIiDPvzrkb3xI98rLRSlh2hH89nc1SUfVEhY62RQWN7sbXPu+fFck7Dom9wE/YAG66Dbl30OsmFh mister.noodle@manchester.ac.uk
+  
+  ssh-rsa  AAAAB3NzaC1yc2EAAAADAQABAAABAQDTfAF0KxG94oUJLUER5Ci5HaoEtdi8KI0S+
+  iro3EvVkQebW2V3nCaCLAHLmgmINm/NFW5bvbUq7bu2CxFlVBEQqa1idZBLceXKRi1SFtG+
+  EzFENyzZBsIDU0IhfQX4qyxgqe0A3ortyAwm2/+0neu74RT0YK3gQI+wyxsFFoCzbahiDJisK
+  /vKmqvwowb/Rrl3OZpX9ZO3QA9lgILLVy3J4VpAhR+05MyuM/Bzh/pYk5NIQivedUEduIJXLOetj/
+  UnxlH9WbEPEIiDPvzrkb3xI98rLRSlh2hH89nc1SUfVEhY62RQWN7sbXPu+fFck7Dom9wE/
+  YAG66Dbl30OsmFh mister.noodle@manchester.ac.uk
+
 \end{ttoutenv}
+
 
 which starts with \ttout{ssh-rsa}, ends with your email address, and has a load of apparently random characters in between. Select this text (making sure you don't accidentally select any extra newlines or spaces either side of it) and 
 
@@ -334,7 +338,7 @@ Once you've uploaded your public key to gitlab, you're ready to put your first b
 Click on the gitlab logo at the top left of the gitlab page to get back to the dashboard, and select the `aboutme' project that you created a moment ago.  Back at your terminal command prompt change to the directory called `aboutme' that you copied over from the Pi at the end of the last session; this should contain at least three files if everything has gone to plan: a bit of HTML about you, a photograph of your, and whatever image you drew using Inkscape (if for whatever reason you didn't get as far as that part in the last session, there's a default set of files you can use; copy them from \ttout{/opt/info/courses/COMP101/aboutme} into a directory called \ttout{aboutme} in your home directory and press on.)
 
 \begin{note}
-Need to set this up in /opt/info
+ Need to set this up in /opt/info
 \end{note}
 
 In your \ttout{aboutme} directory, type the following command:
@@ -358,7 +362,9 @@ Now we need to tell git which files we want it to track for us. For each of the 
 $ git add [FILENAME]
 \end{ttoutenv}
 
-replacing [FILENAME] with each of the three file names in turn. Once you've done this, run \ttoutenv{git status} again, and this time you should see that there are a list of `Change to be committed' and all the files that you'd just added should appear in green. 
+% $
+
+replacing [FILENAME] with each of the three file names in turn. Once you've done this, run \ttout{git status} again,, and this time you should see that there are a list of `Change to be committed' and all the files that you'd just added should appear in green. 
 
 Now git knows which of the files in this directory you want to track (which in this case is all of them), we want to do our first `commit', which tells git that we've made a set of changes that we want to keep together: in this case the `changes' are to create the files in the first place; later one we'll go through a similar pattern of \ttout{git add} and {git commit} whenever we've done a set of changes that we think we are happy with. 
 
@@ -428,7 +434,7 @@ Imagine now that after a particularly hard day's work, you've accidentally delet
 $ rm -rf aboutme
 \end{ttoutenv}
 
-which will recursively delete the \fname{aboutme} directory and all its contents without prompting you for anything. Check that the directory has gone using \ttoutenv{ls}. And now let's fetch it back from our remote gitlab repository (which is nicely backed up for you by the School's IT Services, so you can be safe that nothing bad will happen to it). Type
+which will recursively delete the \fname{aboutme} directory and all its contents without prompting you for anything. Check that the directory has gone using \ttout{ls}. And now let's fetch it back from our remote gitlab repository (which is nicely backed up for you by the School's IT Services, so you can be safe that nothing bad will happen to it). Type
 
 Find the ssh URL for the project in gitlab, and paste the URL into the \ttout{git clone} command:
 
@@ -436,6 +442,7 @@ Find the ssh URL for the project in gitlab, and paste the URL into the \ttout{gi
 $ git clone [PROJECT-URL-GOES-HERE]
 \end{ttoutenv}
 
+%$
 You should see a response that starts with `Cloning into' followed by some other lines of stuff, and your `aboutme' repository should re-appear, complete with all its contents.
 
 Change into the \fname{aboutme} directory, and issue \ttout{git status}, which should reassuringly tell you that there is `nothing to commit (working directory clean)' (which means `you've not made any changes since the last time you touched this repository'). 
@@ -444,14 +451,20 @@ Now edit the HTML file to make some small change (it can be anything you'd recog
 
 Git should tell you that your HTML file is now `modified'. You've now got two options:
 \begin{itemize}
-\item Let's say you want to throw away the change you've just made (imagine it was a much more complex edit than the one you've just made, and you're not happy with it). To do this you can run \ttout{git checkout -- [FILENAME]} to revert the file back to the last version you committed. 
-\item Alternatively, if you want to keep the change you've made, you can run \ttout{git add [FILENAME]} followed by \ttout{git commit [FILENAME] -m "[A DESCRIPTION OF WHAT YOU CHANGED]" to commit the file to your local repository. 
+\item Let's say you want to throw away the change you've just made  (imagine it was a much more complex edit
+  than the one you've just  made, and you're not happy with it). To do this you can run
+  \ttout{git checkout -- [FILENAME]} to revert the file back to the
+  last version you committed.
+\item Alternatively, if you want to keep the change you've made, you can run \ttout{git add [FILENAME]}
+  followed by \ttout{git commit [FILENAME] -m "[A DESCRIPTION OF WHAT YOU CHANGED]"} to commit the file to your local repository. 
 \end{itemize}
 
 When you want to preserve your commit on the server (for example, because you've finished for the day and want to pick up the files when you get home, or because someone else in your team needs to see your changes, or because you've finished a nice complete self-contained bit of work), you can then syncrhonise your local repository with the project hosted on gitlab. To do this, you just need to issue 
+
 \begin{ttoutenv}
 $ git push
 \end{ttoutenv}
+% $
 
 and any commits that you've made will get pushed to the gitlab server. 
 
@@ -459,22 +472,21 @@ Experiment now by making a few more changes to the contents of your aboutme dire
 
 \begin{itemize}
 \item When you've modified one or more files and want git to know about these changes, use \ttout{git add} to tell git to track the changes to those files.
-\item You don't need to use \ttout{commit} after every \ttout{add}, you can safely bundle up a set of \ttout{add}s in a single commit, and often this is the case. A commit should represent a coherent set of changes to your work that you are recording for a particular reason. You should summarise this reason in the log entry message that follows the -m switch on the \ttout{git commit} line, so that later on you can see what the different commits were for. 
+
+\item You don't need to use \ttout{commit} after every \ttout{add},
+  you can safely bundle up a set of \ttout{add}s in a single commit,
+  and often this is the case. A commit should represent a coherent set
+  of changes to your work that you are recording for a particular
+  reason. You should summarise this reason in the log entry message
+  that follows the \ttout{-m} switch on the \ttout{git commit} line, so that
+  later on you can see what the different commits were for.
+
 \item When you have finished a particular job, or need to move to another machine, use \ttout{git push} to synchronise the changes you've made to your local repository with the gitlab server; then these changes can be picked up from elsewhere or (later on when you're doing project work) by other people in your team. 
 \end{itemize}
 
 After you've played around with \ttout{add}, \ttout{commit} and \ttout{push} a few times, try using the \ttout{git log} command to see the history of what you've done. You should also be able to see this history in gitlab as well --- but we'll leave you to explore the gitlab interface to find out how to do that. 
 
-\susbsection{Using git to publish content to a webserver}
-
-
-
-
-
-
-
-
-
+\subsection{Using git to publish content to a webserver}
 
 
 
@@ -482,4 +494,5 @@ After you've played around with \ttout{add}, \ttout{commit} and \ttout{push} a f
 \label{sec:blackboard}
 
 You won't be using it for this course-unit, but for your other course-units you may be using a different Virtual Learning Environment - \textsf{Blackboard}. The usual way to access \textsf{Blackboard} is via the \href{https://my.manchester.ac.uk}{\emph{My Manchester}} page at \urlnop{my.manchester.ac.uk}, and then use the \emph{'My Blackboard'} tab. There is also a plentiful supply of information about how to use Blackboard available online.
+
 
