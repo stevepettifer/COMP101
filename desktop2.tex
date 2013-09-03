@@ -297,9 +297,25 @@ Next we're going to set up gitlab. Point your browser at the School's installati
 \\
 \url{http://gitlab.cs.man.ac.uk}
 \\
-and log in with your University credentials. You should see Gitlab's `dashboard' page and not much else. Go to the `My Profile' section of gitlab using the icon at the top right of the page, and fill in any details about you that you're comfortable sharing with other students and staff within the school. At a minimum you should make sure that your Name and Email are set correctly; the other fields are optional (if you'd like your gitlab account to have an avatar image, you'll need to sign up for a Gravatar account, which is a bit of a nuisance but not that hard). 
+and log in with your University credentials. You should see Gitlab's `dashboard' page and not much else (see Figure \ref{figure:gitlab-first-login}). Go to the `My Profile' section of gitlab using the icon at the top right of the page, and fill in any details about you that you're comfortable sharing with other students and staff within the school. At a minimum you should make sure that your Name and Email are set correctly; the other fields are optional (if you'd like your gitlab account to have an avatar image, you'll need to sign up for a Gravatar account, which is a bit of a nuisance but not that hard). 
 
-Select thew `New Project' button from the icons at the top right. Enter \ttout{aboutme} as the project name, and hit `Create project'. You'll see a page similar to Figure \ref{figure:created-project}. Notice that the `Git global setup' section contains the commands that you used in the previous section to set up your git configuration; so you don't need to do that again. There are also two other sections of code on how to `create repository' or use `Existing Git Repo?'. Ignore both of these for now and instead follow the instructions here (notice at the top of the gitlab page a warning that `You won't be able to pull or push project code via SSH until you add an SSH key to your profile' -- we need to fix that first). Click on the `add an SSH key' link, which will take you to the SSH key upload page which looks something like Figure \ref{figure:ssh-key-upload}.
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/gitlab-first-login}}
+\caption{First login to Gitlab. \protect\circled{1} The Gitlab logo (a sort of raccoon thing) will bring you back to the dashboard; useful if you get lost in gitlab's structure; \protect\circled{2} the user-profile allows you to add more information about yourself, and optionally connect up to Gravatar to give you a user icon; and \protect\circled{3} various ways to create a new project.}\label{figure:gitlab-first-login}
+\end{figure}
+
+Select thew `New Project' button from the icons at the top right. Enter \ttout{aboutme} as the project name, and hit `Create project'. You'll see a page similar to Figure \ref{figure:gitlab-new-project}. Notice that the `Git global setup' section contains the commands that you used in the previous section to set up your git configuration; so you don't need to do that again. There are also two other sections of code on how to `create repository' or use `Existing Git Repo?'. Ignore both of these for now and instead follow the instructions here (notice at the top of the gitlab page a warning that `You won't be able to pull or push project code via SSH until you add an SSH key to your profile' -- we need to fix that first). Click on the `add an SSH key' link (marked with \protect\circled{1} on Figure \ref{figure:gitlab-new-project}), which will take you to the SSH key upload page which looks something like Figure \ref{figure:gitlab-ssh}.
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/gitlab-new-project}}
+\caption{Creating a new project in Gitlab. \protect\circled{1} You will need to use the  `add an SSH key' link to upload your public key before you can communicate between git and gitlab, and the URL given in \protect\circled{2} can be used from the command line to clone and push this project.}\label{figure:gitlab-new-project}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/gitlab-ssh}}
+\caption{Adding a SSH key to Gitlab. Once you have used \ttout{ssh-keygen} to create the key, paste the text into the `Key' box; if your key is valid then the title will be filled in for you.}\label{figure:gitlab-ssh}
+\end{figure}
+
 
 You'll now need to set up a means of securely identifying yourself to Gitlab from whichever machine you're using at the time; this is done by creating what's called a `ssh key'. In a terminal, type
 
@@ -385,7 +401,7 @@ If you get a different message here, then something has gone wrong in one of the
 
 So to recap: in gitlab we've created a project called `aboutme' ready to accept some files, and in your home directory we've created a new repository (which happens to have the same name). The next step is to make an association between the repository in your home filestore, and the project on the gitlab server. 
 
-Look back at the aboutme project's page on gitlab, and you'll see a box with a pair of controls labelled `SSH' and `HTTPS' followed by a fairly long URL that is something similar to:
+Look back at the aboutme project's page on gitlab, and you'll see a box with a pair of controls labelled `SSH' and `HTTPS' followed by a fairly long URL (labelled with \protect\circled{2} in Figure \ref{figure:gitlab-new-project}) that is something similar to:
 
 \begin{ttoutenv}
 ssh://gitlab@gitlab.cs.man.ac.uk:22222/mister.noodle/aboutme.git
