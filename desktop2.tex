@@ -489,9 +489,9 @@ Experiment now by making a few more changes to the contents of your aboutme dire
 \begin{itemize}
 \item When you've modified one or more files and want git to know about these changes, use \ttout{git add} to tell git to track the changes to those files.
 
-\item You don't need to use \ttout{commit} after every \ttout{add},
+\item You don't need to use \ttout{commit} after every \ttout{add};
   you can safely bundle up a set of \ttout{add}s in a single commit,
-  and often this is the case. A commit should represent a coherent set
+  (when you start working on more complex projects you'll find that is often the case). A    commit should represent a coherent set
   of changes to your work that you are recording for a particular
   reason. You should summarise this reason in the log entry message
   that follows the \ttout{-m} switch on the \ttout{git commit} line, so that
@@ -502,7 +502,15 @@ Experiment now by making a few more changes to the contents of your aboutme dire
 
 After you've played around with \ttout{add}, \ttout{commit} and \ttout{push} a few times, try using the \ttout{git log} command to see the history of what you've done. You should also be able to see this history in gitlab as well --- but we'll leave you to explore the gitlab interface to find out how to do that. 
 
+\subsection{Using git/gitlab to transfer files between machines}
+
+Clone and pull. 
+
 \subsection{Using git to publish content to a webserver}
+
+By now you should have a basic idea of how you can use git to track modifications to files, and how gitlab can help you move files between machines (and when the time comes, an inkling of how it can be used to share content with other members of your project). To finish off this session we're going to show you how to use git and gitlab to manage changes to a website.
+
+In your previous experiments with the simple Python webserver and Apache on your Pi, you've been creating and manipulating files in a directory that is directly visible to the web server. So every time you change and save a file, that change becomes immediately visible to the web server, and therefore to anybody viewing the web page. This was great as a way of showing you what a webserver is really doing behind the scenes, but it's not a good example of how `real world websites' are managed. A real website typically consists of lots of interlinked pages, and changing just one file at a time would mean that during the period you're making edits the content of the site could become inconsistent. Often what you really want to do is to make a whole set of changes to different files, and then only when you're happy that you've made all the changes you need, to make the updated site visible to users. Of course you could do this by taking a copy of the website's files, editing them `offline' somewhere, and then copying them back manually in to the right place on the web server's filestore---but hopefully by now you can see how git/gitlab can help out here.
 
 
 
