@@ -289,6 +289,7 @@ Type the following:
 \begin{ttoutenv}
 $ exec ls
 \end{ttoutenv}
+% $
 
 You should find that the \texttt{ls} command has done exactly what you normally would expect, but that instead of returning you to the command prompt, you've been unceremoniously logged out! Log back in again (sorry about that). 
 
@@ -394,10 +395,11 @@ Test out which other WMs are installed; can you kill X server from the keyboard?
 
 Run some commands in an xterm, including mutt.
 
+
 \section{Graphical Editors}
 
 \begin{note}
-  Fix .bash profile
+  Need something for them to do here with editor. Idea was to fix .bash profile to prevent the problem when using ssh. But ssh not introduced until the next lab!
 
   Minimal change seems to be
 
@@ -407,6 +409,34 @@ case `tty` in
 esac
 \end{alltt}
 \end{note}
+
+A great deal of the lab work you will be doing over your time here will involve you creating text files of various kinds, often source files in a programming language such as \ttout{Java}, \ttout{php} or \ttout{C}, or \ttout{HTML} files for use on the web. There are specialist tools called \wikipedia{Integrated_development_environment}{Integrated Development Environments} or \emph{IDE}s that can be used for programming; you will meet these later in your programme. However, for many purposes, the simplest, and best, tool for creating such files is a simple text editor. You have already met one such tool, \ttout{nano}, which is fine for work at the console or quick modifications of existing files, but for more extensive work an editor that takes advantage of  X's graphical capabilities is more appropriate.
+
+The Linux environment in which you will be working offers many such editors, including the default Gnome editor \ttout{gedit}, the KDE editor \ttout{kate} and the grand daddy of all editors, \ttout{emacs} (which is being used to create this section of the notes). These three are illustrated in Figures \ref{fig:gedit} and \ref{fig:texteditors}. They are all shown open on a \ttout{Java} source file; note that they all use the fact that this is \ttout{Java} source to highlight key words within the text. We suggest that when you have some free time you experiment with some of the text editors available and find one that you like; in the meantime we suggest that you use \ttout{gedit}.
+
+\begin{figure}
+  \centering
+\includegraphics[width=.7\textwidth]{images/gedit}  
+  \caption{\ttout{gedit}}
+  \label{fig:gedit}
+\end{figure}
+
+\begin{figure}
+                  \begin{minipage}[b]{.5\linewidth}
+                    \centering
+                    \includegraphics[width=.8\textwidth]{images/kate}  
+                    \subcaption{\ttout{kate}}\label{subfig:kate}
+                  \end{minipage}%
+                  \begin{minipage}[b]{.5\linewidth}
+                    \centering
+                    \includegraphics[width=.8\textwidth]{images/emacs}
+                    \subcaption{\ttout{emacs}}\label{subfig:emacs}
+                  \end{minipage}%
+                  \caption{Other editors}  \label{fig:texteditors}
+
+                \end{figure}
+
+                
 
 
 \section{Configuring Thunderbird}

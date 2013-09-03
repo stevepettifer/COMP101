@@ -63,12 +63,23 @@ Now you're ready to power up the Pi. From the back of the monitor you'll notice 
 Like most other computers, the Pi doesn't like having its power removed without being shut down properly. Although you might get away with it, there's a reasonable chance of messing up the operating system if you remove the power while the Pi is in the middle of doing something. And because the Pi runs a multi-tasking operating system, it's almost always `doing something', so pulling the power out unexpectedly is always a bad idea. You're unlikely to damage the Pi's hardware like this, but you may find that you lose work, and may have to reinstall the operating system. For instructions on how to shut the Pi down safely, see Section \ref{section:shutdown}.
 \end{danger}
 
-Refer to Figure~\ref{figure:monitorswitch} and switch the Input Selection on the monitor from VGA (which is the input used by the PC under the desk) to DVI (the cable you've connected your Pi to is a HDMI to DVI cable), and all being well you should see a black screen containing the Raspberry Pi logo at the top left, and white text that scrolls up the screen as the Pi boots. When the boot process finishes for the first time (it will take somewhere about 20--30 seconds), if all has gone well you should see the Pi's configuration tool appear (see Figure \ref{figure:raspi-config}).
+Now we need to switch the input on the monitor from DisplayPort (which
+is the input used by the PC under the desk) to DVI (the cable you've
+connected your Pi to is a HDMI to DVI cable). On the lower-right side
+of the monitor you will see 4 buttons. Press any of them to bring up
+the monitor's menu. Now press the 3rd button down and navigate to the
+input selection menu -- see Figure~\ref{figure:monitorswitch}. Switch
+the Input to DVI and all being well you should see a black screen
+containing the Raspberry Pi logo at the top left, and white text that
+scrolls up the screen as the Pi boots. When the boot process finishes
+for the first time (it will take somewhere about 20--30 seconds), if
+all has gone well you should see the Pi's configuration tool appear
+(see Figure \ref{figure:raspi-config}).
 
 % TODO: needs a photo of the monitor / switch here
 \begin{figure}
-\centerline{\includegraphics[width=5cm]{images/mysteryimage}}
-\caption{The Input Selection switch on the monitor.}\label{figure:monitorswitch}
+\centerline{\includegraphics[width=15cm]{images/DellInputMenu.jpg}}
+\caption{The Input Selection menu on the monitor. This image  of the Dell U2412M Monitor has been reproduced with the kind permission of Dell. All rights reserved.}\label{figure:monitorswitch}
 \end{figure}
 
 \begin{diversion}{Booting}
