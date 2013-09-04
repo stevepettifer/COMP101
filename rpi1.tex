@@ -320,14 +320,6 @@ The filesystem on your Pi (which uses a type of filesystem called `ext4') is \te
 Most of the time this isn't a problem, but you should be careful of the effects when copying files from one filesystem to another, especially if you are using a USB drive to transfer files from a Linux box to somewhere else. For example, if you have two files in the same directory on Linux but with different capitalisation, one file will overwrite the other when you copy them onto your USB drive (and which one survives will depend on the order in which they are copied). One way around this problem is to use something like \totype{tar} or \totype{zip} to bundle the files up into a single archive file, and then transfer that via the USB drive. 
 \end{danger}
 
-\begin{note}
-Move this breakout to somewhere where they create some files
-\end{note}
-
-\begin{linux}{Spaced out filenames}
-Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
-\end{linux} 
-
 As you already know, directories are created within directories to create a hierarchical structure. But where is the `top' directory? Surely that has to go somewhere? On each machine, there is one directory called `/' which is referred to as the \textit{root}, which is not contained in any other directory. All other files and directories are contained in root, either directly or indirectly. The root directory is written just as \fname{/} (note this is the opposite slanting slash character to that used in Windows). 
 
 If we wish to talk about the file \fname{y} within the directory, \fname{x} we write \fname{x/y}. Of course, \fname{y} may itself be a directory, and may contain the file \fname{z}, which we can describe as \fname{x/y/z}.
@@ -477,7 +469,7 @@ You should also at some point run \totype{apt-get upgrade}, which will cause all
 
 The frotz system on its own is just a virtual machine into which you can load adventure game data, so we'll need to fetch the Colossal Cave datafile before we can play anything. We've put a copy of the game on the web at:
 
-\noindent \urlnop{studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/files/Advent.z5} 
+\noindent \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5} 
 
 \noindent so you can fetch it from there. Oh, hang on. No web browser. Oh dear.
 

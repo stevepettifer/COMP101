@@ -83,6 +83,10 @@ set editor = "nano"
 
 The \ttout{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). 
 
+\begin{linux}{Spaced out filenames}
+Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
+\end{linux} 
+
 \begin{diversion}{Less is more}
 \label{diversion:less}
 As we've mentioned before, many of UNIX's commands are plays on words, puns, or jokes that seemed funny to the command's creator at the time. Though this gives UNIX a rich historical background, it does rather obscure the purpose of some commands. A prime example of this is the \texttt{less} command, used to page through text files that are too large to fit on a single screen without scrolling. 
@@ -456,11 +460,14 @@ When you started the  ARCADE client earlier, you had to type its full pathname \
 
 This will show a long list of directories, separated by \ttout{:}s.
 
-which can be modified in your \fname{.bash\_profile} file. Now use \ttout{gedit} to modify this file by adding the line
+which can be modified in your \fname{.bash\_profile} file. Now use \ttout{gedit} to modify this file by adding the following line at the end of the file
 
 \begin{ttoutenv}
-  PATH=$PATH:
+  PATH=$PATH:/opt/teaching/bin
 \end{ttoutenv}
+% $
+
+This won't have any effect until you logout and login again.
 
 \section{Configuring Thunderbird}
 
