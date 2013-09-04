@@ -434,21 +434,33 @@ The Linux environment in which you will be working offers many such editors, inc
 \end{figure}
 
 \begin{figure}
-                  \begin{minipage}[b]{.5\linewidth}
-                    \centering
-                    \includegraphics[width=.8\textwidth]{images/kate}  
-                    \subcaption{\ttout{kate}}\label{subfig:kate}
-                  \end{minipage}%
-                  \begin{minipage}[b]{.5\linewidth}
-                    \centering
-                    \includegraphics[width=.8\textwidth]{images/emacs}
-                    \subcaption{\ttout{emacs}}\label{subfig:emacs}
-                  \end{minipage}%
-                  \caption{Other editors}  \label{fig:texteditors}
+  \begin{minipage}[b]{.5\linewidth}
+    \centering
+    \includegraphics[width=.8\textwidth]{images/kate}  
+    \subcaption{\ttout{kate}}\label{subfig:kate}
+  \end{minipage}%
+  \begin{minipage}[b]{.5\linewidth}
+    \centering
+    \includegraphics[width=.8\textwidth]{images/emacs}
+    \subcaption{\ttout{emacs}}\label{subfig:emacs}
+  \end{minipage}%
+  \caption{Other editors}  \label{fig:texteditors}
+  
+\end{figure}
 
-                \end{figure}
+When you started the  ARCADE client earlier, you had to type its full pathname \fname{/opt/teaching/bin/arcade}. \fname{/opt/teaching/bin} is a directory in which we keep lots of useful teaching related tools, so it would be useful if you didn't have to type it every time you want to use a utility from there. When you type a command on the command line, Linux looks for a program of that name in a number of places. These places are determined by the value of a variable called \ttout{PATH}. You can see what it's current value is by using the command
 
- When you started the  ARCADE client earlier, you had to type its full pathname \fname{/opt/teaching/bin/arcade}. \fname{/opt/teaching/bin} is a directory in which we keep lots of useful teaching related tools, so it would be useful if you didn't have to type it every time you want to use a utility from there. When you type a command on the command line, Linux looks for a program of that name in a number of places. These places are determined by the value of a variable
+\begin{ttoutenv}
+  $ echo $PATH
+\end{ttoutenv}
+
+This will show a long list of directories, separated by \ttout{:}s.
+
+which can be modified in your \fname{.bash\_profile} file. Now use \ttout{gedit} to modify this file by adding the line
+
+\begin{ttoutenv}
+  PATH=$PATH:
+\end{ttoutenv}
 
 \section{Configuring Thunderbird}
 
