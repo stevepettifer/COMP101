@@ -2,6 +2,58 @@
 
 \notesurl{appendix}
 
+
+\section{Directories in the Pi's root filesystem}
+\label{appendix:pidirs}
+
+\begin{table}
+\begin{tabular}{lp{12cm}}
+\hline
+Directory & Description\\
+\hline
+boot & Contains the Linux kernel and other low-level packages needed to get the Pi to boot.\\
+& \\
+bin & Contains the binary executables for basic commands such as \totype{ls} and \totype{pwd}.\\
+& \\
+dev & This is a virtual directory that represents devices connected to the Pi as though they were files that you can read from and write to. \\
+ & \\
+etc & Contains configuration files used by various programs, and also the names and encrypted passwords of users\\
+ & \\
+home & Each user gets their own subdirectory of \fname{home}. \\
+ &\\
+lib & This is where \textit{libraries} are stored; these are bits of code that are shared between several programs.\\
+ & \\
+lost+found & If something bad happens and the system crashes half way through doing something, it will put a copy of files that it knows are in a broken state here.\\
+media & When you mount removable storage devices such as USB memory stickets, they will appear as filesystems here.\\
+ & \\
+mnt & This directory is used to mount storage devices. \\
+& \\
+opt & When you install optional software that's not considered part of the operating system, it usually ends up here.\\
+& \\
+proc & Like dev, this is a virtual directory. This one contains accounting information about the various processes that are running on your Pi.\\
+& \\
+selinux & Contains utility files relating to Security Enhance Linux.\\
+& \\
+sbin & This contains special executable binary files associated with system maintenance.\\
+& \\
+sys & Various files needed by the operating system.\\
+& \\
+tmp & Many programs need to create temporary files as part of their execution; they go here, and get deleted when the system reboots.\\
+& \\
+usr & User-accessible programs and bits of configuration.\\
+& \\
+var & Another virtual directory, used by programs to store variables.\\
+\hline
+\end{tabular}
+\caption{Standard Linux system directories.}\label{table-dirs}
+\end{table}
+
+\section{A Map Of Colossal Cave}
+\label{appendix:colossal-map}
+\includegraphics[width=13cm]{images/ColossalCaveAdventureMap}\\
+\\
+This map of Colossal Cave is reproduced here by kind permission of its author, Mari Michaelis. This is the `spoilers' version of the map, and contains clues as to how to solve the various puzzles in the game. If you want to play the game for real, you probably should make your own map, or at least use the spoiler-free version of the map available at \url{www.spitenet.com/cave}.
+
 \section{Basic HTML}
 \label{appendix:simplehtml}
 

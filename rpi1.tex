@@ -181,11 +181,10 @@ Enter new Unix password:
 Retype new Unix password:
 \end{ttoutenv}
 
-\begin{note}
-Get them to log out and back in again to practise their password. Can we say something about ctrl D here as well as logout?
-\end{note}
 
 \noindent Note in the above, we're using lines that don't start with the dollar symbol to show output as a result of what you've typed, and that none of the passwords you're typing actually appear on screen for obvious sneaky over-the-shoulder-peeking reasons. \textbf{Don't forget this password: there's no easy way to get back into your Pi without resetting everything.}
+
+Are you sure you know what your password is? If so then type \totype{logout} at the command prompt. Not surprisingly this will log you out of your Pi. Then log back in again using your new password. 
 
 \begin{danger}{Memory Loss} 
 Although the Pi uses a fairly standard Unix operating system, it's probably not quite as secure as a normal desktop machine because of its small size and easily-removable storage media. Once the Pi has booted from the SD card, it's about as secure as any other Linux machine. But because the memory card is easily removable, it can trivially be connected to another machine as a `removable media' device; and at that point the host machine can almost certainly see its contents, including any of the files you've created, because the filesystem itself isn't encrypted. And because the Pi is small and portable, it's easier to lose it than a laptop or desktop machine; so, be careful!
@@ -278,11 +277,7 @@ Desktop python_games
 
 % $
 
-When we're using a command-line prompt, we have the notion of of \wikipedia{http://en.wikipedia.org/wiki/Working_directory}{current working directory} which is the directory that we're currently `in'. Generally, commands we issue that don't specify another directory are assumed to refer to the current working directory; so \totype{ls} on its own really meant `run the list command on my current working directory'. 
-
-\begin{note}
-Just talk about LS rather than generalising about assuming directories.
-\end{note}
+When we're using a command-line prompt, we have the notion of of \wikipedia{http://en.wikipedia.org/wiki/Working_directory}{current working directory} which is the directory that we're currently `in' (so in this example, using \totype{ls} like this really meant `run the list command on my current working directory'.)
 
 Let's say we want to look at the contents of the \fname{python\_games} directory. There are several ways of doing this, but for now we'll break the process down into simple steps. Use the \totype{cd} command to Change Directory to \fname{python\_games}:
 
@@ -290,20 +285,7 @@ Let's say we want to look at the contents of the \fname{python\_games} directory
 $ cd python_games
 \end{ttoutenv}
 
-\noindent and then use the \totype{ls} command to list its contents. You should see a long list of files: some are programs written in the Python programming language (these files end in \fname{.py}), others are images or sounds used by those programs (ending in \fname{.png} or \fname{.wav}). At the prompt type:
-
-\begin{ttoutenv}
-$ python wormy.py
-\end{ttoutenv}
-
-to start a simple version of the classic `Snake' game. You can guide your green snake around the screen with the cursor keys; you score a point every time you eat one of the red squares and an extra segment gets added to the length of your snake. The game finishes if you crash into the edge of the screen or eat yourself. Once you've convinced yourself this is working (don't spend too long playing the game!), press the Escape key to return to the command prompt. You'll be writing a more sophisticated version of this game soon enough in the Java labs.
-
-
-\begin{note}
-Can we move this section a bit earlier, e.g. before the snake game gets run
-\end{note}
-
-Take a look now at the command prompt; whereas before it was just
+and look at what's happened to the command prompt. Whereas before it was just
 \\
 \\
 \totype{pi@raspberrypi \texttildelow{} \$}
@@ -316,6 +298,15 @@ it has now become
 \\
 \\
 to indicate that we've changed our current directory to \fname{python\_games} (remember the \texttildelow{} symbol means `home directory', so \fname{\texttildelow{}/python\_games} really means 'a subdirectory called \fname{python\_games} which is in my home directory').
+
+Now use the \totype{ls} command to list the contents of our new current working directory. You should see a long list of files: some are programs written in the Python programming language (these files end in \fname{.py}), others are images or sounds used by those programs (ending in \fname{.png} or \fname{.wav}). At the prompt type:
+
+\begin{ttoutenv}
+$ python wormy.py
+\end{ttoutenv}
+
+to start a simple version of the classic `Snake' game. You can guide your green snake around the screen with the cursor keys; you score a point every time you eat one of the red squares and an extra segment gets added to the length of your snake. The game finishes if you crash into the edge of the screen or eat yourself. Once you've convinced yourself this is working (don't spend too long playing the game!), press the Escape key to return to the command prompt. You'll be writing a more sophisticated version of this game soon enough in the Java labs.
+
 
 \FloatBarrier
 
@@ -369,11 +360,8 @@ Let's confirm that this is true. Issue the command:
 $ cd /
 \end{ttoutenv}
 
-\begin{note}
-move the table to an appendix
-\end{note}
 
-which just means `change directory to the root directory' and use the \totype{ls} command to look at the root directory's contents. You'll see several directories with names like \fname{bin}, \fname{boot}, \fname{dev} and \fname{lib}. Most of these contain `housekeeping' files for the operating system, and at this stage you don't need to know what's in them (though Table \ref{table-dirs} gives you a brief description if you're interested). The one called \fname{bin} is quite interesting though, so let's investigate that by typing: 
+which just means `change directory to the root directory' and use the \totype{ls} command to look at the root directory's contents. You'll see several directories with names like \fname{bin}, \fname{boot}, \fname{dev} and \fname{lib}. Most of these contain `housekeeping' files for the operating system, and at this stage you don't need to know what's in them (though Appendix \ref{appendix:pidirs} gives you a brief description if you're interested). The one called \fname{bin} is quite interesting though, so let's investigate that by typing: 
 
 \begin{ttoutenv}
 $ cd bin
@@ -507,7 +495,7 @@ Use \totype{ls} to confirm that you can see the file \fname{Advent.z5} in your h
 $ frotz Advent.z5
 \end{ttoutenv}
 
-\noindent to start playing the Colossal Cave Adventure. Once the game has started (the sceen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There's a map of the entire Colossal Cave world at the back of this exercise.
+\noindent to start playing the Colossal Cave Adventure. Once the game has started (the sceen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There's a map of the entire Colossal Cave world in Appendix \ref{appendix:colossal-map}.
 
 Earlier, we referred to Colossal Cave as a work of Interactive Fiction (IF). In truth, this is perhaps stretching the term somewhat, since the genre has matured considerably in the decades since this first adventure game. For a much more compelling example of Interactive Fiction with beautifully written prose, and funny and challenging puzzles we suggest you have a go at playing Curses by \wikipedia{Graham_Nelson}{Graham Nelson}, or one of the many other games written by Interactive Fiction enthusiasts that are available for free from \url{www.ifarchive.org}. If you find yourself getting hooked on playing IF, the frotz interpreter is available for most platforms, including iOS, Android, OS X and Windows. 
 
@@ -617,52 +605,8 @@ It might seem like you've been playing games for most of the lab, but if you've 
 \item basic apt commands
 \end{itemize}
 
-\begin{table}
-\begin{tabular}{lp{12cm}}
-\hline
-Directory & Description\\
-\hline
-boot & Contains the Linux kernel and other low-level packages needed to get the Pi to boot.\\
-& \\
-bin & Contains the binary executables for basic commands such as \totype{ls} and \totype{pwd}.\\
-& \\
-dev & This is a virtual directory that represents devices connected to the Pi as though they were files that you can read from and write to. \\
- & \\
-etc & Contains configuration files used by various programs, and also the names and encrypted passwords of users\\
- & \\
-home & Each user gets their own subdirectory of \fname{home}. \\
- &\\
-lib & This is where \textit{libraries} are stored; these are bits of code that are shared between several programs.\\
- & \\
-lost+found & If something bad happens and the system crashes half way through doing something, it will put a copy of files that it knows are in a broken state here.\\
-media & When you mount removable storage devices such as USB memory stickets, they will appear as filesystems here.\\
- & \\
-mnt & This directory is used to mount storage devices. \\
-& \\
-opt & When you install optional software that's not considered part of the operating system, it usually ends up here.\\
-& \\
-proc & Like dev, this is a virtual directory. This one contains accounting information about the various processes that are running on your Pi.\\
-& \\
-selinux & Contains utility files relating to Security Enhance Linux.\\
-& \\
-sbin & This contains special executable binary files associated with system maintenance.\\
-& \\
-sys & Various files needed by the operating system.\\
-& \\
-tmp & Many programs need to create temporary files as part of their execution; they go here, and get deleted when the system reboots.\\
-& \\
-usr & User-accessible programs and bits of configuration.\\
-& \\
-var & Another virtual directory, used by programs to store variables.\\
-\hline
-\end{tabular}
-\caption{Standard Linux system directories.}\label{table-dirs}
-\end{table}
 
-\clearpage
-\includegraphics[width=15cm]{images/ColossalCaveAdventureMap}\\
-\\
-This map of Colossal Cave is reproduced here by kind permission of its author, Mari Michaelis. This is the `spoilers' version of the map, and contains clues as to how to solve the various puzzles in the game. If you want to play the game for real, you probably should make your own map, or at least use the spoiler-free version of the map available at \url{www.spitenet.com/cave}.
+
 
 %\printbibliography
 
