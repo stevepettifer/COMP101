@@ -396,10 +396,22 @@ Test out which other WMs are installed; can you kill X server from the keyboard?
 Run some commands in an xterm, including mutt.
 
 
-\section{Graphical Editors}
+\section{ARCADE}
+
+We would now like you to register your access to the ARCADE server. ARCADE is the laboratory management system we use to administer coursework marks and deadlines, etc.. You can use the client query program to look up your details, laboratory timetables, marks, and so on, throughout the year. It is recommended you do this fairly regularly, if only to check that mistakes have not been made in your marks! You need to register with ARCADE before any of your lab work can be marked, so it is much better to do it now than wait until your first deadline!
+
+In a terminal window, run the command \ttout{/opt/teaching/bin/arcade}; after a short pause, a new window will pop up. In the large text box you should find a message telling you that you are not yet authenticated, and that you have just been sent an email. If this is so, then quit the program, read the email you have just been sent by the ARCADE server, and carefully follow the instructions in it. Then you will start the ARCADE Query client again, and it should now connect you to the server. If this works, then your access is set up!
+
+Here's a question for you: can you think about how that worked? Something has just happened so that now whenever you run the client, you can access your details, but no-one else's. And others cannot access yours.
+
+Explore the various queries of the client, and familiarise yourself with the the user interface. Check that your registration details are correct. Feel free to ask for explanation if it is not obvious to you.
+
+\section{Text Editors}
 
 \begin{note}
   Need something for them to do here with editor. Idea was to fix .bash profile to prevent the problem when using ssh. But ssh not introduced until the next lab!
+
+  Now fixing PATH
 
   Minimal change seems to be
 
@@ -436,8 +448,7 @@ The Linux environment in which you will be working offers many such editors, inc
 
                 \end{figure}
 
-                
-
+ When you started the  ARCADE client earlier, you had to type its full pathname \ttout{/opt/teaching/bin/arcade}. \ttout{/opt/teaching/bin} is a directory in which we keep lots of useful teaching related tools, so it would be useful if you didn't have to type it every time you want to use a utility from there. When you type a command on the command line, Linux looks for a program of that name in a number of places. These places are determined by the value of a variable
 
 \section{Configuring Thunderbird}
 
