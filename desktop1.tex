@@ -2,32 +2,37 @@
 
 \notesurl{desktop1}
 
-Today we're going to explore some of the features of UNIX in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical UNIX system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
+Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
 
 \section{Reading email at the console}
 
-You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called Mutt, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to Mutt or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
+You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
 
-First, let's confirm that Mutt is actually installed. Make sure the desktop PC is booted into Linux, and log in using your University username and password (not the username and password you used on the Pi). You should be greeted with a similar command prompt to the one you saw in the previous lab.
+\begin{note}
+How do we tell them what the rebooting instructions are? This probably goes in welcome
+\end{note}
+
+First, let's confirm that \cmnd{Mutt}{Mutt} is actually installed. Make sure the desktop PC is booted into Linux, and log in using your University username and password (not the username and password you used on the Pi). You should be greeted with a similar command prompt to the one you saw in the previous lab.
 
 \begin{note}
 Is this their first login to CS machines? Probably need to explain that their filestore gets mounted from a server here
 \end{note}
 
-To see if Mutt is installed and is accessible to you, type
+To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd{which}{which} command. Type
 
 \begin{ttoutenv}
 $ which mutt
 \end{ttoutenv}
 
-This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Remember in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}? Well \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot/work without them, but it just wouldn't be very useful.)
+This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Remember in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}? Well \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot/work without them, but it just wouldn't be very useful.) 
 
 List the contents of \fname{/usr/bin} by typing
 \begin{ttoutenv}
 $ ls /usr/bin
 \end{ttoutenv}
 
-and notice that here we're using \ttout{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as a parameter. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type 
+and notice that here we're using \cmnd{ls}{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as a argument. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type 
+
 \begin{ttoutenv}
 $ ls /usr/bin/m*
 \end{ttoutenv}
@@ -40,7 +45,12 @@ So far we've been getting you to do a fair amount of typing, and now we have to 
 
 Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of directories that are in the system's root directory. Now type the letter u (so that the line you've typed so far should read \ttout{ls /u}) and hit Tab once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press Tab twice now, and you'll get shown the contents of \fname{/usr/}. Type b, and press Tab to expand the command to \fname{/usr/bin/}, and then press Enter to execute the command.
 
-The `autocomplete' function you're using here is more commonly called `tab complete' by UNIX users. If you press Tab once and there's only one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then pressing Tab a second time shows you those, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
+The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press Tab once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then pressing Tab a second time shows you those, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
+
+\begin{note}
+Need to work out how to explain tab complete for single things that have the same prefix
+\end{note}
+
 
 Here are some other very useful command line tricks:
 
@@ -57,13 +67,19 @@ Back to configuring your email client. Before we use mutt, we need to point it a
 
 \begin{diversion}{File extensions}
 \label{diversion:file-extensions}
-If you've mostly used Windows or OS X via a GUI, then you're probably used to files such as \fname{cheese.jpg}, where you would interpret \fname{cheese} as being the file \textit{name} and \textit{jpg} as being the file \textit{extension}. Some operating systems---notably Windows---have the notion of a \wikipedia{Filename_extension}{filename extension} of a particular number of characters built in; for example things ending with \fname{exe}, \fname{bat} or \fname{com} mean that they are executable files. In UNIX, a file extension is merely a convention that's not enforced or meaningful to the operating system. so although its common to give files a suffix that makes it easy for a human to guess what kind of file it is, Unix itself just treats these as part of the file name. In fact, you can have multiple `file extensions' in a name, to indicate a nesting of file types. In the previous lab the file \fname{quake3.tar.gz} is a `tar' archive that has been `gzipped', but the presence of the \fname{.tar} and \fname{.gz} parts are really just there to tell the user how to treat the file.
+If you've mostly used Windows or OS X via a GUI, then you're probably used to files such as \fname{cheese.jpg}, where you would interpret \fname{cheese} as being the file \textit{name} and \textit{jpg} as being the file \textit{extension}. Some operating systems---notably Windows---have the notion of a \wikipedia{Filename_extension}{filename extension} of a particular number of characters built in; for example things ending with \fname{exe}, \fname{bat} or \fname{com} mean that they are executable files. In Unix, a file extension is merely a convention that's not enforced or meaningful to the operating system. So although it's common to give files a suffix that makes it easy for a human to guess what kind of file it is, Unix itself just treats these as part of the file name. In fact, you can have multiple `file extensions' in a name, to indicate a nesting of file types. In the previous lab the file \fname{quake3.tar.gz} is a `tar' archive that has been `gzipped', but the presence of the \fname{.tar} and \fname{.gz} parts are really just there to tell the user how to treat the file.
 \end{diversion}
 
-We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/mutt-template}. Remember, you're going to need to use a switch parameter to tell \ttout{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out Breakout \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
+We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from 
+
+\\
+\urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/mutt-template}
+\\
+
+Remember, you're going to need to use a switch argument to tell \cmnd{curl}{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out Breakout \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
 
 \begin{ttoutenv}
-$ less ./mutt-template
+$ less mutt-template
 \end{ttoutenv}
 
 and you should see the following written to the screen:
@@ -81,7 +97,11 @@ set spoolfile="+INBOX"
 set editor = "nano"
 \end{ttoutenv}
 
-The \ttout{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). 
+\begin{note}
+SORT IMAP SETTINGS, maybe use a shell pattern
+\end{note}
+
+The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of less's features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less} to display the manual pages.
 
 \begin{linux}{Spaced out filenames}
 Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
@@ -89,12 +109,15 @@ Because of its roots in the early days of computing long before the advent of gr
 
 \begin{diversion}{Less is more}
 \label{diversion:less}
-As we've mentioned before, many of UNIX's commands are plays on words, puns, or jokes that seemed funny to the command's creator at the time. Though this gives UNIX a rich historical background, it does rather obscure the purpose of some commands. A prime example of this is the \texttt{less} command, used to page through text files that are too large to fit on a single screen without scrolling. 
+As we've mentioned before, many of Unix's commands are plays on words, puns, or jokes that seemed funny to the command's creator at the time. Though this gives Unix a rich historical background, it does rather obscure the purpose of some commands. A prime example of this is the \cmnd{less}{less} command, used to page through text files that are too large to fit on a single screen without scrolling. 
 
-Early versions of UNIX included a command called \texttt{more}, written by Daniel Halbert from University of California, Berkeley in 1978, which would display a page's worth of text before prompting the user to press the space bar in order to see \textit{more} of the file. A more sophisticated paging tool, called \texttt{less} on the jokey premise that `less is more' was written by Mark Nudelman in the mid 1980s, and has since replaced \texttt{more} in most Unix systems, including Linux. 
+Early versions of Unix included a command called \cmnd{more}{more}, written by Daniel Halbert from University of California, Berkeley in 1978, which would display a page's worth of text before prompting the user to press the space bar in order to see \textit{more} of the file. A more sophisticated paging tool, called \texttt{less} on the jokey premise that `less is more' was written by Mark Nudelman in the mid 1980s, and has since replaced \texttt{more} in most Unix systems, including Linux. 
 \end{diversion}
 
-Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the COMP18112 (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. Enter
+Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the COMP18112 (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. 
+
+
+Quit less (using the same technique you used to quit the \cmnd{man}{man} command in the last lab session), and then enter
 
 \begin{ttoutenv}
 $ cp mutt-template my-mutt-template
@@ -102,14 +125,14 @@ $ cp mutt-template my-mutt-template
 
 Did you type all of that? If so, you've wasted several precious keypresses! You could have typed \ttout{cp mu}, and then pressed Tab to expand it to \ttout{cp mutt-template}, and then added on the \ttout{my-mutt-template} bit yourself. It's a good habit to get into and will save you a lot of time over the next few years.
 
-The basic form of the \ttout{cp} command takes two parameters, the first being the file you want to copy, and the second being the name of the file that will be created. Confirm that there is indeed a new file in your home directory using \ttout{ls}, and that its contents are what you expect using \ttout{less} (how would you find out what else the \ttout{cp} command could do?). 
+The basic form of the \ttout{cp} command takes two arguments, the first being the file you want to copy, and the second being the name of the file that will be created. Confirm that there is indeed a new file in your home directory using \ttout{ls}, and that its contents are what you expect using \ttout{less} (how would you find out what else the \ttout{cp} command could do?). 
 
 To modify the file, you'll need to use a text editor. Type 
 \begin{ttoutenv}
 $ nano my-mutt-template
 \end{ttoutenv}
 
-to invoke the \ttout{nano} editor, and use it to change the text in square brackets to values appropriate to you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
+to invoke the \ttout{nano} editor, and use it to change the text in square brackets to values appropriate to you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (remember, the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
 
 \begin{itemize}
 \item \ttout{mbnoodle} should be replaced with your University username (which will be 8 characters, and will start with an m). Note you'll need to replace this on the lines with \ttout{imap\_user} and \ttout{smtp\_url}.
@@ -117,25 +140,29 @@ to invoke the \ttout{nano} editor, and use it to change the text in square brack
 \item \ttout{Mister Noodle} is just your real name, in whatever way you want it to appear in outgoing emails.
 \end{itemize}
 
-When you've made the changes, write the file to your filestore and quit back to the command line. Then use \ttout{less} to confirm that the file now looks exactly as you want it to. 
+When you've made the changes, write out the file to your filestore and quit back to the command line. Then use \cmnd{less}{less} to confirm that the file now looks exactly as you want it to. 
 
-Now, \ttout{mutt} expects the file containing its configuration information to have a particular name, and that's not \ttout{my-mutt-template}, so we'll need to do something about that. The UNIX \ttout{mv} command is used to rename files or directories (it's short for `move'), so use that to change the name of the file to \fname{.muttrc} by typing
+Now, \ttout{mutt} expects the file containing its configuration information to have a particular name, and that's not \ttout{my-mutt-template}, so we'll need to do something about that. The Unix \cmnd{mv}{mv} command is used to rename files or directories (it's short for `move'), so use that to change the name of the file to \fname{.muttrc} by typing
+
+\begin{note}
+can we do something here to explain why mv is called mv?
+\end{note}
 
 \begin{ttoutenv}
 $ mv my-mutt-template .muttrc
 \end{ttoutenv}
 
-Rather like \ttout{cp}, \ttout{mv} takes two parameters; but this time instead of making a copy of the file, \ttout{mv} just changes the name of the file given as the first parameter to that of the second. 
+Rather like \cmnd{cp}{cp}, \cmnd{mv}{mv} takes two arguments; but this time instead of making a copy of the file, \cmnd{mv}{mv} just changes the name of the file given as the first argument to that of the second. 
 
 Type \ttout{ls} to confirm that the file name has changed as you'd expect. 
 
-Oh. But it's gone! Actually, no, it's still there, but it's just hidden! There's a UNIX convention that files that start with a full-stop symbol don't appear when you type \ttout{ls} in its basic form, because these are normally configuration files that you don't need to see on a day to day basis (the `rc' part of the '.muttrc' name stands for 'resource configuration', another UNIX convention). So to see these files you'll need to add an extra switch parameter to \ttout{ls}. Use the \ttout{man} command to find out what this switch is, and then use the switch to confirm that the \fname{.muttrc} file does indeed exist. 
+Oh. But it's gone! Actually, no, it's still there, but it's just hidden! There's a Unix convention that files that start with a full-stop symbol don't appear when you type \ttout{ls} in its basic form, because these are normally configuration files that you don't need to see on a day to day basis (the `rc' part of the '.muttrc' name stands for 'resource configuration', another Unix convention). So to see these files you'll need to add an extra switch argument to \cmnd{ls}{ls}. Use the \cmnd{man}{man} command to find out what this switch is, and then use the switch to confirm that the \fname{.muttrc} file does indeed exist. 
 
-Using this switch on \ttout{ls} will reveal several other so-called `dotfiles' that have been lurking in your home directory all along. Use \ttout{less} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
+Using this switch on \cmnd{ls}{ls} will reveal several other so-called `dotfiles' that have been lurking in your home directory all along. Use \cmnd{less}{less} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
 
 If you're confident that you now have a file called \fname{.muttrc} containing the correct configuration, you can now type \ttout{mutt} to start the program. 
 
-It should be reasonably clear how you use \ttout{mutt} to send and receive email; if you get stuck there are plenty of online tutorials to help you out. Send yourself a test email to make sure that everything is working, and when you're confident you've mastered the basics of sending and reading using this tool, drop back to the command line. One thing you should note is that \ttout{mutt} doesn't have its own editor for composing emails, so will use \ttout{nano} unless you change this to something else in the \fname{.muttrc} file. 
+It should be reasonably clear how you use \cmnd{mutt}{mutt} to send and receive email; if you get stuck there are plenty of online tutorials to help you out. Send yourself a test email to make sure that everything is working, and when you're confident you've mastered the basics of sending and reading using this tool, quit Mutt to get back to the command line. One thing you should note is that \cmnd{mutt}{mutt} doesn't have its own editor for composing emails, so will use \ttout{nano} unless you change this to something else in the \fname{.muttrc} file. 
 
 \section{Browsing the Web}
 
@@ -148,20 +175,16 @@ Although you will have experienced The Web so far as a highly graphical system, 
 Try browsing the School's web pages using \ttout{lynx} by typing
 
 \begin{ttoutenv}
-$ lynx http://www.cs.manchester.ac.uk
+$ lynx http://studentnet.cs.manchester.ac.uk
 \end{ttoutenv}
-
-\begin{note}
-  Would studentnet.cs.manchester.ac.uk be better than www.cs.. here?
-\end{note}
 
 Rather like \ttout{mutt}, the \ttout{lynx} program has just about enough on-screen help for you to be able to browse around a little without any additional instructions from us.  You may find that when you follow some links, nothing very much appears to have happened; but scroll further down the page and you'll see the content that you're looking for.
 
 You'll probably find using \ttout{lynx} an unsatisfying experience: tolerable, and probably okay in an emergency, but not how you'd ideally like to browse the web. And you might be wondering why we've even bothered to get you to try viewing the web through a text-only interface. Apart from the absence of images and videos etc., the main difference between using something like \ttout{lynx} and a regular browser such as Chrome, Firefox, Safari or Internet Explorer, is that you'll notice that web pages have been made into much more linear affairs than when they are rendered in a graphical environment. While you might expect to see the navigation links neatly arranged on the left or top of the page with the main content prominently displayed in the centre, seen through a purely textual interface it's all one big stream of stuff, and its very hard to distinguish between the navigation links and the main content. 
 
-Now consider what the web `looks' like if you are visually-impaired or blind and have to use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \ttout{lynx}. 
+Now consider what the web `looks' like if you are visually impaired or blind and have to use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \ttout{lynx}. 
 
-You'll soon be designing your own web-based systems as part of the Group Project in this course unit; making them accessible to visually impaired readers something you should keep in mind. Try using \ttout{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
+You'll soon be designing your own web-based systems as part of the Group Project in this course unit; making them accessible to visually impaired readers is something you should keep in mind. Try using \cmnd{lynx}{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
 
 \subsection{Pipes and Redirects}
 
@@ -174,7 +197,7 @@ Type:
 $ lynx -dump http://www.bbc.co.uk/weather
 \end{ttoutenv}
 
-Note the addition of the \ttout{-dump} parameter before the URL this time. Instead of running as an interactive browser, \ttout{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through \ttout{lynx}'s output in a more controlled manner. Type:
+Note the addition of the \ttout{-dump} argument before the URL this time. Instead of running as an interactive browser, \ttout{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through \ttout{lynx}'s output in a more controlled manner. Type:
 
 \begin{ttoutenv}
 $ lynx -dump http://www.bbc.co.uk/weather | less
@@ -182,11 +205,11 @@ $ lynx -dump http://www.bbc.co.uk/weather | less
 
 Did you type all that? Hopefully not---remember you can use the up and down cursor keys to get previous commands back at the interactive prompt, and then just modify or extend them to save wearing out your fingers.
 
-To explain what's happened here, you'll have to understand the concept of `standard in' and `standard out', which is a neat and extremely powerful idea that is fundamental to the way tools (and programmes generally) work in a Unix environment. 
+To explain what's happened here, you'll have to understand the concepts of `standard in' and `standard out', which are a neat and extremely powerful idea that is fundamental to the way tools (and programmes generally) work in a Unix environment. 
 
-Unless they are told otherwise, every Unix program has access to two ways of communicating with other parts of the operating system. The first, `standard in' allows a stream of data to be read by the program; the second, `standard out' gives the program a way of displaying textual responses. By default, when you execute things at the command prompt, Unix arranges for a program's standard in to be connected to whatever you type at the keyboard, and for its standard out to be connected to whatever display you're using at the time (this is a bit of an over simplification, but it'll do for now). It's quite easy to arrange for standard in and standard out to be connected up differently though, and that's what you've just done.
+Every Unix program has access to a number of ways of communicating with other parts of the operating system. One, `standard in' allows a stream of data to be read by the program; another, called `standard out' gives the program a way of displaying textual responses. By default, when you execute things at the command prompt, the shell arranges for a program's standard in to be connected to whatever you type at the keyboard, and for its standard out to be connected to whatever display you're using at the time (this is a bit of an over simplification, but it'll do for now). It's quite easy to arrange for standard in and standard out to be connected up differently though, and that's what you've just done.
 
-The vertical bar `\verb-|-' before \ttout{less} is called the `pipe' symbol, and it is used to join the output of one command to the input of another; so in this case we have connected the standard output from \ttout{lynx} directly to the standard input of \ttout{less} (when \ttout{less} is invoked without a filename argument, it expects to get its input from standard in). 
+The vertical bar `\verb-|-' before \cmnd{less}{less} is called the `pipe' symbol, and it is used to join the output of one command to the input of another; so in this case we have connected the standard output from \cmnd{lynx}{lynx} directly to the standard input of \cmnd{less}{less} (when \cmnd{less}{less} is invoked without a filename argument, it expects to get its input from standard in). 
 
 Instead of joining commands together, you can use the idea of manipulating standard in/out to create or consume files instead. Try:
 
@@ -204,9 +227,9 @@ Grep is a hugely powerful and useful utility, designed for searching through pla
 $ grep BBC weather.txt
 \end{ttoutenv}
 
-and you should see a list of all the lines from \ttout{weather.txt} that contain the word `BBC'. Use \ttout{less} to have a look for other terms to `\ttout{grep}' for (you might want to try something like `Sunny' to give you a list of all the places where the weather is nice, for example). 
+and you should see a list of all the lines from \ttout{weather.txt} that contain the word `BBC'. Use \cmnd{less}{less} to have a look for other terms to `\ttout{grep}' for (you might want to try something like `Sunny' to give you a list of all the places where the weather is nice, for example). 
 
-Rather like \ttout{less}, if \ttout{grep} isn't given the name of a file as its last command-line parameter (in this case we used \ttout{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \ttout{lynx} and \ttout{grep} so that the output is a single line describing the weather in Manchester right now. The output should look something like:
+Rather like \cmnd{less}{less}, if \cmnd{grep}{grep} isn't given the name of a file as its last command-line argument (in this case we used \fname{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \cmnd{lynx}{lynx} and \cmnd{grep}{grep} so that the output is a single line describing the weather in Manchester right now. The output should look something like:
 
 \begin{ttoutenv}
    [33]Manchester 22°C 72°F
@@ -284,7 +307,7 @@ If you've completed step 5 you should now be back at the command prompt where yo
 
 If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
 
-But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press return at a shell prompt, the program that is the shell checks that what you've typed has a valid syntax, and then starts up a new \textit{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of the machine, but rather just out of the graphical environment. 
+But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press Enter at a shell prompt, the program that is the shell checks that what you've typed has a valid syntax, and then starts up a new \textit{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of the machine, but rather just out of the graphical environment. 
 
 Now, if you're going to use the graphical environment as your primary interface (and, as the jobs we ask you to do get more complex, you're going to need to!), you may find it slightly annoying to have to log into a lab machine, start the graphical environment, log out of the graphical environment when you're done \textit{and then remember to also log out of the console environment before you leave (because if you don't do this, other people will have access to your account!)}. 
 
@@ -498,7 +521,7 @@ Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thu
 Once your Inbox appears in Thunderbird, using it to compose and send email should be fairly self-explanatory, but if you're stuck there are plenty of Thunderbird tutorials on the net. 
 
 
-\section{Exploring the CS UNIX environment -- which RPMs are installed}
+\section{Exploring the CS Unix environment -- which RPMs are installed}
 
 
 
