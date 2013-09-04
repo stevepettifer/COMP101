@@ -70,11 +70,9 @@ Back to configuring your email client. Before we use mutt, we need to point it a
 If you've mostly used Windows or OS X via a GUI, then you're probably used to files such as \fname{cheese.jpg}, where you would interpret \fname{cheese} as being the file \textit{name} and \textit{jpg} as being the file \textit{extension}. Some operating systems---notably Windows---have the notion of a \wikipedia{Filename_extension}{filename extension} of a particular number of characters built in; for example things ending with \fname{exe}, \fname{bat} or \fname{com} mean that they are executable files. In Unix, a file extension is merely a convention that's not enforced or meaningful to the operating system. So although it's common to give files a suffix that makes it easy for a human to guess what kind of file it is, Unix itself just treats these as part of the file name. In fact, you can have multiple `file extensions' in a name, to indicate a nesting of file types. In the previous lab the file \fname{quake3.tar.gz} is a `tar' archive that has been `gzipped', but the presence of the \fname{.tar} and \fname{.gz} parts are really just there to tell the user how to treat the file.
 \end{diversion}
 
-We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from 
-
-\\
+We've created a template file for you to get going with. Make sure you are in your home directory, then use the \ttout{curl} command as in the last lab session to fetch the template from  \\
 \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/mutt-template}
-\\
+
 
 Remember, you're going to need to use a switch argument to tell \cmnd{curl}{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out Breakout \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
 
@@ -241,7 +239,7 @@ As a final flourish, let's create a new a way of accessing this new `weather in 
 $ alias mankyweather="[YOUR COMMAND GOES HERE]"
 \end{ttoutenv}
 
-replacing [YOUR COMMAND GOES HERE] with the full command line you created to display the Manchester weather. Then try typing
+replacing [YOUR COMMAND GOES HERE] with the full command line you created to display the Manchester weather, being careful not to introduce extra spaces around \ttout{=}. Then try typing
 
 \begin{ttoutenv}
 $ mankyweather
@@ -249,6 +247,9 @@ $ mankyweather
 
 to see the result. Okay, so this probably won't replace your favourite weather webpage or app, but its early days yet! 
 
+\begin{note}
+  Do we want to point out that this alias will disappear
+\end{note}
 
 \section{X Windows and Gnome} 
 
@@ -281,17 +282,21 @@ Take a few minutes to explore the graphical environment. Even if you've never us
 
 \noindent but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have very little important stuff to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit. 
 
-Find out how to:
+Perform the following tasks:
 \begin{enumerate}
-\item Find two ways of starting the Firefox web-browser.
+\item Start the Firefox web-browser using two different mechanisms.
 \item Use Firefox to visit the School UG home page
   \urlnop{studentnet.cs.manchester.ac.uk/ugt/} and make this your
   home page in Firefox.
-\item Work out how to change the desktop theme. 
-\item Find Application Blahdeblah. \ref{thingyblobbs}
-\item Something else, and when you're done with these
-\item Figure out how to log out of the graphical environment.
+\item Work out how to change the desktop theme and choose one you like.
+\item Create a keyboard shortcut for starting Firefox, to provide a third way of starting it.
+%\item Something else, and when you're done with these
+\item Figure out how to log out of the graphical environment.\label{list:logout}
 \end{enumerate}
+
+\begin{note}
+Any more cool things to go here? Next year?  
+\end{note}
 
 \begin{figure}[t]
 \centerline{\includegraphics[width=8cm]{images/mrnoodle}}
@@ -300,12 +305,12 @@ Find out how to:
 
 
 \begin{note}
-Set up keyboard shortcuts
+Set up keyboard shortcuts?? Where should this go?
 \end{note}
 
-If you've completed step 5 you should now be back at the command prompt where you typed `startx' a little while back. Before returning to the graphical environment where you'll spend most of your time, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system. 
+If you've completed step ~\ref{list:logout} you should now be back at the command prompt where you typed `startx' a little while back. Before returning to the graphical environment where you'll spend most of your time, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system. 
 
-If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
+If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} (\cmnd{bash}{bash}}) that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
 
 But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press Enter at a shell prompt, the program that is the shell checks that what you've typed has a valid syntax, and then starts up a new \textit{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of the machine, but rather just out of the graphical environment. 
 
@@ -314,11 +319,11 @@ Now, if you're going to use the graphical environment as your primary interface 
 Type the following:
 
 \begin{ttoutenv}
-$ exec ls
+$ exec man ls
 \end{ttoutenv}
 % $
 
-You should find that the \texttt{ls} command has done exactly what you normally would expect, but that instead of returning you to the command prompt, you've been unceremoniously logged out! Log back in again (sorry about that). 
+You should find that the \texttt{man} command has done exactly what you normally would expect, but that instead of returning you to the command prompt when you exit, you've been unceremoniously logged out! Log back in again (sorry about that). 
 
 The \texttt{exec} command changes the way in which the shell deals with whatever command follows it. Instead of starting a new process in which to run your command and waiting in the background for that command to complete, the shell gives up the process in which it itself is running, and hands it over to the command you've issued. So when that command finishes, there is no shell to come back to. And because in this case the shell was the first program that got run when you logged in, the Unix system logs you out since there's nothing else you can do. 
 
