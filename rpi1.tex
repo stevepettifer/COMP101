@@ -476,7 +476,7 @@ The frotz system on its own is just a virtual machine into which you can load ad
 Although it is actually possible to browse the web in console mode on the Pi (we'll experiment in another lab session because there are interesting lessons to be learned by doing so), there's an easier way to interact with the web to get the file that we need, using a command called \totype{curl}. First, use \totype{cd} to change to your home directory if you're not there already, then
 
 \begin{ttoutenv}
-$ curl http://studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/files/Advent.z5 -o Advent.z5
+$ curl http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5 -o Advent.z5
 \end{ttoutenv} 
 
 \noindent and you'll see \totype{curl} fetch the file you need `over the web' and save it in your home directory. This is also the first time you've encountered what's called a command-line argument \textit{switch}: the \ttout{-o} switch tells \totype{curl} to use the next argument it sees as the output filename. More on switches later. 
@@ -497,7 +497,7 @@ We'll finish this lab session off with one more game.
 
 Use {\tt curl} to fetch the file hosted at
 \\
-\urlnop{studentnet.cs.manchester.ac.uk/ugt/2013/COMP10120/files/quake3.tar.gz}
+\urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/quake3.tar.gz}
 \\
 making sure you save it in your home directory. 
 
