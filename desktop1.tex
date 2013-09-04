@@ -327,11 +327,11 @@ You should find that the \texttt{man} command has done exactly what you normally
 
 The \texttt{exec} command changes the way in which the shell deals with whatever command follows it. Instead of starting a new process in which to run your command and waiting in the background for that command to complete, the shell gives up the process in which it itself is running, and hands it over to the command you've issued. So when that command finishes, there is no shell to come back to. And because in this case the shell was the first program that got run when you logged in, the Unix system logs you out since there's nothing else you can do. 
 
-Experiment by running \texttt{exec startx} and then logging out of the graphical environment as you did a moment ago; this time you should find that you've automatically been logged out of the console too.
+Experiment by running \cmnd{exec}{exec startx} and then logging out of the graphical environment as you did a moment ago; this time you should find that you've automatically been logged out of the console too.
 
 But although that's one step closer to what we want, there's still the issue of having to type \texttt{exec startx} every time you log in. Of course this isn't a huge deal (it's certainly not as annoying as accidentally leaving yourself logged in at a console), but we can do better than this. 
 
-When you first run the bash shell, it looks for a file in your home directory called \texttt{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard. Use the \texttt{ls -a} command to confirm that there's already a file in your home directory called \texttt{.bash\_profile}, and then use \texttt{less} to look at its contents.
+When you first run the bash shell, it looks for a file in your home directory called \fname{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard. Use the \cmnd{ls}{ls -a} command to confirm that there's already a file in your home directory called \fname{.bash\_profile}, and then use \cmnd{less}{less} to look at its contents.
 
 It should look something like this:
 
@@ -350,11 +350,13 @@ PATH=$PATH:$HOME/bin
 export PATH
 \end{ttoutenv}
 
-though don't worry if there are slight differences. We'll come back to what these instructions mean a little later one. For now, fire up the \texttt{nano} editor, and use it to add a new line at the end of your \texttt{.bash\_profile} that reads 
+though don't worry if there are slight differences. We'll come back to what these instructions mean a little later on. For now, fire up the \cmnd{nano}{nano} editor, and use it to add a new line at the end of your \fname{.bash\_profile} that reads 
 
 \begin{ttoutenv}
 exec startx
 \end{ttoutenv}
+
+\textbf{It's really important that you don't put anything else other than \ttout{exec startx} in your \fname{.bash\_profile}, so double-check you've got this right before moving on.}
 
 Now log out (either type \texttt{logout} or press \ctrl{d}), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you select `logout' from the menu, you should be returned to the Linux login prompt. 
 
@@ -372,7 +374,7 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 \label{figure:Xstructure}
 \end{figure}
 
-When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} (in this case, called Gnome) was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming COMP101, and you'll explore the architecture of X Windows in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized. 
+When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming COMP101, and you'll explore the architecture of X Windows in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized (if you've don't know what WIMP means yet, go back and read Breakout \ref{breakout:wimp} from the last lab session). 
 
 \begin{danger}{Killing X}
 You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
@@ -382,17 +384,17 @@ You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the k
 \section{The Awesome Window Manager}
 One of the interesting effects of this architecture is that you can use different window managers on Linux, and can choose the one that best suits the way you work; some people like `rich' environments like Gnome, whereas others like `lean' cut-down window managers. 
 
-To demonstrate this, start a terminal, and use nano to create a file in your home directory called \texttt{.xinitrc}, and in that file put a single line that reads:
+To demonstrate this, start a terminal, and use \cmnd{nano}{nano} to create a file in your home directory called \fname{.Xclients}, and in that file put a single line that reads:
 
 \begin{ttoutenv}
-awesome
+exec awesome
 \end{ttoutenv}
 
-then quit Gnome, and log back in; this time, instead of Gnome (which is set to be the default window manager in the case where you've not told the system otherwise by creating a \fname{.xinitrc} file), you should be given the Awesome window manager.
+then quit Gnome, and log back in; this time, instead of Gnome (which is set to be the default desktop in the case where you've not told the system otherwise by creating a \fname{.Xclients} file), you should be given the Awesome window manager.
 
 Awesome is a very minimalist window manager, probably quite unlike anything you've used before. Most WIMP environments that you'll have used so far make you the user responsible for the position and size/shape of the windows that represent tools and applications on the desktop. The upside of this is that you can arrange things exactly as you like them; the downside is that you probably use up an amount of time doing that arrangement, and often end up with a layout that wastes some of the desktop's usable space. Awesome is what's called a `tiling' window manager; instead of giving you detailed control over the exact shape of windows, it lays them out on the screen in one of several configurations designed to maximise the use of space. Because you can't drag or resize windows with the mouse, there's no need for the usual window decorations, so you save a few pixels this way too. To create a window, use the icon in the top-left of the Awesome desktop. Make a few terminal windows, and then cycle through the different layouts available using the icon in the top right. 
 
-There's no doubt that Awesome is at the hard-core end of the window manager spectrum, and its designed for experienced users that needs very large numbers of windows open at once, probably spread over several physical displays (as in Figure \ref{figure:awesome}). Apart from the `tiling' aspect, it gives you virtually no visual cues as to how perform various actions, most of which are designed to be invoked via keyboard shortcuts (in fact, Awesome is designed so that you can use all of its features without needing to touch the mouse at all.) Once you've remembered all the keyboard combinations, using a window manager like Awesome can be extremely efficient in terms of time and screen-space, but you may find using this at the same time as learning your way around Unix a bit daunting right now, so feel free to swap back to using the rather more friendly environment provided by Gnome. To do this, use one of the terminals to delete the \fname{.xinitrc} file you created a moment ago (the command \ttout{rm .xinitrc} will do this), and quit Awesome using the option available via the top-left menu. Log back in again, and you should have Gnome once more. 
+There's no doubt that Awesome is at the hard-core end of the window manager spectrum, and its designed for experienced users that needs very large numbers of windows open at once, probably spread over several physical displays (as in Figure \ref{figure:awesome}). Apart from the `tiling' aspect, it gives you virtually no visual cues as to how to perform various actions, most of which are designed to be invoked via keyboard shortcuts (in fact, Awesome is designed so that you can use all of its features without needing to touch the mouse at all.) Once you've remembered all the keyboard combinations, using a window manager like Awesome can be extremely efficient in terms of time and screen-space, but you may find using this at the same time as learning your way around Unix a bit daunting right now, so feel free to swap back to using the rather more friendly environment provided by Gnome. To do this, use one of the terminals to remove the \fname{.Xclients} file you created a moment ago (the command \cmnd{rm}{rm .Xclients} will do this), and quit Awesome using the option available via the top-left menu. Log back in again, and you should have Gnome once more. 
 
 \begin{figure}[htb]
   \begin{center}
@@ -414,7 +416,7 @@ Where does backgrounding and nohuping go?
 \end{note}
 
 \begin{note}
-What about virtual consoles? This could be a link to JTL's extended 
+What about virtual consoles? This could be a link to JTL's extended tutorial
 \end{note}
 
 \begin{note}
@@ -423,18 +425,12 @@ Test out which other WMs are installed; can you kill X server from the keyboard?
 
 %\printbibliography
 
-\section{Terminal stuff}
-
-Run some commands in an xterm, including mutt.
-
 
 \section{ARCADE}
 
-We would now like you to register your access to the ARCADE server. ARCADE is the laboratory management system we use to administer coursework marks and deadlines, etc.. You can use the client query program to look up your details, laboratory timetables, marks, and so on, throughout the year. It is recommended you do this fairly regularly, if only to check that mistakes have not been made in your marks! You need to register with ARCADE before any of your lab work can be marked, so it is much better to do it now than wait until your first deadline!
+We would now like you to register your access to the ARCADE server. ARCADE is the laboratory management system we use to administer coursework marks and deadlines, etc.. You can use the client query program to look up your details, laboratory timetables, marks, and so on, throughout the year. It is recommended you do this fairly regularly, if only to check that mistakes have not been made in your marks! You need to register with ARCADE before any of your lab work can be submitted, so it is much better to do it now than wait until your first deadline!
 
 In a terminal window, run the command \ttout{/opt/teaching/bin/arcade}; after a short pause, a new window will pop up. In the large text box you should find a message telling you that you are not yet authenticated, and that you have just been sent an email. If this is so, then quit the program, read the email you have just been sent by the ARCADE server, and carefully follow the instructions in it. Then you will start the ARCADE Query client again, and it should now connect you to the server. If this works, then your access is set up!
-
-Here's a question for you: can you think about how that worked? Something has just happened so that now whenever you run the client, you can access your details, but no-one else's. And others cannot access yours.
 
 Explore the various queries of the client, and familiarise yourself with the the user interface. Check that your registration details are correct. Feel free to ask for explanation if it is not obvious to you.
 
@@ -456,7 +452,7 @@ esac
 
 A great deal of the lab work you will be doing over your time here will involve you creating text files of various kinds, often source files in a programming language such as \ttout{Java}, \ttout{php} or \ttout{C}, or \ttout{HTML} files for use on the web. There are specialist tools called \wikipedia{Integrated_development_environment}{Integrated Development Environments} or \emph{IDE}s that can be used for programming; you will meet these later in your programme. However, for many purposes, the simplest, and best, tool for creating such files is a simple text editor. You have already met one such tool, \ttout{nano}, which is fine for work at the console or quick modifications of existing files, but for more extensive work an editor that takes advantage of  X's graphical capabilities is more appropriate.
 
-The Linux environment in which you will be working offers many such editors, including the default Gnome editor \ttout{gedit}, the KDE editor \ttout{kate} and the grand daddy of all editors, \ttout{emacs} (which is being used to create this section of the notes). These three are illustrated in Figures \ref{fig:gedit} and \ref{fig:texteditors}. They are all shown open on a \ttout{Java} source file; note that they all use the fact that this is \ttout{Java} source to highlight key words within the text. We suggest that when you have some free time you experiment with some of the text editors available and find one that you like; in the meantime we suggest that you use \ttout{gedit}.
+The Linux environment in which you will be working offers many such editors, including the default Gnome editor \ttout{gedit}, the KDE editor \ttout{kate} and the grand daddy of all editors, \ttout{emacs}. These three are illustrated in Figures \ref{fig:gedit} and \ref{fig:texteditors}. They are all shown ready to edit a \ttout{Java} source file; note that they all use the fact that this is \ttout{Java} source to highlight key words within the text. When you have some free time, please do experiment with some of the text editors available and find one that you like; in the meantime you should probably use \ttout{gedit}.
 
 \begin{figure}
   \centering
@@ -499,10 +495,10 @@ This won't have any effect until you logout and login again.
 
 \section{Configuring Thunderbird}
 
-Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thunderbird to read your University email. Start the Thunderbird application (you'll find it in Gnome's Applications menu, and might want to create a keyboard shortcut for it, as well as popping it up on the top panel for easy access next time). 
+Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thunderbird to read your University email. Start the Thunderbird application (you'll find it in Gnome's Applications menu, and might want to create a keyboard shortcut for it, as well as dragging and dropping the icon up on the top panel for easy access next time). 
 \begin{enumerate}
 \item The first time you run Thunderbird, it will ask you to create an account as shown in panel (a). Click the `Skip this and use my existing email' button. 
-\item In dialogue (b) Enter your name as you want it to appear in outgoing emails, your email address (which will be something like firstname.lastname@stud.manchester.ac.uk), and your University password in the appropriate fields.
+\item In dialogue (b) enter your full name (not a nickname), your email address (which will be something like firstname.lastname@student.manchester.ac.uk), and your University password in the appropriate fields. 
 \item Press `Continue', and wait a bit while Thunderbird tries (and fails!) to guess the rest of the settings for you (there's no guessable relationship between your 8-character username and your email address really, so its not hugely surprising that Thunderbird can't figure out the settings automatically). 
 \item When the dialogue window shown in (c) appears you will need to correct some of the settings that Thunderbird has tried to guess. First change the contents of the \ttout{Username} box to your proper username, then change the server settings. The correct values for these are:\\
 \\
@@ -516,7 +512,20 @@ Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thu
 \end{tabular}
 }
 \item If you've entered these correctly, press `Done', and you should be able to send and receive email (if you accidentally press `Re-test' at this stage, Thunderbird will once again fail to guess the settings, and you'll need make a change and then unmake that change in any of the text fields in order for the `Done' button to become active again). 
+
 \end{enumerate}
+
+\begin{note}
+Looks like the last point in the previous points is in small! SRP can't see what the problem is.
+\end{note}
+
+\begin{note}
+REMEMBER WE MUST FIND OUT HOW TO DISABLE DOWNLOAD/CACHING OF EMAILS
+\end{note}
+
+\begin{note}
+Might be worth making the figure into 3 or 4 separate things to allow them to be bigger
+\end{note}
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=17cm]{images/thunderbird-instructions}}
