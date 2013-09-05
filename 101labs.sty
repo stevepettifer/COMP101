@@ -59,20 +59,41 @@
 \newcommand{\fname}[1]{\texttt{\small #1}}
 \newcommand{\concept}[1]{\textbf{#1}}
 
+\newcommand{\mkcmdanchor}[2]{\expandafter\def\csname #1@anchor\endcsname {#2\##1}}
+
+\newcommand{\cmdanchor}[1]{\csname #1@anchor\endcsname}
+
+\newcommand{\cmddoclink}[1]{\ifcsname #1@anchor\endcsname%
+  {http://en.wikibooks.org/wiki/Guide_to_Unix/Commands/\cmdanchor{#1}}%
+  \else%
+  {http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}\fi}
+
 \newcommand{\cmnd}[2]{\texttt{\small #2}%
   \ifcsname @cmd#1\endcsname \relax \else %
-  \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog} \raisebox{0.45cm}{\texttt{\textbf{#1}}}}}%
+  \marginnote{\href{\expandafter\cmddoclink{#1}}{\includegraphics[width=1cm]{images/cog} \raisebox{0.45cm}{\texttt{\textbf{#1}}}}}%
   \expandafter\def\csname @cmd#1\endcsname{aa}
   \fi
+  \message{COMMAND: #1^^J}
   }
 
 \newcommand{\cmndx}[2]{\texttt{\small #2}%
-  \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog}}\raisebox{0.45cm}{\texttt{\textbf{#1}}}}%
+  \marginnote{\href{\expandafter\cmddoclink{#1}}{\includegraphics[width=1cm]{images/cog}}\raisebox{0.45cm}{\texttt{\textbf{#1}}}}
   \expandafter\def\csname @cmd#1\endcsname{aa}
-  }
+}
+% \newcommand{\cmnd}[2]{\texttt{\small #2}%
+%   \ifcsname @cmd#1\endcsname \relax \else %
+%   \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog} \raisebox{0.45cm}{\texttt{\textbf{#1}}}}}%
+%   \expandafter\def\csname @cmd#1\endcsname{aa}
+%   \fi
+%   }
 
-\newcommand{\cmndn}[2]{\texttt{\small #2}%
-  }
+% \newcommand{\cmndx}[2]{\texttt{\small #2}%
+%   \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog}}\raisebox{0.45cm}{\texttt{\textbf{#1}}}}%
+%   \expandafter\def\csname @cmd#1\endcsname{aa}
+%   }
+
+% \newcommand{\cmndn}[2]{\texttt{\small #2}%
+%   }
 
 
 
