@@ -55,14 +55,23 @@ The ARM processor, on which the Pi and the vast majority of the world's other mo
 \caption{A naked Raspberry Pi. The circle indicates the location of the bevelled corner to orient the card. The ports are numbered as in Figure~\ref{figure:bare-rpi}, and in addition \protect\circled{4} shows the location of the SD (Secure Digital) memory card. The red circle indicates the locating bevel on the card.}\label{figure:bare-rpi-underside}
 \end{figure}
 
-It's important that you connect the Pi up in exactly the order specified here---so even if you are familiar with using a Pi, please don't jump ahead and plug everything in at once (no harm will come to the Pi if you do, but this exercise relies on your following our instructions closely). The monitors in the LF31 Lab are all fitted with an extra video lead for connecting up the Pis. Locate the HDMI lead, and plug this into the socket marked \circled{1} on Figure~\ref{figure:bare-rpi}. Next we'll need to connect a keyboard. Follow the cable that comes out the back of the keyboard towards where it vanishes into the desk, and you'll see an inline USB connector that will allow you to unplug the keyboard from the desktop PC and into one of the two USB sockets on your Pi; these are marked with \circled{2} on the Figure. It doesn't matter which USB socket you choose, but please make sure to reconnect this to the PC when you're done with these experiments, just as a courtesy to the next user. 
+It's important that you connect the Pi up in exactly the order specified here---so even if you are familiar with using a Pi, please don't jump ahead and plug everything in at once (no harm will come to the Pi if you do, but this exercise relies on your following our instructions closely). Refer to Figure \ref{figure:cables}, and then connect your Pi up like this:
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/cables}}
+\caption{The following cables are available to connect up your Pi. \protect\circled{1} HDMI, \protect\circled{2} Keyboard and Mouse, \protect\circled{3} 5 Volt Micro USB power supply, and \protect\circled{4} network.}\label{figure:cables}
+\end{figure}
+
+
+\begin{itemize}
+\item The monitors in the LF31 Lab are all fitted with an extra video lead for connecting up the Pis. Locate the HDMI lead (labelled \protect\circled{1} in Figure \ref{figure:cables}), and plug this into the socket marked \circled{1} on Figure~\ref{figure:bare-rpi}. 
+\item Next we'll need to connect a keyboard and mouse. Separate the male and female USB connectors marked \protect\circled{2} on Figure \ref{figure:cables}, and connect plug the male end into one of the two USB sockets on your Pi (marked with \protect\circled{2} on the Figure~\ref{figure:bare-pi}). It doesn't matter which USB socket you choose, but please make sure to reconnect this to the PC when you're done with these experiments as a courtesy to the next user. 
+\item \textbf{Do not connect the power or network connectors at this stage!}
+\end{itemize}
 
 Next, we need to insert the \wikipedia{Secure_Digital}{Secure Digital} (SD) card that contains the Pi's operating system, and on which you'll be storing your own files. Look at Figure ~\ref{figure:bare-rpi-underside}, make sure the SD card is orientated correctly (note the position of the little cut corner) and gently push it into the socket; around half of the card will remain protruding outside the case. \textbf{Don't} plug a mouse in at this stage; you won't need it until the very last part of the exercise.
 
 
-\begin{note}
-This is currently not consistent with the actual cable setup. Needs tidying and a photo
-\end{note}
 
 \begin{rpi}{Raspbian}
   The SD card we've provided for you has already had the standard Raspbian version of Linux written onto it (it's a version of the Debian release of Linux, tuned for the Pi). If you do manage to corrupt the operating system, or just want to start from scratch, then re-writing the SD card with a fresh image is reasonably straightforward: there are plenty of instructions online on how to do this, and we've provided you with a USB multi-card reader/writer that you can use for the job. The process does require access to what's called the `raw' device though, and on Linux that requires administrator access to the machine, so you'll have to use your home machine or someone else's Raspberry Pi to do this.
@@ -70,7 +79,7 @@ This is currently not consistent with the actual cable setup. Needs tidying and 
   Instructions on how to get hold of the files you'll need, and how to write them to the SD card on various operating systems are available at \urlnop{www.raspberrypi.org/downloads}. You might want to think about getting a larger SD card in any case; the one we've given you is fine for the labwork we've set, but probably a bit on the small side for anything else. SD cards are widely available in shops and online, and aren't expensive. But you should check whether the specific card you're going to buy is compatible with the Pi before parting with any money---differences in the read/write speeds of some cards mean they don't play nicely with the Pi.
 \end{rpi}
 
-Now you're ready to power up the Pi. From the back of the monitor you'll notice a Micro USB cable (the same connector that you'll find on many modern smartphones and tablet devices). This goes into the socket marked \circled{3} on Figure \ref{figure:bare-rpi}. There is no power switch on the Pi, so as soon as the power cable goes in, it will start to boot (this strange term is explained in breakout box~\ref{bootbox}): the red PWR LED should light up and stay on, and you'll also notice that the OK LED (which indicates SD-card activity) to its left also flickers. If any of the other three LEDs marked FDX, LNK, or 10M are lit, then that means you've already plugged a network cable into your Pi, in which case please unplug that now!
+Now you're ready to power up the Pi. Locate the 5v Micro USB cable (the same connector that you'll find on many modern smartphones and tablet devices); this is labelled \protect\circled{3} on Figure~\ref{figure:cables}. This goes into the socket marked \circled{3} on Figure \ref{figure:bare-rpi}. There is no power switch on the Pi, so as soon as the power cable goes in, it will start to boot (this strange term is explained in breakout box~\ref{bootbox}): the red PWR LED should light up and stay on, and you'll also notice that the OK LED (which indicates SD-card activity) to its left also flickers. If any of the other three LEDs marked FDX, LNK, or 10M are lit, then that means you've already plugged a network cable into your Pi, in which case please unplug that now!
 
 \begin{danger}{Pi Power} 
 Like most other computers, the Pi doesn't like having its power removed without being shut down properly. Although you might get away with it, there's a reasonable chance of messing up the operating system if you remove the power while the Pi is in the middle of doing something. And because the Pi runs a multi-tasking operating system, it's almost always `doing something', so pulling the power out unexpectedly is always a bad idea. You're unlikely to damage the Pi's hardware like this, but you may find that you lose work, and may have to reinstall the operating system. For instructions on how to shut the Pi down safely, see Section \ref{section:shutdown}.
@@ -134,6 +143,7 @@ The last line of this text (which is shown in bold here but will be green and bl
 
 
 \begin{diversion}{Don't be a WIMP}
+\label{breakout:wimp}
 The familiar Windows, Icons, Menus and Pointer (WIMP) paradigm used on most graphical desktop environments is enormously powerful, but it's not suitable for every task, and understanding when you're better off using the command-line or a keyboard shortcut instead will make you a lot more efficient.
 
 Sometimes the clumsiness of the GUI comes from the fact that there's no convenient visual metaphor for a particular action; how do you graphically represent the concept of `rename all the files I created yesterday so they start with a capital letter'? 
@@ -198,7 +208,7 @@ Are you sure you know what your password is? If so then type \cmnd{logout}{logou
 Although the Pi uses a fairly standard Unix operating system, it's probably not quite as secure as a normal desktop machine because of its small size and easily-removable storage media. Once the Pi has booted from the SD card, it's about as secure as any other Linux machine. But because the memory card is easily removable, it can trivially be connected to another machine as a `removable media' device; and at that point the host machine can almost certainly see its contents, including any of the files you've created, because the filesystem itself isn't encrypted. And because the Pi is small and portable, it's easier to lose it than a laptop or desktop machine; so, be careful!
 \end{danger}
 
-Now that your password isn't the same as the `out of the box' Pi one, it's safe to plug your Pi into the network. There's a spare blue ethernet cable poking out of the desk; plug that into the appropriate socket on your Pi (number \circled{8} on Figure~\ref{figure:bare-rpi}) and you should see the FDX, LNK and 10M LEDs light up. To confirm that you're now connected to the network, use the \cmnd{ping}{ping} command, which sends a low-level network message to a designated place and checks for a response, to see if you can reach our School's web server. 
+Now that your password isn't the same as the `out of the box' Pi one, it's safe to plug your Pi into the network. Locate the blue ethernet cable poking out of the desk (labelled \protect\circled{4} on Figure~\ref{figure:cables}); plug that into the appropriate socket on your Pi (number \circled{8} on Figure~\ref{figure:bare-rpi}) and you should see the FDX, LNK and 10M LEDs light up. To confirm that you're now connected to the network, use the \cmnd{ping}{ping} command, which sends a low-level network message to a designated place and checks for a response, to see if you can reach our School's web server. 
 
 \begin{ttoutenv} 
 $ ping www.cs.manchester.ac.uk
@@ -210,7 +220,7 @@ PING waldorf.cs.manchester.ac.uk (130.88.194.191): 56 data bytes
 
 % $
 
-Each of the lines starting with `\ttout{64 bytes}' represents a short response from the machine you've just pinged, and you're shown the round-trip time for ping's data to leave your Pi, find (in this case) \url{www.cs.manchester.ac.uk} on the network, and return back to your Pi. Since we're just using ping here to give us some confidence that the network is okay, we don't need to leave it pinging away for ages, so let's stop the ping command in its tracks. Hold down the control key (marked `ctrl' on the keyboard), and press `c'. This will signal the currently executing command that it should stop what its doing and return to the command prompt (quite often this is referred to as ``control-c'ing'' a command, and it will have the same effect on the majority of command-line tools).
+Each of the lines starting with `\ttout{64 bytes}' represents a short response from the machine you've just pinged, and you're shown the round-trip time for ping's data to leave your Pi, find (in this case) \url{www.cs.manchester.ac.uk} on the network, and return back to your Pi. Since we're just using ping here to give us some confidence that the network is okay, we don't need to leave it pinging away for ages, so let's stop the ping command in its tracks. Hold down the control key (marked `ctrl' on the keyboard), and press `c'. This will signal the currently executing command that it should stop what its doing and return to the command prompt (quite often this is referred to as ``control-c'ing'' a command, and it will have the same effect on the majority of command-line tools). This process is often written \ctrl{c}. \textbf{If you see this notation in these notes, don't type the individual characters, press the key marked ctrl and the appropriate letter key}. 
 
 \begin{diversion}{Ping}
   The \cmnd{ping}{ping} command is named after its use in the field of active sonar, where an actual `ping' sound was sent through water, and distance calculated by listening for the echo to return. It's the classic boingy pingy noise associated with submarine movies! 
@@ -260,8 +270,8 @@ When the shell's started up a process to run your command, the new process (the 
 Unix has many shells: the first shell was called the `Thompson' shell (also known as just `sh', and pronounced ``shell''), written by Ken Thompson for the first Unix system; then came the `Bourne' shell (also called `sh'), written for a later commercial version of Unix by Stephen Bourne. You have just been using the Free Software Foundation's `Bourne Again' shell (a pun-name taking a dig at its commercial fore-runner), or `bash'. The various different shells offer the user different facilities: `sh' is rather
 primitive compared to the more modern ones. However, their basic
 functionality is always the same: they accept commands from the
-\textbf{standard input} (for now, we can treat that as meaning `the keyboard'), execute them, and display
-the results on the \textbf{standard output} (i.e. for now `the screen', which in
+\concept{standard input} (for now, we can treat that as meaning `the keyboard'), execute them, and display
+the results on the \concept{standard output} (i.e. for now `the screen', which in
 this case was the entire screen, or \textbf{console}). Shells repeat
 this process until they have reached the end of their input, and then
 they die. Unix shells are rather like \textbf{Command Prompt} windows in Microsoft
