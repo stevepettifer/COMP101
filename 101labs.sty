@@ -21,9 +21,13 @@
 \usepackage{placeins}
 \usepackage{tikz}
 
+\usepackage{etoolbox}
+
 \usepackage{caption}
 \DeclareCaptionFont{capgrey}{\color{capgrey}}
 \captionsetup[figure]{labelfont={capgrey,bf},width=0.9\textwidth,textfont={capgrey,sf},size=small,skip=2pt}
+
+\usepackage{marginnote}
 
 \usepackage{subcaption}
 
@@ -31,9 +35,6 @@
 \newboolean{@shownotes}
 \setboolean{@shownotes}{false}
 
-
-\usepackage{hyperref}
-\newcommand{\urlnop}[1]{\href{http://#1}{\texttt{#1}}}
 
 \usepackage[
     backend=biber,
@@ -45,14 +46,35 @@
 ]{biblatex}
 \setlength\bibitemsep{1.5\itemsep}
 
+\usepackage{hyperref}
+
+\newcommand{\urlnop}[1]{\href{http://#1}{\texttt{#1}}}
+
 \newenvironment{ttoutenv}{\begin{alltt}\small}{\end{alltt}}
 
 \newcommand{\totype}[1]{\texttt{\small #1}}
 
 \newcommand{\ttout}[1]{\texttt{\small #1}}
-\newcommand{\cmnd}[2]{\texttt{\small #2}}
+%\newcommand{\cmnd}[2]{\texttt{\small #2}}
 \newcommand{\fname}[1]{\texttt{\small #1}}
 \newcommand{\concept}[1]{\textbf{#1}}
+
+\newcommand{\cmnd}[2]{\texttt{\small #2}%
+  \ifcsname @cmd#1\endcsname \relax \else %
+  \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog} \raisebox{0.45cm}{\texttt{\textbf{#1}}}}}%
+  \expandafter\def\csname @cmd#1\endcsname{aa}
+  \fi
+  }
+
+\newcommand{\cmndx}[2]{\texttt{\small #2}%
+  \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog}}\raisebox{0.45cm}{\texttt{\textbf{#1}}}}%
+  \expandafter\def\csname @cmd#1\endcsname{aa}
+  }
+
+\newcommand{\cmndn}[2]{\texttt{\small #2}%
+  }
+
+
 
 \lstset{
   language=bash,

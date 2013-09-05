@@ -223,7 +223,7 @@ PING waldorf.cs.manchester.ac.uk (130.88.194.191): 56 data bytes
 Each of the lines starting with `\ttout{64 bytes}' represents a short response from the machine you've just pinged, and you're shown the round-trip time for ping's data to leave your Pi, find (in this case) \url{www.cs.manchester.ac.uk} on the network, and return back to your Pi. Since we're just using ping here to give us some confidence that the network is okay, we don't need to leave it pinging away for ages, so let's stop the ping command in its tracks. Hold down the control key (marked `ctrl' on the keyboard), and press `c'. This will signal the currently executing command that it should stop what its doing and return to the command prompt (quite often this is referred to as ``control-c'ing'' a command, and it will have the same effect on the majority of command-line tools). This process is often written \ctrl{c}. \textbf{If you see this notation in these notes, don't type the individual characters, press the key marked ctrl and the appropriate letter key}. 
 
 \begin{diversion}{Ping}
-  The \cmnd{ping}{ping} command is named after its use in the field of active sonar, where an actual `ping' sound was sent through water, and distance calculated by listening for the echo to return. It's the classic boingy pingy noise associated with submarine movies! 
+  The \ttout{ping} command is named after its use in the field of active sonar, where an actual `ping' sound was sent through water, and distance calculated by listening for the echo to return. It's the classic boingy pingy noise associated with submarine movies! 
 \end{diversion}
 
 \section{Processes and the Unix Shell}
@@ -349,7 +349,8 @@ One really important, and slightly strange thing to get used to, though, is that
 Apart from \fname{/} there are two more directories of special note:
 \begin{itemize}
 \item Your \textit{home directory} is the directory where you find yourself when you log in. It might be tempting to think of this as being the `top' of the tree (and for every-day purposes thinking this way is probably okay), but in reality your home directory is probably one or more levels away from the root of the file system. We'll find out where this is on the Pi shortly. 
-\item Your \textit{current working directory} is the one you are working in at a particular moment. \end{itemize}
+\item Your \textit{current working directory} is the one you are working in at a particular moment.
+\end{itemize}
 
 So let's see where we are in the Pi's filesystem at the moment. Assuming you're following these instructions properly you should still be in the \fname{python\_games} directory (check the command prompt to confirm this is the case). To go back to our home directory, we can use the \cmnd{cd}{cd} command without any arguments:
 \begin{ttoutenv}
