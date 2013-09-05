@@ -356,7 +356,7 @@ though don't worry if there are slight differences. We'll come back to what thes
 exec startx
 \end{ttoutenv}
 
-\textbf{It's really important that you don't put anything else other than \ttout{exec startx} in your \fname{.bash\_profile}, so double-check you've got this right before moving on.}
+\textbf{It's really important that you don't put anything other than \ttout{exec startx} in your \fname{.bash\_profile}, so double-check you've got this right before moving on.}
 
 Now log out (either type \texttt{logout} or press \ctrl{d}), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you select `logout' from the menu, you should be returned to the Linux login prompt. 
 
@@ -476,7 +476,9 @@ The Linux environment in which you will be working offers many such editors, inc
   
 \end{figure}
 
-When you started the  ARCADE client earlier, you had to type its full pathname \fname{/opt/teaching/bin/arcade}. \fname{/opt/teaching/bin} is a directory in which we keep lots of useful teaching related tools, so it would be useful if you didn't have to type it every time you want to use a utility from there. When you type a command on the command line, Linux looks for a program of that name in a number of places. These places are determined by the value of a variable called \ttout{PATH}. You can see what it's current value is by using the command
+\section{Shell environment variables}
+
+When you started the  ARCADE client earlier, you couldn't just type \ttout{arcade}, but had to type its full pathname, \fname{/opt/teaching/bin/arcade}. The directory \fname{/opt/teaching/bin} is a place where we keep lots of useful teaching related tools, so it would be useful if you didn't have to type it every time you want to use a utility from there; luckily there's a way of doing this. When you type a command on the command line, the shell looks for a program of that name in a number of places. These places are determined by the value of a shell \wikipedia{Environment_variable}{environment variable} called \ttout{PATH}. You can see what its current value is by using the command
 
 \begin{ttoutenv}
   $ echo $PATH
@@ -484,14 +486,42 @@ When you started the  ARCADE client earlier, you had to type its full pathname \
 
 This will show a long list of directories, separated by \ttout{:}s.
 
-which can be modified in your \fname{.bash\_profile} file. Now use \ttout{gedit} to modify this file by adding the following line at the end of the file
+There are many other shell variables already set for you, they can be seen by running the shell command \cmndn{set}{set}. How do you stop the output scrolling off the screen? Most of these variables won't make much sense to you at the moment, but among them are \ttout{HOME}, \ttout{PWD} and \ttout{HOSTNAME}; you can check their values using \cmnd{echo}{echo}. What do think their values represent?
+
+You can set the value of a shell variable at the command line, for example:
+
+\begin{ttoutenv}
+  $ MYVAR=42
+  $ echo $MYVAR
+\end{ttoutenv}
+% $
+
+Note that they should be no spaces either side of the \ttout{=} sign and that the variable's name is \ttout{MYVAR} and its value is given by \verb+$MYVAR+. If a variable is given a value on the command line in a terminal window like this its value is only available in the shell running in that window.
+
+In order for use to able to start the ARCADE client by typing \ttout{arcade} rather than the full pathname \ttout{/opt/teaching/bin/arcade} we need to modify the \ttout{PATH} variable to include the directory \fname{/opt/teaching/bin}. We can do this on the command line by typing
+
+\begin{ttoutenv}
+  $ PATH=$PATH:/opt/teaching/bin
+\end{ttoutenv}
+
+This can be read (and you will see this over and over again in programming languages) as 'Evaluate what is on the right had side of the \ttout{=} and give the variable on the left hand side that value'. So this takes the current value of \ttout{PATH} and adds \ttout{:/opt/teaching/bin} on the end. After you've done this you can type \ttout{arcade} in your terminal window and the ARCADE client should start. Just exit it cleanly and return to the shell.
+
+\begin{note}
+  Background jobs? Where do these go? desktop2?
+\end{note}
+
+If you now start another terminal window and type \ttout{arcade}, what happens?
+
+The way to make the change permanent is to modify your  \fname{.bash\_profile} file. Use \ttout{gedit} to modify this file by adding the following line at the end of the file
 
 \begin{ttoutenv}
   PATH=$PATH:/opt/teaching/bin
 \end{ttoutenv}
 % $
 
-This won't have any effect until you logout and login again.
+This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}.
+
+We now move onto configuring a mail client for you to use.
 
 \section{Configuring Thunderbird}
 
@@ -536,6 +566,10 @@ Once your Inbox appears in Thunderbird, using it to compose and send email shoul
 
 
 \section{Exploring the CS Unix environment -- which RPMs are installed}
+
+\begin{note}
+  Do we need this? Could it go in desktop2?
+\end{note}
 
 
 
