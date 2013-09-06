@@ -1,5 +1,7 @@
 \chapter{Using the Linux desktop in CS}
+
 \minitoc
+
 \notesurl{desktop1}
 
 Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
@@ -95,7 +97,7 @@ set editor = "nano"
 SORT IMAP SETTINGS, maybe use a shell pattern
 \end{note}
 
-The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of less's features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less} to display the manual pages.
+The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of less's features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less}{less} to display the manual pages.
 
 \begin{linux}{Spaced out filenames}
 Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
