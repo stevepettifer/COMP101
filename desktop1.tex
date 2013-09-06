@@ -1,5 +1,5 @@
 \chapter{Using the Linux desktop in CS}
-
+\minitoc
 \notesurl{desktop1}
 
 Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
@@ -7,10 +7,6 @@ Today we're going to explore some of the features of Unix in a bit more depth, t
 \section{Reading email at the console}
 
 You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
-
-\begin{note}
-How do we tell them what the rebooting instructions are? This probably goes in welcome
-\end{note}
 
 First, let's confirm that \cmnd{mutt}{Mutt} is actually installed. Make sure the desktop PC is booted into Linux, and log in using your University username and password (not the username and password you used on the Pi). You should be greeted with a similar command prompt to the one you saw in the previous lab.
 
@@ -166,21 +162,21 @@ It should be reasonably clear how you use \cmnd{mutt}{mutt} to send and receive 
 
 Although you will have experienced The Web so far as a highly graphical system, the technology that underpins it is for the most part text-based, and it is (just about!) possible to browse web pages using a console-mode application. It might seem like an odd thing to do, but there's an important point to be made here, so bear with us.
 
-%and install the \ttout{lynx} package using \ttout{apt-get} (remembering you'll need also to use \ttout{sudo} to get root %privileges). 
+%and install the \cmnd{lynx}{lynx} package using \ttout{apt-get} (remembering you'll need also to use \ttout{sudo} to get root %privileges). 
 
 %Once the package is installed
 
-Try browsing the School's web pages using \ttout{lynx} by typing
+Try browsing the School's web pages using \cmnd{lynx}{lynx} by typing
 
 \begin{ttoutenv}
 $ lynx http://studentnet.cs.manchester.ac.uk
 \end{ttoutenv}
 
-Rather like \ttout{mutt}, the \ttout{lynx} program has just about enough on-screen help for you to be able to browse around a little without any additional instructions from us.  You may find that when you follow some links, nothing very much appears to have happened; but scroll further down the page and you'll see the content that you're looking for.
+Rather like \cmnd{mutt}{mutt}, the \cmnd{lynx}{lynx} program has just about enough on-screen help for you to be able to browse around a little without any additional instructions from us.  You may find that when you follow some links, nothing very much appears to have happened; but scroll further down the page and you'll see the content that you're looking for.
 
-You'll probably find using \ttout{lynx} an unsatisfying experience: tolerable, and probably okay in an emergency, but not how you'd ideally like to browse the web. And you might be wondering why we've even bothered to get you to try viewing the web through a text-only interface. Apart from the absence of images and videos etc., the main difference between using something like \ttout{lynx} and a regular browser such as Chrome, Firefox, Safari or Internet Explorer, is that you'll notice that web pages have been made into much more linear affairs than when they are rendered in a graphical environment. While you might expect to see the navigation links neatly arranged on the left or top of the page with the main content prominently displayed in the centre, seen through a purely textual interface it's all one big stream of stuff, and its very hard to distinguish between the navigation links and the main content. 
+You'll probably find using \cmnd{lynx}{lynx} an unsatisfying experience: tolerable, and probably okay in an emergency, but not how you'd ideally like to browse the web. And you might be wondering why we've even bothered to get you to try viewing the web through a text-only interface. Apart from the absence of images and videos etc., the main difference between using something like \cmnd{lynx}{lynx} and a regular browser such as Chrome, Firefox, Safari or Internet Explorer, is that you'll notice that web pages have been made into much more linear affairs than when they are rendered in a graphical environment. While you might expect to see the navigation links neatly arranged on the left or top of the page with the main content prominently displayed in the centre, seen through a purely textual interface it's all one big stream of stuff, and its very hard to distinguish between the navigation links and the main content. 
 
-Now consider what the web `looks' like if you are visually impaired or blind and have to use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \ttout{lynx}. 
+Now consider what the web `looks' like if you are visually impaired or blind and have to use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \cmnd{lynx}{lynx}. 
 
 You'll soon be designing your own web-based systems as part of the Group Project in this course unit; making them accessible to visually impaired readers is something you should keep in mind. Try using \cmnd{lynx}{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
 
@@ -188,14 +184,14 @@ You'll soon be designing your own web-based systems as part of the Group Project
 
 One of the fundamental philosophies of Unix---and one that is a sensible philosophy when you're building any computer system really---is that the operating system is composed from lots of simple sub-systems, each of which performs one clearly defined task. To do something more complex than any of the individual tools allows you to do on its own, you are expected to combine components yourself. At the command line, Unix makes this quite simple, so let's give it a go. 
 
-First, use lynx to look at the BBC's weather page at \urlnop{www.bbc.co.uk/weather} and have a quick browse around to get familiar with what it looks like. Then quit \ttout{lynx} and get back to the command prompt before typing:
+First, use lynx to look at the BBC's weather page at \urlnop{www.bbc.co.uk/weather} and have a quick browse around to get familiar with what it looks like. Then quit \cmnd{lynx}{lynx} and get back to the command prompt before typing:
 
 Type:
 \begin{ttoutenv}
 $ lynx -dump http://www.bbc.co.uk/weather
 \end{ttoutenv}
 
-Note the addition of the \ttout{-dump} argument before the URL this time. Instead of running as an interactive browser, \ttout{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through \ttout{lynx}'s output in a more controlled manner. Type:
+Note the addition of the \ttout{-dump} argument before the URL this time. Instead of running as an interactive browser, \cmnd{lynx}{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through \cmnd{lynx}{lynx}'s output in a more controlled manner. Type:
 
 \begin{ttoutenv}
 $ lynx -dump http://www.bbc.co.uk/weather | less
@@ -215,7 +211,7 @@ Instead of joining commands together, you can use the idea of manipulating stand
 $ lynx -dump http://www.bbc.co.uk/weather > weather.txt
 \end{ttoutenv}
 
-and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol redirects the standard out of the \ttout{lynx} command so that instead of going to the console display it gets put into a named file. 
+and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol redirects the standard out of the \cmnd{lynx}{lynx} command so that instead of going to the console display it gets put into a named file. 
 
 To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!) 
 
