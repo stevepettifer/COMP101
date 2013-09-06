@@ -69,7 +69,7 @@
   {http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}\fi}
 
 \newcommand{\cmnd}[2]{\texttt{\small #2}%
-  \ifcsname @cmd#1\endcsname \relax \else %
+  \ifcsname @cmd#1\endcsname\relax\else %
   \marginnote{\href{\expandafter\cmddoclink{#1}}{\includegraphics[width=1cm]{images/cog} \raisebox{0.45cm}{\texttt{\textbf{#1}}}}}%
   \expandafter\def\csname @cmd#1\endcsname{aa}
   \fi
@@ -138,6 +138,7 @@
 \newcommand{\ctrl}[1]{$<$ctrl$>$+#1}
 
 \usepackage{minitoc}
+
 \usepackage{comment}
 
 \excludecomment{note}
