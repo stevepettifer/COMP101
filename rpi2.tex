@@ -1,8 +1,8 @@
 \chapter{Pi power}
-
+\minitoc
 \notesurl{rpi2}
 
-So far you've used your Pi and a lab machine separately, and hopefully you've come to understand that they are both essentially the same kind of machine; they both run variations of the same operating system, and the principles you learn using one for the most part apply to the other. In the case of the Pi, you have complete control of the device as a super user, so can do absolutely what you like to it; in the case of the lab machines you have access to much more powerful hardware, but more restricted access to the filestore and operating system for reasons of security and privacy. 
+So far you've used your Pi and the lab PCs separately, and hopefully you've come to understand that they are both essentially the same kind of machine; they both run variations of the same operating system, and the principles you learn using one for the most part apply to the other. In the case of the Pi, you have complete control of the device as a superuser, so can do absolutely what you like to it; in the case of the lab machines you have access to much more powerful hardware, but more restricted access to the filestore and operating system for reasons of security and privacy. 
 
 Today, we'll be getting your Pi and a desktop PC to communicate with one another, to reinforce the similarities between these setups, and to expose you to some of the principles of networking and remote access. 
 
@@ -18,9 +18,9 @@ to start up X Windows and the Pi's default window manager, LXDE, which which app
 
 LXDE (the `Lightweight X11 Desktop Environment') is designed to be a lean, fast desktop environment, which makes it ideally suited for the Pi's modest CPU. Although rather less rich in features and `eyecandy' than Gnome, LXDE is a fully functioning environment that has all the features you will need for operating and programming the Pi. 
 
-Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do. On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
+Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do (though remember--it's just going to log you out of the windowing environment, and not log your user out of console mode; we explained how you could do that using \cmnd{exec}{exec} in the previous lab session). On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
 
-Spend a few minutes exploring the GUI. You'll almost certainly find that you're double-clicking on things that only need a single click, and vice versa, and may find that things aren't quite where you expect them to be---but rather than dismissing LXDE as being crude, embrace the differences; you may well find that you come to prefer its `no frills' approach to window management over that of richer, heavier-weight environments such as Gnome. LXDE and other slimmed-down graphical environments consume considerably fewer CPU cycles and hence less power than their richer counterparts, and while this isn't an issue when you're running on a mains-powered desktop machine with a beefy graphics card such as the lab machines, this can be a serious issue for devices running off batteries. 
+Spend a few minutes exploring the GUI. You'll may find that you're double-clicking on things that only need a single click, and vice versa, and may find that things aren't quite where you expect them to be---but rather than dismissing LXDE as being crude, embrace the differences; you may well find that you come to prefer its `no frills' approach to window management over that of richer, heavier-weight environments such as Gnome. LXDE and other slimmed-down graphical environments consume considerably fewer CPU cycles and hence less power than their richer counterparts, and while this isn't an issue when you're running on a mains-powered desktop machine with a reasonably beefy graphics card such as the lab PC, this can be a serious issue for devices running off batteries. 
 
 \begin{figure}
 \centerline{\includegraphics[width=14cm]{images/lxde-desktop}}
@@ -37,7 +37,12 @@ $ sudo apt-get install mutt
 
 Once the install has completed, you'll need to adjust Mutt's settings so that they once again point at your University email account. You could do this by following the instructions in the previous sessions's script again, but there's a much easier way: let's just copy the configuration file you created on the desktop PC last time, over to the Pi. 
 
-First you need to check that you still have the \ttout{.muttrc} configuration file in your home filestore of your Computer Science network account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that -- you can check remotely. 
+First you need to check that you still have the \ttout{.muttrc} configuration file in your home filestore of your Computer Science network account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that--you can check remotely. 
+
+
+\begin{note}
+Picture of the hostname sticker, and update this with new new hostname style
+\end{note}
 
 So, find the hostname of the lab PC on your desk; there are several ways to do this:
 
@@ -50,10 +55,10 @@ So, find the hostname of the lab PC on your desk; there are several ways to do t
 In the terminal window on the Pi, issue this command:
 
 \begin{ttoutenv}
-$ ssh USERNAME@HOSTNAME.cs.man.ac.uk
+$ ssh [USERNAME]@[HOSTNAME].cs.man.ac.uk
 \end{ttoutenv}
 
-obviously replacing USERNAME with your University username, and HOSTNAME with the name of the PC in front of you. You'll need to enter your university password, and will most likely be presented with text something similar to this:
+obviously replacing [USERNAME] with your University username, and [HOSTNAME] with the name of the PC in front of you. You'll need to enter your University password, and will most likely be presented with text something similar to this:
 
 \begin{ttoutenv}
 The authenticity of host 'lf012 (130.88.197.112)' can't be established.
@@ -61,63 +66,67 @@ RSA key fingerprint is 20:6d:2d:90:5e:8f:9f:19:39:70:ce:48:a6:93:ec:4c.
 Are you sure you want to continue connecting (yes/no)? 
 \end{ttoutenv}
 
-Type \ttout{yes} (and hit return) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in COMP18112\ref{securityguffs}, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. The \ttout{ssh} command stands for `Secure Shell', and allows you to issue instructions to a remote machine as though you had logged in at that machine's console. 
+Type \ttout{yes} (and hit enter) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in COMP18112\ref{securityguffs}, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. The \cmnd{ssh}{ssh} command stands for `Secure Shell', and allows you to issue instructions to a remote machine as though you had logged in at that machine's console. 
 
-Type \ttout{ls -a} to confirm that your \fname{.muttrc} file is still where you expect it to be, and if all is well then press Ctrl+D to log out of the remote shell you just started, and you will return to the shell running locally on your Pi (you'll see the command prompt change back to being `pi' again). Now we know the file we want is there, we need to copy it from your Computer Science filestore onto your Pi's local filestore.
+Type \cmnd{ls}{ls -a} to confirm that your \fname{.muttrc} file is still where you expect it to be, and if all is well then press \ctrl{D} to log out of the remote shell you just started, and you will return to the shell running locally on your Pi (you'll see the command prompt change back to being `pi' again). Now we know the file we want is there, we need to copy it from your Computer Science filestore onto your Pi's local filestore.
 
-To do this, we're going to use the \ttout{scp} (Secure Copy) command, which in some ways behaves like \ttout{cp}, but allows us to move files \textit{between machines}. 
+To do this, we're going to use the \cmnd{scp}{scp} (Secure Copy) command, which in some ways behaves like \cmnd{cp}{cp}, but allows us to move files \textit{between machines}. 
 
-Like \ttout{cp}, the \ttout{scp} command in its basic form takes two parameters, the first is the name of the source file (the one you want to copy), and the second is the name of the destination file (the one you want to create). The difference with \ttout{scp} is that either of these files can be on a remote machine, which means that you need to provide the command with enough information about the location of the remote file in terms of the network and file system, and any login details necessary to get at it. The syntax for providing this information is:
+Like \cmnd{cp}{cp}, the \cmnd{scp}{scp} command in its basic form takes two parameters, the first is the name of the source file (the one you want to copy), and the second is the name of the destination file (the one you want to create). The difference with \cmnd{scp}{scp} is that either of these files can be on a remote machine, which means that you need to provide the command with enough information about the location of the remote file in terms of the network and file system, and any login details necessary to get at it. The syntax for providing this information is:
 
 \begin{ttoutenv}
 username@hostname:filepath
 \end{ttoutenv}
 
-So for example, if you wanted to retrieve a file called \ttout{cheese.jpg} from the home directory of a user called \ttout{mrnoodle} that was stored machine with the host name \ttout{mypc.example.com}, and you wanted the local copy of the file to be called \ttout{mycheese.jpg} the command would be:
+So for example, if you wanted to retrieve a file called \fname{cheese.jpg} from the home directory of a user called \ttout{mrnoodle} that was stored machine with the host name \ttout{mypc.example.com}, and you wanted the local copy of the file to be called \fname{mycheese.jpg} the command would be:
 
 \begin{ttoutenv}
 $ scp mrnoodle@mypc.example.com:cheese.jpg mycheese.jpg
 \end{ttoutenv}
 
-Then, supposing you had edited the file \ttout{mycheese.jpg} on your local machine and wanted to put the file back into the home directory of the mrnoodle account on the remote machine, but under a different name (so as not to over-write the original), you would issue:
+Then, supposing you had edited the file \fname{mycheese.jpg} on your local machine and wanted to put the file back into the home directory of the \ttout{mrnoodle} account on the remote machine, but under a different name (so as not to over-write the original), you would issue:
 
 \begin{ttoutenv}
 $ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
 \end{ttoutenv}
 
-We're not exactly sure why MrNoodle and cheese feature quite so prominently in these exercises either, just go with the flow. Now use your new-found knowledge of \ttout{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi. 
+We're not exactly sure why MrNoodle and cheese feature quite so prominently in these exercises either, just go with the flow. Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi. 
 
-Check that the file has copied over successfully using \ttout{less}, and then start up Mutt from a terminal. If everything has gone to plan, you should now be able to read and compose emails on your Pi. You can of course install other mail clients if you want to; there is a version of Thunderbird for the Pi called `icedove' (yes, yet another play on words), or a much leaner graphical client called Claws Mail (which if you want to can be installed using \ttout{sudo apt-get install claws-mail}). Remember, though, that the memory-card we've given you for your Pi is fairly small, so you probably don't want to clutter it up with unnecessary packages, and should find that Mutt is perfectly ok for sending and reading the occasional email. 
+Check that the file has copied over successfully using \cmnd{less}{less}, and then start up \cmnd{mutt}{Mutt} from a terminal. If everything has gone to plan, you should now be able to read and compose emails on your Pi. You can of course install other mail clients if you want to; there is a version of Thunderbird for the Pi called `icedove' (yes, yet another play on words), or a much leaner graphical client called Claws Mail (which if you want to can be installed using \ttout{sudo apt-get install claws-mail}). Remember, though, that the memory-card we've given you for your Pi is fairly small, so you probably don't want to clutter it up with unnecessary packages, and should find that Mutt is perfectly ok for sending and reading the occasional email. 
 
 \section{X Windows again}
 
-As we mentioned before, the X Windows system is a powerful beast, and although it was designed a long time ago (around 1984), it was in many ways way ahead of its time -- rather like the design of Unix itself.
+As we mentioned before, the X Windows system is a powerful beast, and although it was designed a long time ago (around 1984), it was in many ways way ahead of its time--rather like the design of Unix itself.
 
 Remember that the GUI you're now using on the Pi consists of two systems working together: X Windows (which amongst other things gives software access to the display hardware), and the Window Manager (in this case, LXDE) that provides the WIMP-style features such as movable windows and clickable controls. The X Windows system operates as a Client/Server architecture, where the `server' part does the drawing of stuff onto the screen, and clients request that things be drawn. One of the really nice features of X Windows is that it doesn't care too much about where the requests to draw things come from. Typically they come from processes that are running on the same hardware as the X Server, but this need not be the case as you're about to demonstrate.
 
-Log back in to the lab PC using the \ttout{ssh} command, but this time include a \texttt{-X} switch before your username, like:
+Log back in to the lab PC using the \cmnd{cmnd}{ssh} command, but this time include a \texttt{-X} switch before your username, like:
 
 \begin{ttoutenv}
 $ ssh -X USERNAME@HOSTNAME.cs.man.ac.uk
 \end{ttoutenv}
 
-The \ttout{-X} switch (note that it's an uppercase X) tells the \ttout{ssh} program to redirect any X Windows requests back through the network from the remote machine to the X Server running on the local machine.
+The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} program to redirect any X Windows requests back through the network from the remote machine to the X Server running on the local machine.
 
-Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \ttout{ls} to make sure the files in your home directory are the ones you'd expect, and then type:
+Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect, and then type:
 
 \begin{ttoutenv}
 $ xeyes
 \end{ttoutenv}
 
-Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather sophisticated. The \ttout{xeyes} program is running on the remote machine machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Press CTRL+C to abort \ttout{xeyes}, and instead try running \ttout{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launch on the Pi a moment ago). This XTerminal, rather like xeyes, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \texttt{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore). 
+Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Press \ctrl{c} to abort \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launch on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore). 
 
-How could you use this feature to your advantage to give you a temporary graphical mail client (or perhaps to use Firefox as a web browser, rather than Midori) on the Pi, without needing to install any packages on the Pi itself?
+How could you use this feature to your advantage to give you a temporary graphical mail client (or perhaps to use Firefox as a web browser, rather than Midori) on the Pi, without needing to install any packages on the Pi itself? 
+
+\begin{note}
+may need a diagram to help explain what's going on here
+\end{note}
 
 \section{A Simple Web Server}
 
 This next exercise involves setting up a simple web server on the Pi, but before we can do that you'll need to create some basic web pages to display. 
 
-Start up a terminal, and create a directory called \ref{something} your home directory, and in that directory, use Nano to create a file called \fname{index.html} with the following content:
+Start up a terminal, and use the \cmnd{mkdir} to create a directory called  your home directory, and in that directory, use Nano to create a file called \fname{index.html} with the following content:
 
 \begin{ttoutenv}
 <html>
