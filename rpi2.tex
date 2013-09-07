@@ -97,7 +97,7 @@ Check that the file has copied over successfully using \cmnd{less}{less}, and th
 
 To test that you've sucessfully set \cmnd{mutt}{mutt} up on the Pi, use it to send a friendly email to your tutor to tell him or her that you're reached this point of the lab . If you've not figured out your tutor's email address yet, you can find it at
 \\
-\url{http://www.cs.manchester.ac.uk/aboutus/people/
+\url{http://www.cs.manchester.ac.uk/aboutus/people/}
 
 \section{X Windows again}
 
@@ -161,7 +161,7 @@ and then use Midori to browse to the following URL:
 http://localhost:8000
 \end{ttoutenv}
 
-If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine'. The section of the URL that follows \texttt{localhost} may be even less familiar: this is the \textit{port} (communication channel) on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to use port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in \coureunit{COMP18112}. 
+If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine'. The section of the URL that follows \texttt{localhost} may be even less familiar: this is the \textit{port} (communication channel) on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to use port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in \courseunit{COMP18112}. 
 
 \subsection{A slightly more interesting web page}
 
@@ -292,6 +292,7 @@ We'll come back to file permissions in more detail shortly. In the meantime, let
 \begin{ttoutenv}
 $ ps waux
 \end{ttoutenv}
+% $
 
 to list any processes that are currently running (you'll probably need to widen the terminal window to see the output properly). The \cmnd{ps}{ps} command is unusual in that if used with no arguments, its output is largely uninformative. It's also unusual in that explaining what even the most basic arguments do and interact (i.e. the \ttout{waux} options in this case; note that there's no hyphen in front of the options here), is quite complex---so for now just treat this as a special recipe that does something useful. 
 
@@ -308,7 +309,7 @@ So to set up a web server properly we need to
 \begin{itemize}
 \item make sure that it can continue to function after you've logged out, and
 \item somehow make sure that it can only access a specific set of resources that represent the website, and not run riot around your filestore doing bad things. 
-\end{itemize
+\end{itemize}
 
 Let's first tackle the issue of a shared directory; this is quite easy to set up using Unix's group mechanism. 
 
