@@ -20,7 +20,7 @@ LXDE (the `Lightweight X11 Desktop Environment') is designed to be a lean, fast 
 
 
 \begin{linux}{LXDE isn't a window manager either}
-Rather like Gnome, LXDE is a technically a collection of desktop tools rather than a window manager as such. LXDE uses the \wikipedia{Openbox}{openbox}. 
+Rather like Gnome, LXDE is a technically a collection of desktop tools rather than a window manager as such. LXDE uses the \wikipedia{Openbox}{openbox} window manager, and \wikipedia{GTK+}{GTK+}, which was developed as part of the \wikipedia{GIMP}{GIMP} project to draw widgets. LXDE is the default graphical environment for several `lean' or `low power' Linux distributions such as \wikipedia{Knoppix}{Knoppix}, \wikipedia{Lubuntu}{Lubuntu} and of course the Pi's operating system, \wikipedia{Raspbian}{Raspbian}. 
 \end{linux}
 
 Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do (though remember--it's just going to log you out of the windowing environment, and not log your user out of console mode; we explained how you could do that using \cmnd{exec}{exec} in the previous lab session). On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
@@ -152,19 +152,12 @@ Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not h
 
 %How could you use this feature to your advantage to give you a temporary graphical mail client (or perhaps to use Firefox as a web browser, rather than Midori) on the Pi without needing to install any packages on the Pi itself? 
 
-\begin{note}
-may need a diagram to help explain what's going on here
-\end{note}
 
 \section{A Simple Web Server}
 
 This next exercise involves setting up a simple web server on the Pi, but before we can do that you'll need to create some basic web pages to display. 
 
-\begin{note}
-fix this bit
-\end{note}
-
-Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory called \ref{FIXME} your home directory, and in that directory, use \cmnd{nano}{nano} to create a file called \fname{index.html} with the following content:
+Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory called \fname{htmlexample1} your home directory, and in that directory, use \cmnd{nano}{nano} to create a file called \fname{index.html} with the following content:
 
 \begin{ttoutenv}
 <html>
@@ -190,46 +183,45 @@ If your browser displays a page saying `Hello World', pat yourself on the back--
 
 \subsection{A slightly more interesting web page}
 
-\begin{note}
-give them a default MrNoodle Webpage
-\end{note}
+Next you're going to create a slightly more interesting web page. 
 
-Now spend a few minutes modifying \fname{index.html} to create a slightly more interesting web page. Create a single page about yourself that contains a paragraph describing who you are, which programme you're on (e.g. Computer Science, Software Engineering, etc.), and which contains a picture of yourself as well as the image you created in the previous session using Inkscape.
+You need to create a single page about yourself that contains a paragraph describing who you are, which programme you're on (e.g. Computer Science, Software Engineering, etc.), and which contains a picture of yourself as well as the image you created in the previous session using Inkscape.
 
-Don't worry about finely crafted words here---this is really just a way of creating a file that we can get you to edit in various ways a little later on. A few sentences will do, and you can always change it later. 
+Use \cmnd{cd}{cd} to change to your home directory, and then \cmnd{curl}{curl} to fetch a tar of the example Mr Noodle web page that we've created for you from:
+\\
+\url{http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/mrnoodle.tar.gz} 
+\\
+In your home directory, use \cmnd{tar}{tar} to `untar' this bundle of files and you should end up with a \fname{htmlexample2} directory containing an \fname{index.html} file and two image files, one in \fname{.png} and the other in {.jpg} format. 
 
-As for the photograph of you, we'd ideally like you to use something recent that someone could recognise you by, but it doesn't really matter too much: it can be any kind of photo you like; silly or serious, whatever you're comfortable with, but please make sure it doesn't contain anything offensive. If you're not comfortable with having a photo of yourself on the net, you can use a photo of something else (but you must make sure you have permission to re-use a picture that's not yours; anything you find on Wikipedia should be okay for this purpose, and there will be more guidance on how to use others' photos later in this course). If you didn't have a photo handy, take one with your phone, or ask one of your fellow students to do it for you on theirs.
+
+Use a text editor to change the content of the \fname{index.html} so that it says something about you. Don't worry about finely crafted words here---this is really just a way of creating some files that we can get you to edit in various ways a little later on. A few sentences will do, and you can always change it later. Replace the images we've provided with something that's relevant to you. 
+
+As for the photograph of you, we'd ideally like you to use something recent that someone could recognise you by, but it doesn't really matter too much: it can be any kind of photo you like; silly or serious, whatever you're comfortable with, but please make sure it doesn't contain anything offensive. If you're not comfortable with using a photograph of yourself, you can use a picture of something else (but you must make sure you have permission to re-use a picture that's not yours; anything you find on Wikipedia should be okay for this purpose, and there will be more guidance on how to use others' photos later in this course). If you didn't have a photo handy, take one with your phone, or ask one of your fellow students to do it for you on theirs.
 
 You've already learned several ways of getting files onto your Pi, but here's a reminder:
 \begin{itemize}
-\item You could mail the photo to yourself, and use Mutt to save the attachment onto the Pi (more help on how to do this in Breakout~\ref{breakout:attachments})
-\item If the picture is on the web somewhere, you could use Midori to find and save it. 
+\item You could mail the photo to yourself, and use Mutt to save the attachment onto the Pi (more help on how to do this Mutt's online FAQ at \url{http://dev.mutt.org/trac/wiki/MuttFaq})
+\item If the picture is already on the web somewhere, you could use Midori to find and save it. 
 \item Alternatively for images on the web, you could use \ttout{curl} to fetch it directly from a URL to a file. 
 \item You could use \ttout{scp} to copy it from some other machine directly to your Pi. 
 \item Or if all else fails, you could use a USB device to copy it from one place to another. 
 \end{itemize}
 
-\begin{diversion}{Saving attachments with Mutt}
-\label{breakout:attachments}
-splunge
-\end{diversion}
 
 If you need more guidance on how to write the web page itself, then Appendix~\ref{appendix:simplehtml} contains a few pointers; though there are plenty of tutorials on the web as well. 
 
-To finish this section, use Midori to check that your web page is displaying correctly.
+To finish this section, start up the \concept{SimpleHTTPServer} that we used earlier \textit{but this time in your htmlexample2} directory, and use Midori to check that your web page is displaying correctly.
 
 \section{Headless Pi}
 \label{section:headless}
 
 
 
-\begin{note}
-put a warning in here that it's a bit scary and we'll come back to it later.
-\end{note}
-
-
-
 The Pi can be used as a respectable desktop machine, but it really comes into its own as a `server' or controller for other pieces of hardware. In this section we'll use the Pi in what is called `headless' mode, that is without its own screen and keyboard, to create a proper web server to host your pages. 
+
+\begin{danger}{Don't Panic!}
+The rest of this lab session exposes you a fair number of quite advanced concepts pretty quickly, and we don't expect all of them to sink in this first time round. Stay calm.  Don't panic. Just follow our instructions and everything will be fine; if you get lost or things aren't going to plan, just call a demonstrator to help you get back on track, and we'll revisit these ideas in the next lab where there will be a second opportunity to put them into practise and make sure everything makes sense.
+\end{danger}
 
 At a terminal, type the command \ttout{ifconfig}, short for `interface configuration', which will give you details about the network configuration on the Pi. This will return something along the lines of
 
@@ -265,7 +257,7 @@ $ ssh pi@[IPADDRESSOFPI]
 
 replacing [IPADDRESSOFPI] with the IP Address you noted down a moment ago. Since this is the first time you're logging in from your CS account to your Pi, expect to see the `The authenticity of host' warning again; just say `yes' to the prompt, and enter your Pi user's password. 
 
-Change directory to the `aboutme' directory you created for your web-page earlier, and re-start the simple Python web server. 
+Change directory to the \fname{htmlexample1} directory you created for your web-page earlier, and re-start the simple Python web server. 
 
 Next, start up Firefox using the keyboard shortcut you created in the previous lab session, and enter the URL:
 
@@ -413,9 +405,12 @@ and since we're now using a standard web server on a standard port, there's no n
 
 You should see the `It works!' page appear, with whatever modification you made to it a moment ago.
 
-Finally for this lab session, copy the content from your `aboutme' directory so that its served via Apache.  
+Nearly finished. Copy the content from your \fname{htmlexample2} directory so that its served via Apache, and check that the `It works!' page has been replaced by your own masterpiece.   
 
-\begin{note}
-COPY OVER TO DESKTOP MACHINE, HALT THE PI and restore the desktop
-\end{note}
+\section{Shutting down gracefully}
 
+That's all the exercises done for today; but before you finish up for this lab session there's one last important thing to do. Make sure you use the \cmnd{halt}{halt} command to shut your Pi down cleanly, otherwise you risk losing some of today's work by corrupting its file system. You can do this over a \cmnd{ssh}{ssh} connection quite safely, so you don't need to reconnect the keyboard/mouse/monitor to the Pi, just type \cmnd{halt}{halt} in the secure shell that's running on the Pi. Of course, you shouldn't be surprised when secure shell gets disconnected as the Pi beings to shut itself down.
+
+\section{What You've learned today}
+
+\ref{FIXME}
