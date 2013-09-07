@@ -6,7 +6,7 @@ So far you've used your Pi and the lab PCs separately, and hopefully you've come
 
 Today, we'll be getting your Pi and a desktop PC to communicate with one another, to reinforce the similarities between these setups, and to expose you to some of the principles of networking and remote access. 
 
-\section{The LXDE window manager}
+\section{The LXDE graphical environment}
 
 Connect your Pi up to the monitor, keyboard, mouse, network and power supply as before, and log in (remembering this time to use whatever password you set on the Pi rather than your University password, and the username `pi'). At the console, type:
 
@@ -17,6 +17,11 @@ $ startx
 to start up X Windows and the Pi's default window manager, LXDE, which appear moments later looking like the screenshot in Figure \ref{figure:lxde-desktop}. 
 
 LXDE (the `Lightweight X11 Desktop Environment') is designed to be a lean, fast desktop environment, which makes it ideally suited for the Pi's modest CPU. Although rather less rich in features and `eyecandy' than Gnome, LXDE is a fully functioning environment that has all the features you will need for operating and programming the Pi. 
+
+
+\begin{linux}{LXDE isn't a window manager either}
+Rather like Gnome, LXDE is a technically a collection of desktop tools rather than a window manager as such. LXDE uses the \wikipedia{Openbox}{openbox}. 
+\end{linux}
 
 Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do (though remember--it's just going to log you out of the windowing environment, and not log your user out of console mode; we explained how you could do that using \cmnd{exec}{exec} in the previous lab session). On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
 
@@ -95,7 +100,7 @@ Then, supposing you had edited the file \fname{mycheese.jpg} on your local machi
 $ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
 \end{ttoutenv}
 
-We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}; if you prefix either or both of the source or destination files with the pattern \verb{[USERNAME]@[HOSTNAME]:} then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
+We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}; if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]@[HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
 
 Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi (as usual, if you get stuck as for help.)
 
@@ -131,7 +136,19 @@ Confirm that you are indeed logged into your Computer Science account by checkin
 $ xeyes
 \end{ttoutenv}
 
-Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Press \ctrl{C} to quit \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launched on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore and you can confirm this another way using the \cmnd{hostname}{hostname} command). 
+Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Press \ctrl{C} to quit \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launched on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore and you can confirm this another way using the \cmnd{hostname}{hostname} command). Look at Figures \ref{figure:x-on-pi} and \ref{figure:x-via-ssh} for a diagrammatic representation of what's just happened.
+
+\begin{figure}
+\centerline{\includegraphics[width=8cm]{images/x-on-pi}}
+\caption{In Unix, when you run a program such as xeyes on your local machine, it doesn't draw directly to the screen, but by default instead communicates with the X Server that's running on the same machine. In our example, the xeyes program \protect\circled{1} connects to its local X Server \protect\circled{2}, and asks it to draw a window containing two ellipses to represent eyeballs, and then does some calculations to work out where to draw the two smaller ellipses to represent the pupils of the googly eyes so that they follow the mouse pointer. The X Server then communicates with the graphics hardware of the local machine in order to make things appear on the display that you see as a user. }\label{figure:x-on-pi}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=17cm]{images/x-via-ssh}}
+\caption{One of the powerful features of the X Windows system is that the program that's generating graphical output, and the display on which the graphical output appears need not be on the same physical machine. In this example, we've used a Secure Shell connection from the Pi \protect\circled{1} to make a connection to the desktop PC, and have used the \ttout{-X} option to ask that any graphical instructions for the X Windows system get routed back through that connection. We then start the xeyes program \protect\circled{2} on the desktop PC. Now although the calculations to draw the googly eyes are being done on the remote PC, the instructions to draw ellipses are sent back via the \cmnd{ssh}{ssh} connection to the Pi, and are \protect\circled{3} routed to the X Server that's running on the Pi. As before, the X Server \protect\circled{4} interprets these instructions (not caring that they originated on another machine), and draws the eyes on the display that's connected to the Pi.}\label{figure:x-via-ssh}
+\end{figure}
+
+
 
 %How could you use this feature to your advantage to give you a temporary graphical mail client (or perhaps to use Firefox as a web browser, rather than Midori) on the Pi without needing to install any packages on the Pi itself? 
 
