@@ -1,5 +1,5 @@
 ROOT=labs
-TEX=welcome.tex rpi1.tex rpi2.tex desktop1.tex desktop2.tex desktop3.tex desktop4.tex latex-exercise.tex desktop5.tex appendix.tex
+TEX=welcome.tex rpi1.tex desktop1.tex rpi2.tex desktop2.tex desktop3.tex desktop4.tex latex-exercise.tex desktop5.tex appendix.tex
 TEXNOSUFF=${basename ${TEX}}
 PDF=${addsuffix .pdf,${TEXNOSUFF}}
 STY=${wildcard *.sty}
@@ -18,5 +18,5 @@ default: ${PDF}
 all: ${PDF} 101labs.pdf
 
 clean:
-	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf comment.cut
+	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.mtc* *.maf *.rel *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf comment.cut
 

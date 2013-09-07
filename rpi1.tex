@@ -1,5 +1,7 @@
 \chapter{Getting started with Raspberry Pi}
 
+\minitoc
+
 \notesurl{rpi1}
 
 % TODO: Intro to what they have been given, and labelling their Pi
@@ -444,7 +446,7 @@ Although the original FORTRAN source code for Colossal Cave still exists, the ve
 
 Unlike the other commands that you've used so far, the program we need to be able to play Colossal Cave Adventure isn't pre-installed on the Raspberry Pi, so we're going to have to fetch and install it ourselves. Fortunately, the version of Linux that we have on the Pi comes with a package management system that makes this quite easy. 
 
-But first, we're going to have to understand a command called \cmnd{cmnd}{sudo}. Everything that you've done so far has involved looking at files that either belong to the `pi' user, or are parts of the system that can be read or executed by any user. But of course, installing a new piece of software involves \textit{modifying} the Pi's operating system in some way, and that's not something that you want to do casually since mistakes could potentially mess up the whole device. 
+But first, we're going to have to understand a command called \cmnd{sudo}{sudo}. Everything that you've done so far has involved looking at files that either belong to the `pi' user, or are parts of the system that can be read or executed by any user. But of course, installing a new piece of software involves \textit{modifying} the Pi's operating system in some way, and that's not something that you want to do casually since mistakes could potentially mess up the whole device. 
 
 You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had two major downsides: first, that if you accidentally left yourself logged in as the superuser when you nipped out for a coffee, the machine was vulnerable to misuse by anybody who would get at the keyboard; but second and more serious, all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disasterous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{cmnd}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. 
 

@@ -1,18 +1,23 @@
 \chapter{Using the Linux desktop in CS}
+
 \minitoc
+
 \notesurl{desktop1}
 
 Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
+
+\section{Logging in}
+
+Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
+
+You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. Later we will be using a graphical environment, but for now we will stick to the console and start off by reading mail.
+
 
 \section{Reading email at the console}
 
 You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
 
-First, let's confirm that \cmnd{mutt}{Mutt} is actually installed. Make sure the desktop PC is booted into Linux, and log in using your University username and password (not the username and password you used on the Pi). You should be greeted with a similar command prompt to the one you saw in the previous lab.
-
-\begin{note}
-Is this their first login to CS machines? Probably need to explain that their filestore gets mounted from a server here
-\end{note}
+First, let's confirm that \cmnd{mutt}{Mutt} is actually installed. 
 
 To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd{which}{which} command. Type
 
@@ -95,7 +100,7 @@ set editor = "nano"
 SORT IMAP SETTINGS, maybe use a shell pattern
 \end{note}
 
-The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of less's features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less} to display the manual pages.
+The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of less's features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less}{less} to display the manual pages.
 
 \begin{linux}{Spaced out filenames}
 Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
@@ -108,7 +113,7 @@ As we've mentioned before, many of Unix's commands are plays on words, puns, or 
 Early versions of Unix included a command called \cmnd{more}{more}, written by Daniel Halbert from University of California, Berkeley in 1978, which would display a page's worth of text before prompting the user to press the space bar in order to see \textit{more} of the file. A more sophisticated paging tool, called \texttt{less} on the jokey premise that `less is more' was written by Mark Nudelman in the mid 1980s, and has since replaced \texttt{more} in most Unix systems, including Linux. 
 \end{diversion}
 
-Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the COMP18112 (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. 
+Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the \courseunit{COMP18112} (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. 
 
 
 Quit less (using the same technique you used to quit the \cmnd{man}{man} command in the last lab session), and then enter
@@ -288,6 +293,7 @@ Perform the following tasks:
 \item Create a keyboard shortcut for starting Firefox, to provide a third way of starting it.
 %\item Something else, and when you're done with these
 \item Figure out how to log out of the graphical environment.\label{list:logout}
+  \item Find Inkscape on the menus and draw a simple self portrait, remembering to save it for later use. 
 \end{enumerate}
 
 \begin{note}
@@ -370,7 +376,7 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 \label{figure:Xstructure}
 \end{figure}
 
-When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming COMP101, and you'll explore the architecture of X Windows in a lot more detail in COMP18112 (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized (if you've don't know what WIMP means yet, go back and read Breakout \ref{breakout:wimp} from the last lab session). 
+When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120}, and you'll explore the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized (if you've don't know what WIMP means yet, go back and read Breakout \ref{breakout:wimp} from the last lab session). 
 
 \begin{danger}{Killing X}
 You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
