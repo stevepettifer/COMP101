@@ -20,14 +20,14 @@ LXDE (the `Lightweight X11 Desktop Environment') is designed to be a lean, fast 
 
 Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do (though remember--it's just going to log you out of the windowing environment, and not log your user out of console mode; we explained how you could do that using \cmnd{exec}{exec} in the previous lab session). On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
 
-Spend a few minutes exploring the GUI. You'll may find that you're double-clicking on things that only need a single click, and vice versa, and may find that things aren't quite where you expect them to be---but rather than dismissing LXDE as being crude, embrace the differences; you may well find that you come to prefer its `no frills' approach to window management over that of richer, heavier-weight environments such as Gnome. LXDE and other slimmed-down graphical environments consume considerably fewer CPU cycles and hence less power than their richer counterparts, and while this isn't an issue when you're running on a mains-powered desktop machine with a reasonably beefy graphics card such as the lab PC, this can be a serious issue for devices running off batteries. 
+Spend a few minutes exploring the GUI. You may find that you're double-clicking on things that only need a single click, and vice versa, and may find that things aren't quite where you expect them to be---but rather than dismissing LXDE as being crude, embrace the differences; you may well find that you come to prefer its `no frills' approach to window management over that of richer, heavier-weight environments such as Gnome. LXDE and other slimmed-down graphical environments consume considerably fewer CPU cycles and hence less power than their richer counterparts, and while this isn't an issue when you're running on a mains-powered desktop machine with a reasonably beefy graphics card such as the lab PC, this can be a serious issue for devices running off batteries (and it does mean of course that LXDE is rather more environmentally friendly!)
 
 \begin{figure}
 \centerline{\includegraphics[width=14cm]{images/lxde-desktop}}
 \caption{The Pi's default window manager is called LXDE.}\label{figure:lxde-desktop}
 \end{figure}
 
-\section{Configure mutt}
+\section{Configure mutt again using scp and ssh}
 
 Once you've found your way around LXDE, fire up a terminal so that you can configure your Pi to read your University email using \cmnd{mutt}{Mutt}. Unlike the lab machines, \cmnd{mutt}{Mutt} isn't installed by default on the Pi, so you'll need to do that yourself using:
 
@@ -37,19 +37,25 @@ $ sudo apt-get install mutt
 
 Once the install has completed, you'll need to adjust Mutt's settings so that they once again point at your University email account. You could do this by following the instructions in the previous session's script again, but there's a much easier way: let's just copy the configuration file you created on the desktop PC last time, over to the Pi. 
 
-First you need to check that you still have the \fname{.muttrc} configuration file in your home filestore of your Computer Science network account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that--you can check \concept{remotely}. 
+First you need to check that you still have the \fname{.muttrc} configuration file in your home filestore of your Computer Science account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that--you can check \concept{remotely}. 
 
 \begin{note}
 Picture of the hostname sticker, and update this with new new hostname style
 \end{note}
 
-So, find the hostname of the lab PC on your desk; there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, there are several ways you can find out the hostname (you'll need to switch the monitor back to the DisplayPort input, and may also need to re-attach the keyboard/mouse usb lead to the desktop PC):
+So, find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, Breakout \ref{breakout:hostname} describes there several other ways to find a Unix machine's hostname. 
+
+
+\begin{linux}{Unix hostnames}
+\label{breakout:hostname}
+A machine's hostname identifies it on a network in a way that's usually a bit more human-readable than its IP address. There are various ways of finding out a machine's hostname:
 
 \begin{itemize}
-\item If you haven't logged into the PC, then it should be showing a login prompt like  \ttout{E-C07KILF3101:}
-\item If you're already logged in, but have not started a window manager, your console prompt will be something like  \verb|[mrnoodle@E-C07KILF3101 ~]$| (where \ttout{mrnoodle} would be replaced by your own username, of course).
+\item If you haven't logged into the PC and can see its screen, then it should be showing the hostname such as \ttout{E-C07KILF3101:} before the login prompt. 
+\item If you're already logged in to Unix, but have not started a window manager, your console prompt will be something like  \verb|[mrnoodle@E-C07KILF3101 ~]$| (where \ttout{mrnoodle} would be replaced by your own username, of course).
 \item If you are logged in to the PC and inside a window manager, open a terminal window. It should show you the command line prompt, as above. You could also type \verb|echo $HOSTNAME|.
 \end{itemize}
+\end{linux}
 
 Once you've got hold of the PC's hostname, we're going to use a \wikipedia{Secure_Shell}{Secure Shell} to connect to from the Pi to the the desktop, allowing you to type commands on the Pi that will be executed remotely via a shell that's executing on the desktop PC. In the terminal window on the Pi, issue this command:
 
@@ -65,7 +71,7 @@ RSA key fingerprint is 20:6d:2d:90:5e:8f:9f:19:39:70:ce:48:a6:93:ec:4c.
 Are you sure you want to continue connecting (yes/no)? 
 \end{ttoutenv}
 
-Type \ttout{yes} (and hit enter) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in \courseunit{COMP18112}, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. 
+Type \ttout{yes} (and hit enter) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in later in your programme, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. 
 
 Type \cmnd{ls}{ls -a} to confirm that your \fname{.muttrc} file is still where you expect it to be, and if all is well then press \ctrl{D} to log out of the remote shell you just started, and you will return to the shell running locally on your Pi (you'll see the command prompt change back to being `pi' again). Now we know the file we want is there, we need to copy it from your Computer Science filestore onto your Pi's local filestore.
 
@@ -89,15 +95,17 @@ Then, supposing you had edited the file \fname{mycheese.jpg} on your local machi
 $ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
 \end{ttoutenv}
 
-We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi (as usual, if you get stuck as for help.)
+We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}; if you prefix either or both of the source or destination files with the pattern \verb{[USERNAME]@[HOSTNAME]:} then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
 
-Check that the file has copied over successfully using \cmnd{less}{less}, and then start up \cmnd{mutt}{Mutt} from a terminal. If everything has gone to plan, you should now be able to read and compose emails on your Pi. You can of course install other mail clients if you want to; there is a version of Thunderbird for the Pi called Icedove (yes, yet another play on words), or a much leaner graphical client called Claws Mail (which if you want to can be installed using \ttout{sudo apt-get install claws-mail}). Remember, though, that the memory-card we've given you for your Pi is fairly small, so you probably don't want to clutter it up with unnecessary packages, and you should find that Mutt is perfectly okay for sending and reading the occasional email. 
+Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi (as usual, if you get stuck as for help.)
+
+Check that the file has copied over successfully using \cmnd{less}{less}, and then start up \cmnd{mutt}{Mutt} from a terminal. If everything has gone to plan, you should now be able to read and compose emails on your Pi. You can of course install other mail clients if you want to; there is a slimmed-down version of Thunderbird for the Pi called Icedove (yes, yet another play on words), or a much leaner graphical client called Claws Mail (which if you want to can be installed using \ttout{sudo apt-get install claws-mail}). Remember, though, that the memory-card we've given you for your Pi is fairly small, so you probably don't want to clutter it up with unnecessary packages, and you should find that Mutt is perfectly okay for sending and reading the occasional email. 
 
 \subsection{Emailing your tutor}
 
 To test that you've sucessfully set \cmnd{mutt}{mutt} up on the Pi, use it to send a friendly email to your tutor to tell him or her that you're reached this point of the lab . If you've not figured out your tutor's email address yet, you can find it at
 \\
-\url{http://www.cs.manchester.ac.uk/aboutus/people/
+\url{http://www.cs.manchester.ac.uk/aboutus/people/}
 
 \section{X Windows again}
 
@@ -117,7 +125,7 @@ The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} 
 Fix / simplify the above
 \end{note}
 
-Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect, and then type:
+Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout \ref{breakout:hostname}, and then type:
 
 \begin{ttoutenv}
 $ xeyes
@@ -161,7 +169,7 @@ and then use Midori to browse to the following URL:
 http://localhost:8000
 \end{ttoutenv}
 
-If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine'. The section of the URL that follows \texttt{localhost} may be even less familiar: this is the \textit{port} (communication channel) on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to use port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in \coureunit{COMP18112}. 
+If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine'. The section of the URL that follows \texttt{localhost} may be even less familiar: this is the \textit{port} (communication channel) on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to use port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in \courseunit{COMP18112}. 
 
 \subsection{A slightly more interesting web page}
 
@@ -308,7 +316,7 @@ So to set up a web server properly we need to
 \begin{itemize}
 \item make sure that it can continue to function after you've logged out, and
 \item somehow make sure that it can only access a specific set of resources that represent the website, and not run riot around your filestore doing bad things. 
-\end{itemize
+\end{itemize}
 
 Let's first tackle the issue of a shared directory; this is quite easy to set up using Unix's group mechanism. 
 
