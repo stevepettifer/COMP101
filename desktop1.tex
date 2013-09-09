@@ -8,7 +8,8 @@ Today we're going to explore some of the features of Unix in a bit more depth, t
 
 \section{Logging in}
 
-Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
+%%% BEGIN CONSOLE MODE SESSION
+ Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
 
 You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. Later we will be using a graphical environment, but for now we will stick to the console and start off by reading mail.
 
@@ -37,6 +38,7 @@ and notice that here we're using \cmnd{ls}{ls} to look at the contents of a dire
 \begin{ttoutenv}
 $ ls /usr/bin/m*
 \end{ttoutenv}
+% $
 
 and you should be given a much smaller list of things from the \fname{/usr/bin} directory; only those starting with the letter m. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/usr/bin} directory, showing only files that start with the letter m and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results). 
 
@@ -46,7 +48,7 @@ So far we've been getting you to do a fair amount of typing, and now we have to 
 
 Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of directories that are in the system's root directory. Now type the letter u (so that the line you've typed so far should read \ttout{ls /u}) and hit Tab once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press Tab twice now, and you'll get shown the contents of \fname{/usr/}. Type b, and press Tab to expand the command to \fname{/usr/bin/}, and then press Enter to execute the command.
 
-The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press Tab once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then pressing Tab a second time shows you those, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
+The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press Tab once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then Tab will complete as far as it it can, then pressing Tab a second time shows you all of them, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
 
 \begin{note}
 Need to work out how to explain tab complete for single things that have the same prefix
@@ -80,6 +82,7 @@ Remember, you're going to need to use a switch argument to tell \cmnd{curl}{curl
 \begin{ttoutenv}
 $ less mutt-template
 \end{ttoutenv}
+% $
 
 and you should see the following written to the screen:
 \begin{ttoutenv}
@@ -150,6 +153,9 @@ can we do something here to explain why mv is called mv?
 \begin{ttoutenv}
 $ mv my-mutt-template .muttrc
 \end{ttoutenv}
+% $
+
+\ttout{mv} may seem like an odd name for a command that is used to rename a file, but it actually has a number of uses, including moving a file from one part of the file hirearchy to another. You'll see more examples of the in the next lab session.
 
 Rather like \cmnd{cp}{cp}, \cmnd{mv}{mv} takes two arguments; but this time instead of making a copy of the file, \cmnd{mv}{mv} just changes the name of the file given as the first argument to that of the second. 
 
@@ -245,12 +251,12 @@ replacing [YOUR COMMAND GOES HERE] with the full command line you created to dis
 \begin{ttoutenv}
 $ mankyweather
 \end{ttoutenv}
+% $
 
 to see the result. Okay, so this probably won't replace your favourite weather webpage or app, but its early days yet! 
+Note that this alias will disappear once you exit the shell in which you created this, for example when you logout and login again. We will see later how to make such aliases permanent.
 
-\begin{note}
-  Do we want to point out that this alias will disappear
-\end{note}
+%%% END CONSOLE MODE SESSION
 
 \section{X Windows and Gnome} 
 
@@ -383,14 +389,20 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 \label{figure:Xstructure}
 \end{figure}
 
-When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120}, and you'll explore the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized (if you've don't know what WIMP means yet, go back and read Breakout \ref{breakout:wimp} from the last lab session). 
+When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120} lectures, and you'll explore the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized (if you've don't know what WIMP means yet, go back and read Breakout \ref{breakout:wimp} from the last lab session). 
 
 \begin{danger}{Killing X}
 You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
 \end{danger}
 
 
-\section{The Awesome Window Manager}
+\section{Terminal windows}
+Your earlier use of the command line was on the computer's console, with no window manager running, but we now want to do similar things while X is running. The tool to use here is a \concept{terminal window}. You can fire up one of the these by choosing the ??? menu, then ????
+
+Much of what you do in these and future labs will involve using terminal windows.
+
+
+\section{The Awesome Window Manager} 
 One of the interesting effects of this architecture is that you can use different window managers on Linux, and can choose the one that best suits the way you work; some people like `rich' environments like Gnome, whereas others like `lean' cut-down window managers. 
 
 To demonstrate this, start a terminal, and use \cmnd{nano}{nano} to create a file in your home directory called \fname{.Xclients}, and in that file put a single line that reads:
@@ -445,19 +457,19 @@ Explore the various queries of the client, and familiarise yourself with the the
 
 \section{Text Editors}
 
-\begin{note}
-  Need something for them to do here with editor. Idea was to fix .bash profile to prevent the problem when using ssh. But ssh not introduced until the next lab!
+% \begin{note}
+%   Need something for them to do here with editor. Idea was to fix .bash profile to prevent the problem when using ssh. But ssh not introduced until the next lab!
 
-  Now fixing PATH
+%   Now fixing PATH
 
-  Minimal change seems to be
+%   Minimal change seems to be
 
-\begin{alltt}
-case `tty` in
-/dev/tty*) exec startx
-esac
-\end{alltt}
-\end{note}
+% \begin{alltt}
+% case `tty` in
+% /dev/tty*) exec startx
+% esac
+% \end{alltt}
+% \end{note}
 
 A great deal of the lab work you will be doing over your time here will involve you creating text files of various kinds, often source files in a programming language such as \ttout{Java}, \ttout{php} or \ttout{C}, or \ttout{HTML} files for use on the web. There are specialist tools called \wikipedia{Integrated_development_environment}{Integrated Development Environments} or \emph{IDE}s that can be used for programming; you will meet these later in your programme. However, for many purposes, the simplest, and best, tool for creating such files is a simple text editor. You have already met one such tool, \ttout{nano}, which is fine for work at the console or quick modifications of existing files, but for more extensive work an editor that takes advantage of  X's graphical capabilities is more appropriate.
 
@@ -516,12 +528,12 @@ In order for use to able to start the ARCADE client by typing \ttout{arcade} rat
 This can be read (and you will see this over and over again in programming languages) as 'Evaluate what is on the right had side of the \ttout{=} and give the variable on the left hand side that value'. So this takes the current value of \ttout{PATH} and adds \ttout{:/opt/teaching/bin} on the end. After you've done this you can type \ttout{arcade} in your terminal window and the ARCADE client should start. Just exit it cleanly and return to the shell.
 
 \begin{note}
-  Background jobs? Where do these go? desktop2?
+  Background jobs? Where do these go? desktop2? Yes.
 \end{note}
 
-If you now start another terminal window and type \ttout{arcade}, what happens?
+If you now start another terminal window and type \ttout{arcade}, what happens and why?
 
-The way to make the change permanent is to modify your  \fname{.bash\_profile} file. Use \ttout{gedit} to modify this file by adding the following line at the end of the file
+The way to make the change permanent is to modify your  \fname{.bash\_profile} file. Use \ttout{gedit} to modify this file by adding the following line \emph{after the existing line starting with \ttout{PATH} but before the line containing \ttout{exec startx}}.
 
 \begin{ttoutenv}
   PATH=$PATH:/opt/teaching/bin
@@ -529,6 +541,18 @@ The way to make the change permanent is to modify your  \fname{.bash\_profile} f
 % $
 
 This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}.
+
+Before we move on to mail reading, we would like you to make another modification to your \fname{.bash\_profile} file. Earlier you added the line \ttout{exec startx} to fire up X automatically when you login. This works fine when you login direectly to a PC, but will cause problems if you login remotely from another machine, as you will in the next lab. We won't explain the exact meaning of this piece of code now but will do later.
+
+Replace the line \ttout{exec startx} at the end of \fname{.bash\_profile} with the lines
+
+\begin{ttoutenv}
+case `tty` in
+/dev/tty*) exec startx
+esac 
+\end{ttoutenv}
+
+\emph{Note that the characters surrounding \ttout{tty} are backquotes, not forward quotes. This character can be found on the keyboard of lab machines at ????}
 
 We now move onto configuring a mail client for you to use.
 

@@ -72,9 +72,9 @@
 \newcommand{\cmnd}[2]{\texttt{\small #2}%
   \ifcsname @cmd#1\endcsname\relax\else %
   \marginnote{\href{\expandafter\cmddoclink{#1}}{\includegraphics[width=0.7cm]{images/cog} \raisebox{0.3cm}{\texttt{\textbf{#1}}}}}%
-  \expandafter\def\csname @cmd#1\endcsname{aa}
-  \fi
-  \message{COMMAND: #1^^J}
+  \expandafter\def\csname @cmd#1\endcsname{}%
+  \fi%
+  \message{COMMAND: #1^^J}%
   }
 
 \newcommand{\cmndx}[2]{\texttt{\small #2}%
