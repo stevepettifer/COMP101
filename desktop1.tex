@@ -50,9 +50,9 @@ Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'
 
 The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press Tab once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then Tab will complete as far as it it can, then pressing Tab a second time shows you all of them, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
 
-\begin{note}
-Need to work out how to explain tab complete for single things that have the same prefix
-\end{note}
+% \begin{note}
+% Need to work out how to explain tab complete for single things that have the same prefix
+% \end{note}
 
 
 Here are some other very useful command line tricks:
@@ -146,9 +146,9 @@ When you've made the changes, write out the file to your filestore and quit back
 
 Now, \ttout{mutt} expects the file containing its configuration information to have a particular name, and that's not \ttout{my-mutt-template}, so we'll need to do something about that. The Unix \cmnd{mv}{mv} command is used to rename files or directories (it's short for `move'), so use that to change the name of the file to \fname{.muttrc} by typing
 
-\begin{note}
-can we do something here to explain why mv is called mv?
-\end{note}
+% \begin{note}
+% can we do something here to explain why mv is called mv?
+% \end{note}
 
 \begin{ttoutenv}
 $ mv my-mutt-template .muttrc
@@ -306,7 +306,7 @@ Perform the following tasks:
 \end{enumerate}
 
 \begin{figure}[t]
-\centerline{\includegraphics[width=8cm]{images/mrnoodle}}
+\centerline{\includegraphics[width=0.25\textwidth]{images/mrnoodle}}
 \caption{This is a picture of Mister Noodle drawn by Steve using Inkscape. It took about two minutes, though in reality had he spent any more time on it there would be no obvious improvement in the quality of the artwork.}\label{figure:mrnoodle}
 \end{figure}
 
@@ -319,9 +319,9 @@ It's worth understanding the pros and cons of these two different approaches to 
 
 \end{diversion}. 
 
-\begin{note}
-Set up keyboard shortcuts?? Where should this go?
-\end{note}
+% \begin{note}
+% Set up keyboard shortcuts?? Where should this go? Did one above for Terminal
+% \end{note}
 
 If you've completed step ~\ref{list:logout} you should now be back at the command prompt where you typed `startx' a little while back. Before returning to the graphical environment where you'll spend most of your time, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system. 
 
@@ -383,7 +383,7 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=12cm]{images/graphics-stack.pdf}
+    \includegraphics[width=.5\textwidth]{images/graphics-stack.pdf}
   \end{center}
 \caption{The layered structure of Linux's graphical system, with software nearest to the underlying hardware at the bottom, and software closest to the user at the top.}
 \label{figure:Xstructure}
@@ -397,9 +397,9 @@ You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the k
 
 
 \section{Terminal windows}
-Your earlier use of the command line was on the computer's console, with no window manager running, but we now want to do similar things while X is running. The tool to use here is a \concept{terminal window}. You can fire up one of the these by choosing the ??? menu, then ????
+Your earlier use of the command line was on the computer's console, with no window manager running, but we now want to do similar things while X is running. The tool to use here is a \concept{terminal window}. You can fire up one of the these by choosing the \ttout{Applications} menu at the top of the screen, then \ttout{System Tools}, then \ttout{Terminal}.
 
-Much of what you do in these and future labs will involve using terminal windows.
+Much of what you do in these and future labs will involve using terminal windows in one way or another. It's a good idea to give yourself easy access to a terminal window by right clicking on the Terminal menu item and selecting \ttout{Add this launcher to panel}. You will then see a terminal icon on the top panel which you can use to start a terminal window whenever you wish to.
 
 
 \section{The Awesome Window Manager} 
@@ -428,16 +428,16 @@ There's no doubt that Awesome is at the hard-core end of the window manager spec
 As you become more familiar with Unix principles, keep the fact that you can easily swap window managers in mind. Most likely there will come a point where the graphical niceties of environments like Gnome become unnecessary, and perhaps even a distraction from getting work done, and you might find that a slimmed down window manager suits you better as a more experienced `power user'. For the rest of these exercises, though, we'll assume you're using Gnome (if you're confident enough to use something else, then translating our instructions to make sense in whatever environment you've chosen won't be too big a problem). 
 
 \begin{note}
-Could be link to JTL's ALU tutorial here
+Could be link to JTL's ALU tutorial here. If it exists
 \end{note}
 
 
 \begin{note}
-Where does backgrounding and nohuping go?
+Where does backgrounding and nohuping go? desktop2
 \end{note}
 
 \begin{note}
-What about virtual consoles? This could be a link to JTL's extended tutorial
+What about virtual consoles? This could be a link to JTL's extended tutorial. If it exists
 \end{note}
 
 \begin{note}
@@ -565,7 +565,7 @@ Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thu
 \item Press `Continue', and wait a bit while Thunderbird tries (and fails!) to guess the rest of the settings for you (there's no guessable relationship between your 8-character username and your email address really, so its not hugely surprising that Thunderbird can't figure out the settings automatically). 
 \item When the dialogue window shown in (c) appears you will need to correct some of the settings that Thunderbird has tried to guess. First change the contents of the \ttout{Username} box to your proper username, then change the server settings. The correct values for these are:\\
 \\
-\small{
+{\small
 \begin{tabular}{llllll}
  & & \textbf{Server Hostname} & \textbf{Port} & \textbf{SSL} & \textbf{Authentication} \\
  \\
@@ -574,20 +574,32 @@ Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thu
 \textbf{Outgoing} & SMTP & outgoing.manchester.ac.uk & 587 & STARTTLS & Normal password
 \end{tabular}
 }
-\item If you've entered these correctly, press `Done', and you should be able to send and receive email (if you accidentally press `Re-test' at this stage, Thunderbird will once again fail to guess the settings, and you'll need make a change and then unmake that change in any of the text fields in order for the `Done' button to become active again). 
+\item If you've entered these correctly, press `Done', and you should be able to send and receive email (if you accidentally press `Re-test' at this stage, Thunderbird will once again fail to guess the settings, and you'll need make a change and then unmake that change in any of the text fields in order for the `Done' button to become active again).
 
+\item Before you use Thunderbird to read your mail, you should make one more change, to save yourself some disk space. Thunderbird's defualt behaviour is to make a local copy, or \concept{cache}, of your email on the local machine. This is unnecessary so we suggest your turn this behaviour off. To do this
+  \begin{itemize}
+\item Click on the account name in Thunderbird's left hand panel
+\item Select \ttout{View settings for this account}, then \ttout{Synchronisation and Storage}
+\item Untick the box \ttout{Keep messages  for this account on this computer.}
+  \end{itemize}
 \end{enumerate}
 
-\begin{note}
-Looks like the last point in the previous points is in small! SRP can't see what the problem is.
-\end{note}
+
+%\begin{note}
+% Looks like the last point in the previous points is in small! SRP can't see what the problem is. Fixed, it was SRP's mistake!
+% \end{note}
+
+% \begin{note}
+% REMEMBER WE MUST FIND OUT HOW TO DISABLE DOWNLOAD/CACHING OF EMAILS
+
+
+% \end{note}
 
 \begin{note}
-REMEMBER WE MUST FIND OUT HOW TO DISABLE DOWNLOAD/CACHING OF EMAILS
-\end{note}
+  Might be worth making the figure into 3 or 4 separate things to allow them to be bigger.
 
-\begin{note}
-Might be worth making the figure into 3 or 4 separate things to allow them to be bigger
+  email address should be @student.manchester....
+  
 \end{note}
 
 \begin{figure}[h]
@@ -598,11 +610,11 @@ Might be worth making the figure into 3 or 4 separate things to allow them to be
 Once your Inbox appears in Thunderbird, using it to compose and send email should be fairly self-explanatory, but if you're stuck there are plenty of Thunderbird tutorials on the net. 
 
 
-\section{Exploring the CS Unix environment -- which RPMs are installed}
+% \section{Exploring the CS Unix environment -- which RPMs are installed}
 
-\begin{note}
-  Do we need this? Could it go in desktop2?
-\end{note}
+% \begin{note}
+%   Do we need this? Could it go in desktop2?
+% \end{note}
 
 
 

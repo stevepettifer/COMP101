@@ -11,30 +11,29 @@
 Hello and welcome! In this first, introductory, lab we're going to
 cover some of the basic things you'll need to know about the IT
 infrastructure here in the School of Computer Science. Some of what we
-tall you may well seem very obvious to you, and if that's the case
+tell you may well seem very obvious to you, and if that's the case
 we'd ask you to be patient! Some other things might not be so obvious...!
 
 All the desktop PCs in the labs in the Kilburn building are
 `dual-boot': they can be started up running either Linux or
-Windows. This is for flexibility -- the labs for most course units use
-Linux, but some use Windows, and of course you're free to use
+Windows. This is for flexibility -- the labs for most course units actually use
+Linux, but some use Windows, and of course, outside the labs, you're free to use
 whichever you prefer for any aspect of your studies. If you're not
 familiar with Linux, don't worry! We'll be telling you a bit about it
-in this lab, and you'll be looking at it in detail in subsequent labs.
+in this lab, and you'll be looking at it in much more detail in subsequent labs.
 
 \section{Using Windows}
 \label{sec:using-windows}
 
 We'll start with Windows, so the first thing we need to do is to make
-sure your PC is running Windows! Have a look. If it is, then you have
-nothing to do, for now. 
+sure your PC is running Windows! Have a look. If it is, and the screen looks like~\ref{figure:welc-win}, then you  you can move on to the end of this subsection and login.
 
-If it isn't, and it probably isn't, we need to reboot the PC. To do
+If it isn't in Windows, and it probably isn't, we need to reboot the PC. To do
 this, find the 3 keys labelled `ctrl', `alt' and `delete' (see Figure~\ref{figure:welc-keyboard}) and press
-all the simultaneously.
+all them simultaneously.
 
 \begin{figure}
-\centerline{\includegraphics[width=15cm]{images/broccoli.jpg}}
+\centerline{\includegraphics[width=15cm]{images/TH-ctrl-alt-del}}
 \caption{The control, alt and del keys.}
 \label{figure:welc-keyboard}
 \end{figure}
@@ -46,24 +45,30 @@ everything should settle down and the screen will look like
 Figure~\ref{figure:welc-grub}.
 
 \begin{figure}
-\centerline{\includegraphics[width=15cm]{images/broccoli.jpg}}
+\centerline{\includegraphics[width=15cm]{images/TH-grub-win}}
 \caption{The boot selection menu screen.}
 \label{figure:welc-grub}
 \end{figure}
 
 This is where you decide whether to start up Windows or Linux. Use the
 up/down arrow keys on the keyboard to highlight the line
-reading \splunge, and press the enter key. After a short while, the
-welcome screen will appear, as shown in Figure~\ref{figure:welc-win}.
+reading \ttout{Windows 7}, and press the enter key. After a short while, the Windows7
+welcome screen will appear, as shown in Figure~\ref{figure:welc-screen}. Now use the ctrl-alt-del chord again as instructed and you should see the Windows7 login screen, as shown in Figure~\ref{figure:login-screen}.
 
 \begin{figure}
-\centerline{\includegraphics[width=15cm]{images/broccoli.jpg}}
+\centerline{\includegraphics[width=15cm]{images/TH-win-welcome}}
+\caption{The Windows7 Welcome screen.}
+\label{figure:welc-screen}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/TH-win-login}}
 \caption{The Windows7 login screen.}
-\label{figure:welc-win}
+\label{figure:login-screen}
 \end{figure}
 
 To log in to your personal account, type in your username (this is an
-8-letter sequence starting with an `m'). Your password will
+8-character sequence starting with an `m'). Your password will
 be \splunge. If your password doesn't work, or if you've forgotten it,
 you need to fix this urgently. You can:
 
@@ -125,29 +130,31 @@ University account:
 
 \url{firstname.lastname@student.manchester.ac.uk}
 
+You'll need this information in a later lab so please don't delete this email.
+
 Finally, if you use an IMAP mail client on your phone or mobile
 device, configure it to use the settings you've just found, and check
-that you can read and send email ok.
+that you can read and send email successfully.
 
-That's all on Windows for now, but of course you're free to boot a
-free PC into Windows at any time and use it. Next, we're going to look at Linux.
+That's all on Windows for now, but of course  you're free to boot a
+free PC into Windows  and use it at any time unless you are in a lab that requires the use of Linux. Next, we're going to take a first look at Linux.
 
 \subsection{Rebooting into Linux}
 \label{sec:rebooting-into-linux}
 
 So let's reboot the PC, and start it up in Linux. First, log out of
-Windows (\splunge). When you are back to the login screen, click the
-small icon in the lower right of the screen (see Figure~\ref{figure:welc-winicon} and select \splunge.
+Windows by selecting the Windows icon in bottom left and then \ttout{Log off}). Get back to the login screen, click the
+small icon in the lower right of the screen (see Figure~\ref{figure:welc-restart}) and select \ttout{Restart}.
 
 \begin{figure}
-\centerline{\includegraphics[width=15cm]{images/broccoli.jpg}}
-\caption{Your MyManchester page.}
-\label{figure:welc-winicon}
+\centerline{\includegraphics[width=15cm]{images/TH-shutdown-win}}
+\caption{Restarting the PC}
+\label{figure:welc-restart}
 \end{figure}
 
 The system will shut down and we'll be back to the boot selection menu
 screen we saw earlier in Figure~\ref{figure:welc-grub}. This time, use
-the up/down arrow keys to select \splunge. Linux will now start, and
+the up/down arrow keys to select \ttout{EPS Linux (Scientific Linux)}. Linux will now start, and
 after a short while you should see a black screen, with a login prompt
 in the lower left. 
 
@@ -160,7 +167,7 @@ pwd
 \end{ttoutenv}
 
 and if all's well you should see something like
-Figure~\ref{welc-linux}, but with your username instead of the one
+Figure~\ref{figure:welc-linux}, but with your username instead of the one
 displayed in the Figure.
 
 \begin{figure}
@@ -177,7 +184,7 @@ logout
 
 For the rest of this lab, we'd like you to read the rest of this
 document, which gives you some useful and interesting background
-information about Linux.
+information about Linux. If you don't have time to finish reading it in the lab, please make sure you do so before the next lab session.
 
 \section{Using the School Linux system}
 
