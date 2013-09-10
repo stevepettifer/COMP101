@@ -6,43 +6,47 @@
 
 \minitoc
 
-\section{Welcome!}
+\section{Welcome}
 
-Hello and welcome! In this first, introductory, lab we're going to
+\begin{note}
+in this and every lab ask if you don't understand anything
+\end{note}
+
+Hello and welcome. In this first, introductory, lab we're going to
 cover some of the basic things you'll need to know about the IT
 infrastructure here in the School of Computer Science. Some of what we
 tell you may well seem very obvious to you, and if that's the case
-we'd ask you to be patient! Some other things might not be so obvious...!
+we'd ask you to be patient. Some other things might not be so obvious...
 
 All the desktop PCs in the labs in the Kilburn building are
 `dual-boot': they can be started up running either Linux or
-Windows. This is for flexibility -- the labs for most course units actually use
+Windows. This is for flexibility -- the labs for most course units  use
 Linux, but some use Windows, and of course, outside the labs, you're free to use
 whichever you prefer for any aspect of your studies. If you're not
-familiar with Linux, don't worry! We'll be telling you a bit about it
+familiar with Linux, don't worry. We'll be telling you a bit about it
 in this lab, and you'll be looking at it in much more detail in subsequent labs.
 
 \section{Using Windows}
 \label{sec:using-windows}
 
 We'll start with Windows, so the first thing we need to do is to make
-sure your PC is running Windows! Have a look. If it is, and the screen looks like~\ref{figure:welc-win}, then you  you can move on to the end of this subsection and login.
+sure your PC is running Windows. Have a look. If it is, 
+and the screen looks like Figure~\ref{figure:welc-screen}, then you  you can move on to the end of this subsection and login.
 
-If it isn't in Windows, and it probably isn't, we need to reboot the PC. To do
-this, find the 3 keys labelled `ctrl', `alt' and `delete' (see Figure~\ref{figure:welc-keyboard}) and press
-all them simultaneously.
-
-\begin{figure}
-\centerline{\includegraphics[width=15cm]{images/TH-ctrl-alt-del}}
-\caption{The control, alt and del keys.}
-\label{figure:welc-keyboard}
-\end{figure}
+If it isn't in Windows, you need to reboot the PC. To do
+this, press \ttout{ctrl}, \ttout{alt} and \ttout{delete}.
 
 This will probably cause strange messages to appear on the screen,
 disappear, and be replaced by yet more strange messages. Be patient,
 watch it all happen, and don't worry what it all means. After a while,
 everything should settle down and the screen will look like
 Figure~\ref{figure:welc-grub}.
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/TH-win-welcome}}
+\caption{The Windows7 Welcome screen.}
+\label{figure:welc-screen}
+\end{figure}
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/TH-grub-win}}
@@ -55,11 +59,9 @@ up/down arrow keys on the keyboard to highlight the line
 reading \ttout{Windows 7}, and press the enter key. After a short while, the Windows7
 welcome screen will appear, as shown in Figure~\ref{figure:welc-screen}. Now use the ctrl-alt-del chord again as instructed and you should see the Windows7 login screen, as shown in Figure~\ref{figure:login-screen}.
 
-\begin{figure}
-\centerline{\includegraphics[width=15cm]{images/TH-win-welcome}}
-\caption{The Windows7 Welcome screen.}
-\label{figure:welc-screen}
-\end{figure}
+\begin{note}
+sort out timeout
+\end{note}
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/TH-win-login}}
@@ -72,17 +74,22 @@ To log in to your personal account, type in your username (this is an
 be \splunge. If your password doesn't work, or if you've forgotten it,
 you need to fix this urgently. You can:
 
+\begin{note}
+log in as register register
+\end{note}
+
 \begin{itemize}
 \item Use the password recovery page at\\ \url{https://iam.manchester.ac.uk/recovery_login/overview}
-\item Visit the \verb|it.changes| Helpdesk in Kilburn Lower First area (Welcome Week, 09:00 -- 17:00)
+%\item Visit the \verb|it.changes| Helpdesk in Kilburn Lower First area (Welcome Week, 09:00 -- 17:00)
 \item Contact the University IT helpdesk (opening hours are Monday to Friday 9am to 5pm.) by phone on 0161 306 5544, or dial 65544 from a University internal phone; or you can visit the helpdesk in John Rylands Library (Building 55 on
 the Campus Map), at the top of the escalator in the Blue 1 area.
 \end{itemize}
 
-Once you're logged in, in a web browser go to your MyManchester page:\\ \url{https://my.manchester.ac.uk}
+Once you're logged in, in a web browser go to your MyManchester page:
 
-Your MyManchester page should look something like
-Figure~\ref{figure:welc-mymanchester}.
+\url{https://my.manchester.ac.uk}
+
+This should look something like Figure~\ref{figure:welc-mymanchester}.
 
 \subsection{Reading your email}
 
@@ -91,16 +98,15 @@ you read your mail regularly -- at least once a day (and probably much
 more often!). Follow the mail link (indicated by the green arrow in
 Figure~\ref{figure:welc-mymanchester}) to access your email on the
 University's Office365 system. This is a fully-featured system that
-gives you 25GB of email storage space, an integrated calendar, and
-mobile phone compatibility including contacts and calendar. You should
+gives you 25GB of email storage space and an integrated calendar. You should
 see a page looking something like Figure~\ref{figure:welc-mail365}.
 
 Have a look around for a few minutes and check what mail you've
 got. In particular, look for one with ``The Monday Mail'' in the
 Subject line. This an important mail you'll receive every Monday
-(hence the name!) throughout your 3 or 4 years with us in the
+(hence the name) throughout your 3 or 4 years with us in the
 School. The Monday Mail tells you what's going on each week in the
-School. Take a moment to read it now.
+School. Take a moment to read it now. You can always read the Monday Mail, by the way, at the archive \urlnop{http://studentnet.cs.manchester.ac.uk/ugt/mondaymail/}
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/hamza-email-link.png}}
@@ -119,9 +125,8 @@ School. Take a moment to read it now.
 Office365, like almost all modern email systems, supports the IMAP
 protocol -- which means that you can access your mail from any device
 that can run an IMAP mail client. Some examples of such clients are:
-Mozilla Thunderbird, Mac Mail, Windows Live Mail. No matter what
-client you use, you need to tell it the appropriate settings to
-use. We'll find those now.
+Mozilla Thunderbird, Mac Mail, Windows Live Mail and mail apps on mobile devices. No matter what
+client you use, you need to tell it the appropriate settings. We'll find those now.
 
 \splunge
 
@@ -136,8 +141,7 @@ Finally, if you use an IMAP mail client on your phone or mobile
 device, configure it to use the settings you've just found, and check
 that you can read and send email successfully.
 
-That's all on Windows for now, but of course  you're free to boot a
-free PC into Windows  and use it at any time unless you are in a lab that requires the use of Linux. Next, we're going to take a first look at Linux.
+That's all on Windows for now, but of course  you're free to boot an available PC into Windows  and use it at any time unless you are in a lab that requires the use of Linux. Next, we're going to take a first look at Linux.
 
 \subsection{Rebooting into Linux}
 \label{sec:rebooting-into-linux}
@@ -152,35 +156,19 @@ small icon in the lower right of the screen (see Figure~\ref{figure:welc-restart
 \label{figure:welc-restart}
 \end{figure}
 
+\begin{note}
+password not seen + fix elsewhere
+\end{note}
+
 The system will shut down and we'll be back to the boot selection menu
 screen we saw earlier in Figure~\ref{figure:welc-grub}. This time, use
 the up/down arrow keys to select \ttout{EPS Linux (Scientific Linux)}. Linux will now start, and
 after a short while you should see a black screen, with a login prompt
 in the lower left. 
 
-Enter your username and password -- the same ones you used when
-logging into Windows. All being well, you should now be logged in to
-Linux. Just to check, type the following, immediately after the \verb|$|
-
-\begin{ttoutenv}
-pwd
-\end{ttoutenv}
-
-and if all's well you should see something like
-Figure~\ref{figure:welc-linux}, but with your username instead of the one
-displayed in the Figure.
-
-\begin{figure}
-\centerline{\includegraphics[width=15cm]{images/welc-linux.png}}
-\caption{Logged into Linux.}
-\label{figure:welc-linux}
-\end{figure}
-
-That's all for now, so let's logout. Again at the prompt, type:
-
-\begin{ttoutenv}
-logout
-\end{ttoutenv}
+\begin{note}
+put bridge to next week here
+\end{note}
 
 For the rest of this lab, we'd like you to read the rest of this
 document, which gives you some useful and interesting background
