@@ -301,7 +301,7 @@ Perform the following tasks:
   home page in Firefox.
 \item Work out how to change the desktop theme and choose one you like.
 \item Create a keyboard shortcut for starting Firefox, to provide a third way of starting it.
-\item Find the \wikipedia{Vector_graphics}Vector Graphics drawing application called Inkscape, and use it to draw a simple self-portrait. We just want you to spend a couple of minutes getting used to the kind of things that Inkscape can do---it will be very useful later in your degree programme when you're going to need to draw diagrams to go in your reports. For now any old doodle will do quite nicely (look at what Steve drew in Figure \ref{figure:mrnoodle}, we're really not setting the bar very high at all here!) Make sure you save this file, we're going to need it later.
+\item Find the \wikipedia{Vector_graphics}{Vector Graphics} drawing application called Inkscape, and use it to draw a simple self-portrait. We just want you to spend a couple of minutes getting used to the kind of things that Inkscape can do---it will be very useful later in your degree programme when you're going to need to draw diagrams to go in your reports. For now any old doodle will do quite nicely (look at what Steve drew in Figure \ref{figure:mrnoodle}, we're really not setting the bar very high at all here!) Make sure you save this file, we're going to need it later.
 \item Figure out how to log out of the graphical environment.\label{list:logout}
 \end{enumerate}
 
@@ -397,9 +397,13 @@ You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the k
 
 
 \section{Terminal windows}
-Your earlier use of the command line was on the computer's console, with no window manager running, but we now want to do similar things while X is running. The tool to use here is a \concept{terminal window}. You can fire up one of the these by choosing the \ttout{Applications} menu at the top of the screen, then \ttout{System Tools}, then \ttout{Terminal}.
+Your earlier use of the command line was on the computer's console, without X and a window manager running, but we now want to do similar things in Gnome. The tool to use here is a \concept{terminal window}. In Gnome you can fire up one of  these by clicking on the screen-like icon on the top panel.
 
-Much of what you do in these and future labs will involve using terminal windows in one way or another. It's a good idea to give yourself easy access to a terminal window by right clicking on the Terminal menu item and selecting \ttout{Add this launcher to panel}. You will then see a terminal icon on the top panel which you can use to start a terminal window whenever you wish to.
+% the \ttout{Applications} menu at the top of the screen, then \ttout{System Tools}, then \ttout{Terminal}.
+
+Much of what you do in these and future labs will involve using terminal windows in one way or another.
+
+% It's a good idea to give yourself easy access to a terminal window by right clicking on the Terminal menu item and selecting \ttout{Add this launcher to panel}. You will then see a terminal icon on the top panel which you can use to start a terminal window whenever you wish to.
 
 
 \section{The Awesome Window Manager} 
@@ -527,22 +531,24 @@ In order for use to able to start the ARCADE client by typing \ttout{arcade} rat
 
 This can be read (and you will see this over and over again in programming languages) as 'Evaluate what is on the right had side of the \ttout{=} and give the variable on the left hand side that value'. So this takes the current value of \ttout{PATH} and adds \ttout{:/opt/teaching/bin} on the end. After you've done this you can type \ttout{arcade} in your terminal window and the ARCADE client should start. Just exit it cleanly and return to the shell.
 
-\begin{note}
-  Background jobs? Where do these go? desktop2? Yes.
-\end{note}
+% \begin{note}
+%   Background jobs? Where do these go? desktop2? Yes.
+% \end{note}
 
 If you now start another terminal window and type \ttout{arcade}, what happens and why?
 
-The way to make the change permanent is to modify your  \fname{.bash\_profile} file. Use \ttout{gedit} to modify this file by adding the following line \emph{after the existing line starting with \ttout{PATH} but before the line containing \ttout{exec startx}}.
+The way to make the change permanent is to modify your  \fname{.bash\_profile} file. While we are doing this we will also add another useful direcotory to our PATH, namely \fname{/opt/common/bin}, another shared directory containing useful stuff.
+
+Use \ttout{gedit} to modify  \fname{.bash\_profile} by adding the following line \emph{after the existing line starting with \ttout{PATH} but before the line containing \ttout{exec startx}}.
 
 \begin{ttoutenv}
-  PATH=$PATH:/opt/teaching/bin
+  PATH=$PATH:/opt/teaching/bin:/opt/common/bin
 \end{ttoutenv}
 % $
 
 This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}.
 
-Before we move on to mail reading, we would like you to make another modification to your \fname{.bash\_profile} file. Earlier you added the line \ttout{exec startx} to fire up X automatically when you login. This works fine when you login direectly to a PC, but will cause problems if you login remotely from another machine, as you will in the next lab. We won't explain the exact meaning of this piece of code now but will do later.
+Before we move on to mail reading, we would like you to make another modification to your \fname{.bash\_profile} file. Earlier you added the line \ttout{exec startx} to fire up X automatically when you login. This works fine when you login directly to a PC, but will cause problems if you login remotely from another machine, as you will in the next lab. We won't explain the exact meaning of this piece of code now but will do later.
 
 Replace the line \ttout{exec startx} at the end of \fname{.bash\_profile} with the lines
 
@@ -552,11 +558,15 @@ case `tty` in
 esac 
 \end{ttoutenv}
 
-\emph{Note that the characters surrounding \ttout{tty} are backquotes, not forward quotes. This character can be found on the keyboard of lab machines at ????}
+\emph{Note that the characters surrounding \ttout{tty} are backquotes, not forward quotes. This character can be found on the keyboard of lab machines in the top left hand corner, just below \ttout{Esc}.}
 
 We now move onto configuring a mail client for you to use.
 
 \section{Configuring Thunderbird}
+
+\begin{note}
+These instructions need changing in the light of Hamza's experience.  
+\end{note}
 
 Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thunderbird to read your University email. Start the Thunderbird application (you'll find it in Gnome's Applications menu, and might want to create a keyboard shortcut for it, as well as dragging and dropping the icon up on the top panel for easy access next time). 
 \begin{enumerate}
@@ -576,7 +586,7 @@ Follow these steps and refer to Figure \ref{figure:thunderbird} to configure Thu
 }
 \item If you've entered these correctly, press `Done', and you should be able to send and receive email (if you accidentally press `Re-test' at this stage, Thunderbird will once again fail to guess the settings, and you'll need make a change and then unmake that change in any of the text fields in order for the `Done' button to become active again).
 
-\item Before you use Thunderbird to read your mail, you should make one more change, to save yourself some disk space. Thunderbird's defualt behaviour is to make a local copy, or \concept{cache}, of your email on the local machine. This is unnecessary so we suggest your turn this behaviour off. To do this
+\item Before you use Thunderbird to read your mail, you should make one more change. Thunderbird's default behaviour is to make a local copy, or \concept{cache}, of all your email messages in your home filestore. In many circumstances this is a very useful thing to do, but with our student setup can cause problems by unnecessarily using up some of your filestore quota. To turn this behaviour off follow these steps:
   \begin{itemize}
 \item Click on the account name in Thunderbird's left hand panel
 \item Select \ttout{View settings for this account}, then \ttout{Synchronisation and Storage}

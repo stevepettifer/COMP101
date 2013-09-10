@@ -8,15 +8,14 @@
 
 \section{Welcome}
 
-\begin{note}
-in this and every lab ask if you don't understand anything
-\end{note}
 
 Hello and welcome. In this first, introductory, lab we're going to
 cover some of the basic things you'll need to know about the IT
 infrastructure here in the School of Computer Science. Some of what we
 tell you may well seem very obvious to you, and if that's the case
 we'd ask you to be patient. Some other things might not be so obvious...
+
+In this and every lab there will be academic staff and postgraduate students (demonstrators) around to help you. If you're stuck or find something that you really can't understand, then \emph{please ask for help.}; that's what the lab staff are here for, don't just sit there getting frustrated.
 
 All the desktop PCs in the labs in the Kilburn building are
 `dual-boot': they can be started up running either Linux or
@@ -54,42 +53,35 @@ Figure~\ref{figure:welc-grub}.
 \label{figure:welc-grub}
 \end{figure}
 
-This is where you decide whether to start up Windows or Linux. Use the
+This is where you decide whether to start up Windows or Linux. If you do nothing, this will automatically boot into the default operating system after a fixed timeout period. In order to stop this timeout process, just press the space bar (or any other key). Now use the
 up/down arrow keys on the keyboard to highlight the line
-reading \ttout{Windows 7}, and press the enter key. After a short while, the Windows7
-welcome screen will appear, as shown in Figure~\ref{figure:welc-screen}. Now use the ctrl-alt-del chord again as instructed and you should see the Windows7 login screen, as shown in Figure~\ref{figure:login-screen}.
-
-\begin{note}
-sort out timeout
-\end{note}
+reading \ttout{Windows 7}, and press the enter key. After a short while, the Windows 7
+welcome screen will appear, as shown in Figure~\ref{figure:welc-screen}. Now use the ctrl-alt-del chord again as instructed and you should see the Windows 7 login screen, as shown in Figure~\ref{figure:login-screen}.
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/TH-win-login}}
-\caption{The Windows7 login screen.}
+\caption{The Windows 7 login screen.}
 \label{figure:login-screen}
 \end{figure}
 
 To log in to your personal account, type in your username (this is an
 8-character sequence starting with an `m'). Your password will
-be \splunge. If your password doesn't work, or if you've forgotten it,
+be the one  you set at registration. If your password doesn't work, or if you've forgotten it,
 you need to fix this urgently. You can:
 
-\begin{note}
-log in as register register
-\end{note}
-
 \begin{itemize}
-\item Use the password recovery page at\\ \url{https://iam.manchester.ac.uk/recovery_login/overview}
+  \item Find a machine running Windows and login with the username \ttout{register} and password \ttout{register}, then follow the instructions.
+\item If you have access to a web browser, use the password recovery page at\\ \url{https://iam.manchester.ac.uk/recovery_login/overview}
 %\item Visit the \verb|it.changes| Helpdesk in Kilburn Lower First area (Welcome Week, 09:00 -- 17:00)
-\item Contact the University IT helpdesk (opening hours are Monday to Friday 9am to 5pm.) by phone on 0161 306 5544, or dial 65544 from a University internal phone; or you can visit the helpdesk in John Rylands Library (Building 55 on
+\item Outside lab times, you can contact the University IT helpdesk (opening hours are Monday to Friday 9am to 5pm.) by phone on 0161 306 5544, or dial 65544 from a University internal phone; or you can visit the helpdesk in John Rylands Library (Building 55 on
 the Campus Map), at the top of the escalator in the Blue 1 area.
 \end{itemize}
 
-Once you're logged in, in a web browser go to your MyManchester page:
+Once you're logged in, go to your MyManchester page in a web browser, it's at
 
 \url{https://my.manchester.ac.uk}
 
-This should look something like Figure~\ref{figure:welc-mymanchester}.
+This page should look something like Figure~\ref{figure:welc-mymanchester}.
 
 \subsection{Reading your email}
 
@@ -106,7 +98,7 @@ got. In particular, look for one with ``The Monday Mail'' in the
 Subject line. This an important mail you'll receive every Monday
 (hence the name) throughout your 3 or 4 years with us in the
 School. The Monday Mail tells you what's going on each week in the
-School. Take a moment to read it now. You can always read the Monday Mail, by the way, at the archive \urlnop{http://studentnet.cs.manchester.ac.uk/ugt/mondaymail/}
+School. Take a moment to read it now. You can always read the Monday Mail, by the way, at the archive \urlnop{studentnet.cs.manchester.ac.uk/ugt/mondaymail/}
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/hamza-email-link.png}}
@@ -126,16 +118,14 @@ Office365, like almost all modern email systems, supports the IMAP
 protocol -- which means that you can access your mail from any device
 that can run an IMAP mail client. Some examples of such clients are:
 Mozilla Thunderbird, Mac Mail, Windows Live Mail and mail apps on mobile devices. No matter what
-client you use, you need to tell it the appropriate settings. We'll find those now.
+client you use, you need to tell it the appropriate settings. The mechanism for finding these setting can be found in our student wiki, which is located on the web at \urlnop{http://wiki.manchester.ac.uk/compsci/index.php/It.changes}. Look for the answer to question 'How do I configure my favourite IMAP mail client?'.
 
-\splunge
-
-Now, use Office365 to email this information to yourself, to your
+Once you've found the settings, use Office365 to email this information to yourself, to your
 University account:
 
 \url{firstname.lastname@student.manchester.ac.uk}
 
-You'll need this information in a later lab so please don't delete this email.
+You'll need this information in a later lab so please don't delete this email after you've read it.
 
 Finally, if you use an IMAP mail client on your phone or mobile
 device, configure it to use the settings you've just found, and check
@@ -156,29 +146,22 @@ small icon in the lower right of the screen (see Figure~\ref{figure:welc-restart
 \label{figure:welc-restart}
 \end{figure}
 
-\begin{note}
-password not seen + fix elsewhere
-\end{note}
-
 The system will shut down and we'll be back to the boot selection menu
 screen we saw earlier in Figure~\ref{figure:welc-grub}. This time, use
-the up/down arrow keys to select \ttout{EPS Linux (Scientific Linux)}. Linux will now start, and
-after a short while you should see a black screen, with a login prompt
-in the lower left. 
-
-\begin{note}
-put bridge to next week here
-\end{note}
-
-For the rest of this lab, we'd like you to read the rest of this
-document, which gives you some useful and interesting background
-information about Linux. If you don't have time to finish reading it in the lab, please make sure you do so before the next lab session.
+the up/down arrow keys to select \ttout{EPS Linux (Scientific
+  Linux)}. Linux will now start, and after a short while you should
+see a black screen, with a white login prompt. We won't login to Linux
+at this stage, that can wait until a later lab, next week. We would,
+however, like you to read the rest of this document, which gives you
+some useful and interesting background information about Linux. If you
+don't have time to finish reading it in the lab, please make sure you
+do so before the next lab session.
 
 \section{Using the School Linux system}
 
 Over the next couple of weeks you will be undertaking a number of
 introductory labs to familiarise yourself with the School's computing
-infrastructure. Much of this is based on machines running Linux, a
+infrastructure. Much of this is based on devices and machines running Linux, a
 variant of the Unix family of operating systems; this document
 provides some background on Unix and explains why we think it is
 important. It would very useful if you could read this before you
