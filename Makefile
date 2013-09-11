@@ -13,7 +13,7 @@ default: ${PDF}
 
 %.pdf: %.tex ${ROOT}.tex ${STY}
 	echo '\includeonly{'$*'}' > includes.tex
-	rm -f ${ROOT}.mt* ;pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ; pdflatex ${ROOT} ; mv ${ROOT}.pdf $@
+	pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ; pdflatex ${ROOT} ; mv ${ROOT}.pdf $@
 
 all: ${PDF} 101labs.pdf
 
