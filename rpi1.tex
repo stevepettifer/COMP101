@@ -13,11 +13,13 @@
 
 \section{Introduction}
 
+This and subsequent introductory labs contain a large amount of material. Don't worry if you can't complete it all during the timetabled lab session, but you should try to catch up outside the lab if you can. As always, if you're having problems, please tell someone and ask for help!
+
 The Raspberry Pi is an astonishing piece of hardware. Not because it is super-fast or super-powerful---it's actually quite a slow computer by today's standards---but because it is small, cheap and needs very little energy to run. Its cheapness means you can experiment with it safe in the knowledge that if you mess it up, lose it, or drop it into the canal, getting hold of a replacement isn't going to cost you much more than a text-book or a night out at the cinema. Its small size and fairly modest power requirements mean you can be put to use in lots of applications where a regular-sized PC would be impractical.  We hope this will encourage you to experiment and explore, and to take risks playing with both its hardware and software that you might be reluctant to do on your own computer or tablet, or simply can't do with the School's lab machines. 
 
 This lab session is designed to get you familiar with the Raspberry Pi itself, and with some of the basics of the Linux operating system it uses. We're going to be covering a lot of ground quite quickly, and it's important that you read these notes carefully and follow the instructions precisely for now. As the lab sessions progress, the instructions will become much less prescriptive, and we'll be encouraging you to experiment and explore much more, and to find out things for yourself. But for now, just follow our lead. 
 
-\section{Breakout boxes}
+\subsection{Breakout boxes}
 
 Scattered throughout the main text of these exercises there are information boxes of various kinds:
 \\
@@ -30,7 +32,7 @@ Scattered throughout the main text of these exercises there are information boxe
 \includegraphics[width=1.5cm]{images/diversion} & \textbf{We digress\ldots} Boxes marked with this icon contain digressions and facts that are hopefully interesting but are probably tangential to the main flow of the exercise.\\
 \end{tabular}
 
-\section{Styles and conventions}
+\subsection{Styles and conventions}
 
 We'll be using various typographic styles to indicate different things throughout these notes. When we introduce new concepts, or use terms that have a different meaning in computer science to their everyday use, they will appear \concept{like this}, and will be explained in the nearby text. Things that are either the input or output to commands will appear \ttout{in this font}. And many words or phrases will have a little `w' after them, meaning that if you click on the term (if you're reading the notes online) or type the phrase into \wikipedia{wikipedia}{Wikipedia} (if you're reading this on paper), you should be taken to a sensible definition in case you want to learn more about something that we've touched on here. 
 
@@ -48,6 +50,10 @@ The Raspberry Pi itself is just the circuit board shown from the top in Figure \
 
 The ARM processor, on which the Pi and the vast majority of the world's other mobile devices are based, was originally designed by a team led by \wikipedia{Steve_Furber}{Steve Furber}, who is a Professor in this School.  
 \end{rpi}
+
+\subsection{Connecting the Pi}
+\label{sec:connecting-pi}
+
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/bare-rpi-annotated}}
@@ -137,6 +143,9 @@ Debian GNU/Linux wheezy/sid raspberrypi tty1
 
 raspberrypi login:
 \end{ttoutenv}
+
+\subsection{Using the Pi}
+\label{sec:using-pi}
 
 At the login line enter \totype{pi} as the username, and when prompted for the password, type \totype{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not} (so make sure you're typing carefully!) You should see:
 

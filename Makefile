@@ -8,12 +8,12 @@ default: ${PDF}
 
 101labs.pdf: ${ROOT}.tex ${TEX} ${STY}
 	echo > includes.tex
-	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT};mv ${ROOT}.pdf $@
+	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT}; pdflatex ${ROOT}; mv ${ROOT}.pdf $@
 
 
 %.pdf: %.tex ${ROOT}.tex ${STY}
 	echo '\includeonly{'$*'}' > includes.tex
-	pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ;mv ${ROOT}.pdf $@
+	rm -f ${ROOT}.mt* ;pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ; pdflatex ${ROOT} ; mv ${ROOT}.pdf $@
 
 all: ${PDF} 101labs.pdf
 
