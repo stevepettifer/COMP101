@@ -39,7 +39,7 @@ Where you see text in square brackets [LIKE THIS] it will mean that when you're 
 \FloatBarrier 
 \section{The Raspberry Pi}
 
-The most remarkable thing about the Pi is that, although it's not the most powerful of computers, it is capable of running the same full \wikipedia{Linux} operating system as the machines that you'll be using in the labs for the duration of your studies, and which you'll undoubtedly encounter in your future careers. We're actually going to be using slightly different flavours of Linux on the Pi and the lab machines, but the differences are fairly minor---more on that later. Let's get started. 
+The most remarkable thing about the Pi is that, although it's not the most powerful of computers, it is capable of running the same full \wikipedia{Linux}{Linux} operating system as the machines that you'll be using in the labs for the duration of your studies, and which you'll undoubtedly encounter in your future careers. We're actually going to be using slightly different flavours of Linux on the Pi and the lab machines, but the differences are fairly minor---more on that later. Let's get started. 
 
 The Raspberry Pi itself is just the circuit board shown from the top in Figure \ref{figure:bare-rpi}. The case we've put yours in is clear plastic so you can see the Pi inside, but you're welcome to change it for another style if you prefer (there are plenty available to buy online, and lots of people have made their own unique ones just for the fun of it). If you do put it in your own case, please remember to transfer the `sequence number' we've written on the underside of your Pi to the new box so that if the Pi is left behind in the lab it can be returned to you. The Pi is reasonably robust, and you can use it without a case, but obviously it's a bit more vulnerable if its not in a box of some sort. Figure \ref{figure:bare-rpi-underside} shows the Pi's circuit board from beneath, with an SD card inserted.
 
@@ -73,7 +73,7 @@ It's important that you connect the Pi up in exactly the order specified here---
 \item \textbf{Do not connect the power or network connectors at this stage!}
 \end{itemize}
 
-Next, we need to insert the \wikipedia{Secure_Digital}{Secure Digital} (SD) card that contains the Pi's operating system, and on which you'll be storing your own files. Look at Figure ~\ref{figure:bare-rpi-underside}, make sure the SD card is orientated correctly (note the position of the little cut corner) and gently push it into the socket; around half of the card will remain protruding outside the case. \textbf{Don't} plug a mouse in at this stage; you won't need it until the very last part of the exercise.
+Next, we need to insert the \wikipedia{Secure_Digital}{Secure Digital} (SD) card that contains the Pi's operating system, and on which you'll be storing your own files. Look at Figure ~\ref{figure:bare-rpi-underside}, make sure the SD card is orientated correctly (note the position of the little cut corner) and gently push it into the socket; around half of the card will remain protruding outside the case. 
 
 
 
@@ -84,7 +84,7 @@ Next, we need to insert the \wikipedia{Secure_Digital}{Secure Digital} (SD) card
 \end{rpi}
 
 
-Now you're ready to power up the Pi. In our lab setup in LF31 the power to the Pi is supplied via the monitor, so it is important that this is not in standby mode. Standby is indicated by an orange light on the on/off button at the bottom right of the screen, rather than blue if it is on. If the light is orange, press it to turn the monitor off, then again to switch it back on and turn it blue. Now locate the 5v Micro USB cable (the same connector that you'll find on many modern smartphones and tablet devices); this is labelled \protect\circled{3} on Figure~\ref{figure:cables}. This goes into the socket marked \circled{3} on Figure \ref{figure:bare-rpi}. There is no power switch on the Pi, so as soon as the power cable goes in, it will start to boot (this strange term is explained in breakout box~\ref{bootbox}): the red PWR LED should light up and stay on, and you'll also notice that the OK LED (which indicates SD-card activity) to its left also flickers. If any of the other three LEDs marked FDX, LNK, or 10M are lit, then that means you've already plugged a network cable into your Pi, in which case please unplug that now!
+Now you're ready to power up the Pi. In our lab setup in LF31 the power to the Pi is supplied via the monitor, so it is important that the monitor is not in standby mode. Standby is indicated by an orange light on the on/off button at the bottom right of the screen, rather than blue if it is on. If the light is orange, press it to turn the monitor off, then again to switch it back on and turn it blue. Now locate the 5v Micro USB cable (the same connector that you'll find on many modern smartphones and tablet devices); this is labelled \protect\circled{3} on Figure~\ref{figure:cables}. This goes into the socket marked \circled{3} on Figure \ref{figure:bare-rpi}. There is no power switch on the Pi, so as soon as the power cable goes in, it will start to boot (this strange term is explained in breakout box~\ref{bootbox}): the red PWR LED should light up and stay on, and you'll also notice that the OK LED (which indicates SD-card activity) to its left also flickers. If any of the other three LEDs marked FDX, LNK, or 10M are lit, then that means you've already plugged a network cable into your Pi, in which case please unplug that now!
 
 \begin{danger}{Pi Power} 
 Like most other computers, the Pi doesn't like having its power removed without being shut down properly. Although you might get away with it, there's a reasonable chance of messing up the operating system if you remove the power while the Pi is in the middle of doing something. And because the Pi runs a multi-tasking operating system, it's almost always `doing something', so pulling the power out unexpectedly is always a bad idea. You're unlikely to damage the Pi's hardware like this, but you may find that you lose work, and may have to reinstall the operating system. For instructions on how to shut the Pi down safely, see Section \ref{section:shutdown}.
@@ -93,15 +93,15 @@ Like most other computers, the Pi doesn't like having its power removed without 
 Now we need to switch the input on the monitor from DisplayPort (which
 is the input used by the PC under the desk) to DVI (the cable you've
 connected your Pi to is a HDMI to DVI cable). On the lower-right side
-of the monitor you will see 4 buttons. Press any of them to bring up
-the monitor's menu. Now press the 3rd button down and navigate to the
-input selection menu -- see Figure~\ref{figure:monitorswitch}. Switch
-the Input to DVI and all being well you should see a black screen
-containing the Raspberry Pi logo at the top left, and white text that
-scrolls up the screen as the Pi boots. When the boot process finishes
-for the first time (it will take somewhere about 20--30 seconds), if
-all has gone well you should see the Pi's configuration tool appear
-(see Figure \ref{figure:raspi-config}).
+of the monitor you will see 4 buttons -- see
+Figure~\ref{figure:monitorswitch}. Press any of them to bring up the
+monitor's menu. Now press the 3rd button down and navigate to the
+input selection menu. Switch the Input to DVI and all being well you
+should see a black screen containing the Raspberry Pi logo at the top
+left, and white text that scrolls up the screen as the Pi boots. When
+the boot process finishes for the first time (it will take somewhere
+about 20--30 seconds), if all has gone well you should see the Pi's
+configuration tool appear (see Figure \ref{figure:raspi-config}).
 
 % TODO: needs a photo of the monitor / switch here
 \begin{figure}
@@ -123,7 +123,7 @@ As an aside, you may want to consider this: if you need a text editor to write p
 \caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using cursor keys.}\label{figure:raspi-config}
 \end{figure}
 
-Before using the Pi for real, you'll need to perform one task using this menu. Use the up and down cursor keys to move the selection bar to the \ttout{expand\_rootfs} option, and press Enter. You'll see a confirmation that `Root partition has been resized. The \wikipedia{File_system}{filesystem} will be enlarged upon the next reboot'. If that doesn't mean anything much to you right now, don't worry, we'll come back to an explanation of that later (see Section~\ref{section:expandfs}). For now just press Enter again to get back to the main menu. 
+Before using the Pi for real, you'll need to perform one task using this menu. Use the up and down cursor keys to move the selection bar to the \ttout{expand\_rootfs} option, and press Enter. You'll see a confirmation that `Root partition has been resized. The \wikipedia{File_system}{filesystem} will be enlarged upon the next reboot'. If that doesn't mean anything much to you right now, don't worry, we'll come back to an explanation of that later. For now just press Enter again to get back to the main menu. 
 
 At this stage you could tweak various other options that affect the display and the layout of keyboard being used; but conveniently the defaults set on the Pi will do just fine for now (it is a mostly British invention after all, so it defaults to UK keyboard layout!) Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit Enter again. The Pi will reboot (an example of what this looks like is shown in Figure \ref{figure:piboot}) and this time when the process finishes you'll be presented by a Unix login prompt which will say something like:
 
@@ -183,9 +183,9 @@ You can change this prompt to something more or less verbose later, but for now 
 $ echo Hello World
 \end{ttoutenv}
 
-\noindent means `type \totype{echo Hello World} at the command prompt and then press Enter' (you can do this if you like; the result will be that `Hello World' gets `echoed' \cmnd{echo}{} back to you on the next line of the screen). 
+\noindent means `type \totype{echo Hello World} at the command prompt and then press Enter' (you can do this if you like; the result will be that `Hello World' gets `echoed' \cmnd{echo}{} back to you on the next line of the screen). (Notice that this reference to a Unix command has caused a small cog to appear in the right hand margin, so you can find this reference easily later. If you are reading the notes online, the cog also contains a link to a web page describing some unix commands)
 
-Before we do any real work on the Pi, we should make it a bit more secure than it currently is. Remember, you've logged in using the default username `pi' and the default password `raspberry', so anybody else could do the same. To change the password to something that's unique. 
+Before we do any real work on the Pi, we should make it a bit more secure than it currently is. Remember, you've logged in using the default username `pi' and the default password `raspberry', so anybody else could do the same; so this is the time to change the password to something that's unique. 
 
 For webcomic XKCD's view on creating good passwords, see Figure \ref{figure:xkcd-password}.
 
@@ -194,7 +194,7 @@ For webcomic XKCD's view on creating good passwords, see Figure \ref{figure:xkcd
 \caption{XKCD's take on password creation \urlnop{xkcd.com/936/}}\label{figure:xkcd-password}
 \end{figure}
 
-The command to change the password is \cmnd{passwd}{passwd}; typing this at the command prompt and entering your current password (i.e. `raspberry') and new password (twice, to be sure), should look like this:
+The command to change the password on the Pi is \cmnd{passwd}{passwd}; typing this at the command prompt and entering your current password (i.e. `raspberry') and new password (twice, to be sure), should look like this:
 
 \begin{ttoutenv}
 $ passwd
@@ -268,7 +268,7 @@ You will learn much more about processes and the way they are managed in COMP151
 \subsection{The process `family tree'}
 \label{section:family-tree}
 
-When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in Section \ref{section:permissions}, generally speaking the child cannot exist without its parent. If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be it's children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail later in the course.
+When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in the next Pi lab), generally speaking the child cannot exist without its parent. If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be its children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail later in the course.
 
 
 \begin{diversion}{Unix shells}
@@ -335,7 +335,7 @@ to start a simple version of the classic `Snake' game. You can guide your green 
 
 \subsection{The Unix filesystem}
 
-In Unix, as with most other operating systems, the files and directories you create can have more-or-less any name you like. It is very sensible to give them names which mean something and make their purpose clear. This is despite some of the traditional file names in Unix being rather cryptic---this is particularly true for most Unix commands. You'll get used to that. 
+In Unix, as with most other operating systems, the files and directories you create can have more or less any name you like. It is very sensible to give them names which mean something and make their purpose clear. This is despite some of the traditional file names in Unix being rather cryptic---this is particularly true for most Unix commands. You'll get used to that. 
 
 \begin{danger}{File name formats}
 The filesystem on your Pi (which uses a type of filesystem called `ext4') is \textit{case sensitive}, which means that \fname{Hello.txt} and \fname{hello.txt} are treated as different files because they have different case letters in their names. The filesystem used by Microsoft Windows since XP (called `NTFS') is also case-sensitive. Apple's OS X, however uses `HFS Plus' (which usually appears as `Mac OS Extended (Journaled)'), and this is not a proper case-sensitive file system; although it will remember whether you called a file \fname{Hello.txt} or \fname{hello.txt} so files \textit{appear} to be case sensitive, the OS itself treats them as being \textit{the same file}! The same is true for the FAT32 filesystem used on most removable USB drives -- because it's one of the few formats that's understood by Windows, Mac and Linux. 
@@ -376,7 +376,7 @@ Let's confirm that this is true. Issue the command:
 $ cd /
 \end{ttoutenv}
 
-which just means `change directory to the root directory' and use the \cmnd{ls}{ls} command to look at the root directory's contents. You'll see several directories with names like \fname{bin}, \fname{boot}, \fname{dev} and \fname{lib}. Most of these contain `housekeeping' files for the operating system, and at this stage you don't need to know what's in them (though Appendix \ref{appendix:pidirs} gives you a brief description if you're interested). The one called \fname{bin} is quite interesting though, so let's investigate that by typing: 
+which just means `change directory to the root directory' and use the \cmnd{ls}{ls} command to look at the root directory's contents. You'll see several directories with names like \fname{bin}, \fname{boot}, \fname{dev} and \fname{lib}. Most of these contain `housekeeping' files for the operating system, and at this stage you don't need to know what's in them (Appendix \ref{appendix:pidirs} gives you a brief description if you're interested). The one called \fname{bin} is quite interesting though, so let's investigate that by typing: 
 
 \begin{ttoutenv}
 $ cd bin
@@ -394,9 +394,9 @@ We now need to get back to our home directory. You should by now be able to thin
 \item We could go straight from where we are now (which is \fname{/bin}, remember) by typing \totype{cd /home/pi}. 
 \end{enumerate}
 
-Now we're back in our home directory (check the command prompt to make sure), you may have noticed that our commands for navigating around the filesystem are missing one feature. We can go to the `top' of our home directory easily enough; and we can go straight to very top of the whole filestore using \cmnd{cd}{cd /}; and we know how to descend into a subdirectory (e.g. \cmnd{cd}{cd python\_games}). But how do we go up one level? If we were in some nested subdirectory several levels below our home, and wanted to go just one level back up the tree, it would be very tedious to have to start back at our home directory and traverse back down to where we wanted to be. 
+Now we're back in our home directory (check the command prompt to make sure), you may have noticed that our commands for navigating around the filesystem are missing one feature. We can go to the `top' of our home directory easily enough; and we can go straight to very top of the whole filestore using \cmnd{cd}{cd /}~; and we know how to descend into a subdirectory (e.g. \cmnd{cd}{cd python\_games}). But how do we go up one level? If we were in some nested subdirectory several levels below our home, and wanted to go just one level back up the tree, it would be very tedious to have to start back at our home directory and traverse back down to where we wanted to be. 
 
-Unix represents the idea of going `up' one directory with the \fname{..} symbol (that's two fullstops typed immediately after one another with no spaces). So if you are in, say, \fname{python\_games} and want to go \textit{back up} to the directory above, you could type:
+Unix represents the idea of going `up' one directory with the \fname{..} symbol (that's two fullstops typed immediately after one another with no spaces, usually pronounced 'dot dot'.). So if you are in, say, \fname{python\_games} and want to go \textit{back up} to the directory above, you could type:
 
 \begin{ttoutenv}
 $ cd ..
@@ -438,7 +438,7 @@ We're now going to explore a bit of computing history, and install and play one 
 \caption{A PDP-10 from CERN, circa 1974, reproduced with permission. \urlnop{cds.cern.ch/record/916840}. We've taken the liberty of crudely superimposing a Raspberry Pi to approximately the right scale on the operator's desk, just to give a sense of the difference in size between the two machines.}\label{figure:cern-pdp-10}
 \end{figure}
 
-Although the original FORTRAN source code for Colossal Cave still exists, the version you're going to play with is based on a re-implementation of the game on what became known as the \wikipedia{Z-machine}{Z-Machine}: a virtual machine specifically for running interactive fiction games.\footnote{Don't confuse the Z-machine, which is a virtual machine for adventure games, with the Z Machine, which is the largest X-ray generator in the world. Doing so is likely to make your lamp melt, and the trolls very grumpy.}
+Although the original FORTRAN source code for Colossal Cave still exists, the version you're going to play with is based on a re-implementation of the game on what became known as the \wikipedia{Z-machine}{Z-Machine}: a \wikipedia{Virtual_Machine}{virtual machine} specifically for running interactive fiction games.\footnote{Don't confuse the Z-machine, which is a virtual machine for adventure games, with the Z Machine, which is the largest X-ray generator in the world. Doing so is likely to make your lamp melt, and the trolls very grumpy.}
  
 \FloatBarrier
 \subsection{Installing Frotz, a Z-Machine Interpreter}
@@ -447,11 +447,11 @@ Unlike the other commands that you've used so far, the program we need to be abl
 
 But first, we're going to have to understand a command called \cmnd{sudo}{sudo}. Everything that you've done so far has involved looking at files that either belong to the `pi' user, or are parts of the system that can be read or executed by any user. But of course, installing a new piece of software involves \textit{modifying} the Pi's operating system in some way, and that's not something that you want to do casually since mistakes could potentially mess up the whole device. 
 
-You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had two major downsides: first, that if you accidentally left yourself logged in as the superuser when you nipped out for a coffee, the machine was vulnerable to misuse by anybody who would get at the keyboard; but second and more serious, all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disastrous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{cmnd}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. 
+You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had two major downsides: first, that if you accidentally left yourself logged in as the superuser when you nipped out for a coffee, the machine was vulnerable to misuse by anybody who would get at the keyboard; but second and more serious, all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disastrous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{sudo}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. 
 
-The system that we're going to use to install this game is called \cmnd{apt}{apt}, which stands for \wikipedia{Advanced_Packaging_Tool}{Advanced Packaging Tool}. The \totype{apt} maintains a list of remote \textit{repositories} in which packages have been put that contain all the programs, libraries and data files necessary to install a particular Linux program. It can deal with fetching packages over the Internet, as well as extracting and copying their contents into the right places on your system. It also performs a series of sanity-checks to make sure that what you're adding is compatible with whatever you've already got in place.
+The system that we're going to use to install this game is called \cmnd{apt}{apt}, which stands for \wikipedia{Advanced_Packaging_Tool}{Advanced Packaging Tool}. This tool maintains a list of remote \textit{repositories} in which packages have been put that contain all the programs, libraries and data files necessary to install a particular Linux program. It can deal with fetching packages over the Internet, as well as extracting and copying their contents into the right places on your system. It also performs a series of sanity-checks to make sure that what you're adding is compatible with whatever you've already got in place.
 
-The system we want to install to play this game is called \cmnd{frotz}{frotz} (to learn why, you'll have to play the game a bit, or look it up on Google) Let's try running the \cmnd{apt-get}{apt-get} command \textit{without} having gained superuser privilege first. Try typing:
+The system we want to install to play this game is called \ttout{frotz} (to learn why, you'll have to play the game a bit, or look it up on Google) Let's try running the \cmnd{apt-get}{apt-get} command \textit{without} having gained superuser privilege first. Try typing:
 
 \begin{ttoutenv}
 $ apt-get install frotz
@@ -487,7 +487,7 @@ The various repositories that contain the packages for your Pi are updated regul
 You should also at some point run \cmnd{apt-get}{apt-get upgrade}, which will cause all the packages that have already been installed to be upgraded to the latest version that the APT system can find. This lab will work just fine with the versions of software that are pre-installed on your Pi, and the upgrade process can take quite some time (hours, possibly), so you mustn't do it now or you won't be able to complete this lab in time. Try it at home, or outside of a lab session. 
 \end{rpi}
 
-The \cmnd{frotz}{frotz} system on its own is just a virtual machine into which you can load adventure game data, so we'll need to fetch the Colossal Cave datafile before we can play anything. We've put a copy of the game on the web at:
+The \ttout{frotz} system on its own is just a virtual machine into which you can load adventure game data, so we'll need to fetch the Colossal Cave datafile before we can play anything. We've put a copy of the game on the web at:
 
 \noindent \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5} 
 
@@ -496,6 +496,7 @@ The \cmnd{frotz}{frotz} system on its own is just a virtual machine into which y
 Although it is actually possible to browse the web in console mode on the Pi (we'll experiment in another lab session because there are interesting lessons to be learned by doing so), there's an easier way to interact with the web to get the file that we need, using a command called \cmnd{curl}{curl}. First, use \cmnd{cd}{cd} to change to your home directory if you're not there already, then
 
 \begin{ttoutenv}
+\footnotesize
 $ curl http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5 -o Advent.z5
 \end{ttoutenv} 
 
@@ -507,7 +508,8 @@ Use \cmnd{ls}{ls} to confirm that you can see the file \fname{Advent.z5} in your
 $ frotz Advent.z5
 \end{ttoutenv}
 
-\noindent to start playing the Colossal Cave Adventure. Once the game has started (the screen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There are some parallels between using commands to wander around Colossal Cave and using Unix commands to navigate around the Pi's filesystem. There's a map of the entire Colossal Cave world in Appendix \ref{appendix:colossal-map}, and we'll look at some commands that will help you if you get totally lost in a Unix filesystem in section \ref{section:advanced-navigation} in a later lab session.
+\noindent to start playing the Colossal Cave Adventure. Once the game has started (the screen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There are some parallels between using commands to wander around Colossal Cave and using Unix commands to navigate around the Pi's filesystem. There's a map of the entire Colossal Cave world in Appendix \ref{appendix:colossal-map}, and we'll look at some commands that will help you if you get totally lost in a Unix filesystem in %section \ref{section:advanced-navigation} in
+a later lab session.
 
 Earlier, we referred to Colossal Cave as a work of Interactive Fiction (IF). In truth, this is perhaps stretching the term somewhat, since the genre has matured considerably in the decades since this first adventure game. For a much more compelling example of Interactive Fiction with beautifully written prose, and funny and challenging puzzles we suggest you have a go at playing Curses by \wikipedia{Graham_Nelson}{Graham Nelson}, or one of the many other games written by Interactive Fiction enthusiasts that are available for free from \url{www.ifarchive.org}. If you find yourself getting hooked on playing IF, the frotz interpreter is available for most platforms, including iOS, Android, OS X and Windows. 
 
