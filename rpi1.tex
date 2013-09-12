@@ -62,7 +62,7 @@ The ARM processor, on which the Pi and the vast majority of the world's other mo
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/bare-rpi-underside-annotated}}
-\caption{A naked Raspberry Pi. The circle indicates the location of the bevelled corner to orient the card. The ports are numbered as in Figure~\ref{figure:bare-rpi}, and in addition \protect\circled{4} shows the location of the SD (Secure Digital) memory card. The red circle indicates the locating bevel on the card.}\label{figure:bare-rpi-underside}
+\caption{A naked Raspberry Pi. The circle indicates the location of the bevelled corner to orient the card. The ports are numbered as in Figure~\ref{figure:bare-rpi}, and in addition \protect\circled{4} shows the location of the SD (Secure Digital) memory card.  The locating bevel on the card is circled.}\label{figure:bare-rpi-underside}
 \end{figure}
 
 It's important that you connect the Pi up in exactly the order specified here---so even if you are familiar with using a Pi, please don't jump ahead and plug everything in at once (no harm will come to the Pi if you do, but this exercise relies on your following our instructions closely). Refer to Figure \ref{figure:cables}, and then connect your Pi up like this:
@@ -131,7 +131,15 @@ As an aside, you may want to consider this: if you need a text editor to write p
 
 Before using the Pi for real, you'll need to perform one task using this menu. Use the up and down cursor keys to move the selection bar to the \ttout{expand\_rootfs} option, and press Enter. You'll see a confirmation that `Root partition has been resized. The \wikipedia{File_system}{filesystem} will be enlarged upon the next reboot'. If that doesn't mean anything much to you right now, don't worry, we'll come back to an explanation of that later. For now just press Enter again to get back to the main menu. 
 
-At this stage you could tweak various other options that affect the display and the layout of keyboard being used; but conveniently the defaults set on the Pi will do just fine for now (it is a mostly British invention after all, so it defaults to UK keyboard layout!) Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit Enter again. The Pi will reboot (an example of what this looks like is shown in Figure \ref{figure:piboot}) and this time when the process finishes you'll be presented by a Unix login prompt which will say something like:
+At this stage you could tweak various other options that affect the
+display and the layout of keyboard being used; but conveniently the
+defaults set on the Pi will do just fine for now (it is a mostly
+British invention after all, so it defaults to UK keyboard layout!)
+Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit
+Enter again. Confirm that the Pi should reboot (an example of what
+this looks like is shown in Figure \ref{figure:piboot}) and this time
+when the process finishes you'll be presented by a Unix login prompt
+which will say something like:
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/bootscreen}}
@@ -352,9 +360,10 @@ The filesystem on your Pi (which uses a type of filesystem called `ext4') is \te
 Most of the time this isn't a problem, but you should be careful of the effects when copying files from one filesystem to another, especially if you are using a USB drive to transfer files from a Linux box to somewhere else. For example, if you have two files in the same directory on Linux but with different capitalisation, one file will overwrite the other when you copy them onto your USB drive (and which one survives will depend on the order in which they are copied). One way around this problem is to use commands such as  \cmnd{tar}{tar} or \cmnd{zip}{zip} to bundle the files up into a single archive file, and then transfer that via the USB drive. 
 \end{danger}
 
-As you already know, directories are created within directories to create a hierarchical structure. But where is the `top' directory? Surely that has to go somewhere? On each machine, there is one directory called `/' which is referred to as the \textit{root}, which is not contained in any other directory. All other files and directories are contained in root, either directly or indirectly. The root directory is written just as \fname{/} (note this is the opposite slanting slash character to that used in Windows). 
+As you already know, directories are created within directories to create a hierarchical structure. The character \ttout{/} (slash) is used to separate directories, so if we wish to talk about the file \fname{y} within the directory, \fname{x} we write \fname{x/y}. Of course, \fname{y} may itself be a directory, and may contain the file \fname{z}, which we can describe as \fname{x/y/z}.
 
-If we wish to talk about the file \fname{y} within the directory, \fname{x} we write \fname{x/y}. Of course, \fname{y} may itself be a directory, and may contain the file \fname{z}, which we can describe as \fname{x/y/z}.
+But where is the `top' directory? Surely that has to go somewhere? On each machine, there is one directory called `/' which is referred to as the \textit{root}, which is not contained in any other directory. All other files and directories are contained in root, either directly or indirectly. The root directory is written just as \fname{/} (note this is the opposite slanting slash character to that used in Windows). 
+
 
 You can think of this structure as defining a tree, with \fname{/} as the root (hence its name), directories as branches, and other files as leaves. You will study trees as abstract data structures, later in this year, and in Year 2, but this simplified model of the Unix file system structure will do for now. 
 
@@ -486,7 +495,7 @@ You should see a series of lines printed out on the console, ending with:
 Setting up frotz (2.43-4) ...
 \end{ttoutenv}
 
-\noindent before being returned to the command prompt (note the version number for frotz may have changed from 2.43-4 by the time do this exercise, don't worry, that's fine). It's possible that \cmnd{apt-get}{apt-get} will fail to find the frotz package in one of the repositories it knows about; if this happens, it's usually because the repository has moved somewhere else on the internet, so you need to tell the APT system to update itself first: run the command \ttout{sudo apt-get update}, and when that has completed try installing the frotz package again, and all should be well. 
+\noindent before being returned to the command prompt (note the version number for frotz may have changed from 2.43-4 by the time you do this exercise, don't worry, that's fine). It's possible that \cmnd{apt-get}{apt-get} will fail to find the frotz package in one of the repositories it knows about; if this happens, it's usually because the repository has moved somewhere else on the internet, so you need to tell the APT system to update itself first: run the command \ttout{sudo apt-get update}, and when that has completed try installing the frotz package again, and all should be well. 
 
 \begin{rpi}{APT}
 The APT system is a very convenient way of managing packages, since it will automate the process of finding, fetching, configuring and installing software on your Pi (or indeed, on other Debian-based Linux installations). The RPM system does something similar for distributions based on Red Hat's version of Linux.
