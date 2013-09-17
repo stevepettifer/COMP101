@@ -5,6 +5,8 @@
 \newcommand{\crsnamelc}{comp10120}
 \newcommand{\return}{\relax}
 
+This section to practice your command line skills and prepare for next week
+
 \subsection{Creating a directory structure}
 
 You're now going to use the \cmdname{mkdir} (``make directory'') command
@@ -38,19 +40,17 @@ the tree by changing your current working directory. Type
 \end{ttoutenv}
 %
 to make \crsname{} your working directory. Check that you have changed
-current directory (if you can't remember how -- slow down!).
+current directory using \cmnd{pwd}{pwd}.
 
-Note that the version of
-\cmdname{cd} that you are using also does something similar to \cmdname{pwd}.
-
-Now make directories for each of the \crsname{} exercises
+  
+Now make directories for each of the \crsname{} exercises.
 
 \begin{ttoutenv}
   mkdir ex1 ex2 ex3 \return
 \end{ttoutenv}
 %  mkdir ex1 ex2 ex3 ex4 \return
 %
-The \cmdname{cd} command on its own takes you back to your home
+Recall that the \cmdname{cd} command on its own takes you back to your home
 directory, wherever you may be when you invoke it.  Try this out by
 typing
 
@@ -74,13 +74,13 @@ Your directory structure should now look something like this
 %\end{msconly}
      
 The easiest way to check this is to use (from your home directory)
-\cmdname{ls} with the \cmdname{-R} flag. This shows the whole tree
-below your current working directory (\cmdname{-R} is short for
-``recursively''  -- look up the word in a dictionary, or wait until later for a
+\cmdname{ls} with the \ttout{-R} flag. This shows the whole tree
+below your current working directory (\ttout{-R} is short for
+\wikipedia{Recursion}{``recursively'}'  -- look up the word in a dictionary, or wait until later for a
  definition!).
 
 \begin{ttoutenv}
-  ls -R \return
+\$ ls -R 
 \end{ttoutenv}
 %
 
@@ -100,11 +100,15 @@ member of the lab staff to check it at this point.
 
 \subsection{Copying, moving, and removing files}
 
-This subsection introduces three commands used for copying, moving and
+This subsection re-introduces three commands used for copying, moving and
 removing files. We first describe each command and then invite you to
 practice using them.
 
 \noindent The \cmdname{cp} (copy) command has two forms.
+
+\begin{note}
+  fix <file> [file] notation
+\end{note}
 
 The first general form is
 \begin{ttoutenv}
@@ -118,9 +122,8 @@ For example
 \end{ttoutenv}
 %
 makes a copy of the file \fname{file1} and calls it \fname{file2}.  If
-a file called file2 already exists, you will be warned and given a
-chance to change your mind, or have the existing \fname{file2} overwritten
-with a copy of \fname{file1}.
+a file called file2 already exists, \emph{the existing \fname{file2} will be  overwritten
+with a copy of \fname{file1} and lost without warning}.
 
 The second form is slightly different:
 \begin{ttoutenv}
@@ -143,8 +146,7 @@ The command \cmdname{rm} (remove) is used to delete files.
 \end{ttoutenv}
 %
 throws away the specified files -- always take great care when using
-\cmdname{rm}, it is not reversible, although you will be asked to
-confirm each remove.
+\cmdname{rm}, it is not reversible.
 
 The \cmdname{mv} (move) command is similar to \cmdname{cp}, but it just moves
 the files rather than makes copies. Again we have the two forms
@@ -189,6 +191,10 @@ Now for some practice. Go to your home directory
 %
 and copy the file called \fname{lightbulbs} in the \fname{\Dcrsname}
 directory to your current working directory:
+
+\begin{note}
+Tell them about .  
+\end{note}
 
 \begin{ttoutenv}
   cp \Dcrsname/lightbulbs .  \return
