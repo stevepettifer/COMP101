@@ -1,0 +1,48 @@
+#!/bin/sh
+V="-"
+
+## Script to update web resources. Usually invoked as ./sync-files -v
+
+## Things to update
+YEAR=2013
+COMP101HOME=$HOME/Teach/COMP10120/COMP101
+USR=graham
+
+while getopts qvnu: c
+do
+    case $c in
+	v) V=${V}v;;
+	q) V=${V}q;;
+	n) V=${V}n;;
+	u) USR=$OPTARG;;
+    esac
+done
+
+if [ X$V = X-q ]
+then
+   :
+else
+    echo `basename $0`
+fi
+
+##### update course material on waldorf
+if [ X$V = X-q ]
+then
+   :
+else
+    echo 'Updating waldorf'
+fi
+
+## Use sonofis7 so can update from outside School
+
+for file in index.html 101labs.pdf welcome.pdf rpi1.pdf rpi2.pdf desktop1.pdf desktop2.pdf desktop3.pdf desktop4.pdf latex-exercise.pdf desktop5.pdf appendix.pdf
+do 
+rsync -a  $V  -e  'ssh -p1001' $COMP101HOME/$file $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/labscripts
+done
+
+for file in mutt-template Advent.z5 quake3.tar.gz htmltest
+do 
+rsync -a  $V  -e  'ssh -p1001' $COMP101HOME/files/$file $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/files
+done
+
+exit
