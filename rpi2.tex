@@ -16,16 +16,16 @@ $ startx
 
 to start up X Windows and the Pi's default window manager, LXDE, which appear moments later looking like the screenshot in Figure \ref{figure:lxde-desktop}. 
 
-LXDE (the `Lightweight X11 Desktop Environment') is designed to be a lean, fast desktop environment, which makes it ideally suited for the Pi's modest CPU. Although rather less rich in features and `eyecandy' than Gnome, LXDE is a fully functioning environment that has all the features you will need for operating and programming the Pi. 
+LXDE (the `Lightweight X11 Desktop Environment') is designed to be a lean, fast desktop environment, which makes it ideally suited for the Pi's modest CPU. Although rather less rich in features and `eyecandy' than GNOME, LXDE is a fully functioning environment that has all the features you will need for operating and programming the Pi. 
 
 
 \begin{linux}{LXDE isn't a window manager either}
-Rather like Gnome, LXDE is a technically a collection of desktop tools rather than a window manager as such. LXDE uses the \wikipedia{Openbox}{openbox} window manager, and \wikipedia{GTK+}{GTK+}, which was developed as part of the \wikipedia{GIMP}{GIMP} project to draw widgets. LXDE is the default graphical environment for several `lean' or `low power' Linux distributions such as \wikipedia{Knoppix}{Knoppix}, \wikipedia{Lubuntu}{Lubuntu} and of course the Pi's operating system, \wikipedia{Raspbian}{Raspbian}. 
+Rather like GNOME, LXDE is a technically a collection of desktop tools rather than a window manager as such. LXDE uses the \wikipedia{Openbox}{openbox} window manager, and \wikipedia{GTK+}{GTK+}, which was developed as part of the \wikipedia{GIMP}{GIMP} project to draw widgets. LXDE is the default graphical environment for several `lean' or `low power' Linux distributions such as \wikipedia{Knoppix}{Knoppix}, \wikipedia{Lubuntu}{Lubuntu} and of course the Pi's operating system, \wikipedia{Raspbian}{Raspbian}. 
 \end{linux}
 
-Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do (though remember--it's just going to log you out of the windowing environment, and not log your user out of console mode; we explained how you could do that using \cmnd{exec}{exec} in the previous lab session). On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
+Down at the bottom of the screen you will see LXDE's `panel'. On the left of the panel (\protect\circled{1} in the figure) are controls that give you access to various applications, tools and system preferences. On the panel's right (marked \protect\circled{2}) are a CPU meter, a clock, a control that will allow you to lock the Pi's screen temporarily so that you can nip out for a coffee, and the logout button that does what you'd expect a logout button to do (though remember--it's just going to log you out of the desktop environment, and not log your user out of console mode; we explained how you could do that using \cmnd{exec}{exec} in the previous lab session). On the desktop itself are shortcuts to some useful applications including a Terminal and Midori, which is a simple web browser. 
 
-Spend a few minutes exploring the GUI. You may find that you're double-clicking on things that only need a single click, and vice versa, and may find that things aren't quite where you expect them to be---but rather than dismissing LXDE as being crude, embrace the differences; you may well find that you come to prefer its `no frills' approach to window management over that of richer, heavier-weight environments such as Gnome. LXDE and other slimmed-down graphical environments consume considerably fewer CPU cycles and hence less power than their richer counterparts, and while this isn't an issue when you're running on a mains-powered desktop machine with a reasonably beefy graphics card such as the lab PC, this can be a serious issue for devices running off batteries (and it does mean of course that LXDE is rather more environmentally friendly!)
+Spend a few minutes exploring the GUI. You may find that you're double-clicking on things that only need a single click, and vice versa, and may find that things aren't quite where you expect them to be---but rather than dismissing LXDE as being crude, embrace the differences; you may well find that you come to prefer its `no frills' approach to window management over that of richer, heavier-weight environments such as GNOME. LXDE and other slimmed-down graphical environments consume considerably fewer CPU cycles and hence less power than their richer counterparts, and while this isn't an issue when you're running on a mains-powered desktop machine with a reasonably beefy graphics card such as the lab PC, this can be a serious issue for devices running off batteries (and it does mean of course that LXDE is rather more environmentally friendly!)
 
 \begin{figure}
 \centerline{\includegraphics[width=14cm]{images/lxde-desktop}}
@@ -44,11 +44,7 @@ Once the install has completed, you'll need to adjust Mutt's settings so that th
 
 First you need to check that you still have the \fname{.muttrc} configuration file in your home filestore of your Computer Science account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that--you can check \concept{remotely}. 
 
-\begin{note}
-Picture of the hostname sticker, and update this with new new hostname style
-\end{note}
-
-So, find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, Breakout \ref{breakout:hostname} describes there several other ways to find a Unix machine's hostname. 
+Find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, Breakout \ref{breakout:hostname} describes there several other ways to find a Unix machine's hostname. 
 
 
 \begin{linux}{Unix hostnames}
@@ -76,7 +72,7 @@ RSA key fingerprint is 20:6d:2d:90:5e:8f:9f:19:39:70:ce:48:a6:93:ec:4c.
 Are you sure you want to continue connecting (yes/no)? 
 \end{ttoutenv}
 
-Type \ttout{yes} (and hit enter) in response to the question. You should then be given a command prompt (you'll learn more about what this message actually means in later in your programme, but for now just treat it as something that happens the first time you try to connect to a particular machine). Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. 
+Type \ttout{yes} (and hit enter) in response to the question. You should then be given a command prompt. You'll learn more about what this message actually means in later in your programme, but for now just treat it as something that happens the first time you try to connect to a particular machine. Notice that this command prompt no longer says \ttout{pi@raspberrypi}, but rather has the name of the machine you've just remotely logged into. 
 
 Type \cmnd{ls}{ls -a} to confirm that your \fname{.muttrc} file is still where you expect it to be, and if all is well then press \ctrl{d} to log out of the remote shell you just started, and you will return to the shell running locally on your Pi (you'll see the command prompt change back to being `pi' again). Now we know the file we want is there, we need to copy it from your Computer Science filestore onto your Pi's local filestore.
 
@@ -94,13 +90,13 @@ So for example, if you wanted to retrieve a file called \fname{cheese.jpg} from 
 $ scp mrnoodle@mypc.example.com:cheese.jpg mycheese.jpg
 \end{ttoutenv}
 
-Then, supposing you had edited the file \fname{mycheese.jpg} on your local machine and wanted to put the file back into the home directory of the \ttout{mrnoodle} account on the remote machine, but under a different name (so as not to over-write the original), you would use the command:
+Then, supposing you had edited the file \fname{mycheese.jpg} on your local machine and wanted to put the file back into the home directory of the \ttout{mrnoodle} account on the remote machine---but under a different name so as not to over-write the original---you would use the command:
 
 \begin{ttoutenv}
 $ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
 \end{ttoutenv}
 
-We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}; if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]@[HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
+We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}: if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]@[HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
 
 Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi (as usual, if you get stuck as for help.)
 
@@ -114,9 +110,9 @@ To test that you've sucessfully set \cmnd{mutt}{mutt} up on the Pi, use it to se
 
 \section{X Windows again}
 
-As we mentioned before, the X Windows system is a powerful beast, and although it was designed a long time ago (around 1984), it was in many ways way ahead of its time--rather like the design of Unix itself.
+As we mentioned before, the X Windows system is a powerful system, and although it was designed a long time ago (around 1984), it was in many ways way ahead of its time--rather like the design of Unix itself.
 
-Remember that the GUI you're now using on the Pi consists of two systems working together: X Windows (which amongst other things gives software access to the display hardware), and the Window Manager (in this case, LXDE) that provides the WIMP-style features such as movable windows and clickable controls. The X Windows system operates as a Client/Server architecture, where the `server' part does the drawing of stuff onto the screen, and clients request that things be drawn. One of the really nice features of X Windows is that it doesn't care too much about where the requests to draw things come from. Typically they come from processes that are running on the same computer as the X Server, but this need not be the case as you're about to demonstrate.
+Remember that the GUI you're now using on the Pi consists of two systems working together: X Windows (which amongst other things gives software access to the display hardware), and the Window Manager / Desktop environment (in this case, LXDE) that provides the WIMP-style features such as movable windows and clickable controls. The X Windows system operates as a Client/Server architecture, where the `server' part does the drawing of stuff onto the screen, and clients request that things be drawn. One of the really nice features of X Windows is that it doesn't care too much about where the requests to draw things come from. Typically they come from processes that are running on the same computer as the X Server, but this need not be the case as you're about to demonstrate.
 
 Log back in to the lab PC using the \cmnd{cmnd}{ssh} command, but this time include a \texttt{-X} switch before your username, like:
 
@@ -124,19 +120,15 @@ Log back in to the lab PC using the \cmnd{cmnd}{ssh} command, but this time incl
 $ ssh -X [USERNAME]@[HOSTNAME]
 \end{ttoutenv}
 
-The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} program to send any X Windows graphics generated on the remote generates back through the network from the remote machine to the X Server running on the local machine.
+The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} program to send any graphics instructions generated on the remote system back through the network to the X Server running on the local machine.
 
-\begin{note}
-Fix / simplify the above
-\end{note}
-
-Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout \ref{breakout:hostname}, and then type:
+Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout \ref{breakout:hostname} to check the hostname), and then type:
 
 \begin{ttoutenv}
 $ xeyes
 \end{ttoutenv}
 
-Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Press \ctrl{c} to quit \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launched on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore and you can confirm this another way using the \cmnd{hostname}{hostname} command). Look at Figures \ref{figure:x-on-pi} and \ref{figure:x-via-ssh} for a diagrammatic representation of what's just happened.
+Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Make sure that the terminal window you used to start \cmnd{xeyes}{xeyes} is the active window, then press \ctrl{c} to quit \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launched on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore and you can confirm this another way using the \cmnd{hostname}{hostname} command). Look at Figures \ref{figure:x-on-pi} and \ref{figure:x-via-ssh} for a diagrammatic representation of what's just happened.
 
 \begin{figure}
 \centerline{\includegraphics[width=8cm]{images/x-on-pi}}
@@ -161,9 +153,9 @@ Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory calle
 
 \begin{ttoutenv}
 <html>
-<body>
-Hello world!
-</body>
+  <body>
+    Hello world!
+  </body>
 </html>
 \end{ttoutenv}
 
@@ -179,7 +171,7 @@ and then use Midori to browse to the following URL:
 http://localhost:8000
 \end{ttoutenv}
 
-If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine'. The section of the URL that follows \texttt{localhost} may be even less familiar: this is the \textit{port} (communication channel) on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to use port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in \courseunit{COMP18112}. 
+If your browser displays a page saying `Hello World', pat yourself on the back---you've just created a web page \textit{and} set up a simple web server to host it. The URL you used to view this page may look a bit odd compared with others you have seen. The \texttt{http://} part you'll no-doubt be familiar with from other web-addresses that you've seen; the `localhost' part is a convention that means `this machine'. The section of the URL that follows \texttt{localhost} may be even less familiar: this is the \textit{port} (for now just think of this as a kind of communication channel) on which the simple web-server that you've set up is serving web pages; by default web browsers expect servers to use port 80, but the \ttout{python -m SimpleHTTPServer} command you used here defaults to port 8000, so we had to add that to the URL. We'll leave the issue of ports there for now, and revisit that in more detail in the 2nd semester in \courseunit{COMP18112}. 
 
 \subsection{A slightly more interesting web page}
 
@@ -217,7 +209,7 @@ To finish this section, start up the \concept{SimpleHTTPServer} that we used ear
 
 
 
-The Pi can be used as a respectable desktop machine, but it really comes into its own as a `server' or controller for other pieces of hardware. In this section we'll use the Pi in what is called `headless' mode, that is without its own screen and keyboard, to create a proper web server to host your pages. 
+The Pi can be used as a respectable desktop machine, but it really comes into its own as a `server' or controller for other pieces of hardware. In this section we'll use the Pi in what is called `headless' mode---that is without its own screen and keyboard---to create a proper web server to host your pages. 
 
 \begin{danger}{Don't Panic!}
 The rest of this lab session exposes you a fair number of quite advanced concepts pretty quickly, and we don't expect all of them to sink in this first time round. Stay calm.  Don't panic. Just follow our instructions and everything will be fine; if you get lost or things aren't going to plan, just call a demonstrator to help you get back on track, and we'll revisit these ideas in the next lab where there will be a second opportunity to put them into practise and make sure everything makes sense.
@@ -245,7 +237,7 @@ lo        Link encap:Local Loopback
 
 This tells you that the Pi has two network devices currently active: one called `eth0', which is the represents the physical ethernet socket into which you plugged the blue network cable, and which allows the Pi to communicate with other computers on the network (and in this case, on the internet); and a second one called `lo' which is a `virtual connection' or `local loopback' connection that allows the Pi to route network traffic back to itself (this is how the `localhost' trick you used earlier to look at web pages on the Pi worked). You'll learn a lot more about network configuration in the second year Computer Networks course (COMP28411). 
 
-The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is 10.2.215.1 but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network. 
+The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is \texttt{10.2.215.1} but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network. 
 
 Quit the graphical environment, and log out of your Pi. Leave the network connection and power supply plugged in, but disconnect the mouse/keyboard lead, and reconnect them to the desktop PC. Switch the monitor over to display the desktop PC's screen, and log in to that with your University credentials. 
 
@@ -315,7 +307,7 @@ to list any processes that are currently running (you'll probably need to widen 
 
 Look at the rightmost column of the output (which has the heading `COMMAND') and you should see a few familiar process names such as bash, \cmnd{startx}{startx}, and the \cmnd{ps}{ps} process itself in amongst many commands that will be unfamiliar to you at the moment. The rightmost column tells you who owns the processes, and you'll see that the majority of them are owned by you (or, rather by the user `pi'), and a small number of them are owned by the root user. Most of the processes that you're seeing have been started as part of the window manager system, or are in one way or another associated with X Windows; the rest are `housekeeping' processes the details of which we don't care about for now. 
 
-If you think back to what you learned about the hierarchical relationship between processes in the first Pi lab, it should be starting to become clear how the `family tree' of processes when combined with the notion of users and resource ownership knit together nicely to give a secure multi-user system. When you first log in to a Unix machine, a single process is started on your user's behalf (in most cases this is a command shell). From that shell you can start other processes, which could be individual commands like \ttout{tar} or \ttout{ls}, or could be a whole window manager system such as Gnome or LXDE; in either case though, these inherit the properties of the parent shell in terms of being owned by the same user. Then, any processes that are started by the window manager also inherit the same user properties, and so forth. 
+If you think back to what you learned about the hierarchical relationship between processes in the first Pi lab, it should be starting to become clear how the `family tree' of processes when combined with the notion of users and resource ownership knit together nicely to give a secure multi-user system. When you first log in to a Unix machine, a single process is started on your user's behalf (in most cases this is a command shell). From that shell you can start other processes, which could be individual commands like \ttout{tar} or \ttout{ls}, or could be a whole window manager system such as GNOME or LXDE; in either case though, these inherit the properties of the parent shell in terms of being owned by the same user. Then, any processes that are started by the window manager also inherit the same user properties, and so forth. 
 
 \subsection{Back to that webserver}
 
