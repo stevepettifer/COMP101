@@ -114,7 +114,7 @@ As we mentioned before, the X Windows system is a powerful system, and although 
 
 Remember that the GUI you're now using on the Pi consists of two systems working together: X Windows (which amongst other things gives software access to the display hardware), and the Window Manager / Desktop environment (in this case, LXDE) that provides the WIMP-style features such as movable windows and clickable controls. The X Windows system operates as a Client/Server architecture, where the `server' part does the drawing of stuff onto the screen, and clients request that things be drawn. One of the really nice features of X Windows is that it doesn't care too much about where the requests to draw things come from. Typically they come from processes that are running on the same computer as the X Server, but this need not be the case as you're about to demonstrate.
 
-Log back in to the lab PC using the \cmnd{cmnd}{ssh} command, but this time include a \texttt{-X} switch before your username, like:
+Log back in to the lab PC using the \cmnd{ssh}{ssh} command, but this time include a \texttt{-X} switch before your username, like:
 
 \begin{ttoutenv}
 $ ssh -X [USERNAME]@[HOSTNAME]
