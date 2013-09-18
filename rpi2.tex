@@ -61,7 +61,7 @@ A machine's hostname identifies it on a network in a way that's usually a bit mo
 Once you've got hold of the PC's hostname, we're going to use a \wikipedia{Secure_Shell}{Secure Shell} to connect to from the Pi to the the desktop, allowing you to type commands on the Pi that will be executed remotely via a shell that's executing on the desktop PC. In the terminal window on the Pi, issue this command:
 
 \begin{ttoutenv}
-\$ ssh [USERNAME]@[HOSTNAME].cs.man.ac.uk
+\$ \cmnd{ssh}{ssh} [USERNAME]\!@\![HOSTNAME].cs.man.ac.uk
 \end{ttoutenv}
 
 replacing [USERNAME] with your University username, and [HOSTNAME] with the name of the PC in front of you. You'll need to enter your University password, and will most likely be presented with text something similar to this:
@@ -81,7 +81,7 @@ To do this, we're going to use the \cmnd{scp}{scp} (Secure Copy) command, which 
 Like \cmnd{cp}{cp}, the \cmnd{scp}{scp} command in its basic form takes two arguments, the first is the name of the source file (the one you want to copy), and the second is the name of the destination file (the one you want to create). The difference with \cmnd{scp}{scp} is that either (or less commonly, both) of these files can be on a remote machine, which means that you need to provide the command with enough information about the location of the remote file in terms of the hostname and file system, and any login details necessary to get at it. The syntax for providing this information is:
 
 \begin{ttoutenv}
-[USERNAME]@[HOSTNAME]:[FILEPATH]
+[USERNAME]\!@\![HOSTNAME]:[FILEPATH]
 \end{ttoutenv}
 
 So for example, if you wanted to retrieve a file called \fname{cheese.jpg} from the home directory of a user called \ttout{mrnoodle} that was stored on a machine with the hostname \ttout{mypc.example.com}, and you wanted the local copy of the file to be called \fname{mycheese.jpg} the command would be:
@@ -93,10 +93,10 @@ So for example, if you wanted to retrieve a file called \fname{cheese.jpg} from 
 Then, supposing you had edited the file \fname{mycheese.jpg} on your local machine and wanted to put the file back into the home directory of the \ttout{mrnoodle} account on the remote machine---but under a different name so as not to over-write the original---you would use the command:
 
 \begin{ttoutenv}
-$ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
+\$ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
 \end{ttoutenv}
 
-We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}: if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]@[HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
+We're not exactly sure why MrNoodle and cheese feature quite so prominently in these labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}: if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]\!@\![HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
 
 Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi (as usual, if you get stuck as for help.)
 
@@ -117,7 +117,7 @@ Remember that the GUI you're now using on the Pi consists of two systems working
 Log back in to the lab PC using the \cmnd{ssh}{ssh} command, but this time include a \texttt{-X} switch before your username, like:
 
 \begin{ttoutenv}
-$ ssh -X [USERNAME]@[HOSTNAME]
+\$ ssh -X [USERNAME]\!@\![HOSTNAME]
 \end{ttoutenv}
 
 The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} program to send any graphics instructions generated on the remote system back through the network to the X Server running on the local machine.
@@ -125,7 +125,7 @@ The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} 
 Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout \ref{breakout:hostname} to check the hostname), and then type:
 
 \begin{ttoutenv}
-$ xeyes
+\$ xeyes
 \end{ttoutenv}
 
 Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Make sure that the terminal window you used to start \cmnd{xeyes}{xeyes} is the active window, then press \ctrl{c} to quit \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launched on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore and you can confirm this another way using the \cmnd{hostname}{hostname} command). Look at Figures \ref{figure:x-on-pi} and \ref{figure:x-via-ssh} for a diagrammatic representation of what's just happened.
@@ -149,7 +149,7 @@ Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not h
 
 This next exercise involves setting up a simple web server on the Pi, but before we can do that you'll need to create some basic web pages to display. 
 
-Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory called \fname{htmlexample1} your home directory, and in that directory, use \cmnd{nano}{nano} to create a file called \fname{index.html} with the following content:
+Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory called \fname{htmlexample1} in your home directory, and in that directory, use \cmnd{nano}{nano} to create a file called \fname{index.html} with the following content:
 
 \begin{ttoutenv}
 <html>
@@ -162,7 +162,7 @@ Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory calle
 From within that directory, run the command:
 
 \begin{ttoutenv}
-$ python -m SimpleHTTPServer
+\$ \cmnd{python}{python} -m SimpleHTTPServer
 \end{ttoutenv}
 
 and then use Midori to browse to the following URL:
@@ -179,7 +179,7 @@ Next you're going to create a slightly more interesting web page.
 
 You need to create a single page about yourself that contains a paragraph describing who you are, which programme you're on (e.g. Computer Science, Software Engineering, etc.), and which contains a picture of yourself as well as the image you created in the previous session using Inkscape.
 
-Use \cmnd{cd}{cd} to change to your home directory, and then \cmnd{curl}{curl} to fetch a tar of the example Mr Noodle web page that we've created for you from:
+Use \cmnd{cd}{cd} to change to your home directory, and then \ttout{curl} to fetch a gzipped tar of the example Mr Noodle web page that we've created for you from:
 \\
 \url{http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/mrnoodle.tar.gz} 
 \\
@@ -244,14 +244,14 @@ Quit the graphical environment, and log out of your Pi. Leave the network connec
 Once you're in the graphical window environment, start up a terminal, and use \cmnd{ssh}{ssh} to log into your Pi:
 
 \begin{ttoutenv}
-$ ssh pi@[IPADDRESSOFPI]
+\$ ssh pi@[IPADDRESSOFPI]
 \end{ttoutenv}
 
 replacing [IPADDRESSOFPI] with the IP Address you noted down a moment ago. Since this is the first time you're logging in from your CS account to your Pi, expect to see the `The authenticity of host' warning again; just say `yes' to the prompt, and enter your Pi user's password. 
 
 Change directory to the \fname{htmlexample1} directory you created for your web-page earlier, and re-start the simple Python web server. 
 
-Next, start up Firefox using the keyboard shortcut you created in the previous lab session, and enter the URL:
+Next, start up Firefox on your desktop using the keyboard shortcut you created in the previous lab session, and enter the URL:
 
 \begin{ttoutenv}
 http://[IPADDRESSOFPI]:8000
@@ -282,7 +282,7 @@ Working from right to left in Figure \ref{figure:longformls}, column \protect\ci
 In our example, the file's user (Column \protect\circled{3}) is not surprisingly `pi', which is the username under which you logged in. Run 
 
 \begin{ttoutenv}
-$ ls -l /
+\$ ls -l /
 \end{ttoutenv}
 
 (i.e. `long format list of the root directory), and you'll see that the files at the top of the filesystem are owned by a user called \ttout{root}. 
@@ -299,13 +299,13 @@ The file permissions shown in column \protect\circled{1} of Figure \ref{figure:l
 We'll come back to file permissions in more detail shortly. In the meantime, let's look at the ownership model for processes. Type:
 
 \begin{ttoutenv}
-$ ps waux
+\$ ps waux
 \end{ttoutenv}
 % $
 
 to list any processes that are currently running (you'll probably need to widen the terminal window to see the output properly). The \cmnd{ps}{ps} command is unusual in that if used with no arguments, its output is largely uninformative. It's also unusual in that explaining what even the most basic arguments do and interact (i.e. the \ttout{waux} options in this case; note that there's no hyphen in front of the options here), is quite complex---so for now just treat this as a special recipe that does something useful. 
 
-Look at the rightmost column of the output (which has the heading `COMMAND') and you should see a few familiar process names such as bash, \cmnd{startx}{startx}, and the \cmnd{ps}{ps} process itself in amongst many commands that will be unfamiliar to you at the moment. The rightmost column tells you who owns the processes, and you'll see that the majority of them are owned by you (or, rather by the user `pi'), and a small number of them are owned by the root user. Most of the processes that you're seeing have been started as part of the window manager system, or are in one way or another associated with X Windows; the rest are `housekeeping' processes the details of which we don't care about for now. 
+Look at the rightmost column of the output (which has the heading `COMMAND') and you should see a few familiar process names such as \cmnd{bash}{bash}, \cmnd{startx}{startx}, and the \cmnd{ps}{ps} process itself in amongst many commands that will be unfamiliar to you at the moment. The leftmost column tells you who owns the processes, and you'll see that some of them are owned by you (or, rather by the user `pi'), and others are owned by the root user. Most of the processes that you're seeing have been started as part of the window manager system, or are in one way or another associated with X Windows; the rest are `housekeeping' processes the details of which we don't care about for now. 
 
 If you think back to what you learned about the hierarchical relationship between processes in the first Pi lab, it should be starting to become clear how the `family tree' of processes when combined with the notion of users and resource ownership knit together nicely to give a secure multi-user system. When you first log in to a Unix machine, a single process is started on your user's behalf (in most cases this is a command shell). From that shell you can start other processes, which could be individual commands like \ttout{tar} or \ttout{ls}, or could be a whole window manager system such as GNOME or LXDE; in either case though, these inherit the properties of the parent shell in terms of being owned by the same user. Then, any processes that are started by the window manager also inherit the same user properties, and so forth. 
 
@@ -327,19 +327,19 @@ By default, the Apache package that we're going to install shortly is set up to 
 Let's go ahead and install Apache using the command:
 
 \begin{ttoutenv}
-$ sudo apt-get install apache2
+\$ sudo apt-get install apache2
 \end{ttoutenv}
 
 It's a reasonably large package so may take a little while to install; just be patient. Once that's completed, take a look in \fname{/var} using \ttout{ls -l} and you should see a directory in there called \fname{www} which is owned by root.
 
 Before we start serving any web pages, there are a few security issues that we need to take into account. In its simplest form, where you're just serving static web pages (i.e. HTML files), Apache is secure enough, but as soon as you start creating web sites where users can add and modify content on your server, you potentially open yourself up to malicious damage, so it's best to take some initial precautions. 
 
-Take a look at the permissions for \fname{/var/www}, which was created when you installed the Apache package, and you will see that they are set to \ttout{drwxr-xr-x} which means `this is a directory that the owner can read, write and access the contents of, and which both group and other users can only read and access'. Notice too that there's a single file in that directory called \fname{index.html}, which is an `it works!' declaration that you can use to test that Apache is doing the right thing (and which we'll do shortly). The important thing here is that anybody or any process that is not running as the root user has only got \concept{read} and not \concept{write} access to the contents of the \fname{/var/www} directory structure---and this is exactly what we want. They can look, but not touch, and so can't break anything. 
+Take a look at the permissions for \fname{/var/www}, which was created when you installed the Apache package, and you will see that they are set to \ttout{drwxr-xr-x} which means `this is a directory that the owner can read, write and access the contents of, and which both group and other users can only read and access'. Notice too that there's a single file in that directory called \fname{index.html}, which is an `it works!' declaration that you can use to test that Apache is doing the right thing (and which we'll do shortly). The important thing here is that anybody or any process that is not running as the root user has only got \concept{read} and \textbf{not} \concept{write} access to the contents of the \fname{/var/www} directory structure---and this is exactly what we want. They can look, but not touch, and so can't break anything. 
 
 But how do we get content into the \fname{/var/www} directory so that it can be served by Apache? We could simply use \fname{sudo} to give ourselves root privilege every time we need to modify a file, but that's a rather clumsy solution: we may not want other users on our machine to have root access at all, and in any case you really do want to keep sudo commands to a minimum so that you don't accidentally do something bad to your system. So let's create a new group that will represent users on the Pi that are allowed to put content into that directory. Use the command \cmnd{addgroup}{addgroup} to create a new group called \ttout{www-contrib} (for `web contributors'). The syntax is straightforward:
 
 \begin{ttoutenv}
-$ sudo addgroup www-contrib
+\$ sudo addgroup www-contrib
 \end{ttoutenv}
 
 And you should see that a new group has been created with a Group Identifier (GID) probably set to 1001. 
@@ -347,19 +347,19 @@ And you should see that a new group has been created with a Group Identifier (GI
 Change the group ownership of \fname{/var/www} to be \ttout{www-contrib} using the command
 
 \begin{ttoutenv}
-$ chgrp -R www-contrib /var/www
+\$ sudo chgrp -R www-contrib /var/www
 \end{ttoutenv}
 
 and check that this has changed using \ttout{ls -l}. Note that we're using the \ttout{-R} option to \cmnd{chgrp}{chgrp}, which means `apply this change not only to /var/www itself, but to all files and directories contained within it' (`R' here stands for \wikipedia{Recursion}{recursive}). Next we need to add the pi user to that group. Type
 
 \begin{ttoutenv}
-$ groups
+\$ groups
 \end{ttoutenv}
 
 to see what groups your user is already a member of (you'll see things like \ttout{pi}, \ttout{adm}, \ttout{dialout}, \ttout{cdrom}, \ttout{sudo} and several others). Use the command 
 
 \begin{ttoutenv}
-$ sudo usermod -a -G www-contrib pi
+\$ sudo usermod -a -G www-contrib pi
 \end{ttoutenv}
 
 to add the Pi user to the www-contrib group. The \ttout{usermod} command can be used to modify lots of things about a user; here we are using with the combination of \ttout{-a} and \ttout{-G} to mean `append this group to the user's list of groups'. You'll need to log out and back in again to see this change take effect, so do that now and then run the \ttout{groups} command to confirm that pi is now indeed a member of group \ttout{www-contrib} as well as the other original groups. 
@@ -372,7 +372,7 @@ Explain what the other groups are for
 We now need to make the \fname{/var/www} folder \textit{writable} by members of our new group, so do that using the command
 
 \begin{ttoutenv}
-$ sudo chmod -R g+w /var/www
+\$ sudo chmod -R g+w /var/www
 \end{ttoutenv}
 
 which reads as `modify the permissions of the directory /var/www and any files/directories in it to add write access for members of its group'. 
@@ -382,7 +382,7 @@ Now if all has gone to plan, the user pi should be able to read and write to the
 We're finally ready to start Apache. Use the Apache Control command
 
 \begin{ttoutenv}
-$ sudo apachectl start
+\$ sudo apachectl start
 \end{ttoutenv}
 
 to initialise the server (you can use a similar command with `stop' to shut it down again), and then use \cmnd{ps}{ps waux} to confirm that you can see several processes with `apache' in the name now running. Note that although you started the server with \cmnd{sudo}{sudo} which runs things as root, that the owner of the apache processes is \fname{www-data}. The \ttout{apachectl} command has restricted apache to running as a regular, non-root user, and you should by now be able to work out why having a web server running as root would be a Bad Thing from a security point of view.

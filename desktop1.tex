@@ -36,15 +36,15 @@ List the contents of \fname{/usr/bin} by typing
 and notice that here we're using \cmnd{ls}{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as a argument. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type 
 
 \begin{ttoutenv}
-\$ ls /usr/bin/m*
+\$ ls /usr/bin/ma*
 \end{ttoutenv}
 
 
-and you should be given a much smaller list of things from the \fname{/usr/bin} directory; only those starting with the letter m. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/usr/bin} directory, showing only files that start with the letter m and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results). 
+and you should be given a much smaller list of things from the \fname{/usr/bin} directory; only those starting with the letter m. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/usr/bin} directory, showing only files that start with the letters ma and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results). 
 
-You could narrow this down even further by typing \ttout{ls /usr/bin/mu*}, in which case you'll only get files from \fname{/usr/bin} that start with the letters mu. Note that if you leave off the asterisk from your command, you'll be asking for files that are called \textit{exactly} m or mu, which isn't what you want here.
+You could narrow this down even further by typing \ttout{ls /usr/bin/man*}, in which case you'll only get files from \fname{/usr/bin} that start with the letters man. Note that if you leave off the asterisk from your command, you'll be asking for files that are called \textit{exactly} ma or man, which isn't what you want here.
 
-So far we've been getting you to do a fair amount of typing, and now we have to admit that you've been typing a lot more than you actually need to (it's good practise though, so we're not feeling too guilty at this stage). The default Linux command line has a feature similar to autocomplete that you'll have seen on web forms and in graphical tools, that saves you typing full commands by suggesting possible alternatives. 
+So far we've been getting you to do a fair amount of typing, and now we have to admit that you've been typing a lot more than you actually need to (it's good practice though, so we're not feeling too guilty at this stage). The default Linux command line has a feature similar to autocomplete that you'll have seen on web forms and in graphical tools, that saves you typing full commands by suggesting possible alternatives. 
 
 Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of directories that are in the system's root directory. Now type the letter u (so that the line you've typed so far should read \ttout{ls /u}) and hit Tab once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press Tab twice now, and you'll get shown the contents of \fname{/usr/}. Type b, and press Tab to expand the command to \fname{/usr/bin/}, and then press Enter to execute the command.
 
@@ -61,8 +61,8 @@ Here are some other very useful command line tricks:
 \item You can use the up and down cursor keys to cycle back and forth through the list of commands you've typed previously.
 \item The left and right cursors do what you expect, and move the insertion point back and forth. Pressing \ctrl{a} will move you to the start of the line, and \ctrl{e} to the end of the line (much faster than moving backwards and forwards character-by-character). 
 \item \ctrl{c} aborts the current line, so if you've typed a line of gibberish, don't waste time deleting it one character at at time, just \ctrl{c} it!
-\item Typing \ttout{history} lists all the commands you've typed in the past, useful if you've forgotten something.
-\item Pressing \ctrl{r} allows you to retrieve a command from your history by typing part of the line (e.g. if you searched for `whi' now, it'll probably find the `which mutt' line you typed a while back). 
+\item Typing \ttout{history} lists all the commands you've typed in the recent past, useful if you've forgotten something.
+\item Pressing \ctrl{r} allows you to retrieve a command from your history by typing part of the line (e.g. if you searched for `whi' now, it'll probably find the `which mutt' line you typed a while back). Pressing \ctrl{r} again cycles through possible matches (if more than one)
 \item Pressing \ctrl{t} swaps the two characters before your cursor around. What, really? Yes: you'll be surprised how often you type characters in the wrong order! 
 \end{itemize}
 
@@ -93,7 +93,7 @@ and you should see the following written to the screen:
 % SORT IMAP SETTINGS, maybe use a shell pattern
 % \end{note}
 
-The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of less's features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less}{less} to display the manual pages.
+The \cmnd{less}{less} command is used to display textual content from files and other sources (if you want to know why it has such an odd name, look at Breakout \ref{diversion:less}). One of \cmnd{less}{less's} features is that it `pages' through text, so that if the file you are looking at won't fit on one screen, pressing the space key will move you on to the next `page'; you may notice that the \cmnd{man}{man} command you used in the previous lab session actually used \cmnd{less}{less} to display the manual pages.
 
 \begin{linux}{Spaced out filenames}
 Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
@@ -124,7 +124,9 @@ To modify the file, you'll need to use a text editor. Type
 \$ nano my-mutt-template
 \end{ttoutenv}
 
-to invoke the \ttout{nano} editor, and use it to change the text in square brackets to values appropriate to you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (remember, the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
+to invoke the \ttout{nano} editor. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (remember, the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
+
+Now use it to make the following changes:
 
 \begin{itemize}
 \item Edit the line that starts \ttout{set my\_user\_name} to include your University email address.
@@ -147,13 +149,14 @@ Now, \ttout{mutt} expects the file containing its configuration information to h
 
 \ttout{mv} may seem like an odd name for a command that is used to rename a file, but it actually has a number of uses, including moving a file from one part of the file hierarchy to another. You'll see more examples of this in the next lab session.
 
-Rather like \cmnd{cp}{cp}, \cmnd{mv}{mv} takes two arguments; but this time instead of making a copy of the file, \cmnd{mv}{mv} just changes the name of the file given as the first argument to that of the second. 
+Rather like \cmnd{cp}{cp}, \cmnd{mv}{mv} takes two arguments; but instead of making a copy of the file, \cmnd{mv}{mv} just changes the name of the file given as the first argument to that of the second. 
 
 Type \ttout{ls} to confirm that the file name has changed as you'd expect. 
 
 Oh. But it's gone! Actually, no, it's still there, but it's just hidden! There's a Unix convention that files that start with a full-stop symbol don't appear when you type \ttout{ls} in its basic form, because these are normally configuration files that you don't need to see on a day to day basis (the `rc' part of the '.muttrc' name stands for 'resource configuration', another Unix convention). So to see these files you'll need to add an extra switch argument to \cmnd{ls}{ls}. Use the \cmnd{man}{man} command to find out what this switch is, and then use the switch to confirm that the \fname{.muttrc} file does indeed exist. 
 
-Using this switch on \cmnd{ls}{ls} will reveal several other so-called `dotfiles' that have been lurking in your home directory all along. Use \cmnd{less}{less} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
+Using this switch on \cmnd{ls}{ls} will reveal several other so-called `dotfiles' that have been lurking in your home directory all along.
+%Use \cmnd{less}{less} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
 
 If you're confident that you now have a file called \fname{.muttrc} containing the correct configuration, you can now type \ttout{mutt} to start the program. 
 
@@ -335,9 +338,9 @@ Experiment by running \cmnd{exec}{exec startx} and then logging out of the graph
 
 But although that's one step closer to what we want, there's still the issue of having to type \texttt{exec startx} every time you log in. Of course this isn't a huge deal (it's certainly not as annoying as accidentally leaving yourself logged in at a console), but we can do better than this. 
 
-When you first run the bash shell, it looks for a file in your home directory called \fname{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard. Use the \cmnd{ls}{ls -a} command to confirm that there's already a file in your home directory called \fname{.bash\_profile}, and then use \cmnd{less}{less} to look at its contents.
+When you first run the bash shell, it looks for a file in your home directory called \fname{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard. Use the \cmnd{ls}{ls -a} command to confirm that there's already a file in your home directory called \fname{.bash\_profile}, and then use \cmnd{less}{less} to look at its contents. There should also now be one called \fname{.bash\_history}, take a look at it and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
 
-It should look something like this:
+\fname{.bash\_profile} should look something like this:
 
 \begin{ttoutenv}
 # .bash_profile
