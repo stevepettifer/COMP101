@@ -44,7 +44,7 @@ Once the install has completed, you'll need to adjust Mutt's settings so that th
 
 First you need to check that you still have the \fname{.muttrc} configuration file in your home filestore of your Computer Science account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that--you can check \concept{remotely}. 
 
-Find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, Breakout~\ref{breakout:hostname} describes  several other ways to find a Unix machine's hostname. 
+Find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as \ttout{E-C07KILF3101}. If for some reason there isn't a sticker, Breakout~\ref{breakout:hostname} describes  several other ways to find a Unix machine's hostname. 
 
 
 \begin{linux}{Unix hostnames}
@@ -149,7 +149,7 @@ Googly eyes that follow the mouse! What's not to like? Well, okay, perhaps not h
 
 This next exercise involves setting up a simple web server on the Pi, but before we can do that you'll need to create some basic web pages to display. 
 
-Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory called \fname{htmlexample1} in your home directory, and in that directory, use \cmnd{nano}{nano} to create a file called \fname{index.html} with the following content:
+Start up a terminal, and use the \cmnd{mkdir}{mkdir} to create a directory called \fname{htmlexample1} in your home directory, and in that directory, use \ttout{nano} to create a file called \fname{index.html} with the following content:
 
 \begin{ttoutenv}
 <html>
@@ -273,7 +273,7 @@ Before we install Apache on your Pi, there's a bit of housekeeping to do that wi
 
 Right at the beginning of these sessions you logged in to the Pi as a particular user called `pi', and on the desktop machines you've been logging in using your University username and password. It's fairly obvious what the general principles are here---logging in with a username and password is a way of protecting `your stuff' from being seen or messed around with by other users. Roughly speaking this means two things: first, and most obviously, files created by you should be in some sense `owned' by you so that you can control who can see/modify them; second, and perhaps less obviously, processes that you start---whether from the command line or the graphical environment---are also `yours' and have certain privileges/restrictions that are associated with your user. 
 
-For this to work, it means that both the Unix file system and its way of dealing with processes need to be aware of the notion of a user. Back in the terminal that's connected by \cmnd{ssh} to your Pi, use \cmnd{cd}{cd} to change to your home directory and issue \cmnd{ls}{ls -l} to list the files there in what's called `long format' (the \ttout{-l} switch means `give me extra information about each file'). You'll see something like Figure \ref{figure:longformls} (but without the coloured background, which we've added to help distinguish the different columns in the figure).
+For this to work, it means that both the Unix file system and its way of dealing with processes need to be aware of the notion of a user. Back in the terminal that's connected by \cmnd{ssh} to your Pi, use \cmnd{cd}{cd} to change to your home directory and issue \cmnd{ls}{ls -l} to list the files there in what's called `long format' (the \ttout{-l} switch means `give me extra information about each file'). You'll see something like Figure~\ref{figure:longformls} (but without the coloured background, which we've added to help distinguish the different columns in the figure).
 
 \begin{figure}
 \centerline{\includegraphics[width=14cm]{images/longformls}}
@@ -308,7 +308,7 @@ We'll come back to file permissions in more detail shortly. In the meantime, let
 
 to list any processes that are currently running (you'll probably need to widen the terminal window to see the output properly). The \cmnd{ps}{ps} command is unusual in that if used with no arguments, its output is largely uninformative. It's also unusual in that explaining what even the most basic arguments do and interact (i.e. the \ttout{waux} options in this case; note that there's no hyphen in front of the options here), is quite complex---so for now just treat this as a special recipe that does something useful. 
 
-Look at the rightmost column of the output (which has the heading `COMMAND') and you should see a few familiar process names such as \cmnd{bash}{bash}, \cmnd{startx}{startx}, and the \cmnd{ps}{ps} process itself in amongst many commands that will be unfamiliar to you at the moment. The leftmost column tells you who owns the processes, and you'll see that some of them are owned by you (or, rather by the user `pi'), and others are owned by the root user. Most of the processes that you're seeing have been started as part of the window manager system, or are in one way or another associated with X Windows; the rest are `housekeeping' processes the details of which we don't care about for now. 
+Look at the rightmost column of the output (which has the heading `COMMAND') and you should see a few familiar process names such as \cmnd{bash}{bash}, \ttout{startx}, and the \cmnd{ps}{ps} process itself in amongst many commands that will be unfamiliar to you at the moment. The leftmost column tells you who owns the processes, and you'll see that some of them are owned by you (or, rather by the user `pi'), and others are owned by the root user. Most of the processes that you're seeing have been started as part of the window manager system, or are in one way or another associated with X Windows; the rest are `housekeeping' processes the details of which we don't care about for now. 
 
 If you think back to what you learned about the hierarchical relationship between processes in the first Pi lab, it should be starting to become clear how the `family tree' of processes when combined with the notion of users and resource ownership knit together nicely to give a secure multi-user system. When you first log in to a Unix machine, a single process is started on your user's behalf (in most cases this is a command shell). From that shell you can start other processes, which could be individual commands like \ttout{tar} or \ttout{ls}, or could be a whole window manager system such as GNOME or LXDE; in either case though, these inherit the properties of the parent shell in terms of being owned by the same user. Then, any processes that are started by the window manager also inherit the same user properties, and so forth. 
 
@@ -353,7 +353,7 @@ Change the group ownership of \fname{/var/www} to be \ttout{www-contrib} using t
 \$ sudo chgrp -R www-contrib /var/www
 \end{ttoutenv}
 
-and check that this has changed using \ttout{ls -l}. Note that we're using the \ttout{-R} option to \cmnd{chgrp}{chgrp}, which means `apply this change not only to /var/www itself, but to all files and directories contained within it' (`R' here stands for \wikipedia{Recursion}{recursive}). Next we need to add the pi user to that group. Type
+and check that this has changed using \ttout{ls -l}. Note that we're using the \ttout{-R} option to \cmnd{chgrp}{chgrp}, which means `apply this change not only to /var/www itself, but to all files and directories contained within it' (\ttout{R} here stands for \wikipedia{Recursion}{recursive}). Next we need to add the pi user to that group. Type
 
 \begin{ttoutenv}
 \$ groups
@@ -367,10 +367,10 @@ to see what groups your user is already a member of (you'll see things like \tto
 
 to add the Pi user to the www-contrib group. The \ttout{usermod} command can be used to modify lots of things about a user; here we are using with the combination of \ttout{-a} and \ttout{-G} to mean `append this group to the user's list of groups'. You'll need to log out and back in again to see this change take effect, so do that now and then run the \ttout{groups} command to confirm that pi is now indeed a member of group \ttout{www-contrib} as well as the other original groups. 
 
-\begin{diversion}{About groups}
-\label{diversion:aboutgroups}
-Explain what the other groups are for
-\end{diversion}
+% \begin{diversion}{About groups}
+% \label{diversion:aboutgroups}
+% Explain what the other groups are for
+% \end{diversion}
 
 We now need to make the \fname{/var/www} folder \textit{writable} by members of our new group, so do that using the command
 

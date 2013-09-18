@@ -258,7 +258,7 @@ This section is designed to help you practise your command line skills in prepar
 
 \subsection{Creating a directory structure}
 
-We start by using the \cmdname{mkdir} (``make directory'') command
+We start by using the \cmdname{mkdir} (\concept{make directory}) command
 to create some directories. Type
 
 \begin{ttoutenv}
@@ -282,7 +282,7 @@ you can remove the directory while it is still empty with the
 %
 And then try to make it correctly.
 
-The \cmdname{cd} (``change directory'') command allows you to move around
+The \cmdname{cd} (\concept{change directory}) command allows you to move around
 the tree by changing your current working directory. Type
 %
 \begin{ttoutenv}
@@ -296,7 +296,7 @@ current directory using \cmnd{pwd}{pwd}.
 Now make directories for each of the \crsname{} exercises.
 
 \begin{ttoutenv}
-\$  mkdir ex1 ex2 ex3 \return
+\$  mkdir ex1 ex2 ex3 ex4\return
 \end{ttoutenv}
 %  mkdir ex1 ex2 ex3 ex4 \return
 %
@@ -485,7 +485,7 @@ correctly, to copy the fortunes file across.
   \label{breakbox:fortune}
   At the moment we're just going to be using the fortunes file as something to copy and move around, so its contents are not important, but it's one of the source files used by the unix \wikipedia{Fortune_(Unix)}{fortune} command, which we will be playing with later.
 
-  \wikipedia{Fortune_(Unix)}{fortune} is a simple program that displays a random message from a database of (supposedly) humourous quotations, such as those that can be found in the US in \wikipedia{Fortune_Cookies}{fortune cookies} (hence the name), quotations from famous people, jokes, or poetry.
+  \wikipedia{Fortune_(Unix)}{fortune} is a simple program that displays a random message from a database of (supposedly) humorous quotations, such as those that can be found in the US in \wikipedia{Fortune_Cookies}{fortune cookies} (hence the name), quotations from famous people, jokes, or poetry.
 
 \end{linux}
 
@@ -497,18 +497,18 @@ provides a solution to this problem, which is why you created some
 earlier. Moving this file to the ``correct'' place gives you a chance
 to practise the \cmdname{mv} command.
 
-Move the file \fname{fortunes} to your \fname{\crsname/ex2} directory.
+Move the file \fname{fortunes} to your \fname{\crsname/ex4} directory.
 
-Notice that \fname{\crsname} is \emph{your\/} \crsname{} directory, while
-\fname{\Dcrsname} is (an abbreviation for) \emph{our\/} \crsname{}
-directory, from which you can read things but cannot write to.
+% Notice that \fname{\crsname} is \emph{your\/} \crsname{} directory, while
+% \fname{\Dcrsname} is (an abbreviation for) \emph{our\/} \crsname{}
+% directory, from which you can read things but cannot write to.
 
-Now go to your \fname{\crsname/ex2} directory and check that the file
+Now go to your \fname{\crsname/ex4} directory and check that the file
 has arrived there.
 
 To make sure you understand \cmdname{cp}, \cmdname{mv}, and
 \cmdname{rm}, go through the following sequence (in your
-\fname{\crsname/ex2} directory), checking the result by looking at the
+\fname{\crsname/ex4} directory), checking the result by looking at the
 output from \cmdname{ls} at each stage
 
 \begin{ttoutenv}
@@ -557,15 +557,15 @@ Now try
 \$  echo *tun*\return
 \end{ttoutenv}
 %
-Our previous use of \ttout{*} has always been in conjunction with \cmnd{ls}{ls} which might have led you to think that the wild card was being expanded by \cmnd{ls}{ls}. In fact the expansion is done the \emph{shell}, \cmnd{bash}.
+Our previous use of \ttout{*} has always been in conjunction with \cmnd{ls}{ls} which might have led you to think that the wild card was being expanded by \cmnd{ls}{ls}. In fact the expansion is done by the \emph{shell}, \cmnd{bash}{bash}.
 
 One place where you have take care with wild cards is provided by the dotfiles; i.e. those
-whose names begin with ``.''. The asterisk will not match a
-``.'' at the start of a file name. To see what this means try the
+whose names begin with \ttout{.}. The asterisk will not match a
+\ttout{.} at the start of a file name. To see what this means try the
 following
 \begin{ttoutenv}
-\$  cd \return 
-  ls *bash* \return
+\$  cd \return
+\$  ls *bash* \return
 \end{ttoutenv}
 %
 and
@@ -597,7 +597,7 @@ about it immediately.
 \subsection{Putting commands together} 
 \subsubsection{Redirection}  
 Before you forget that you're in your home directory, change back to
-your \crsname/ex2 directory.
+your \crsname/ex4 directory.
 
 One of the simplest (and most useful) of Unix commands is
 \cmdname{cat}. This command has many uses, one of which is to
@@ -772,11 +772,21 @@ There are three ways around this problem.
 %
 %Test question: What does the first unread message on
 %man.cs.undergrad.first say?
-Before we leave the subject of pipes we meet two of the less obviously useful unix commands, \cmdname{fortune} and \cmdname{cowsay}. We met \cmdname{fortune} briefly in Breakbox~/ref{breakbox:fortune}, try running it a few times now. (Hope you didn't type the command more than once! If you did, think how that could have been avoided.)
 
-Now try running the command \cmdname{cowsay}. Nothing happens, because the cow is waiting for you to tell it what to say. Type anything you like and then \ctrl{d} to denote the end of input. The cow should then utter your words!
+Before we leave the subject of pipes we meet two of the less obviously
+useful unix commands, \cmdname{fortune} and \cmdname{cowsay}. We met
+\cmdname{fortune} briefly in Breakbox~\ref{breakbox:fortune}, try
+running it a few times now. (Hope you didn't type the command more
+than once! If you did, think how that could have been avoided.)
 
-Now try putting \cmdname{fortune} and \cmdname{cowsay} together to get the cow to `speak' the fortunes. Utterly useless but it illustrates the use of pipes.
+Now try running the command \cmdname{cowsay}. Nothing happens, because
+the cow is waiting for you to tell it what to say. Type anything you
+like and then \ctrl{d} to denote the end of input. The cow should then
+utter your words!
+
+Now try putting \cmdname{fortune} and \cmdname{cowsay} together to get
+the cow to `speak' the fortunes. Utterly useless but it illustrates
+the use of pipes.
 
 
 
@@ -839,7 +849,7 @@ by using \cmdname{man}.
  it means. Check the ownership and protection of your
  own files. Why don't you own ``..''  in your home directory? For more
  about ownership and protection, look at the manual pages for the
- \cmdname{chown} and \cmdname{chmod} commands.
+ \ttout{chown} and \cmdname{chmod} commands.
 %
 \item Look at the \cmdname{man} entry for  \cmdname{rm} and find out
   what would happen if you did \cmdname{cd} and then  
@@ -881,9 +891,9 @@ in the dictionary which contain the string ``red''.
 \end{enumerate}
 
 \subsection{Finishing}
-Do not go on to Session 3 today. There is far more in the exercises
+Do not go on to the next session today. There is far more in the exercises
 than you can complete in the time available and it is important to
 consolidate your understanding of the concepts in this session. \emph{Don't
-forget to tell the laboratory supervisor you have completed Session 2.}
+forget to tell the laboratory supervisor you have completed this session}
 
 
