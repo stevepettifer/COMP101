@@ -1,4 +1,4 @@
-\chapter{Using the Linux desktop in CS: DRAFT VERSION}
+\chapter{Using the Linux desktop in CS}
 
 \minitoc
 
@@ -23,22 +23,22 @@ First, let's confirm that \cmnd{mutt}{Mutt} is actually installed.
 To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd{which}{which} command. Type
 
 \begin{ttoutenv}
-$ which mutt
+\$ which mutt
 \end{ttoutenv}
 
 This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Remember in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}? Well \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot/work without them, but it just wouldn't be very useful.) 
 
 List the contents of \fname{/usr/bin} by typing
 \begin{ttoutenv}
-$ ls /usr/bin
+\$ ls /usr/bin
 \end{ttoutenv}
 
 and notice that here we're using \cmnd{ls}{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as a argument. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type 
 
 \begin{ttoutenv}
-$ ls /usr/bin/m*
+\$ ls /usr/bin/m*
 \end{ttoutenv}
-% $
+
 
 and you should be given a much smaller list of things from the \fname{/usr/bin} directory; only those starting with the letter m. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/usr/bin} directory, showing only files that start with the letter m and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results). 
 
@@ -80,9 +80,9 @@ We've created a template file for you to get going with. Make sure you are in yo
 Remember, you're going to need to use a switch argument to tell \cmnd{curl}{curl} what it should call the file it's fetched: call it anything you like, but \fname{mutt-template} is a perfectly good name (if you're feeling uncomfortable about a file that doesn't have a file-extension, check out Breakout \ref{diversion:file-extensions} for more information). Let's look at the file to see what's in it. Type
 
 \begin{ttoutenv}
-$ less mutt-template
+\$ less mutt-template
 \end{ttoutenv}
-% $
+
 
 and you should see the following written to the screen:
 \begin{ttoutenv}
@@ -112,7 +112,7 @@ Don't worry too much about the details of this file for now. If you're already f
 Quit less (using the same technique you used to quit the \cmnd{man}{man} command in the last lab session), and then enter
 
 \begin{ttoutenv}
-$ cp mutt-template my-mutt-template
+\$ cp mutt-template my-mutt-template
 \end{ttoutenv}
 
 Did you type all of that? If so, you've wasted several precious key presses! You could have typed \ttout{cp mu}, and then pressed Tab to expand it to \ttout{cp mutt-template}, and then added on the \ttout{my-mutt-template} bit yourself. It's a good habit to get into and will save you a lot of time over the next few years.
@@ -121,7 +121,7 @@ The basic form of the \ttout{cp} command takes two arguments, the first being th
 
 To modify the file, you'll need to use a text editor. Type 
 \begin{ttoutenv}
-$ nano my-mutt-template
+\$ nano my-mutt-template
 \end{ttoutenv}
 
 to invoke the \ttout{nano} editor, and use it to change the text in square brackets to values appropriate to you. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (remember, the caret symbol (\textasciicircum) is shorthand for `ctrl', so \textasciicircum X means '\ctrl{X}').
@@ -141,9 +141,9 @@ Now, \ttout{mutt} expects the file containing its configuration information to h
 % \end{note}
 
 \begin{ttoutenv}
-$ mv my-mutt-template .muttrc
+\$ mv my-mutt-template .muttrc
 \end{ttoutenv}
-% $
+
 
 \ttout{mv} may seem like an odd name for a command that is used to rename a file, but it actually has a number of uses, including moving a file from one part of the file hierarchy to another. You'll see more examples of this in the next lab session.
 
@@ -170,7 +170,7 @@ Although you will have experienced The Web so far as a highly graphical system, 
 Try browsing the School's web pages using \cmnd{lynx}{lynx} by typing
 
 \begin{ttoutenv}
-$ lynx http://studentnet.cs.manchester.ac.uk
+\$ lynx http://studentnet.cs.manchester.ac.uk
 \end{ttoutenv}
 
 Rather like \cmnd{mutt}{mutt}, the \cmnd{lynx}{lynx} program has just about enough on-screen help for you to be able to browse around a little without any additional instructions from us.  You may find that when you follow some links, nothing very much appears to have happened; but scroll further down the page and you'll see the content that you're looking for.
@@ -189,7 +189,7 @@ First, use lynx to look at the BBC's weather page at \urlnop{www.bbc.co.uk/weath
 
 Type:
 \begin{ttoutenv}
-$ lynx -dump http://www.bbc.co.uk/weather
+\$ lynx -dump http://www.bbc.co.uk/weather
 \end{ttoutenv}
 
 Note the addition of the \ttout{-dump} argument before the URL this time. Instead of running as an interactive browser, \cmnd{lynx}{lynx} should have just dumped the text that it would have displayed for that page to the console, and then quit. Now, most of the text of the page will have scrolled off the top of the screen, so let's use the \ttout{less} command to allow us to page through \cmnd{lynx}{lynx}'s output in a more controlled manner. Type:
@@ -239,9 +239,9 @@ As a final flourish, let's create a new a way of accessing this new `weather in 
 replacing [YOUR COMMAND GOES HERE] with the full command line you created to display the Manchester weather, being careful not to introduce extra spaces around \ttout{=}. Then try typing
 
 \begin{ttoutenv}
-$ mankyweather
+\$ mankyweather
 \end{ttoutenv}
-% $
+
 
 to see the result. Okay, so this probably won't replace your favourite weather web page or app, but its early days yet! 
 Note that this alias will disappear once you exit the shell in which you created this, for example when you logout and login again. We will see later how to make such aliases permanent.
@@ -253,9 +253,9 @@ Note that this alias will disappear once you exit the shell in which you created
 Next you're going to start up one of Linux's many graphical user interfaces. Type:
 
 \begin{ttoutenv}
-$ startx
+\$ startx
 \end{ttoutenv}
-% $
+
 
 You'll see a chunk of text scroll up the screen briefly before being presented with something that looks like the screen shot in Figure \ref{figure:gnome-desktop}.
 
@@ -384,7 +384,6 @@ When you ran Quake and the snake game on the Pi in the previous lab, these progr
 You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
 \end{danger}
 
-
 \section{Terminal windows}
 Your earlier use of the command line was on the computer's console, without X and a window manager running, but we now want to do similar things in GNOME. The tool to use here is a \concept{terminal window}. In GNOME you can fire up one of  these by clicking on the screen-like icon on the top panel.
 
@@ -398,13 +397,19 @@ Much of what you do in these and future labs will involve using terminal windows
 \section{The Awesome Window Manager} 
 One of the interesting effects of this architecture is that you can use different window managers on Linux, and can choose the one that best suits the way you work; some people like `rich' environments like GNOME, whereas others like `lean' cut-down window managers. 
 
-To demonstrate this, start a terminal, and use \cmnd{nano}{nano} to create a file in your home directory called \fname{.Xclients}, and in that file put a single line that reads:
+To demonstrate this, start a terminal, and use \cmnd{nano}{nano} to create a file in your home directory called \fname{.Xclients} (don't forget the leading \ttout{.} in the file name), and in that file put a single line that reads:
 
-\begin{ttoutenv}
+\begin{ttoutenv} 
 exec awesome
 \end{ttoutenv}
+ 
+The file \fname{.Xclients} is \concept{executed} as part of the process of starting the X windows system, so we need to do one more thing to allow the system to do this. Use the following command to do this
+\begin{ttoutenv}
+chmod +x .Xclients
+\end{ttoutenv}
+We'll explain more about \cmnd{chmod}{chmod} and \concept{file permissions} in the next lab session.
 
-then quit GNOME, and log back in; this time, instead of GNOME (which is set to be the default desktop in the case where you've not told the system otherwise by creating a \fname{.Xclients} file), you should be given the Awesome window manager.
+Now quit GNOME, and log back in; this time, instead of GNOME (which is set to be the default desktop in the case where you've not told the system otherwise by creating a \fname{.Xclients} file), you should be given the Awesome window manager.
 
 Awesome is a very minimalist window manager, probably quite unlike anything you've used before. Most WIMP environments that you'll have used so far make you the user responsible for the position and size/shape of the windows that represent tools and applications on the desktop. The upside of this is that you can arrange things exactly as you like them; the downside is that you probably use up an amount of time doing that arrangement, and often end up with a layout that wastes some of the desktop's usable space. Awesome is what's called a `tiling' window manager; instead of giving you detailed control over the exact shape of windows, it lays them out on the screen in one of several configurations designed to maximise the use of space. Because you can't drag or resize windows with the mouse, there's no need for the usual window decorations, so you save a few pixels this way too. To create a window, use the icon in the top-left of the Awesome desktop. Make a few terminal windows, and then cycle through the different layouts available using the icon in the top right. 
 
@@ -439,6 +444,7 @@ As you become more familiar with Unix principles, keep the fact that you can eas
 
 %\printbibliography
 
+\FloatBarrier
 
 \section{ARCADE}
 
@@ -544,7 +550,7 @@ You can set the value of a shell variable at the command line, for example:
 \$ MYVAR=42
 \$ echo \$MYVAR
 \end{ttoutenv}
-% $
+
 
 Note that they should be no spaces either side of the \ttout{=} sign and that the variable's name is \ttout{MYVAR} and its value is given by \verb+$MYVAR+. If a variable is given a value on the command line in a terminal window like this its value is only available in the shell running in that window.
 
