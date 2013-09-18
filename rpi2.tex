@@ -11,7 +11,7 @@ Today, we'll be getting your Pi and a desktop PC to communicate with one another
 Connect your Pi up to the monitor, keyboard, mouse, network and power supply as before, and log in (remembering this time to use whatever password you set on the Pi rather than your University password, and the username `pi'). At the console, type:
 
 \begin{ttoutenv}
-$ startx
+\$ startx
 \end{ttoutenv}
 
 to start up X Windows and the Pi's default window manager, LXDE, which appear moments later looking like the screenshot in Figure \ref{figure:lxde-desktop}. 
@@ -37,7 +37,7 @@ Spend a few minutes exploring the GUI. You may find that you're double-clicking 
 Once you've found your way around LXDE, fire up a terminal so that you can configure your Pi to read your University email using \cmnd{mutt}{Mutt}. Unlike the lab machines, \cmnd{mutt}{Mutt} isn't installed by default on the Pi, so you'll need to do that yourself using:
 
 \begin{ttoutenv}
-$ sudo apt-get install mutt
+\$ sudo apt-get install mutt
 \end{ttoutenv}
 
 Once the install has completed, you'll need to adjust Mutt's settings so that they once again point at your University email account. You could do this by following the instructions in the previous session's script again, but there's a much easier way: let's just copy the configuration file you created on the desktop PC last time, over to the Pi. 
@@ -61,7 +61,7 @@ A machine's hostname identifies it on a network in a way that's usually a bit mo
 Once you've got hold of the PC's hostname, we're going to use a \wikipedia{Secure_Shell}{Secure Shell} to connect to from the Pi to the the desktop, allowing you to type commands on the Pi that will be executed remotely via a shell that's executing on the desktop PC. In the terminal window on the Pi, issue this command:
 
 \begin{ttoutenv}
-$ ssh [USERNAME]@[HOSTNAME].cs.man.ac.uk
+\$ ssh [USERNAME]@[HOSTNAME].cs.man.ac.uk
 \end{ttoutenv}
 
 replacing [USERNAME] with your University username, and [HOSTNAME] with the name of the PC in front of you. You'll need to enter your University password, and will most likely be presented with text something similar to this:
@@ -87,7 +87,7 @@ Like \cmnd{cp}{cp}, the \cmnd{scp}{scp} command in its basic form takes two argu
 So for example, if you wanted to retrieve a file called \fname{cheese.jpg} from the home directory of a user called \ttout{mrnoodle} that was stored on a machine with the hostname \ttout{mypc.example.com}, and you wanted the local copy of the file to be called \fname{mycheese.jpg} the command would be:
 
 \begin{ttoutenv}
-$ scp mrnoodle@mypc.example.com:cheese.jpg mycheese.jpg
+\$ scp mrnoodle@mypc.example.com:cheese.jpg mycheese.jpg
 \end{ttoutenv}
 
 Then, supposing you had edited the file \fname{mycheese.jpg} on your local machine and wanted to put the file back into the home directory of the \ttout{mrnoodle} account on the remote machine---but under a different name so as not to over-write the original---you would use the command:

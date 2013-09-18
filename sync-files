@@ -1,5 +1,5 @@
 #!/bin/sh
-V="-"
+V="-v"
 
 ## Script to update web resources. Usually invoked as ./sync-files -v
 
@@ -8,11 +8,11 @@ YEAR=2013
 COMP101HOME=$HOME/Teach/COMP10120/COMP101
 USR=graham
 
-while getopts qvnu: c
+while getopts qnu: c
 do
     case $c in
 	v) V=${V}v;;
-	q) V=${V}q;;
+	q) V=-q;;
 	n) V=${V}n;;
 	u) USR=$OPTARG;;
     esac
