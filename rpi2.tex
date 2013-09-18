@@ -44,7 +44,7 @@ Once the install has completed, you'll need to adjust Mutt's settings so that th
 
 First you need to check that you still have the \fname{.muttrc} configuration file in your home filestore of your Computer Science account. You \textit{could} unplug all the cables from the Pi, connect them back into the desktop PC and check that way, but that's no fun (especially because we'd then have to reverse it all to do the next bit of the exercise). But you don't need to do that--you can check \concept{remotely}. 
 
-Find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, Breakout \ref{breakout:hostname} describes there several other ways to find a Unix machine's hostname. 
+Find the hostname of the lab PC on your desk: there should be a sticker on both the PC itself and the monitor with a name such as `E-C07KILF3101'. If for some reason there isn't a sticker, Breakout~\ref{breakout:hostname} describes  several other ways to find a Unix machine's hostname. 
 
 
 \begin{linux}{Unix hostnames}
@@ -122,7 +122,7 @@ Log back in to the lab PC using the \cmnd{ssh}{ssh} command, but this time inclu
 
 The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} program to send any graphics instructions generated on the remote system back through the network to the X Server running on the local machine.
 
-Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout \ref{breakout:hostname} to check the hostname), and then type:
+Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout~\ref{breakout:hostname} to check the hostname), and then type:
 
 \begin{ttoutenv}
 \$ xeyes
@@ -204,16 +204,19 @@ If you need more guidance on how to write the web page itself, then Appendix~\re
 
 To finish this section, start up the \concept{SimpleHTTPServer} that we used earlier \textit{but this time in your htmlexample2} directory, and use Midori to check that your web page is displaying correctly.
 
+
+
+\FloatBarrier
+
 \section{Headless Pi}
 \label{section:headless}
 
-
+\begin{stdframe}{light-gray}%
+  \centerline{\textbf{Don't Panic!}}
+The rest of this lab session exposes you a fair number of quite advanced concepts pretty quickly, and we don't expect all of them to sink in this first time round. Stay calm.  Don't panic. Just follow our instructions and everything will be fine; if you get lost or things aren't going to plan, just call a demonstrator to help you get back on track, and we'll revisit these ideas in the next lab where there will be a second opportunity to put them into practice and make sure everything makes sense.
+\end{stdframe}
 
 The Pi can be used as a respectable desktop machine, but it really comes into its own as a `server' or controller for other pieces of hardware. In this section we'll use the Pi in what is called `headless' mode---that is without its own screen and keyboard---to create a proper web server to host your pages. 
-
-\begin{danger}{Don't Panic!}
-The rest of this lab session exposes you a fair number of quite advanced concepts pretty quickly, and we don't expect all of them to sink in this first time round. Stay calm.  Don't panic. Just follow our instructions and everything will be fine; if you get lost or things aren't going to plan, just call a demonstrator to help you get back on track, and we'll revisit these ideas in the next lab where there will be a second opportunity to put them into practise and make sure everything makes sense.
-\end{danger}
 
 At a terminal, type the command \ttout{ifconfig}, short for `interface configuration', which will give you details about the network configuration on the Pi. This will return something along the lines of
 
@@ -237,7 +240,7 @@ lo        Link encap:Local Loopback
 
 This tells you that the Pi has two network devices currently active: one called `eth0', which is the represents the physical ethernet socket into which you plugged the blue network cable, and which allows the Pi to communicate with other computers on the network (and in this case, on the internet); and a second one called `lo' which is a `virtual connection' or `local loopback' connection that allows the Pi to route network traffic back to itself (this is how the `localhost' trick you used earlier to look at web pages on the Pi worked). You'll learn a lot more about network configuration in the second year Computer Networks course (COMP28411). 
 
-The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is \texttt{10.2.215.1} but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network. 
+The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is \texttt{10.2.215.1} but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network for this session. 
 
 Quit the graphical environment, and log out of your Pi. Leave the network connection and power supply plugged in, but disconnect the mouse/keyboard lead, and reconnect them to the desktop PC. Switch the monitor over to display the desktop PC's screen, and log in to that with your University credentials. 
 
@@ -405,4 +408,3 @@ That's all the exercises done for today; but before you finish up for this lab s
 
 \section{What You've learned today}
 
-\ref{FIXME}
