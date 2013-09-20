@@ -18,7 +18,7 @@
 
   \textbf{Steve's wish list}
   \begin{itemize}
-  \item better navigation -- more cd, pushd, popd, mkdir etc
+  \item better navigation---more cd, pushd, popd, mkdir etc
   \item 
 wildcards (use echo)
 \item 
@@ -256,6 +256,17 @@ You won't be using it for this course-unit, but for your other course-units you 
 
 This section is designed to help you practise your command line skills in preparation  for next week's start of `normal' lab activities.
 
+\begin{note}
+  \begin{itemize}
+  \item   Remind 3 dirs, HOME = ~, /, Current = ., pwd
+  \item Abs vs relative pathname
+  \item ..?
+  \item  ls -a, -l reminder
+  \end{itemize}
+
+\end{note}
+
+
 \subsection{Creating a directory structure}
 
 We start by using the \cmdname{mkdir} (\concept{make directory}) command
@@ -320,7 +331,7 @@ Your directory structure should now look something like this
 The easiest way to check this is to use (from your home directory)
 \cmdname{ls} with the \ttout{-R} flag. This shows the whole tree
 below your current working directory (\ttout{-R} is short for
-\wikipedia{Recursion}{recursively}'  -- look up the word in a dictionary, or wait until later for a
+\wikipedia{Recursion}{recursively}' ---look up the word in a dictionary, or wait until later for a
  definition!).
 
 \begin{ttoutenv}
@@ -328,22 +339,44 @@ below your current working directory (\ttout{-R} is short for
 \end{ttoutenv}
 %
 
-  Now you should make a directory, in your home directory, for the COMP16121 course unit
-  %(or COMP16920
-  %if you
-%  are an ABIS student) with
-  %are a CSE student)
-  with
-  sub-directories for each of the 10 exercises associated with that
-  course. You \emph{must} use the same convention as above:
-  capital ``COMP16121'' and lower case ``ex1'', etc..
+Now you should make a directory, in your home directory, for the
+COMP16121 course unit with sub-directories for each of the 10
+exercises associated with that course. You \emph{must} use the same
+convention as above: capital ``COMP16121'' and lower case ``ex1'',
+etc..
 
-You must get your directory structure right before continuing -- ask a
+You must get your directory structure right before continuing---ask a
 member of the lab staff to check it at this point.
 
 \begin{note}
   pushd and popd. Is there room here, or should we pick up later?
+
 \end{note}
+
+
+Every directory is created with two files already there, called ``.''
+and ``..''. Of course, you don't see them when you run \cmdname{ls}
+because they start with a dot! Now run the command which will enable
+you to see them in your current directory.
+
+``.'' is a reference to the directory itself, and ``..''is a reference
+to the directory above it in the tree. This may seem rather bizarre at
+first, but they are in fact extremely useful.  ``..'', for example,
+enables you to specify a \emph{relative} pathname \emph{up} the tree.
+
+Try the following sequence of \cmdname{cd}s, checking where you are by running \cmdname{pwd} 
+after each one, and make sure you understand what is going on!
+
+\begin{ttoutenv}
+  cd \return 
+  cd \coursename/ex1 \return 
+  cd .. \return 
+  cd ex2 \return 
+  cd ../ex1 \return 
+  cd ../../\coursename/ex2 \return 
+  cd ../.. \return
+\end{ttoutenv}
+%
 
 \subsection{Copying, moving, and removing files}
 
@@ -392,7 +425,7 @@ The command \cmdname{rm} (remove) is used to delete files.
 \$  rm [FILENAME(S)]
 \end{ttoutenv}
 %
-throws away the specified files -- always take great care when using
+throws away the specified files---always take great care when using
 \cmdname{rm}, it is not reversible.
 
 The \cmdname{mv} (move) command is similar to \cmdname{cp}, but it just moves
@@ -427,7 +460,7 @@ is like doing
 \end{ttoutenv}
 
 Before continuing, answer this question and check your answer with a
-member of staff: how do you \emph{rename} a file in Unix? Don't guess -- you
+member of staff: how do you \emph{rename} a file in Unix? Don't guess---you
 know the answer, unless you are going too fast.
 
 Now for some practice. Go to your home directory
@@ -458,7 +491,7 @@ check that you understand what you did right!
 The \cmdname{cp} command needs at least \emph{two} arguments. In this case, the file
 you are copying is \fname{/usr/share/games/fortunes}, and the directory
 you are copying it to is ``.'' (that is, your current working
-directory -- remember every directory has a reference to itself within
+directory---remember every directory has a reference to itself within
 it, called `.'?). If you missed out the dot, or mis-spelt
 \fname{/usr/share/games/fortunes}, or missed out one of the spaces, it
 won't have worked. In particular, you may well have got a
@@ -528,7 +561,7 @@ output from \cmdname{ls} at each stage
 Why does \ilinput{rm frtun1} behave differently to \ilinput{rm frtun2}?
 
 \subsection{Wild cards}
-An asterisk in a filename is a \textbf{wild card} which matches any sequence of
+An asterisk, commonly referred to as \concept{star},  in a filename is a \textbf{wild card} which matches any sequence of
 zero or more characters, so for instance, if you were to type (don't
 actually do it!)
 %
@@ -588,11 +621,6 @@ very important later in the year! You may find that you are unable to
 save files, or even receive mail, if you use more than your quota of
 file store. It is important that, if this happens, you do something
 about it immediately.
-%Some tips as to what do if this happens can be
-%found on the \htmladdnormallink{local Software Links web
-%%  page}{http://www.cs.manchester.ac.uk/software/}.
-%  page}{\localSoftware}.
-
  
 \subsection{Putting commands together} 
 \subsubsection{Redirection}  
@@ -622,7 +650,7 @@ output. Anything that you now type will be taken as input by
 \cmdname{cat}, and will be output once each line of the input is
 complete. In Unix, end of input is signalled by \ctrl{d}.
 (Recall that typing \ctrl{d} in your login shell will log you
-out -- you have told the shell to expect no more input.) So, after
+out---you have told the shell to expect no more input.) So, after
 typing \cmdname{cat} above, if you type 
 \begin{ttoutenv}
 This is
@@ -683,13 +711,12 @@ warning, so be careful of this kind of use).
 % \$  cat -n fred1
 % \end{ttoutenv}
 
-\subsubsection{Pipes} 
 
 % Now suppose, for the sake of argument, we wanted to have a listing of the
 % names of the
 % files in the current directory, with each line numbered, and the result
 % saved in a file \cmdname{fred3}. You have just been given all the
-% information you need to do this -- so, how would you do it? Do it now.
+% information you need to do this---so, how would you do it? Do it now.
 
 % Unless you've met Unix before, you probably did something like this
 % \begin{ttoutenv}
@@ -734,9 +761,7 @@ will appear in the exercises.
 
 Standard output sent to the screen may come so fast that it
 disappears off the top before you have had a chance to read it.
-There are three ways around this problem.
-\begin{itemize}
-\item Using foresight, pipe the output into the command \cmdname{less}
+There is a simple way around this problem by piping the output into the command \cmdname{less}
   which arranges to stop after each page full. For example,
   \begin{ttoutenv}
   ls -la | less
@@ -745,36 +770,19 @@ There are three ways around this problem.
   more than a screen full of entries. When \cmdname{less} has shown you the
   first screen full, press the space bar to see the next screen full,
   or \ttout{return} to see just the next line.
-\item 
-  Without foresight, the output will rush past you at a great rate
-  of knots. Press \ctrl{s} to stop it dead in its tracks
-  (and \ctrl{q} to set it off again).
-  In practice this isn't much use nowadays -- in most cases the computer is
-  just too fast for the Human to press the keys at the right time.
-\end{itemize}
-%Now would be a good time to remove all those junk files like
-%\fname{fred1} etc.
-%\subsection{Newsgroups}\label{news}
-%A useful facility to explore is the Usenet News system. It comprises
-%literally thousands of groups on every conceivable topic to which you
-%can subscribe and contribute.
-%
-%A convenient way to browse newsgroups is to use Mozilla in a similar
-%way to the reading of mail. (A BIT MORE DESCRIPTION NEEDED HERE)
-%
-%The newsgroup man.cs.undergrad.first is used for messages to all first
-%year students. It is important that you read information from this
-%group regularly.
-%
-%When you are fed up with a group click on \ilinput{quit}, and when you
-%have finished with news click on \ilinput{quit} from the list of
-%newsgroups.
-%
-%Test question: What does the first unread message on
-%man.cs.undergrad.first say?
+
+  %\item 
+%   Without foresight, the output will rush past you at a great rate
+%   of knots. Press \ctrl{s} to stop it dead in its tracks
+%   (and \ctrl{q} to set it off again).
+%   In practice this isn't much use nowadays---in most cases the computer is
+%   just too fast for the Human to press the keys at the right time.
+% \end{itemize}
+
+  Now would be a good time to remove all those junk files like \fname{fred1} etc.
 
 Before we leave the subject of pipes we meet two of the less obviously
-useful unix commands, \cmdname{fortune} and \cmdname{cowsay}. We met
+useful unix commands, \cmdname{fortune} and \ttout{cowsay}. We met
 \cmdname{fortune} briefly in Breakbox~\ref{breakbox:fortune}, try
 running it a few times now. (Hope you didn't type the command more
 than once! If you did, think how that could have been avoided.)
@@ -788,14 +796,15 @@ Now try putting \cmdname{fortune} and \cmdname{cowsay} together to get
 the cow to `speak' the fortunes. Utterly useless but it illustrates
 the use of pipes.
 
+\subsection{Making your own commands}
+\label{sec:making-your-own}
 
-
-
-\subsection{Printing text files}
 
 \begin{note}
-  Needs rewriting
+  Use fortune | cowsay as the shell script 
 \end{note}
+
+\subsection{Printing text files}
 
 The command \cmdname{lpr} can be used to send files to a printer. In its
 simplest form, you simply run:
@@ -804,18 +813,23 @@ simplest form, you simply run:
   lpr file1 file2
 \end{ttoutenv}
 %
-to print the given files. You could use it now to print out the
-\fname{fortunes} file, but that file is quite big and we don't want to waste
-a lot of paper. So please don't! However, it would be nice to practise using
-\cmdname{lpr}. So, you shall print out just the first 50 lines of it. Look at
-the man page for \cmdname{lpr} and discover what it does if no file names are
-given. Now look at the man page for the command \cmdname{head} and figure out
-how to make it output the first 50 lines of the file \fname{fortunes}.
-Experiment with this to make the 50 lines appear on your screen. From what you
-have already learnt, you should know how to check there are exactly 50 lines
-using the counting option of \cmdname{cat}. Now send the 50 lines to the
-printer -- without using an temporary file. Go and collect your print output
--- ask for directions to where the printer is.
+to print the given files. The printing service we use is the University \concept{Pull} printing service. This is described in more detail \splunge
+
+You could use \cmdname{lpr} now to print out the \fname{fortunes}
+file, but that file is quite big and we don't want to waste a lot of
+paper. So please don't! However, it would be nice to practise using
+\cmdname{lpr}. So, you shall print out just the first 50 lines of
+it. Look at the man page for \cmdname{lpr} and discover what it does
+if no file names are given. Now look at the man page for the command
+\cmdname{head} and figure out how to make it output the first 50 lines
+of the file \fname{fortunes}.  Experiment with this to make the 50
+lines appear on your screen.
+% From what you
+% have already learnt, you should know how to check there are exactly 50 lines
+% using the counting option of \cmdname{cat}.
+Now send the 50 lines to the
+printer---without using an temporary file. Go and collect your print output
+from a nearby printer (there are printers in SSO, G23, and other places).
 %
 % head -50 fortunes | lpr
 
@@ -833,6 +847,10 @@ this print output you will see how pretty \cmdname{a2ps} makes it. This is a
 good way to obtain print outs of your own work, should you wish to.
 
 \subsection{Exercises}
+
+\begin{note}
+  Turn this into a driving test, email to tutor
+\end{note}
 
 Here are a variety of things to experiment with if you finish
 everything else. More details of the relevant commands can be found
@@ -882,11 +900,11 @@ in the dictionary which contain the string ``red''.
   \cmdname{grep} to find out how to exclude those words containing
   ``fred''. The \cmdname{wc} (short for ``word count'') program counts words
   (amongst other things). Use pipes to put them all together.)
-\item Investigate the \cmdname{ps} command, which tells you about the
-  processes (running programs) on your workstation, how much swap
-  space they are using etc..
-\item (Harder) Wander around the top of the directory tree, from /,
-  and try to understand what you find there.
+% \item Investigate the \cmdname{ps} command, which tells you about the
+%   processes (running programs) on your workstation, how much swap
+%   space they are using etc..
+% \item (Harder) Wander around the top of the directory tree, from /,
+%   and try to understand what you find there.
 \item Try the exercises contained in the file \fname{\Dcrsname/extras}.
 \end{enumerate}
 
