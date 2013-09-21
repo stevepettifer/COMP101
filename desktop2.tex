@@ -1,5 +1,6 @@
 %\chapter{Collaborative tools}
 
+\renewcommand{\tilde}{\textasciitilde}
 \newcommand{\moodle}{\textsf{Moodle}}
 \newcommand{\Moodle}{\textsf{Moodle}}
 
@@ -44,7 +45,7 @@ In this lab session you'll be introduced to the \moodle\ Virtual Learning Enviro
 %Why is Moodle being used for COMP10120
 \moodle\ has several features which make it well suited to supporting this course-unit. These include:
 \begin{itemize}
-\item It's one useful way of communicating with your tutor and members of your tutor group 
+\item It's one useful way of communicating with your tutor and members of your tutor group.
 \item It allows us to give each group a wiki which you'll use to collaboratively document your project work.
 \item It provides a structure to help organise activities you should be doing on a week-by-week basis.
 \end{itemize}
@@ -243,7 +244,7 @@ As well as course unit sites for many of your course units, there are also a num
 You won't be using it for this course-unit, but for your other course-units you may be using a different Virtual Learning Environment - \textsf{Blackboard}. The usual way to access \textsf{Blackboard} is via the \href{https://my.manchester.ac.uk}{\emph{My Manchester}} page at \urlnop{my.manchester.ac.uk}, and then use the \emph{'My Blackboard'} tab. There is also a plentiful supply of information about how to use Blackboard available online.
 
 
-\section{More command line skills}
+\section{Reinforcing your command line skills}
 \newcommand{\cmdname}[1]{\cmnd{#1}{#1}}
 \newcommand{\ilinput}[1]{\ttout{#1}}
 % \newcommand{\crsname}{COMP10120}
@@ -256,7 +257,62 @@ You won't be using it for this course-unit, but for your other course-units you 
 
 This section is designed to help you practise your command line skills in preparation  for next week's start of `normal' lab activities.
 
+Firstly, you will recall three directories of particular interest.
+
+\begin{itemize}
+\item The \concept{root directory} (\ttout{/}) is the top level of the
+\concept{file system}.
+%??? file system or filesystem ???
+
+\item Your \concept{current working directory} which is the one your are `in'
+at the moment (and is shown by the output from \cmdname{pwd}). This can also
+be referenced using a single dot(\ttout{.}), as in when running the
+\ttout{./quake3} program.
+
+\item Your \concept{home directory} (\ttout{\tilde}) which is the top level of
+your own filestore and where \cmdname{cd} (\concept{change directory}) with no
+arguments will take you.  The value of this is also available as
+\ttout{\$HOME}, so the following all have the same effect.
+
+\begin{ttoutenv}
+\$  cd
+\end{ttoutenv}
+or
+\begin{ttoutenv}
+\$  cd ~ 
+\end{ttoutenv}
+or
+\begin{ttoutenv}
+\$  cd \$HOME
+\end{ttoutenv}
+
+And no matter what is your current working directory, you can list the files
+in your home directory with either of these commands.
+
+\begin{ttoutenv}
+\$  ls ~
+\end{ttoutenv}
+or
+\begin{ttoutenv}
+\$  ls \$HOME 
+\end{ttoutenv}
+
+\end{itemize}
+
+And you should recall the difference between an \concept{absolute path}---one
+that starts with \ttout{/} and a \concept{relative path}---one that does not
+start with \ttout{/} but is instead `found' relatively---by starting in the
+current working directory. Relatedly, you have met the `double dot' notation
+(\ttout{..}) to mean `go up one level', as in \ttout{ls ..} or perhaps more
+often \ttout{cd ..}, or even \ttout{cd ../x/y} etc..
+
+Speaking of \cmdname{ls}, you will from time to time need to use its
+\ttout{-a} switch argument to ask it to show files beginning with a dot,
+and/or \ttout{-l} to make it show details about the files.
+
 \begin{note}
+Now done above, I hope!
+
   \begin{itemize}
   \item   Remind 3 dirs, HOME = ~, /, Current = ., pwd
   \item Abs vs relative pathname
@@ -273,7 +329,7 @@ We start by using the \cmdname{mkdir} (\concept{make directory}) command
 to create some directories. Type
 
 \begin{ttoutenv}
-\$ cd
+\$  cd
 \$  mkdir \crsname\return
 \end{ttoutenv}
 %
@@ -293,33 +349,35 @@ you can remove the directory while it is still empty with the
 %
 And then try to make it correctly.
 
-The \cmdname{cd} (\concept{change directory}) command allows you to move around
-the tree by changing your current working directory. Type
-%
-\begin{ttoutenv}
-\$  cd \crsname\return
-\end{ttoutenv}
-%
-to make \crsname{} your working directory. Check that you have changed
-current directory using \cmnd{pwd}{pwd}.
+%The \cmdname{cd} (\concept{change directory}) command allows you to move around
+%the tree by changing your current working directory. Type
+%%
+%\begin{ttoutenv}
+%\$  cd \crsname\return
+%\end{ttoutenv}
+%%
+%to make \crsname{} your working directory. Check that you have changed
+%current directory using \cmnd{pwd}{pwd}.
 
   
-Now make directories for each of the \crsname{} exercises.
+Now go into your \ttout{INTRO} directory and make directories for each of the
+\crsname{} exercises.
 
 \begin{ttoutenv}
 \$  mkdir ex1 ex2 ex3 ex4\return
 \end{ttoutenv}
 %  mkdir ex1 ex2 ex3 ex4 \return
 %
-Recall that the \cmdname{cd} command on its own takes you back to your home
-directory, wherever you may be when you invoke it.  Try this out by
-typing
-
-\begin{ttoutenv}
-\$  cd \return
-\end{ttoutenv}
-
-Check that you are now in your home directory.
+%Recall that the \cmdname{cd} command on its own takes you back to your home
+%directory, wherever you may be when you invoke it.  Try this out by
+%typing
+%
+%\begin{ttoutenv}
+%\$  cd \return
+%\end{ttoutenv}
+%
+%Check that you are now in your home directory.
+Now return to your home directory.
 
 Your directory structure should now look something like this
 %\begin{firstonly}
@@ -331,7 +389,7 @@ Your directory structure should now look something like this
 The easiest way to check this is to use (from your home directory)
 \cmdname{ls} with the \ttout{-R} flag. This shows the whole tree
 below your current working directory (\ttout{-R} is short for
-\wikipedia{Recursion}{recursively}' ---look up the word in a dictionary, or wait until later for a
+\wikipedia{Recursion}{recursively}---look up the word in a dictionary, or wait until later for a
  definition!).
 
 \begin{ttoutenv}
@@ -342,7 +400,7 @@ below your current working directory (\ttout{-R} is short for
 Now you should make a directory, in your home directory, for the
 COMP16121 course unit with sub-directories for each of the 10
 exercises associated with that course. You \emph{must} use the same
-convention as above: capital ``COMP16121'' and lower case ``ex1'',
+convention as above: capital `COMP16121' and lower case `ex1',
 etc..
 
 You must get your directory structure right before continuing---ask a
@@ -354,15 +412,15 @@ member of the lab staff to check it at this point.
 \end{note}
 
 
-Every directory is created with two files already there, called ``.''
-and ``..''. Of course, you don't see them when you run \cmdname{ls}
-because they start with a dot! Now run the command which will enable
-you to see them in your current directory.
-
-``.'' is a reference to the directory itself, and ``..''is a reference
-to the directory above it in the tree. This may seem rather bizarre at
-first, but they are in fact extremely useful.  ``..'', for example,
-enables you to specify a \emph{relative} pathname \emph{up} the tree.
+%Every directory is created with two files already there, called `.'
+%and `..'. Of course, you don't see them when you run \cmdname{ls}
+%because they start with a dot! Now run the command which will enable
+%you to see them in your current directory.
+%
+%`.' is a reference to the directory itself, and `..'is a reference
+%to the directory above it in the tree. This may seem rather bizarre at
+%first, but they are in fact extremely useful.  `..', for example,
+%enables you to specify a \emph{relative} pathname \emph{up} the tree.
 
 Try the following sequence of \cmdname{cd}s, checking where you are by running \cmdname{pwd} 
 after each one, and make sure you understand what is going on!
@@ -461,7 +519,7 @@ is like doing
 
 Before continuing, answer this question and check your answer with a
 member of staff: how do you \emph{rename} a file in Unix? Don't guess---you
-know the answer, unless you are going too fast.
+know the answer, unless you have already forgotten from previous labs and you are now going too fast.
 
 Now for some practice. Go to your home directory
 %
@@ -476,7 +534,7 @@ directory to your current working directory, by typing
 \$  cp /usr/share/games/fortune/fortunes \textbf{.}  \return
 \end{ttoutenv}
 %
-Note that the full stop is
+Note that the dot (meaning, of course, your current directory) is
 essential.  If you now do an \cmdname{ls}, you should see that the
 file called \fname{fortunes} has appeared in your directory:
 
@@ -490,12 +548,12 @@ check that you understand what you did right!
 
 The \cmdname{cp} command needs at least \emph{two} arguments. In this case, the file
 you are copying is \fname{/usr/share/games/fortunes}, and the directory
-you are copying it to is ``.'' (that is, your current working
+you are copying it to is `.' (that is, your current working
 directory---remember every directory has a reference to itself within
 it, called `.'?). If you missed out the dot, or mis-spelt
 \fname{/usr/share/games/fortunes}, or missed out one of the spaces, it
 won't have worked. In particular, you may well have got a
-``friendly'', helpful error message like:
+`friendly', helpful error message like:
 %
 %  Usage: cp [-ip] f1 f2; or: cp [-irp] f1 ... fn d2
 \begin{ttoutenv}
@@ -527,7 +585,7 @@ You'll have to get into the habit of \emph{not} having all your files
 in your home directory, otherwise you will quickly have an enormous list
 that will take you ages to find anything in. The use of subdirectories
 provides a solution to this problem, which is why you created some
-earlier. Moving this file to the ``correct'' place gives you a chance
+earlier. Moving this file to the `correct' place gives you a chance
 to practise the \cmdname{mv} command.
 
 Move the file \fname{fortunes} to your \fname{\crsname/ex4} directory.
@@ -570,7 +628,7 @@ actually do it!)
 \end{ttoutenv}
 %
 then all files in the current directory whose names contain the string
-``fred'' would be removed.
+`fred' would be removed.
 
 Try the effect of
 %
@@ -799,8 +857,73 @@ the use of pipes.
 \subsection{Making your own commands}
 \label{sec:making-your-own}
 
+Use an editor to create a \concept{shell script} in the file
+\ttout{\tilde/bin/wisecow}, e.g. run
+
+\begin{ttoutenv}
+\$ mkdir \tilde/bin
+\$ nano \tilde/bin/wisecow
+\end{ttoutenv}
+
+and put into it the following text.
+
+\begin{ttoutenv}
+#!/bin/bash
+
+fortune | cowsay
+\end{ttoutenv}
+
+The first line tells the operating system to use the program \ttout{/bin/bash}
+when this script is run, i.e. it will start \cmdname{bash} with an argument
+telling it to get its commands from this file and execute them pretty much as
+though they had been type into bash in the `normal' way.
+
+Now try to run your new program:
+
+\begin{ttoutenv}
+\$  \tilde/bin/wisecow
+\end{ttoutenv}
+
+Hopefully you noticed that failed! Before the operating system will believe us
+that this really is a program, we need to give the file \concept{execute
+permission}. Use \cmdname{ls} to see what permissions the file has at the
+moment. To make it \concept{executable} we use \cmdname{chmod} as follows.
+
+\begin{ttoutenv}
+\$  chmod +x \tilde/bin/bash
+\end{ttoutenv}
+
+Now check its the permission again. If all is okay, you should be able to run
+this time with
+
+\begin{ttoutenv}
+\$  \tilde/bin/wisecow
+\end{ttoutenv}
+
+and your wise cow should have spoken.
+
+Now here is the really cool bit: in an earlier lab you met the idea of
+\ttout{\$PATH}---the list of all places where the operating system will
+search when you type a command without specifying its full pathname. See the
+value of this now:
+
+\begin{ttoutenv}
+\$  echo \$PATH
+\end{ttoutenv}
+
+Notice one of the directories listed is your very own \ttout{\tilde/bin} -- this
+is where you can put \emph{your own} commands!
+
+So, now type just
+
+\begin{ttoutenv}
+\$ wisecow
+\end{ttoutenv}
+
+and be overjoyed!
 
 \begin{note}
+Hopefully done above?
   Use fortune | cowsay as the shell script 
 \end{note}
 
@@ -810,10 +933,10 @@ The command \cmdname{lpr} can be used to send files to a printer. In its
 simplest form, you simply run:
 %
 \begin{ttoutenv}
-  lpr file1 file2
+\$  lpr file1 file2
 \end{ttoutenv}
 %
-to print the given files. The printing service we use is the University \concept{Pull} printing service. This is described in more detail \splunge
+to print the given files. The printing service we use is the University \concept{Pull} printing service, which allows you to collect your printing at \emph{any} University pull printer. This is described in more detail at \href{http://www.itservices.manchester.ac.uk/printing/pullprinting/}{www.itservices.manchester.ac.uk/printing/pullprinting}.
 
 You could use \cmdname{lpr} now to print out the \fname{fortunes}
 file, but that file is quite big and we don't want to waste a lot of
@@ -846,15 +969,22 @@ Look at the man page for \cmdname{a2ps} and use \cmdname{a2ps} to print the file
 this print output you will see how pretty \cmdname{a2ps} makes it. This is a
 good way to obtain print outs of your own work, should you wish to.
 
+It is common across the University for students to pay for your their own printing, but the Computer Science policy is to credit your printing account with enough for you to print all the material needed for your courses (with some to spare) without having to pay for anything. For administrative reasons, your initial credit will be £4, and this will be topped-up during the year. (The first top-up is likely to occur during Reading Week.)
+
+The printing allowance we give you means that you will be able to to print 500 sides during the year if you use the double-sided A4 mono option (at 8p per page). (Note: the allowance would only cover 400 sides if you use the A4 single-sided option, at 5p per page, so clearly printing double-sided is your better option)
+
 \subsection{Exercises}
 
 \begin{note}
   Turn this into a driving test, email to tutor
+Hopefully done below.
 \end{note}
 
-Here are a variety of things to experiment with if you finish
-everything else. More details of the relevant commands can be found
-by using \cmdname{man}.
+Here are a number of exercises to experiment with if you finish everything
+else. More details of the relevant commands can be found by using
+\cmdname{man}. We would like you to email your answers to your personal tutor
+once you have completed them.
+
 %
 \begin{enumerate}
 %
@@ -862,12 +992,15 @@ by using \cmdname{man}.
 %  workspace menu and explore your filestore visually. Double clicking
 %  with the left mouse button on an icon opens a file or directory.
 %
-\item As stated above, \ilinput{ls -l} gives you extra information
+\item As you know, \ilinput{ls -l} gives you extra information
  about files. Skim through the man page for \cmdname{ls} to see what
- it means. Check the ownership and protection of your
- own files. Why don't you own ``..''  in your home directory? For more
- about ownership and protection, look at the manual pages for the
+ it means. Check the ownership and permissions of your
+ own files. For more
+ about ownership and permissions, look at the manual pages for the
  \ttout{chown} and \cmdname{chmod} commands.
+
+ Question: Why don't you own `..'  in your home directory? 
+
 %
 \item Look at the \cmdname{man} entry for  \cmdname{rm} and find out
   what would happen if you did \cmdname{cd} and then  
@@ -877,6 +1010,10 @@ by using \cmdname{man}.
   \concept{root} that has the permission to do \emph{anything}), typed
   the above command by accident. What do you think happened? (Hint: on
   many Unix systems, the superuser's home directory is /).
+
+  Question: What would it do in your home directory? What would it do if the
+  superuser made this error?
+
 \item Another useful command is \cmdname{grep}, which displays all
   lines of a file containing a particular string (in fact, the
   string can be a pattern with wild-cards and various other things in).
@@ -891,27 +1028,49 @@ contain the given pattern.
 A useful file to use for experiments with \cmdname{grep} is
 \fname{/usr/share/dict/words}, which is a spelling dictionary. Try to
 find all words 
-in the dictionary which contain the string ``red''.
+in the dictionary which contain the string `red'.
+
+  Question: what was the command you used to do this? (Please don't email your
+  tutor the \emph{results} from the command!)
+
 \item 
   Use a suitable pipeline to find out how many
-  words in the dictionary contain the string ``red'' but not the
-  string ``fred''.  (Hint: The answer to the previous question gives all
-  the words containing ``red'', look at the manual page for
+  words in the dictionary contain the string `red' but not the
+  string `fred'.  (Hint: The answer to the previous question gives all
+  the words containing `red', look at the manual page for
   \cmdname{grep} to find out how to exclude those words containing
-  ``fred''. The \cmdname{wc} (short for ``word count'') program counts words
+  `fred'. The \cmdname{wc} (short for `word count') program counts words
   (amongst other things). Use pipes to put them all together.)
+
+  Question: what was the command you used to do this? What was the answer?
+
 % \item Investigate the \cmdname{ps} command, which tells you about the
 %   processes (running programs) on your workstation, how much swap
 %   space they are using etc..
 % \item (Harder) Wander around the top of the directory tree, from /,
 %   and try to understand what you find there.
-\item Try the exercises contained in the file \fname{\Dcrsname/extras}.
 \end{enumerate}
 
-\subsection{Finishing}
-Do not go on to the next session today. There is far more in the exercises
-than you can complete in the time available and it is important to
-consolidate your understanding of the concepts in this session. \emph{Don't
-forget to tell the laboratory supervisor you have completed this session}
+You have now finished the lab, but we encourage you to try the exercises
+contained in the file \fname{\Dcrsname/extras}. Don't worry if you find them
+tricky---they are. ;-)
 
+\subsection{Then end of the beginning}
 
+We have now come to the end of the introductory labs, and what follows in the
+various courses are real ones that will be marked and which count! Especially
+if you are new to Unix/Linux it is a good idea to spend a little time skimming
+through what we have already done in order to ready yourself. Most
+importantly: if you are feeling overwhelmed or even just a little concerned
+about your understanding of what you have met so far, please do not suffer in
+silence: speak to your personal tutor, or email one or all of your team of
+torturers! And then we can help you.
+
+\begin{tabular}{ll}
+Steve & srp@cs.man.ac.uk \\
+Graham & gdg@cs.man.ac.uk \\
+Toby & tljh@cs.man.ac.uk \\
+John & jtl@cs.man.ac.uk \\
+\end{tabular}
+
+Good luck from here-on in!
