@@ -2,10 +2,12 @@
 V="-v"
 
 ## Script to update web resources. Usually invoked as ./sync-files -v
+## Needs to be run from the dir containing the COMP101 notes
 
 ## Things to update
 YEAR=2013
 COMP101HOME=$HOME/Teach/COMP10120/COMP101
+COMP101HOME=.
 USR=graham
 
 while getopts qnu: c
