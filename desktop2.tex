@@ -10,37 +10,39 @@
 
 \notesurl{desktop2}
 
-\begin{note}
-  This is the fifth, two hour, lab.
 
-  Has change of position (?) of this lab made any difference to how we tell students about first tutorial?  Yes --fixed
+%\begin{note}
+%  This is the fifth, two hour, lab.
+%
+%  Has change of position (?) of this lab made any difference to how we tell students about first tutorial?  Yes --fixed
+%
+%  Do we need some breakout boxes in this script?
+%
+%  \textbf{Steve's wish list}
+%  \begin{itemize}
+%  \item better navigation---more cd, pushd, popd, mkdir etc
+%  \item 
+%wildcards (use echo)
+%\item 
+%fortune | cowsay
+%run fortune lots of times to make file
+%\item 
+%ls m * vs ls m*
+%\item 
+%revisit handy command line tricks 
+%\item where do we introduce dot (as in ./splunge)
+%
+%  \end{itemize}
+%
+%
+%\end{note}
 
-  Do we need some breakout boxes in this script?
-
-  \textbf{Steve's wish list}
-  \begin{itemize}
-  \item better navigation---more cd, pushd, popd, mkdir etc
-  \item 
-wildcards (use echo)
-\item 
-fortune | cowsay
-run fortune lots of times to make file
-\item 
-ls m * vs ls m*
-\item 
-revisit handy command line tricks 
-\item where do we introduce dot (as in ./splunge)
-
-  \end{itemize}
-
-
-\end{note}
-
+This is the last of the introductory labs, and is designed to introduce you to one of the virtual learning environment that's used in the School, and to give you a chance to practise the command line skills that you've learned already so that you're ready for when the regular scheduled labs start next week. As always, don't rush through the material, and if you get at all stuck please summon a demonstrator for help.
 
 \section{Getting started with \moodle}
 \label{sec:introduction-moodle}
 
-In this lab session you'll be introduced to the \moodle\ Virtual Learning Environment (VLE). \moodle\ is an \wikipedia{Open_source}{Open Source} platform designed to support face-to-face teaching by providing an online place to upload resources for course units. It also provides useful  tools such as discussion forums and quizzes. We use \moodle\ for several of our course units, which typically have a single `course unit site' within our \moodle\ environment.
+In the first half of session you'll be introduced to the \moodle\ Virtual Learning Environment (VLE). \moodle\ is an \wikipedia{Open_source}{Open Source} platform designed to support face-to-face teaching by providing an online place to upload resources for course units. It also provides useful tools such as discussion forums and quizzes. We use \moodle\ for several of our course units, which typically have a single `course unit site' within our \moodle\ environment.
 
 %Why is Moodle being used for COMP10120
 \moodle\ has several features which make it well suited to supporting this course-unit. These include:
@@ -50,7 +52,7 @@ In this lab session you'll be introduced to the \moodle\ Virtual Learning Enviro
 \item It provides a structure to help organise activities you should be doing on a week-by-week basis.
 \end{itemize}
 
-Log in to \moodle\ by pointing your web browser at: \urlnop{moodle.cs.man.ac.uk} and using your University credentials. 
+Log in to \moodle\ by pointing your web browser at: \urlnop{moodle.cs.man.ac.uk} and using your University username and password. 
 
 After successfully logging into \moodle\ for the first time, you'll be presented with a form to complete the details of your \moodle\ profile. Add your first and last names; your email address; the city/town where you live (for most people this will be Manchester); and add a short description of yourself. Select the `Update profile' button to complete your \moodle\ registration. Assuming that worked okay, the next page to appear will be the \moodle\ home page (see  Figure~\ref{figure:moodle-home})
 
@@ -115,10 +117,6 @@ All instructions for the course unit are located in the \emph{Project informatio
 
 \subsection{Lab deliverables}
 \label{sec:lab-deliverables}
-
-\begin{note}
-  Do we want a list of deliverables for each lab? Should they be at the start of the script?
-\end{note}
 
 By the end of this section of the lab session, ensure you have completed the following tasks.
 
@@ -392,7 +390,7 @@ You must get your directory structure right before continuing---ask a
 member of the lab staff to check it at this point.
 
 \begin{note}
-Do we really want them to ask a demonstrator?
+Do we really want them all to ask a demonstrator?
 \end{note}
 
 %Every directory is created with two files already there, called `.'
@@ -510,6 +508,9 @@ You now know enough about the behaviour of the filesystem to know what's actuall
 \end{diversion}
 
 \begin{note}
+
+This seems a bit of an odd thing to put in a section about mv. Do we still want to say this?
+
 Before continuing, answer this question and check your answer with a
 member of staff: how do you \emph{rename} a file in Unix? Don't guess---you
 know the answer, unless you have already forgotten from previous labs and you are now going too fast.
@@ -545,7 +546,7 @@ check that you understand what you did right!
 The \cmdname{cp} command needs at least \emph{two} arguments. In this case, the file
 you are copying is \fname{/usr/share/games/fortunes}, and the directory
 you are copying it to is `.' (that is, your current working
-directory---remember every directory has a reference to itself within
+directory; remember every directory has a reference to itself within
 it, called `.') If you missed out the dot, or mis-spelt
 \fname{/usr/share/games/fortunes}, or missed out one of the spaces, it
 won't have worked. In particular, you may well have got an error message like:
@@ -612,6 +613,10 @@ output from \cmdname{ls} at each stage:
 \$  ls \return
 \end{ttoutenv}
 
+\begin{note}
+Should these be fortune1 instead of frtun1? There's really no need to abbreviate names is there? and we may be starting off bad habits when it comes to naming files and variables?
+\end{note}
+
 You'll notice that \ilinput{rm frtun1} behaves differently to \ilinput{rm frtun2}; if you can't figure out why, call a demonstrator for help. 
 
 \subsection{Wild cards}
@@ -644,7 +649,7 @@ Now try
 \$  echo *tun*\return
 \end{ttoutenv}
 %
-Our previous use of \ttout{*} has always been in conjunction with \cmnd{ls}{ls} which might have led you to think that the wild card was being expanded by \cmnd{ls}{ls}. In fact the expansion is done by the \emph{shell}, \cmnd{bash}{bash}.
+Our previous use of \ttout{*} has always been in conjunction with \cmnd{ls}{ls} which might have led you to think that the wild card was being expanded by \cmnd{ls}{ls}. In fact the expansion is done by the \emph{shell}, \cmnd{bash}{bash}, which means that the effect is true for anything you type on the command line. Wildcards are a very powerful and useful feature of the commandline, and as with anything powerful and useful can be used or mis-used, so its important that you know what you're doing with them!
 
 One place where you have take care with wild cards is provided by the dotfiles; i.e. those
 whose names begin with \ttout{.}. The asterisk will not match a
@@ -698,8 +703,7 @@ If you type
 \$  cat \return
 \end{ttoutenv}
 nothing will happen because you haven't given a file to \cmdname{cat}.
-When run like this, it takes its data from the \textbf{standard input}---
-which in this case is the keyboard---and copies it to the standard
+When run like this, it takes its data from the \textbf{standard input}---which in this case is the keyboard---and copies it to the standard
 output. Anything that you now type will be taken as input by
 \cmdname{cat}, and will be output once each line of the input is
 complete. In Unix, end of input is signalled by \ctrl{d}.
@@ -711,10 +715,10 @@ The cat
 sat
 on the
 mat
-\ctrl{d}
 \end{ttoutenv}
-you will see the input replicated on the output (interleaved line by
-line with the input). The first copy is the `echo' of what you typed as
+
+
+and then press \ctrl{d} you will see the input replicated on the output (interleaved line by line with the input). The first copy is the `echo' of what you typed as
 you typed it, the second copy is output from \cmdname{cat}. This may
 not seem very useful, and you wouldn't actually use it just like that,
 %(An example where you really would have cat do just this is a bit too
@@ -936,7 +940,7 @@ So, now type just
 \$ wisecow
 \end{ttoutenv}
 
-and be overjoyed! (Okay, we'll settle for slightly chuffed here.)
+and bask in the wisdom of your newly created cow guru. 
 
 \subsection{Printing text files: lpr}
 
@@ -950,7 +954,7 @@ simplest form, you simply run:
 to print the given files. The printing service we use is the University \concept{Pull printing} service, which allows you to collect your printing at \emph{any} University pull printer. This is described in more detail at 
 
 {\small
-\href{http://www.itservices.manchester.ac.uk/printing/pullprinting/}{www.itservices.manchester.ac.uk/printing/pullprinting}
+\url{http://www.itservices.manchester.ac.uk/printing/pullprinting/}
 }
 
 You could use \cmdname{lpr} now to print out the \fname{fortunes}
@@ -983,9 +987,10 @@ Look at the man page for \cmdname{a2ps} and use \cmdname{a2ps} to print the file
 \\
 
 \fname{\Dcrsname/SimpleJavaProgram.java}. 
+\\
 
 When you collect
-this print output you will see how pretty \cmdname{a2ps} makes it. This is a
+this print output you will see that \cmdname{a2ps} has formatted it nicely. This is a
 good way to obtain printouts of your own work, should you wish to.
 
 All students have a printing account which is used to `pay' for their printing. The School has pre-credited your account with enough credit for you to print all the material needed for your courses (with some to spare) without having to pay for anything. For administrative reasons, your initial credit will be £4, and this will be topped-up during the year. The first top-up is likely to occur during Reading Week.
@@ -1064,29 +1069,34 @@ in the dictionary which contain the string `red'.
 
 You have now finished the lab, but we encourage you to try the exercises
 contained in the file \fname{\Dcrsname/extras}. Don't worry if you find them
-tricky---they are. ;-)
+tricky---they are.
 
 \subsection{The end of the beginning}
 
-We have now come to the end of the introductory labs, and what follows next week in the
-various courses are real ones that will be marked and which count towards your final year mark. Especially
-if you are new to Unix/Linux it is a good idea to spend a little time skimming
+That's it! You've now reached the end of the introductory labs, and what follows next week in the
+various courses are real ones that will be marked and which count towards your final year mark. Especially if you are new to Unix/Linux it is a good idea to spend a little time skimming
 through what we have already done in order to ready yourself. Most
 importantly: if you are feeling overwhelmed or even just a little concerned
 about your understanding of what you have met so far, please do not suffer in
-silence: speak to your personal tutor, or email one or all the team that created these tutorials. Best of luck!
+silence: speak to your personal tutor, or email one or all the team that created these tutorials. 
 \\
 
-\begin{tabular}{ll}
-Steve & steve.pettifer@manchester.ac.uk\\
-Graham & graham.gough@manchester.ac.uk \\
-Toby & toby.howard@manchester.ac.uk \\
-John & john.latham@manchester.ac.uk \\
+Best of luck!
+\\
+
+Steve, Graham, Toby and John.
+
+
+\vspace{2cm}
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=5cm]{images/srp-mugshot} & \includegraphics[width=5cm]{images/gdg-mugshot} \\
+{\small steve.pettifer@manchester.ac.uk} & {\small graham.gough@manchester.ac.uk} \\
+\includegraphics[width=5cm]{images/tljh-mugshot} & \includegraphics[width=5cm]{images/jtl-mugshot} \\
+{\small toby.howard@manchester.ac.uk}  & {\small john.latham@manchester.ac.uk} \\
 \end{tabular}
+\end{table}
 
-\includegraphics[width=5cm]{images/srp-mugshot}
-\includegraphics[width=5cm]{images/gdg-mugshot}
-\\
 
-\includegraphics[width=5cm]{images/tljh-mugshot}
-\includegraphics[width=5cm]{images/jtl-mugshot}
+
