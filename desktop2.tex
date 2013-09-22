@@ -1,8 +1,8 @@
 %\chapter{Collaborative tools}
 
 \renewcommand{\tilde}{\textasciitilde}
-\newcommand{\moodle}{\textsf{Moodle}}
-\newcommand{\Moodle}{\textsf{Moodle}}
+\newcommand{\moodle}{Moodle}
+\newcommand{\Moodle}{Moodle}
 
 \chapter[\Moodle\ Intro and command line skills]{Introduction to \Moodle\ and command line skills}
 
@@ -58,7 +58,13 @@ In the first half of session you'll be introduced to the \moodle\ Virtual Learni
 \item It provides a structure to help organise activities you should be doing on a week-by-week basis.
 \end{itemize}
 
-Log in to \moodle\ by pointing your web browser at: \urlnop{moodle.cs.man.ac.uk} and using your University username and password. 
+Log in to \moodle\ by pointing your web browser at:
+\\
+
+\url{http://moodle.cs.man.ac.uk}
+\\
+
+and using your University username and password. 
 
 After successfully logging into \moodle\ for the first time, you'll be presented with a form to complete the details of your \moodle\ profile. Add your first and last names; your email address; the city/town where you live (for most people this will be Manchester); and add a short description of yourself. Select the `Update profile' button to complete your \moodle\ registration. Assuming that worked okay, the next page to appear will be the \moodle\ home page (see  Figure~\ref{figure:moodle-home})
 
@@ -172,7 +178,7 @@ During COMP10120 you'll required to document many aspects of your work using a g
 %Your turn
 In the bottom \emph{Resources for individual use} section of the COMP10120 site you will find a link to a wiki called \emph{Personal test wiki} which is private for you and you only. It is provided to allow you to practise how to use \moodle\ wiki syntax before you start using your shared group wiki. If you have used a wiki before then you may find \Moodle's wiki syntax is slightly different to that which you are used to.
 
-For this short exercise you will need to read through some of the help documentation hosted inside \moodle. In a new window or tab navigate to \urlnop{moodle.cs.man.ac.uk} again and enter the \emph{ \emph{Welcome to the Student Guide to Using \Moodle} }course in the \moodle\ \emph{Help and Support}  category (you may be asked to 'enrol' on this course, just select 'Yes'). Scroll down to the section about Wikis and select the \emph{How to use the wiki tool} book.
+For this short exercise you will need to read through some of the help documentation hosted inside \moodle. In a new window or tab navigate to \urlnop{moodle.cs.man.ac.uk} again and enter the \emph{Welcome to the Student Guide to Using \Moodle} course in the \moodle\ \emph{Help and Support}  category (you may be asked to 'enrol' on this course, just select 'Yes'). Scroll down to the section about Wikis and select the \emph{How to use the wiki tool} book.
 
 The aim of this short exercise is to create a simple wiki page with two or three wiki links to other pages; incorporate an image; and attach and link to a binary (non-image) file. It is important that you follow this mini-tutorial through to the end as it will ensure you know how to do all the basic tasks needed to help build your own group wiki during the project.
 
@@ -263,7 +269,7 @@ That's all we want to say about Moodle and VLEs. The second part of this lab is 
 
 This section is designed to help you practise your command line skills in preparation  for next week's start of regular lab activities. You've already used most of these commands in previous labs, but please don't rush through this section since we'll be explaining their behaviour in a bit more detail, and introducing you to some of the extra options they provide, as well as some of the pitfalls that lie in wait for the over-zealous command line user.  
 
-You've probably figured this out already, but it's worth making explicit here: for Unix commands, it's usually the case that no news is good news. So when you run a program from the shell, if you get no response other than your command-prompt back, that almost always means that the command has done what you asked it to (whether you asked it to do what you \textit{wanted} it to do is, of course, an entirely different matter!) Generally speaking, for most simple Unix commands, you can assume that the absence of an error message means that something has worked. And of course\ldots\ if you get an error or warning message back from a command, it is crucially important that you read it, understand it, and act on it, rather than just ploughing on regardless. If you ignore errors and warnings, bad things happen. This is true in the Unix command world, and probably isn't a bad philosophy for life in general either.
+You've probably figured this out already, but it's worth making explicit here: for Unix commands, it's usually the case that no news is good news. So when you run a program from the shell, if you get no response other than your command-prompt back, that almost always means that the command has done what you asked it to (whether you asked it to do what you \textit{wanted} it to do is, of course, an entirely different matter!) Generally speaking, for most simple Unix commands, you can assume that the absence of an error message means that something has worked. And of course, if you get an error or warning message back from a command, it is crucially important that you read it, understand it, and act on it, rather than just ploughing on regardless. If you ignore errors and warnings, bad things happen. This is true in the Unix command world, and probably isn't a bad philosophy for life in general either.
 
 Anyway, back to the exercise and some practice of manipulating files and directories. In previous labs you've already encountered three directories of particular interest:
 
@@ -382,7 +388,7 @@ Your directory structure should now look something like this:
 The easiest way to check this is to use 
 \cmdname{ls} from your home directory with the \ttout{-R} flag. This shows the whole tree
 below your current working directory (as with other commands we've encountered before such as \cmdname{chmod}, here the \ttout{-R} is short for
-\wikipedia{Recursion}{recursively}---if you've not looked up what this means yet, now is a good time to do that.)
+\wikipedia{Recursion}{recursively}---if you've not looked up what this means yet, now is a good time to do that).
 
 \begin{ttoutenv}
 \$ ls -R 
@@ -391,7 +397,7 @@ below your current working directory (as with other commands we've encountered b
 
 Next make a directory in your home directory for the
 \courseunit{COMP16121} course unit with sub-directories for each of the 10
-exercises associated with that course (these aren't imaginary exercises, you'll be starting on them next week.) You \emph{must} use the same
+exercises associated with that course (these aren't imaginary exercises, you'll be starting on them next week). You \emph{must} use the same
 convention as above: capital \texttt{COMP16121} and lower case \texttt{ex1} and so on.
 
 You must get your directory structure right before continuing---be extremely careful that you get this right.
@@ -412,7 +418,7 @@ You must get your directory structure right before continuing---be extremely car
 %first, but they are in fact extremely useful.  `..', for example,
 %enables you to specify a \emph{relative} pathname \emph{up} the tree.
 
-Try the following sequence of \cmdname{cd}s, checking where you are by running \cmdname{pwd} after each one, and make sure you understand what is going on: if you're at all unsure about what has happened, please grab a demonstrator to get an explanation---it really will save you a lot of hassle in the long run. 
+Try the following sequence of \texttt{cd}s, checking where you are by running \cmdname{pwd} after each one, and make sure you understand what is going on: if you're at all unsure about what has happened, please grab a demonstrator to get an explanation---it really will save you a lot of hassle in the long run. 
 
 \begin{ttoutenv}
   cd \return 
@@ -717,7 +723,7 @@ output. Anything that you now type will be taken as input by
 \cmdname{cat}, and will be output when each line of the input is
 complete. In Unix, end of input is signalled by \ctrl{d}.
 (Recall that typing \ctrl{d} in your login shell will log you
-out---you have told the shell to expect no more input.) So, after
+out---you have told the shell to expect no more input). So, after
 typing \cmdname{cat} above, if you type:
 \begin{ttoutenv}
 The cat
@@ -995,7 +1001,7 @@ readability.
 Look at the man page for \cmdname{a2ps} and use \cmdname{a2ps} to print the file
 \\
 
-\fname{\Dcrsname/SimpleJavaProgram.java}. 
+\fname{\Dcrsname/SimpleJavaProgram.java} 
 \\
 
 When you collect
@@ -1111,10 +1117,11 @@ very happy to do that. But before we can, you need to tell us!  \\
 Finally, we want to wish you the best of luck, not just for the coming
 weeks, but for the coming semesters and years, in everything you do
 here in the School.\\
+\\
 
 Steve, Graham, Toby and John.
 
-\vspace{0.5cm}
+\vspace{1.5cm}
 \begin{table}[h]
 \centering
 \begin{tabular}{cc}
@@ -1125,5 +1132,5 @@ Steve, Graham, Toby and John.
 \end{tabular}
 \end{table}
 
-
-
+\section{Acknowledgements}
+These notes are largely our own work, but have been inspired in places by previous lab exercises created by Pete Jinks, John Sargeant and Ian Watson. We're very grateful to Alex Day, Alex Constantin, Hamza Mahmud and Ben Mulpeter for test driving and debugging the exercises.
