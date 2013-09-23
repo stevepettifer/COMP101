@@ -2,8 +2,8 @@ includes.tex
 auto
 .DS_Store
 images/.DS_Store
-labs*.run.xml
-labs*.bcf
+*.run.xml
+*.bcf
 *.acn
 *.acr
 *.alg
@@ -42,6 +42,7 @@ linux2.pdf
 comment.cut
 welcome*.pdf
 desktop*.pdf
+git*pdf
 rpi*.pdf
 latex-exercise*.pdf
 myconfig.cfg

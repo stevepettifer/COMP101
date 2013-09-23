@@ -1,0 +1,67 @@
+%\documentclass[a4paper,twoside,12pt,dvipdfm]{report}
+\documentclass[11pt, a4paper]{report}
+
+\usepackage [shownotes,demo]{101labs}
+
+\addbibresource{101labs.bib}
+\addbibresource{latex-exercise.bib}
+
+\coursecode{COMP10120}
+\coursename{Introductory Labs}
+\title{Lab exercises}
+\date{August 2013}
+\author{Steve Pettifer, Toby Howard, Graham Gough and John Latham}
+\bottomstuff{\noindent\includegraphics[width=2cm]{images/rpi-logo}\hspace*{\fill}\includegraphics[width=2cm]{images/Tux}}
+
+\mkcmdanchor{echo}{Miscellaneous}
+\mkcmdanchor{ls}{File_System_Utilities} 
+\mkcmdanchor{mkdir}{File_System_Utilities} 
+\mkcmdanchor{cd}{File_System_Utilities} 
+\mkcmdanchor{pwd}{File_System_Utilities}  
+\mkcmdanchor{rm}{File_System_Utilities}   
+\mkcmdanchor{mv}{File_System_Utilities}    
+\mkcmdanchor{which}{Finding_Files}    
+\mkcmdanchor{gzip}{File_Compression}
+\mkcmdanchor{zip}{File_Compression}
+\mkcmdanchor{tar}{File_Compression}
+\mkcmdanchor{man}{Getting_Help}
+\mkcmdanchor{less}{File_Viewing}
+\mkcmdanchor{more}{File_Viewing}
+\mkcmdanchor{cat}{File_Viewing}
+\mkcmdanchor{head}{File_Viewing}
+\mkcmdanchor{tail}{File_Viewing}
+
+  \dominitoc
+ 
+  \input{includes}
+  
+\begin{document}
+
+\include{title}
+\coursecode{Welcome}
+\setcounter{chapter}{-1}
+\renewcommand{\chaptername}{Welcome Lab Session}
+\include{welcome}
+\renewcommand{\chaptername}{Intro Lab Session}
+\coursecode{Introductory Labs}
+\include{rpi1}
+\include{desktop1}
+\include{rpi2}
+\include{desktop2}
+\renewcommand{\chaptername}{COMP10120 Lab Session}
+\setcounter{chapter}{0}
+\coursecode{COMP10120}
+\include{desktop3}
+\include{desktop4}
+\include{latex-exercise}
+\include{desktop5}
+\include{appendix}
+
+\printbibliography
+
+\end{document}
+                                
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
