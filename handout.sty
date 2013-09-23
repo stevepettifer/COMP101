@@ -43,6 +43,9 @@
 \def\title#1{\gdef\@title{#1}}
 \title{Title not specified} % Default
 
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\subtitle{\relax} % Default
+
 
 \def\shorttitle#1{\gdef\@shorttitle{#1}}
 \shorttitle{\@title} % Default
@@ -71,6 +74,7 @@
 \begin{center}
 {\Large \textbf{\@coursecode: \@coursename}}\\[10ex]
 {\huge \textbf{\@title}}\\[10ex]
+\@subtitle
 \large\textbf{\@author}\\[2ex] 
 \textbf{\@date}\\[4ex] 
 School of Computer Science\\

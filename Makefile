@@ -1,24 +1,40 @@
 ROOT=labs
+ROOTSV=labs-staff-version
 TEX=welcome.tex rpi1.tex desktop1.tex rpi2.tex desktop2.tex desktop3.tex desktop4.tex latex-exercise.tex desktop5.tex appendix.tex
 TEXNOSUFF=${basename ${TEX}}
 PDF=${addsuffix .pdf,${TEXNOSUFF}}
+PDFSV=${addsuffix -staff.pdf,${TEXNOSUFF}}
 STY=${wildcard *.sty}
 
-default: ${PDF}
+staff: 101labs-staff.pdf ${PDFSV}
+
+stu: ${PDF}
 
 101labs.pdf: ${ROOT}.tex ${TEX} ${STY}
 	echo > includes.tex
 	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT}; pdflatex ${ROOT}; mv ${ROOT}.pdf $@
 
 
+101labs-staff.pdf: ${ROOTSV}.tex ${TEX} ${STY}
+	echo > includes.tex
+	pdflatex ${ROOTSV}; biber ${ROOTSV}; pdflatex ${ROOTSV}; pdflatex ${ROOTSV}; mv ${ROOTSV}.pdf $@
+
+
+%-staff.pdf: %.tex ${ROOTSV}.tex ${STY}
+	echo '\includeonly{'$*'}' > includes.tex
+	pdflatex ${ROOTSV} ; biber ${ROOTSV}; pdflatex ${ROOTSV} ; pdflatex ${ROOTSV} ; mv ${ROOTSV}.pdf $@
+
 %.pdf: %.tex ${ROOT}.tex ${STY}
 	echo '\includeonly{'$*'}' > includes.tex
 	pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ; pdflatex ${ROOT} ; mv ${ROOT}.pdf $@
 
-all: ${PDF} 101labs.pdf
+all: ${PDF} ${PDFSV} 101labs.pdf
 
 clean:
 	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.mtc* *.maf *.rel *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf comment.cut
 
-rebuild:	
-	./remake ${PDF}
+minitoc:	
+	./remake ${PDF} 
+
+minitocsv:	
+	./remake ${PDFSV} 

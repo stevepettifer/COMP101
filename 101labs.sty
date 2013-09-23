@@ -1,3 +1,5 @@
+
+
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{alltt}
@@ -34,6 +36,10 @@
 \usepackage{ifthen}
 \newboolean{@shownotes}
 \setboolean{@shownotes}{false}
+
+\newboolean{@demo}
+\setboolean{@demo}{false}
+
 
 
 \usepackage[
@@ -121,6 +127,7 @@
 
 \newcommand{\wikipedia}[2]{\textbf{\href{http://en.wikipedia.org/wiki/#1}{#2}}\textsuperscript{{\color{gray}\tinsy{W}}}}
 
+
 \renewcommand{\chaptername}{COMP10120 Lab Session}
 \setlength{\parskip}{4pt plus 1pt}%
 \setlength{\parindent}{0pt}
@@ -145,6 +152,9 @@
 \usepackage{comment}
 
 \excludecomment{note}
+\excludecomment{demonote}
+\excludecomment{demonote*}
+\excludecomment{modelanswers}
 
 \newcommand{\notesurl}[1]{\begin{stdframe}{yellow!20} %
     These notes are available online at \\{\small \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/labscripts/#1.pdf}}%
@@ -158,6 +168,41 @@
   \bfseries {\Large Note to authors:\\[1ex]}\itshape}%
 {\end{stdframe}}}
 
+% Use option demo to include mark scheme
+\DeclareOption{demo}{%
+\setboolean{@demo}{true}%
+
+% \specialcomment{demonote}{%
+%    \begin{quote}%\raggedright%
+% %   \textbf{Notes for lab staff on Task\ \thetaskctr}\\[2ex]}%
+%    \textbf{Notes for lab staff on Task\ \thetaskctr}\\[2ex]}%
+%    {\par\end{quote}}%
+
+\subtitle{\fbox{\huge \textbf{LAB STAFF VERSION}}\\[3ex]}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\bfseries \thepage} % except the center
+\fancyhead[C]{\bfseries \Large LAB STAFF VERSION} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+\def\@docversion{:LAB STAFF VERSION}
+\specialcomment{modelanswers}{\clearpage\gdef\@righthead{Model Answers}}{}
+%
+\specialcomment{demonote}{%
+   \begin{mdframed}[outerlinewidth=0.5,%
+     leftmargin=10,%
+     rightmargin=10,%
+     innertopmargin=\topskip,%
+     splittopskip=\topskip,skipbelow=\baselineskip,%
+     roundcorner=2pt,linecolor=gray,%
+     skipabove=\baselineskip,backgroundcolor=light-gray]\begin{quote}%
+   \textbf{Notes for lab staff}\\[2ex]}%
+   {\par\end{quote}\end{mdframed}}%
+
+\fancyhead[l]{\textbf{\@coursecode: STAFF VERSION}}
+}
+
 \ProcessOptions
+
   
 

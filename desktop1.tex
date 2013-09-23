@@ -4,7 +4,17 @@
 
 \notesurl{desktop1}
 
-Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
+\begin{demonote}
+  Part of this lab involves editing dot files. Any mistake here can result in a student not being able to login. To fix this, login yourself (either on a new virtual terminal or another machine), then
+  \begin{ttoutenv}
+    cd /tmp
+    su [studentloginname]  ## \textbf{Note not su -}
+    cd ~
+  \end{ttoutenv}
+  You can then poke around the dot files and fix the problem. Often this involves removing, or just renaming, the offending dot file
+
+\end{demonote}
+ Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
 
 \section{Logging in}
 
