@@ -1,4 +1,4 @@
-%\documentclass[a4paper,twoside,12pt,dvipdfm]{report}
+%\documentclass[a4paper,twoside,12pt,dvipdfm]{article}
 \documentclass[11pt, a4paper]{report}
 
 %\usepackage [shownotes,demo]{101labs}
@@ -9,9 +9,9 @@
 
 \coursecode{COMP10120}
 \coursename{Introductory Labs}
-\title{Getting started with \ttout{git}}
+\title{Getting started with \texttt{git}}
 \date{August 2013}
-\author{Steve Pettifer, Toby Howard, Graham Gough and John Latham}
+\author{Steve Pettifer}%, Toby Howard, Graham Gough and John Latham}
 \bottomstuff{\noindent\includegraphics[width=2cm]{images/rpi-logo}\hspace*{\fill}\includegraphics[width=2cm]{images/Tux}}
 
 \mkcmdanchor{echo}{Miscellaneous}
@@ -39,6 +39,9 @@
 \begin{document}
 
 \coursecode{COMP10120}
+\maketitle
+
+This tutorial was written as part of the COMP10120 labs, so may contain some references to other parts of the notes. However, we believe it is sufficiently self-contained to stand on its own as an introduction to \ttout{git}.
 \input{git}
 
 \printbibliography
