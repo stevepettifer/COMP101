@@ -165,7 +165,7 @@ Transcript written on simple.log.
 %
 after which \LaTeX\ will return you to the command prompt. If you've made a mistake typing in the file, \LaTeX\ will stop part way through processing your work, and display an error (possibly, quite an obscure one!) and show a `?' prompt. The best thing to do at this stage is to press \ctrl{d} to tell \LaTeX\ to give up trying to process your file. Then fix the mistake, and try again.  
 
-If you now list the contents of the directory, you should see that a file called `fire-and-ice.pdf' has been created (along with two other files called `fire-and-ice.aux' and `fire-and-ice.log' both of which we will ignore for now). Use one of the PDF readers to look at the content of `simple.pdf'.  Admittedly, it's not the most exciting result; if everything has worked properly so far, you should see single-page document with the words `Some say the world will end in fire,' a little way down from the top of the page\footnote{If you have been carried away with the sheer excitement and joy of learning to use \LaTeX\, and improvised the text rather than typing the first line of `Fire and Ice' as requested, please go back and change it now: it really is important that you use exactly that text. Really, it is. That's better. Thanks.}.
+If you now list the contents of the directory, you should see that a file called `fire-and-ice.pdf' has been created (along with two other files called `fire-and-ice.aux' and `fire-and-ice.log' both of which we will ignore for now). Use one of the PDF readers (such as \cmdname{evince}) to look at the content of `simple.pdf'.  Admittedly, it's not the most exciting result; if everything has worked properly so far, you should see single-page document with the words `Some say the world will end in fire,' a little way down from the top of the page\footnote{If you have been carried away with the sheer excitement and joy of learning to use \LaTeX\, and improvised the text rather than typing the first line of `Fire and Ice' as requested, please go back and change it now: it really is important that you use exactly that text. Really, it is. That's better. Thanks.}.
 
 But now look more closely. A lot more closely\ldots really zoom in. See anything interesting?
 
@@ -288,7 +288,11 @@ Now, at the top of your document after the \verb|\begin{document}| line and befo
 \newpage
 \end{verbatim}
 %
-Re-run pdflatex, and check that the effect is what you'd expect!
+  Re-run pdflatex, and check that the effect is what you'd expect!
+
+\begin{note}
+    Need to run latex twice here. Tell them? Tell them why?
+\end{note}
 
 \section{Common formatting features}
 
@@ -346,6 +350,10 @@ I've discovered that I don't like soggy chips.
 
 The really useful thing about cross-referencing in \LaTeX\ is that you'll get warnings when you compile your document if cross-references are undefined or used incorrectly. This means you don't have to manually check every reference in your document to make sure its still right.
 
+\begin{note}
+  Run twice?
+\end{note}
+
 \subsection{Figures and pictures}
 
 Including figures and pictures in your document is easy. You do it like this:
@@ -359,6 +367,10 @@ Including figures and pictures in your document is easy. You do it like this:
 \end{verbatim}
 which we used to create Figure~\ref{figure:menandcheeses}. You can probably see what's happening. \verb|\includegraphics{}| gets your image, which can be PDF, PNG, JPG, GIF or PostScript. The \verb|\begin...\end| code ``wraps'' up whatever picture you're including, and allows \LaTeX\ to treat it as an unbreakable ``floating'' thing that it will position for you as best it can in the document, while maintaining an overall nice typographical layout. This ``floating'' of figures can sometimes result in the figure ending up in a place you didn't expect, but in most cases \LaTeX\ will make the most sensible choice. It's possible to exercise finer control over figure placement, but that's beyond the scope of this exercise.
 
+\begin{note}
+  Need \verb+\includepackage{graphicx}+
+\end{note}
+
 \subsection{Typesetting Mathematics}
 \label{mathssection}
 
@@ -369,9 +381,9 @@ It looks nice, doesn't it? To tell \LaTeX\ to display this, you have to type a b
 \begin{verbatim}
      \[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \]
 \end{verbatim}
-You can probably work out how most of this creates the formula, but it won't be obvious that the \verb|\[| and  \verb|\]| characters that enclose the formula mean ``typeset this as a displayed formula, giving it some vertical space from the surrounding text''. If we'd used \verb|\(| and \verb|\)| instead to enclose the formula it would appear in-line, like this: \(  x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \). It still looks very nice, and observe how it's automatically been resized to fit, and that the lines of text have had their spacing changed a bit. This all looks simple, but the implementation inside \LaTeX\ and \TeX\ is complex. It involves parsing the description of the formula to create a corresponding tree data structure, which is then recursively ``walked'' to work out the horizontal and vertical typographical spacings needed. You'll meet these ideas in COMP26120 Algorithms and Imperative Programming.
+You can probably work out how most of this creates the formula, but it won't be obvious that the \verb|\[| and  \verb|\]| characters that enclose the formula mean ``typeset this as a displayed formula, giving it some vertical space from the surrounding text''. If we'd used \verb|\(| and \verb|\)| instead to enclose the formula it would appear in-line, like this: \(  x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \). It still looks very nice, and observe how it's automatically been resized to fit, and that the lines of text have had their spacing changed a bit. This all looks simple, but the implementation inside \LaTeX\ and \TeX\ is complex. It involves parsing the description of the formula to create a corresponding tree data structure, which is then recursively ``walked'' to work out the horizontal and vertical typographical spacings needed. You'll meet these ideas in \courseunit{COMP11120} and \courseunit{COMP26120} Algorithms and Imperative Programming.
 
-Here's another example, taken from COMP27112 Computer Graphics (it's a simple local illumination model incorporating ambient, diffuse and specular reflection by multiple lights):
+Here's another example, taken from \courseunit{COMP27112} Computer Graphics (it's a `simple' local illumination model incorporating ambient, diffuse and specular reflection by multiple lights):
 
 \[ I = k_a I_a + \sum_{i=1}^M {\frac{{I_p}_i}{d'_i}} [ k_d(\hat{N}\cdot\hat{L_i}) + k_s(\hat{R_i}\cdot\hat{V})^n] \]
 %
@@ -400,7 +412,7 @@ One final example. If we tell \LaTeX:
     \right] \]
 \end{verbatim}
 %
-we'll get a splendid matrix which expresses a particular 3D geometrical transformation (don't worry if you don't recognise this, you'll be introduced to matrix notation in the latter part of COMP11120: Mathematical Techniques for Computer Science. For now you can just treat it as `some maths'):
+we'll get a splendid matrix which expresses a particular 3D geometrical transformation (don't worry if you don't recognise this, you'll be introduced to matrix notation in the latter part of \courseunit{COMP11120}: Mathematical Techniques for Computer Science. For now you can just treat it as `some maths'):
 
 \[   T_1 = \left[
     \begin{array}{cccc}
@@ -441,7 +453,11 @@ In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';
   \]
   But this means that $q^2$, and hence $q$ is  even. Since $p$ and $q$ are both even we have a contradiction to our initial assumption, so no such $p$ and $q$ exist.
 
-  To see how this is done, please look at the source of this document.
+To see how this is done, please look at the source of this document.
+
+\begin{note}
+  are we really going to publish the full source, or just bits like this?
+\end{note}
 
   \LaTeX\ really shines at typesetting mathematics, and it would take pages and pages to describe all the features. Have a look at:
 \\
@@ -452,15 +468,82 @@ In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';
 for a flavour. 
  
 \section{More exercises}
-\begin{verbatim}
-Insert versions some of existing lab exercises here.
-\end{verbatim}
+
+\begin{note}
+  Insert versions some of existing lab exercises here.
+\end{note}
+
+\subsection{Task 1: A reflection on your studies}
+Your first \LaTeX\ document will be a very brief reflection on your studies so far.
+
+You should work in \verb+$HOME/COMP10120/ex3+. Write a hand-crafted \LaTeX\ document called 
+\fname{courses-reflection.tex} (exact name please, otherwise submit will not work). It will have the following structure.
+
+\begin{enumerate}
+\item 
+Appropriate title including author and date.
+\item Table of contents.
+\item A brief paragraph saying what the document is about.
+\item  A section, appropriately titled, for one of your courses, containing:
+  \begin{itemize}
+  \item  a brief paragraph saying what the course is about. This will contain a citation referring to the URL of the course syllabus page.
+ \item A sub-section, appropriately titled, containing an enumeration of the three things you like the most about the course.
+\item A sub-section, appropriately titled, containing an enumeration of the three things you like the least about the course.
+
+  \end{itemize}
+ A repeat of item 4 for each other course you are studying. These sections should appear in alphabetical order by course code (e.g. COMP10120).
+\end{enumerate} 
+After completing and successfully `compiling' and viewing your document, you should spell-check it as follows.
+
+\begin{ttoutenv}
+ispell courses-reflection.tex   
+\end{ttoutenv}
+
+Once you are completely satisfied with it, produce a hard copy ready for marking.
+
+
+\subsection{Task 2: Arguments about software patents}
+\label{sec:task-2:-arguments}
+
+\begin{note}
+  This won't work and needs replacing
+\end{note}
+
+In this task you will create three documents which have two shared parts in common. All together you will create five files as follows (please be exact with the filenames).
+
+pros-and-cons.tex This will be a document that contains the pros and cons of software patents. It will contain a paragraph explaining what the document is about, a section listing the pros, another section listing the cons and finally a section concluding the balanced argument.
+for.tex This will be a document that contains only the pros of software patents. It will contain a paragraph explaining what the document is about, a section listing the pros and finally a section concluding the argument for software patents.
+against.tex This will be a document that contains only the cons of software patents. It will contain a paragraph explaining what the document is about, a section listing the cons and finally a section concluding the argument against software patents.
+pros.tex This will be a piece of \LaTeX\ (not a full document) that will be included in the first and second document.
+cons.tex This will be a piece of \LaTeX\ (not a full document) that will be included in the first and third document.
+Just to be clear, you will not cut and paste the pros and cons lists into the two documents they each finally appear in. Instead you will arrange for the file containing each list to be input by the two documents. The idea here is that if you think of more pros or cons, or wish to change the wording of any, you can edit the corresponding single file, and the changes will appear in both documents that use it. You will need to find out how to make a \LaTeX\ source file input another one.
+
+\subsection{Task 3: A neat directory listing (optional)}
+The fact that \LaTeX\ source files are just text makes it easy to have them generated by a program. You are going to exploit this and use \LaTeX\ to produce a neat document containing a listing of the files in any directory.
+
+Find out about \LaTeX\ tables (the tabular environment).
+Make a \LaTeX\ document by hand that uses a table to neatly show the information about the files in some (small) directory (as produced by ls -l).
+Write a shell script, called neat-ls, that takes an argument which is the path name of a directory, and produces a \LaTeX\ document containing the above table for the given directory. The script could also process the \LaTeX\ and display the resulting dvi file.
+Finally, find out about the longtable package and change your script to use that instead.
+
+\subsection{Task 4: A cleaning rota (optional)}
+Now you will write a shell script, called rota, that generates a house cleaning rota. (Very handy for next year ...). This is a table with columns such as Kitchen, Bathroom and Lounge. The rows will be weeks in the year, labelled with a date (e.g. always a Sunday). The idea is that house mates can write their initials in the boxes, promising to clean the corresponding room in that particular week. Start by making a sample table by hand.
+
+Your script should take a single argument which is the date of the first row, e.g. Sun 02 Sep 07 - Sat 08 Sep 07. The result will be a document that contains as many rows as fit on a single page (find out by experimenting).
+
+The dates of each row should be generated from the first. See the manual page for date to figure out how you can generate a date that is a number of weeks and days later than an existing one.
+
+
 \subsection{Task 4}
 \label{sec:task-4}
 
+\begin{note}
+  Tasks need numbering properly!
+\end{note}
+
  Now for an exercise that involves some mathematics. Please create a file \texttt{f-w.tex} which typesets the following piece of text and mathematics.
 \begin{center}
-  \includegraphics[width=.95\textwidth]{images/f-w.png}
+  \includegraphics[width=.95\textwidth]{images/f-w}
 \end{center}
 
 

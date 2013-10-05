@@ -87,6 +87,9 @@
   \marginnote{\href{\expandafter\cmddoclink{#1}}{\includegraphics[width=1cm]{images/cog}}\raisebox{0.45cm}{\texttt{\textbf{#1}}}}
   \expandafter\def\csname @cmd#1\endcsname{aa}
 }
+
+\newcommand{\cmdname}[1]{\cmnd{#1}{#1}}
+
 % \newcommand{\cmnd}[2]{\texttt{\small #2}%
 %   \ifcsname @cmd#1\endcsname \relax \else %
 %   \marginnote{\href{http://en.wikibooks.org/wiki/Guide_to_Unix/Commands}{\includegraphics[width=1cm]{images/cog} \raisebox{0.45cm}{\texttt{\textbf{#1}}}}}%
