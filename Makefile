@@ -28,7 +28,7 @@ stu: ${PDF}
 	echo '\includeonly{'$*'}' > includes.tex
 	pdflatex ${ROOT} ; biber ${ROOT}; pdflatex ${ROOT} ; pdflatex ${ROOT} ; mv ${ROOT}.pdf $@
 
-all: ${PDF} ${PDFSV} 101labs.pdf
+all: 101labs.pdf  ${PDF} 101labs-staff.pdf ${PDFSV} 
 
 clean:
 	rm -f 101labs.pdf ${ROOT}.pdf ${PDF} *.aux *.log *.mtc* *.maf *.rel *.bbl *.toc *.out *.run.xml *.out *.blg *.bcf comment.cut
