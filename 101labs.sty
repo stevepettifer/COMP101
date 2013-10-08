@@ -105,7 +105,10 @@
 % \newcommand{\cmndn}[2]{\texttt{\small #2}%
 %   }
 
-
+\newcounter{task@subs@cnt}[chapter]
+\newcommand{\taskss}[1]{\stepcounter{task@subs@cnt}\subsection*{Task \arabic{task@subs@cnt}: #1}%
+  \addcontentsline{toc}{subsection}{\protect\numberline{}Task \arabic{task@subs@cnt}: #1}%
+}
 
 \lstset{
   language=bash,
