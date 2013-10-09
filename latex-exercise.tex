@@ -464,10 +464,19 @@ In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';
 
 The way this is formatted is shown here:
 
+{\small
 \begin{verbatim}
- We conclude this section with an example of a longer piece of mathematics, that shows how you might typeset a complete mathematical argument rather than a single formula. The example is Euclid's proof of the fact that $\sqrt{2}$ is irrational. It's an argument that has been covered in COMP11120 and is an example of proof by contradiction. It starts by making the assumption that it is \emph{not the case} that $\sqrt{2}$ is irrational, in other words that we can find integers $p$ and $q$ with $\sqrt{2} = p/q$.
+ We conclude this section with an example of a longer piece of mathematics,
+that shows how you might typeset a complete mathematical argument rather
+than a single formula. The example is Euclid's proof of the fact that
+$\sqrt{2}$ is irrational. It's an argument that has been covered in
+COMP11120 and is an example of proof by contradiction. It starts by
+making the assumption that it is \emph{not the case}that $\sqrt{2}$
+is irrational, in other words that we can find integers
+$p$ and $q$ with $\sqrt{2} = p/q$.
 
-  We can assume, without losing anything, that $p$ and $q$ have \emph{no common factors} (Why?)
+  We can assume, without losing anything, that $p$ and $q$ have
+ \emph{no common factors} (Why?)
   \[
   \begin{array}{lcl}
      \sqrt{2}   & = & p/q \\ 
@@ -475,7 +484,8 @@ The way this is formatted is shown here:
       2q^2      & = & p^2 \\ 
   \end{array}
   \]
-  This means that $p^2$ is even, from which we can also deduce that $p$ is even. (Why?)
+  This means that $p^2$ is even, from which we can also deduce that $p$
+is even. (Why?)
 
   This means that $p = 2k$, for some $k$, so \ldots
   \[
@@ -485,9 +495,11 @@ The way this is formatted is shown here:
       \text{so}  & q^2  & = & 2k^2   \\
    \end{array}
   \]
-  But this means that $q^2$, and hence $q$ is  even. Since $p$ and $q$ are both even we have a contradiction to our initial assumption, so no such $p$ and $q$ exist.
+  But this means that $q^2$, and hence $q$ is  even. Since $p$ and $q$ are
+ both even we have a contradiction to our initial assumption, so no
+ such $p$ and $q$ exist.
 \end{verbatim}
-
+}
 
   \LaTeX\ really shines at typesetting mathematics, and it would take pages and pages to describe all the features. Have a look at:
 \\
