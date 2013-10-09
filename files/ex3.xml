@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!DOCTYPE marking-scheme SYSTEM "/opt/info/courses/LabPrint/ms.dtd">
+<marking-scheme>
+  <course> COMP10120 </course>
+  <exercise> 3 </exercise>
+  <title> LaTeX </title>
+
+  <file type = "comp" action="noprint"> fire-and-ice.tex </file>
+  <file type = "comp" action="noprint"> sections.tex </file>
+  <file type = "comp" action="noprint"> image.tex </file>
+  <file type = "comp" action="noprint"> courses-reflection.tex </file>
+  <file type = "comp" action="noprint"> f-w.tex </file>
+  <file type = "opt" action="noprint"> neat-ls </file>
+  <file type = "opt" action="noprint"> rota </file>
+  <mark-item>
+       <text> A closer look </text>
+       <mark> 2 </mark>
+   <mark-sub-item>
+       <text> A working LaTeX document </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+  </mark-item>
+  <mark-item>
+       <text> A larger example </text>
+       <mark> 2 </mark>
+   <mark-sub-item>
+       <text> A working LaTeX document </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+  </mark-item>
+  <mark-item>
+       <text>Creating document structure </text>
+       <mark> 3 </mark>
+   <mark-sub-item>
+       <text> A working LaTeX document </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+  </mark-item>
+  <mark-item>
+       <text> Including images </text>
+       <mark> 3 </mark>
+   <mark-sub-item>
+       <text> A working LaTeX document </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+  </mark-item>
+    <mark-item>
+       <text> Reflection report </text>
+       <mark> 5 </mark>
+    <mark-sub-item>
+       <text> A working LaTeX document </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+    <mark-sub-item>
+       <text> With the correct structure </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+    <mark-sub-item>
+       <text> Appropriate use of LaTeX commands </text>
+       <mark> 2 </mark>
+    </mark-sub-item>
+    <mark-sub-item>
+       <text>  Has run ispell </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+    </mark-item>
+    <mark-item>
+       <text> Fermat-Wiles </text>
+       <mark> 5 </mark>
+    <mark-sub-item>
+       <text> suitably formatted </text>
+       <mark> 5 </mark>
+    </mark-sub-item>
+    </mark-item>
+</marking-scheme>

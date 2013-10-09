@@ -1,0 +1,246 @@
+% Before you read this file in detail, it is probably a good idea to run it
+% through LaTeX and read the finished document. That will explain the
+% principles and the philosophy of LaTeX. Then when you come back to read this
+% file in detail you will learn how to write simple LaTeX documents using this
+% one as an example.
+
+% All LaTeX documents start off with a plain text file, usually with a
+% .tex  file name  extension. These  are then  processed to  produce a
+% formatted output.
+
+% Originally LaTeX produced DeVice Independent (dvi) files, using the
+% program latex. Nowadays most users prefer output in Portable
+% Document Format (pdf) and use a version to produce such files
+% directly, namely pdflatex.
+
+% In our first example, we will take the LaTeX source file, this file,
+% latex-intro.tex and produce a formatted version, latex-intro.pdf.
+
+
+% Run the following:
+%         Copy this file to an appropriate directory of your own.
+%
+%         pdflatex latex-intro.tex
+%         pdflatex latex-intro.tex
+%         evince latex-intro.pdf
+%
+% and read the processed document.
+% Then read the source again from here onwards.
+% =============================================================================
+
+
+% Welcome back! Now you can see how this document was made.
+
+% You can have comments in LaTeX documents which are simply ignored by LaTeX.
+% Comments are started by a percent character (without a preceding backslash),
+% and continue to the end of the line. This is great, except when you want to
+% have a % sign in your document!  (You can include a percent by `escaping' it
+% WITH a backslash before it, like this, \%)
+
+% All structure and formatting commands start with a backslash.
+% All LaTeX documents start with the \documentclass command.
+% This one says the text is to be formatted in 12 point font, for A4 paper.
+% And the kind of document is article. Others kinds include report and book.
+% Different kinds of document are GENERALLY formatted in different ways
+% according to professional best practice, and have different document
+% structures allowed.
+
+\documentclass[12pt,a4paper]{article}
+
+% You can use various packages to add features to LaTeX.
+
+% This one makes the page margins wider than the default ones for A4 paper, to save paper.
+
+\usepackage{a4-mancs}
+
+% This one makes the document use fonts which are optimized for postscript
+% printers.
+
+\usepackage{pslatex}
+
+% This one offers features to handle uniform resource locators.
+
+\usepackage{url}
+
+% There are loads more, some offer very advanced features.
+% You can also write your own packages, but perhaps not just yet!! :-)
+
+% \title defines the title of the document.
+% The \LaTeX command produces the fancy version of the string LaTeX.
+
+\title{Probably your first look at \LaTeX}
+
+% \author sets the name of the author
+
+\author{John Latham}
+
+% All the stuff up to now is called the preamble. When starting new documents
+% you typically just copy all that from a previous one (and change the title!).
+
+% The document starts here with the following command.
+
+\begin{document}
+
+% This next command makes the title appear.
+
+\maketitle
+
+% This produces a table of contents.
+% Warning: CONTENTS might vary. If you want to have the table of contents at
+% the beginning of the document (like, when do you not want to?) you will have
+% to run pdflatex twice to make sure it gets the page numbers right.
+
+\tableofcontents
+
+% The \newpage commands skips to a new page. Try it by taking it out of a
+% comment.
+
+% \newpage
+
+% We divide the document into sections, each starting with the \section
+% command. The name of the section is contained in curly brackets.
+% Other document structures include \chapter, \subsection and \subsubsection.
+
+\section{Introduction}
+
+% The main text is just presented free format. Except that blank lines mark
+% new paragraphs.
+
+% From time to time you put commands in the text. See if you can figure out
+% what the second backslash does in \LaTeX\ (hint -- look for an instance of
+% \LaTeX without it.)
+
+Hello, and welcome to what is probably your first \LaTeX\ document.
+
+Most expert Unix users prefer to use \LaTeX\ rather than any other document
+processing system, because of its inherent power and flexibility, without the
+reliance on the user having type-setting expertise. However, it is not
+completely trivial to get started using it. Unless you have used it before,
+you probably do not even know how to pronounce it!
+
+% A hyphen which is intended to go between words is produced by two hyphens in
+% the source text: this gets you a single hyphen of the right size (according
+% to the professionals).
+
+So let's get that bit sorted: \LaTeX\ is pronounced ``lay tek'' -- it has
+nothing at all to do with rubber!
+
+\section{The \LaTeX\ philosophy}
+
+% You can change the font with environments such as \textbf{}. This one
+% formats the text inside the brackets using bold font.
+
+% \emph{} makes the text inside the brackets be emphasized, using italics.
+
+% \ldots produces an ellipses (i.e., three dots).
+
+The philosophy behind \LaTeX\ is this: you concentrate on the \emph{contents}
+of your document, and let it worry about the layout. This is in direct
+contrast to the \textbf{what you see is what you get} (WYSIWYG) approach of
+document processors such as \textbf{Word}. \LaTeX\ users recognise that they
+are not really qualified to make good decisions about layout. Professional
+type setters, such as those who defined the \LaTeX\ macros, typically laugh at
+the average end-user's attempts to make a document look good using a WYSIWYG
+tool. Indeed, they coin the interpretation \textbf{what you \emph{sow} is what
+you \emph{gather} \ldots}, or less generously \textbf{what you \emph{get} is
+what you \emph{deserve}}.
+
+Apparently, many successful authors still prefer to use a type writer for
+their early drafts: they feel IMPAIRED when a word processor distracts them
+into making the `finished product' look `good', long before it is finished. If
+only they had access to a decent plain text editor!
+
+\section{So how do you use \LaTeX?}
+
+The steps are as follows.
+
+% You can have lists of things using environments like itemize. This starts
+% with \begin{itemize} and ends with \end{itemize}. Each item starts with
+% \item.
+
+\begin{itemize}
+
+% \texttt{} formats the text in the brackets using a type-writer (fixed width)
+% font.
+
+\item You create your document using a text editor, such as \textbf{nedit}.
+You concentrate on the contents of your document. Let's assume your document
+is stored in the file called \texttt{my-first-latex.tex}.
+
+\item You then augment it with `simple' commands to describe its structure.
+Some people write these at the same time as the text, but any author who
+really wants to focus on the text first and get that right, can go back and
+put the structure commands in later.
+
+\item You then run \LaTeX\ to `compile' your document. This will report any
+errors, such as mismatched structures, or commands it cannot find, and so on.
+To process your document you run the command: \texttt{pdflatex
+my-first-latex.tex}.
+
+\item If your document is processed okay, then your \textbf{pdf} file will be
+produced. This is a PDF version of your finished document, and
+it will be stored in a file called \texttt{my-first-latex.pdf}.
+
+\item You can view your document using a pdf viewer such as \texttt{evince}, or \texttt{acroread}. You
+run the command: \texttt{evince my-first-latex.pdf}.
+
+\item You can print your finished document by printing it from your viewer, or just by using \texttt{lpr}.
+
+\end{itemize}
+
+%If instead of using `itemize' we had used `enumerate', then the items would
+%have been numbered. Try changing the document in that way.
+
+\section{More information}
+
+I seriously recommend you take a look a using \LaTeX\ for your documents -- it
+is a skill well worth acquiring and not nearly as hard as it looks. Most
+people can get started on basic documents after only a few minutes of
+learning. For example, the \LaTeX\ `expertise' needed for a typical 3rd year
+project report can be learnt in a few days. (Alas, if you leave it until that
+point in time, you'll feel like you don't have a few days to spare!)
+
+Gradually you can learn how to do advanced things such as define your own
+commands. Over time you can learn how to make very complex documents. For
+example, I use \LaTeX\ to make lecture slides in \textbf{pdf}, including the
+launching of programs by clicking an icon when viewing slides in
+\textbf{acroread}.
+
+If you want to learn more about \LaTeX, start by looking at the source of this
+document: it contains examples of most of the features you need for simple
+documents, and I have included \LaTeX\ comments to explain them.
+
+%If you want to cite a reference then you use \cite{arg} where arg is the
+%`logical' name you have given to the reference.
+
+Then look on the web at \cite{software-url} for your next step. (Don't expect
+to get any help from \cite{beano}.)
+
+%The references section is an environment called thebibliography. The
+%`sample label' given after the start of the environment helps LaTeX know how
+%wide your reference labels will be.
+
+\begin{thebibliography}{99}
+
+%Within the thebibliography environment we create entries, each starting with
+%the \bibitem command.
+
+\bibitem{software-url}
+% \url comes from the url package. When processed by latex2html (you can guess
+% what that program does from its name!) it will cause a hyper link to be
+% inserted in the resulting html.
+\url{http://www.google.co.uk/search?q=latex+tutorial}
+
+\bibitem{beano}
+The Beano Annual, any year.
+
+\end{thebibliography}
+
+% This next command ends the document.
+\end{document}
+
+Any text you have after the end of the document is ignored. This can be a
+handy place to keep general comments and/or old fragments of the document
+which you want to keep.
+
+Now, was that so hard? :-) 
