@@ -1,0 +1,43 @@
+#!/bin/bash
+
+FirstDate="$1"
+test "$FirstDate" = "" && echo "Please specify first date" && exit
+
+(cat << "."
+\documentclass[12pt]{article}
+\usepackage{a4-mancs}
+\begin{document}
+\begin{center}
+\Huge
+\textbf{Cleaning Rota} \\[.3em]
+\small
+.
+
+echo Starting `/bin/date --date="$FirstDate" +"%a %d %b %Y"`
+
+cat << "."
+\end{center}
+\large
+.
+
+cat << "."
+\begin{tabular}{|l|p{0.8in}|p{0.8in}|p{0.8in}|} \hline
+Date & Kitchen & Bathroom & Lounge \\ \hline
+.
+
+for count in `seq 0 33`
+do
+  Date1=`/bin/date --date="$FirstDate $count week" +"%a %d %b %y"`
+  Date2=`/bin/date --date="$FirstDate $count week 6 day" +"%a %d %b %y"`
+  echo "$Date1 - $Date2 & & & \\\\ \hline"
+done
+
+cat << "."
+\end{tabular}
+\end{document}
+.
+) > rota.tex
+
+pdflatex rota.tex
+evince rota.pdf
+
