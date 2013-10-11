@@ -20,7 +20,8 @@ cat << "."
 
 cat << "."
 \begin{longtable}{|l|l|l|l|l|l|l|l|l|} \hline
-Perms & L & Owner & Group & Size & M & D & Y/T & Name \\ \hline
+Perms & L & Owner & Group & Size & M & D & Y/T 
+                        & Name \\ \hline
 \endhead
 .
 

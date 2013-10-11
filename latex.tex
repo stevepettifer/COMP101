@@ -12,13 +12,24 @@
 \newgeometry{a4paper}
 \setlength{\parskip}{\parskipdefault}
 \setlength{\parindent}{\parindentdefault}
+\fancyheadoffset{0cm} % force fancyhdr to recalculate
 
 \chapter{Report writing and Digital Typography}
 \begin{refsection}
   
   \minitoc
 
-  \notesurl{latex-exercise}
+  \notesurl{latex}
+
+\begin{demonote}
+  There is a great deal of stuff to read in this lab, but students
+  have been told that they need to read at least until
+  section~\ref{section:getting-started} \emph{before} the start of the
+  lab, so they can start the activities as soon as possible. Most of
+  the exercises should be very simple for anyone who has ever used
+  \LaTeX, but we have provided solutions to those that are slightly
+  more tricky.
+\end{demonote}
 
 \section{Introduction}
 
@@ -135,7 +146,7 @@ The other thing about WYSIWYG is that it puts you entirely in control of the vis
 To avoid any  misunderstanding, we are not at all trying to claim that \LaTeX\ is `better' than Word (or similar), just that it's `different', in fact, `extremely different', both in its capabilties, and its conceptual model. One of the key skills that any professional needs to learn is to be able to choose the right tool for the right job. If you're going to open a coconut, you'll probably use a corkscrew, not a pneumatic drill. Similarly, if you're writing a quick letter, or making a DO NOT DISTURB sign, you'll probably want to use a quick WYSIWYG tool like Word. If, however, you're writing a technical document, perhaps with some maths, or a 3rd Year Project Report, or an article you want to get published, then you'll probably want \LaTeX.  You might see analogies with programming here---and which languages are best suited to which jobs.
 
 \section{Getting started}
-
+\label{section:getting-started}
 The downside of using a non-WYSIWYG system such as \LaTeX\ is that there is rather more to understand and master before you can get going. You will have probably spotted that this is a recurring pattern: to perform certain tasks, we often have the choice between two approaches: the first (in this case the WYSIWYG way) allows you to get going straight away as a novice, but doesn't allow us to grow much expertise to get better and faster, and as you try to do more complex things, you discover problems and limitations that are hard to overcome; the second is inherently more powerful, but requires you to invest time and effort before you can get started. Wordprocessors and file browsers fall into the former category; \LaTeX\ and use of the command line into the latter.
 
 By the time you get to write your third year project report, you will almost certainly want to use \LaTeX. Indeed, that might well be the point at which you will gain the most benefit from it throughout your studies here. What you do not want is to be having to learn \LaTeX\ at that point--it will be challenging enough without that extra burden. So, we are embarking you on a programme of learning \LaTeX\ more gradually.
@@ -170,7 +181,7 @@ Transcript written on fire-and-ice.log.
 %
 after which \LaTeX\ will return you to the command prompt. If you've made a mistake typing in the file, \LaTeX\ will stop part way through processing your work, and display an error (possibly, quite an obscure one) and show a `?' prompt. The best thing to do at this stage is to press \ctrl{d}, or \ttout{x}, to tell \LaTeX\ to give up trying to process your file. Then fix the mistake, and try again.  
 
-If you now list the contents of the directory, you should see that a file called \fname{fire-and-ice.pdf} has been created (along with two other files called \fname{fire-and-ice.aux} and \fname{fire-and-ice.log} both of which we will ignore for now). Use one of the PDF readers (such as \cmdname{evince}) to look at the content of \fname{fire-and-ice.pdf}.  Admittedly, it's not the most exciting result; if everything has worked properly so far, you should see single-page document with the words `Some say the world will end in fire,' a little way down from the top of the page\footnote{If you have been carried away with the sheer excitement and joy of learning to use \LaTeX\, and improvised the text rather than typing the first line of `Fire and Ice' as requested, please go back and change it now: it really is important that you use exactly that text. Really, it is. That's better. Thanks.}.
+If you now list the directory contents, you should see that a file  \fname{fire-and-ice.pdf} has been created (along with two other files, \fname{fire-and-ice.aux} and \fname{fire-and-ice.log} both of which we will ignore for now). Use one of the PDF readers (such as \cmdname{evince}) to look at the contents of \fname{fire-and-ice.pdf}.  Admittedly, it's not the most exciting result; if everything has worked properly so far, you should see single-page document with the words `Some say the world will end in fire,' a little way down from the top of the page\footnote{If you have been carried away with the sheer excitement and joy of learning to use \LaTeX\, and improvised the text rather than typing the first line of `Fire and Ice' as requested, please go back and change it now: it really is important that you use exactly that text. Really, it is. That's better. Thanks.}.
 
 But now look more closely. A lot more closely\ldots really zoom in. See anything interesting?
 
@@ -322,13 +333,18 @@ Creating bulleted or numbered lists in \LaTeX\ is straightforward, and is done l
 %
 You must make sure that you both \texttt{begin} and \texttt{end} your list, and that each item is terminated by a newline. Changing `enumerate' to `itemize' gives you a bulleted rather than numbered list (note the American spelling of `itemize').  
 
-\subsection{Bold and italic text}
-Text can be typeset in \textbf{bold} font using the \verb|\textbf|, and \textit{italics} using \verb|\textit| as in the example below:
+\subsection{Changing the appearance of text}
+Text can be typeset in \textbf{bold} font using the \verb|\textbf|, in \textit{italics} using \verb|\textit|and in a \texttt{fixed-width font}  using \verb+\texttt+ as in the example below:
 
 \begin{verbatim}
-Some say the \textbf{world} will end in \textit{fire},
+Some \texttt{say} the \textbf{world} will end in \textit{fire},
 \end{verbatim}
 
+which is typeset as
+
+\begin{quote}
+Some \texttt{say} the \textbf{world} will end in \textit{fire},  
+\end{quote}
 \subsection{Cross referencing}
 
 \LaTeX\ allows you to cross-reference almost anything in the document, which includes sections, sub sections and figures. To use the cross-referencing feature you simply insert the command 
@@ -379,6 +395,15 @@ The \verb+\includegraphics+ command is not built in to core \LaTeX\ but is in an
 \exercisess{Including images}
 Create a document \fname{image.tex}, that contains some text (maybe from 'Lorem Ipsum', together with a figure containing an image of your choice, perhaps the one you made in Intro Lab 2 like Steve's Mr Noodle. There should also be a reference to the figure in the text. You should first use the program \cmdname{convert} (check its man page) to create a \fname{PDF} version of the file.
 
+\begin{demonote}
+  Here's a solution to this exercise. We have used the \fname{lipsum}
+  package to generate the Lorem Ipsum text rather than cutting and
+  pasting from the web. Note that the reference to the figure and a
+  `sensible' caption are required,
+  
+  \small
+\lstinputlisting[linewidth=\textwidth,language={[LaTeX]TeX}]{solutions/lab3/image.tex}
+\end{demonote}
 
 \subsection{Typesetting Mathematics}
 \label{mathssection}
@@ -466,17 +491,13 @@ The way this is formatted is shown here:
 
 {\small
 \begin{verbatim}
- We conclude this section with an example of a longer piece of mathematics,
-that shows how you might typeset a complete mathematical argument rather
-than a single formula. The example is Euclid's proof of the fact that
-$\sqrt{2}$ is irrational. It's an argument that has been covered in
-COMP11120 and is an example of proof by contradiction. It starts by
-making the assumption that it is \emph{not the case}that $\sqrt{2}$
-is irrational, in other words that we can find integers
-$p$ and $q$ with $\sqrt{2} = p/q$.
 
-  We can assume, without losing anything, that $p$ and $q$ have
- \emph{no common factors} (Why?)
+It starts by making the assumption that it is \emph{not the case}
+that $\sqrt{2}$ is irrational, in other words that we can find
+integers $p$ and $q$ with $\sqrt{2} = p/q$.
+
+We can assume, without losing anything, that $p$ and $q$ have
+\emph{no common factors} (Why?)
   \[
   \begin{array}{lcl}
      \sqrt{2}   & = & p/q \\ 
@@ -484,10 +505,10 @@ $p$ and $q$ with $\sqrt{2} = p/q$.
       2q^2      & = & p^2 \\ 
   \end{array}
   \]
-  This means that $p^2$ is even, from which we can also deduce that $p$
+This means that $p^2$ is even, from which we can also deduce that $p$
 is even. (Why?)
 
-  This means that $p = 2k$, for some $k$, so \ldots
+This means that $p = 2k$, for some $k$, so \ldots
   \[
   \begin{array}{llcl}
                  & 2q^2 & = & (2k)^2 \\ 
@@ -495,9 +516,9 @@ is even. (Why?)
       \text{so}  & q^2  & = & 2k^2   \\
    \end{array}
   \]
-  But this means that $q^2$, and hence $q$ is  even. Since $p$ and $q$ are
- both even we have a contradiction to our initial assumption, so no
- such $p$ and $q$ exist.
+But this means that $q^2$, and hence $q$ is  even. Since $p$ and $q$
+are both even we have a contradiction to our initial assumption,
+so no such $p$ and $q$ exist.
 \end{verbatim}
 }
 
@@ -514,23 +535,25 @@ for a flavour.
 \exercisess{A reflection on your studies}
 Your first \LaTeX\ document will be a very brief reflection on your studies so far.
 
-You should work in \verb+$HOME/COMP10120/ex3+. Write a hand-crafted \LaTeX\ document called 
-\fname{courses-reflection.tex} (exact name please, otherwise submit will not work). It will have the following structure.
+You should work in \verb+$HOME/COMP10120/ex3+. Write a hand-crafted
+\LaTeX\ document called \fname{courses-reflection.tex} (exact name
+please, otherwise \texttt{submit} will not work). It will have the
+following structure.
 
 \begin{enumerate}
-\item 
-Appropriate title including author and date.
-\item Table of contents.
+%\item An appropriate title including author and date.
+\item A table of contents.
 \item A brief paragraph saying what the document is about.
-\item  A section, appropriately titled, for one of your courses, containing:
+\item \label{item:unit-comment} A section, appropriately titled, for one of your course units, containing:
   \begin{itemize}
-  \item  a brief paragraph saying what the course is about. This will contain a citation referring to the URL of the course syllabus page.
- \item A sub-section, appropriately titled, containing an enumeration of the three things you like the most about the course.
-\item A sub-section, appropriately titled, containing an enumeration of the three things you like the least about the course.
+  \item  a brief paragraph saying what the unit is about. %This will contain a citation referring to the URL of the course syllabus page.
+ \item A sub-section, appropriately titled, containing an enumeration of the three things you like the most about the unit.
+\item A sub-section, appropriately titled, containing an enumeration of the three things you like the least about the unit.
 
   \end{itemize}
- A repeat of item 4 for each other course you are studying. These sections should appear in alphabetical order by course code (e.g. COMP10120).
+ A repeat of item~\ref{item:unit-comment} for each other unit you are studying. These sections should appear in alphabetical order by course code (e.g. COMP10120).
 \end{enumerate} 
+
 After completing and successfully compiling and viewing your document, you should spell-check it as follows.
 
 \begin{ttoutenv}
@@ -538,6 +561,10 @@ ispell courses-reflection.tex
 \end{ttoutenv}
 
 Once you are completely satisfied with it, produce a hard copy ready for marking.
+
+\begin{demonote}
+  Nothing very demanding here.
+\end{demonote}
 
 % \exercisess{Arguments about software patents}
 % \label{sec:exercise-2:-arguments}
@@ -563,6 +590,12 @@ Once you are completely satisfied with it, produce a hard copy ready for marking
   \input{originals/f-w}
 \end{quote}
 
+\begin{demonote}
+Here is a model answer for this exercise. Note that we use \verb+\(+, \verb+\)+ and \verb+\[+, \verb+\]+ rather than \verb+$+ and \verb+$$+.
+  \small
+\lstinputlisting[linewidth=\textwidth,language={[LaTeX]TeX}]{originals/f-w.tex}  
+\end{demonote}
+
 % \begin{center}
 %   \includegraphics[width=.95\textwidth]{images/f-w}
 % \end{center}
@@ -571,8 +604,9 @@ Once you are completely satisfied with it, produce a hard copy ready for marking
 \exercisess{Exploring more \LaTeX\ features (optional, but easy)} 
 
 This exercise reinforces some of the things you've done already, but
-also introduces some features of \LaTeX\ that will be new to you. Take
-a copy of the file
+also introduces some features of \LaTeX\ that will be new to you.
+
+Take a copy of the file
 \fname{/opt/info/courses/COMP10120/ex3/latex-intro.tex} and follow the
 instructions it contains. You should read it \emph{before} you process
 it with \LaTeX.
@@ -590,6 +624,11 @@ for the given directory. The script could also process the \LaTeX\ and
 display the resulting \fname{pdf} file.  Finally, find out about the \fname{longtable}
 package and change your script to use that instead.
 
+\begin{demonote}
+  \small
+\lstinputlisting[linewidth=\textwidth,language=bash]{solutions/lab3/neat-ls}  
+\end{demonote}
+
 \exercisess{A cleaning rota (optional, even harder)}
 Now you will write a shell script, called \fname{make-rota}, that generates a house cleaning rota. (Very handy for next year ...). This is a table with columns such as Kitchen, Bathroom and Lounge. The rows will be weeks in the year, labelled with a date (e.g. always a Sunday). The idea is that house mates can write their initials in the boxes, promising to clean the corresponding room in that particular week. Start by making a sample table by hand.
 
@@ -597,6 +636,10 @@ Your script should take a single argument which is the date of the first day of 
 
 The dates of each row should be generated from the first. See the manual page for date to figure out how you can generate a date that is a number of weeks and days later than an existing one.
 
+\begin{demonote}
+  \small
+\lstinputlisting[linewidth=\textwidth,language=bash]{solutions/lab3/make-rota}  
+\end{demonote}
 
 \subsection{Marking Scheme}
 
@@ -620,6 +663,7 @@ Don't get carried away though, and use the features judiciously: just because yo
 \restoregeometry
 \setlength{\parskip}{4pt plus 1pt}%
 \setlength{\parindent}{0pt}
+\fancyheadoffset{0cm} % force fancyhdr to recalculate
 
 \endinput
 
@@ -628,7 +672,7 @@ Don't get carried away though, and use the features judiciously: just because yo
 The text of this exercise is licensed under the terms of the \href{http://creativecommons.org/licenses/by/3.0/}{Creative Commons Attribution 2.0 Generic (CC BY 3.0) License}. 
 
 \bibliographystyle{natbib}
-\bibliography{latex-exercise}
+\bibliography{latex}
 
 \appendix
 

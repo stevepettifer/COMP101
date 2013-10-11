@@ -37,7 +37,7 @@ fi
 
 ## Use sonofis7 so can update from outside School
 
-for file in index.html 101labs.pdf welcome.pdf rpi1.pdf rpi2.pdf desktop1.pdf desktop2.pdf desktop3.pdf desktop4.pdf latex-exercise.pdf desktop5.pdf appendix.pdf
+for file in index.html 101labs.pdf welcome.pdf rpi1.pdf rpi2.pdf desktop1.pdf desktop2.pdf desktop3.pdf desktop4.pdf latex.pdf desktop5.pdf appendix.pdf
 do 
 echo $file 
 done | rsync -a  $V  -e  'ssh -p1001' --files-from=- . $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/labscripts

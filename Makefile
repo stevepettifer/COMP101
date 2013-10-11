@@ -1,6 +1,6 @@
 ROOT=labs
 ROOTSV=labs-staff-version
-TEX=welcome.tex rpi1.tex desktop1.tex rpi2.tex desktop2.tex desktop3.tex desktop4.tex latex-exercise.tex desktop5.tex appendix.tex
+TEX=welcome.tex rpi1.tex desktop1.tex rpi2.tex desktop2.tex desktop3.tex desktop4.tex latex.tex desktop5.tex appendix.tex
 TEXNOSUFF=${basename ${TEX}}
 PDF=${addsuffix .pdf,${TEXNOSUFF}}
 PDFSV=${addsuffix -staff.pdf,${TEXNOSUFF}}
