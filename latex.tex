@@ -29,6 +29,9 @@
   the exercises should be very simple for anyone who has ever used
   \LaTeX, but we have provided solutions to those that are slightly
   more tricky.
+
+  A link to the \ttout{labprint} marking scheme for this lab can be found in section~\ref{section:mark-scheme}.
+
 \end{demonote}
 
 \section{Introduction}
@@ -145,7 +148,7 @@ The other thing about WYSIWYG is that it puts you entirely in control of the vis
 
 To avoid any  misunderstanding, we are not at all trying to claim that \LaTeX\ is `better' than Word (or similar), just that it's `different', in fact, `extremely different', both in its capabilties, and its conceptual model. One of the key skills that any professional needs to learn is to be able to choose the right tool for the right job. If you're going to open a coconut, you'll probably use a corkscrew, not a pneumatic drill. Similarly, if you're writing a quick letter, or making a DO NOT DISTURB sign, you'll probably want to use a quick WYSIWYG tool like Word. If, however, you're writing a technical document, perhaps with some maths, or a 3rd Year Project Report, or an article you want to get published, then you'll probably want \LaTeX.  You might see analogies with programming here---and which languages are best suited to which jobs.
 
-\section{Getting started}
+\section{Summing up}
 \label{section:getting-started}
 The downside of using a non-WYSIWYG system such as \LaTeX\ is that there is rather more to understand and master before you can get going. You will have probably spotted that this is a recurring pattern: to perform certain tasks, we often have the choice between two approaches: the first (in this case the WYSIWYG way) allows you to get going straight away as a novice, but doesn't allow us to grow much expertise to get better and faster, and as you try to do more complex things, you discover problems and limitations that are hard to overcome; the second is inherently more powerful, but requires you to invest time and effort before you can get started. Wordprocessors and file browsers fall into the former category; \LaTeX\ and use of the command line into the latter.
 
@@ -153,7 +156,7 @@ By the time you get to write your third year project report, you will almost cer
 
 %Start by creating the directory $HOME/COMP10120/ex4 and make it your current one. 
 
-\section{The exercises}
+\section{Getting started}
 
 
 \exercisess{A closer look}
@@ -387,25 +390,75 @@ Including figures and pictures in your document is easy. You do it like this:
 \label{figure:menandcheeses}
 \end{figure}
 \end{verbatim}
-which we used to create Figure~\ref{figure:menandcheeses}. You can probably see what's happening. The command \verb|\includegraphics{}| gets your image, which can be PDF, PNG, JPG, GIF or PostScript. The \verb|\begin...\end| code `wraps' up whatever picture you're including, and allows \LaTeX\ to treat it as an unbreakable \concept{floating} thing that it will position for you as best it can in the document, while maintaining an overall nice typographical layout. This floating of figures can sometimes result in the figure ending up in a place you didn't expect, but in most cases \LaTeX\ will make the most sensible choice. It's possible to exercise finer control over figure placement, but that's beyond the scope of this exercise.
+which we used to create Figure~\ref{figure:menandcheeses}. You can
+probably see what's happening. The command \verb|\includegraphics{}|
+gets your image, which can be PDF, PNG, JPG, GIF or PostScript. The
+\verb|\begin...\end| code `wraps' up whatever picture you're
+including, and allows \LaTeX\ to treat it as an unbreakable
+\concept{floating} thing that it will position for you as best it can
+in the document, while maintaining an overall nice typographical
+layout. This floating of figures can sometimes result in the figure
+ending up in a place you didn't expect, but in most cases \LaTeX\ will
+make the most sensible choice. It's possible to exercise finer control
+over figure placement, but that's beyond the scope of this exercise.
 
-The \verb+\includegraphics+ command is not built in to core \LaTeX\ but is in an additional \emph{package}, which needs to be explicitly loaded. We load this package by this using the command \verb+\includepackage{graphicx}+ in the document preamble, i.e.\ after the \verb+\documentclass+ command, but before  \verb+\begin{document}+.
+The \verb+\includegraphics+ command is not built in to core \LaTeX\
+but is in an additional \concept{package}, which needs to be
+explicitly loaded. We load this package by this using the command
+\verb+\includepackage{graphicx}+ in the document preamble, i.e.\ after
+the \verb+\documentclass+ command, but before
+\verb+\begin{document}+. There are hundreds of such packages that
+  extend \LaTeX{}'s functionality; these lab scripts use over 30 of them.
 
 
 \exercisess{Including images}
 Create a document \fname{image.tex}, that contains some text (maybe from 'Lorem Ipsum', together with a figure containing an image of your choice, perhaps the one you made in Intro Lab 2 like Steve's Mr Noodle. There should also be a reference to the figure in the text. You should first use the program \cmdname{convert} (check its man page) to create a \fname{PDF} version of the file.
 
 \begin{demonote}
-  Here's a solution to this exercise. We have used the \fname{lipsum}
+  Here's a solution to this exercise. For convenience, we have used the \fname{lipsum}
   package to generate the Lorem Ipsum text rather than cutting and
-  pasting from the web. Note that the reference to the figure and a
+  pasting text from the web. Note that the reference to the figure and a
   `sensible' caption are required,
   
   \small
 \lstinputlisting[linewidth=\textwidth,language={[LaTeX]TeX}]{solutions/lab3/image.tex}
 \end{demonote}
 
-\subsection{Typesetting Mathematics}
+\exercisess{A reflection on your studies}
+Your first \LaTeX\ document will be a very brief reflection on your studies so far.
+
+You should work in \verb+$HOME/COMP10120/ex3+. Write a hand-crafted
+\LaTeX\ document called \fname{courses-reflection.tex} (exact name
+please, otherwise \texttt{submit} will not work). It will have the
+following structure.
+
+\begin{enumerate}
+%\item An appropriate title including author and date.
+\item A table of contents.
+\item A brief paragraph saying what the document is about.
+\item \label{item:unit-comment} A section, appropriately titled, for one of your course units, containing:
+  \begin{itemize}
+  \item  a brief paragraph saying what the unit is about. %This will contain a citation referring to the URL of the course syllabus page.
+ \item A sub-section, appropriately titled, containing an enumeration of the three things you like the most about the unit.
+\item A sub-section, appropriately titled, containing an enumeration of the three things you like the least about the unit.
+
+  \end{itemize}
+ A repeat of item~\ref{item:unit-comment} for each other unit you are studying. These sections should appear in alphabetical order by course code (e.g. COMP10120).
+\end{enumerate} 
+
+After completing and successfully compiling and viewing your document, you should spell-check it as follows.
+
+\begin{ttoutenv}
+ispell courses-reflection.tex   
+\end{ttoutenv}
+
+Once you are completely satisfied with it, produce a hard copy ready for marking.
+
+\begin{demonote}
+  Nothing very demanding here.
+\end{demonote}
+
+\section{Typesetting Mathematics}
 \label{mathssection}
 
 Earlier we saw this formula:
@@ -462,7 +515,7 @@ we'll get a splendid matrix which expresses a particular 3D geometrical transfor
 In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';  \verb|{cccc}| means ``an array with 4 columns please, with the items in each column centred"; \verb|&| means ``start a new column''; and \verb|\\| means ``start a new row''. You'll notice that \LaTeX\ knows about  greek letters; it knows about all standard maths symbols too, and also they ways  they're usually used.
 
 
-\subsubsection{A longer piece of mathematics}
+  \subsection{A longer piece of mathematics}
 \label{sec:longer-piece-maths}
 
   We conclude this section with an example of a longer piece of mathematics, that shows how you might typeset a complete mathematical argument rather than a single formula. The example is Euclid's proof of the fact that $\sqrt{2}$ is irrational. It's an argument that has been covered in COMP11120 and is an example of proof by contradiction. It starts by making the assumption that it is \emph{not the case} that $\sqrt{2}$ is irrational, in other words that we can find integers $p$ and $q$ with $\sqrt{2} = p/q$.
@@ -530,58 +583,6 @@ so no such $p$ and $q$ exist.
 \\
 for a flavour. 
  
-\section{More Exercises}
-
-\exercisess{A reflection on your studies}
-Your first \LaTeX\ document will be a very brief reflection on your studies so far.
-
-You should work in \verb+$HOME/COMP10120/ex3+. Write a hand-crafted
-\LaTeX\ document called \fname{courses-reflection.tex} (exact name
-please, otherwise \texttt{submit} will not work). It will have the
-following structure.
-
-\begin{enumerate}
-%\item An appropriate title including author and date.
-\item A table of contents.
-\item A brief paragraph saying what the document is about.
-\item \label{item:unit-comment} A section, appropriately titled, for one of your course units, containing:
-  \begin{itemize}
-  \item  a brief paragraph saying what the unit is about. %This will contain a citation referring to the URL of the course syllabus page.
- \item A sub-section, appropriately titled, containing an enumeration of the three things you like the most about the unit.
-\item A sub-section, appropriately titled, containing an enumeration of the three things you like the least about the unit.
-
-  \end{itemize}
- A repeat of item~\ref{item:unit-comment} for each other unit you are studying. These sections should appear in alphabetical order by course code (e.g. COMP10120).
-\end{enumerate} 
-
-After completing and successfully compiling and viewing your document, you should spell-check it as follows.
-
-\begin{ttoutenv}
-ispell courses-reflection.tex   
-\end{ttoutenv}
-
-Once you are completely satisfied with it, produce a hard copy ready for marking.
-
-\begin{demonote}
-  Nothing very demanding here.
-\end{demonote}
-
-% \exercisess{Arguments about software patents}
-% \label{sec:exercise-2:-arguments}
-
-% \begin{note}
-%   This won't work and needs replacing
-% \end{note}
-
-% In this exercise you will create three documents which have two shared parts in common. All together you will create five files as follows (please be exact with the filenames).
-
-% pros-and-cons.tex This will be a document that contains the pros and cons of software patents. It will contain a paragraph explaining what the document is about, a section listing the pros, another section listing the cons and finally a section concluding the balanced argument.
-% for.tex This will be a document that contains only the pros of software patents. It will contain a paragraph explaining what the document is about, a section listing the pros and finally a section concluding the argument for software patents.
-% against.tex This will be a document that contains only the cons of software patents. It will contain a paragraph explaining what the document is about, a section listing the cons and finally a section concluding the argument against software patents.
-% pros.tex This will be a piece of \LaTeX\ (not a full document) that will be included in the first and second document.
-% cons.tex This will be a piece of \LaTeX\ (not a full document) that will be included in the first and third document.
-% Just to be clear, you will not cut and paste the pros and cons lists into the two documents they each finally appear in. Instead you will arrange for the file containing each list to be input by the two documents. The idea here is that if you think of more pros or cons, or wish to change the wording of any, you can edit the corresponding single file, and the changes will appear in both documents that use it. You will need to find out how to make a \LaTeX\ source file input another one.
-
 \exercisess{Formatting mathematics}
 \label{sec:exercise-maths}
 
@@ -601,17 +602,36 @@ Here is a model answer for this exercise. Note that we use \verb+\(+, \verb+\)+ 
 % \end{center}
 
 
+% \exercisess{Arguments about software patents}
+% \label{sec:exercise-2:-arguments}
+
+% \begin{note}
+%   This won't work and needs replacing
+% \end{note}
+
+% In this exercise you will create three documents which have two shared parts in common. All together you will create five files as follows (please be exact with the filenames).
+
+% pros-and-cons.tex This will be a document that contains the pros and cons of software patents. It will contain a paragraph explaining what the document is about, a section listing the pros, another section listing the cons and finally a section concluding the balanced argument.
+% for.tex This will be a document that contains only the pros of software patents. It will contain a paragraph explaining what the document is about, a section listing the pros and finally a section concluding the argument for software patents.
+% against.tex This will be a document that contains only the cons of software patents. It will contain a paragraph explaining what the document is about, a section listing the cons and finally a section concluding the argument against software patents.
+% pros.tex This will be a piece of \LaTeX\ (not a full document) that will be included in the first and second document.
+% cons.tex This will be a piece of \LaTeX\ (not a full document) that will be included in the first and third document.
+% Just to be clear, you will not cut and paste the pros and cons lists into the two documents they each finally appear in. Instead you will arrange for the file containing each list to be input by the two documents. The idea here is that if you think of more pros or cons, or wish to change the wording of any, you can edit the corresponding single file, and the changes will appear in both documents that use it. You will need to find out how to make a \LaTeX\ source file input another one.
+
+\section{Some optional extras}
+\label{sec:some-optional-extras}
+
 \exercisess{Exploring more \LaTeX\ features (optional, but easy)} 
 
 This exercise reinforces some of the things you've done already, but
-also introduces some features of \LaTeX\ that will be new to you.
+also introduces some features of \LaTeX\ that will be new to you. It is labelled as optional because it isn't marked but we would recommend that you all try it.
 
 Take a copy of the file
 \fname{/opt/info/courses/COMP10120/ex3/latex-intro.tex} and follow the
 instructions it contains. You should read it \emph{before} you process
 it with \LaTeX.
 
-\exercisess{A neat directory listing (optional, harder)} 
+\exercisess{A neat directory listing (optional, more challenging)} 
 The fact that \LaTeX\ source files are just text makes it easy to have them generated by a program. You are going to exploit this and use \LaTeX\ to produce a neat document containing a listing of the files in any directory.
 
 Find how to create tables in \LaTeX\ tables using the tabular
@@ -629,7 +649,7 @@ package and change your script to use that instead.
 \lstinputlisting[linewidth=\textwidth,language=bash]{solutions/lab3/neat-ls}  
 \end{demonote}
 
-\exercisess{A cleaning rota (optional, even harder)}
+\exercisess{A cleaning rota (optional, even more challenging)}
 Now you will write a shell script, called \fname{make-rota}, that generates a house cleaning rota. (Very handy for next year ...). This is a table with columns such as Kitchen, Bathroom and Lounge. The rows will be weeks in the year, labelled with a date (e.g. always a Sunday). The idea is that house mates can write their initials in the boxes, promising to clean the corresponding room in that particular week. Start by making a sample table by hand.
 
 Your script should take a single argument which is the date of the first day of the first row, e.g.10/20/13 (the US format for 20 Oct 13). The result will be a document that contains as many rows as fit on a single page (find out by experimenting).
@@ -642,7 +662,7 @@ The dates of each row should be generated from the first. See the manual page fo
 \end{demonote}
 
 \subsection{Marking Scheme}
-
+\label{section:mark-scheme}
 You can view a copy of the marking scheme used by \texttt{labprint} at\\
 {\small \urlnop{studentnet.cs.manchester.ac.uk/ugt/labprint/readms.php?unit=COMP10120\&ex=ex3.xml}}
 
