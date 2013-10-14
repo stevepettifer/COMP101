@@ -83,8 +83,6 @@ So what's the purpose of \LaTeX ? It's purely a layer of software to make \TeX\ 
 
 In this lab session you are going to write several short  documents using \LaTeX. You could also write brief notes in your logbook about how \LaTeX\ works and what commands you used inside the source of your documents.
 
-Please complete the exercises in your \fname{COMP10120/ex3} directory. When you have completed as much as you are going to do, you should run \texttt{submit} and (when next in the School) \texttt{labprint}.
-
 \section{Some history: printing mathematics}
 
 Mathematics is hard to print, on paper, and on the Web (many websites resort to GIF or JPG images of maths formulae, which usually look horrible. \wikipedia{MathML}{MathML} provides another approach, but it is not yet widely used).
@@ -167,6 +165,11 @@ By the time you get to write your third year project report, you will almost cer
 %Start by creating the directory $HOME/COMP10120/ex4 and make it your current one. 
 
 \section{Getting started}
+\begin{quote}
+  \large
+  Please complete all the exercises in this lab in your \fname{COMP10120/ex3} directory. When you have completed as much as you are going to do, you should run \texttt{submit} and (when next in the School) \texttt{labprint}.
+  
+\end{quote}
 
 
 \exercisess{A closer look}
@@ -415,7 +418,7 @@ over figure placement, but that's beyond the scope of this exercise.
 The \verb+\includegraphics+ command is not built in to core \LaTeX\
 but is in an additional \concept{package}, which needs to be
 explicitly loaded. We load this package by this using the command
-\verb+\includepackage{graphicx}+ in the document preamble, i.e.\ after
+\verb+\usepackage{graphicx}+ in the document preamble, i.e.\ after
 the \verb+\documentclass+ command, but before
 \verb+\begin{document}+. There are hundreds of such packages that
   extend \LaTeX{}'s functionality; these lab scripts use over 30 of them.
@@ -522,7 +525,13 @@ we'll get a splendid matrix which expresses a particular 3D geometrical transfor
 \]
 %
 
-In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';  \verb|{cccc}| means ``an array with 4 columns please, with the items in each column centred"; \verb|&| means ``start a new column''; and \verb|\\| means ``start a new row''. You'll notice that \LaTeX\ knows about  greek letters; it knows about all standard maths symbols too, and also they ways  they're usually used.
+In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';  \verb|{cccc}| means ``an array with 4 columns please, with the items in each column centred"; \verb|&| means ``start a new column''; and \verb|\\| means ``start a new row''. You'll notice that \LaTeX\ knows about  greek letters; it knows about most standard maths symbols too, and also they ways  they're usually used.
+
+  There are some symbols that you might need (for example \verb+\therefore+, which produces the usual three dots symbol \(\therefore\)) that are not part of standard \LaTeX{}. Many such symbols are provided by the \ttout{amssymb} package of symbols compiled by the American Mathematical Society. Details of the many symbols provided by this package can be found online at
+  \begin{center}
+  \urlnop{mirror.math.ku.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf}
+  \end{center}
+To use these extra symbols, you need to have \verb+\usepackage{amssymb}+ in the document preamble.
 
 
   \subsection{A longer piece of mathematics}
@@ -602,7 +611,7 @@ for a flavour.
 \end{quote}
 
 \begin{demonote}
-Here is a model answer for this exercise. Note that we use \verb+\(+, \verb+\)+ and \verb+\[+, \verb+\]+ rather than \verb+$+ and \verb+$$+.
+Here is a model answer for this exercise. Note that we use \verb+\(+, \verb+\)+ and \verb+\[+, \verb+\]+ rather than \verb+$+ and \verb+$$+. Don't worry if the line containing  \textbf{Theorem: Fermat-Wiles} is an indented paragraph.
   \small
 \lstinputlisting[linewidth=\textwidth,language={[LaTeX]TeX}]{originals/f-w.tex}  
 \end{demonote}
