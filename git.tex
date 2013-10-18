@@ -1,11 +1,11 @@
 
 \section{Git and GitLab}
 
-During your time at school or college, you'll no doubt have written essays and assignments that took more than one session to complete, and you've probably experienced some annoyances associated with transferring the files containing your work between different machines. Perhaps you started writing on a PC at college, took it home to work on a bit more, and finished it off in a library or on a laptop in a cafe. You may have moved the file around using a cloud-based system like Dropbox or Google Drive, or perhaps you transported it around with you on a USB drive. In any case, it's more than likely that at some point you'll have got yourself muddled up working out which version of the file is the latest, or needed to undo some changes and had to remember which version of the file to go back to. If you've been unlucky, you may have lost important changes along the way, or got to a stage where it feels impossible to undo some unwanted change that you've made because it affects so many different parts of your work that you don't know how to remove their effect without messing up your whole document. If you've ever tried to work collaboratively on a project with someone else, you'll probably have found it quite hard to co-ordinate changes so that things you do don't trample on things that someone else is working on at the same time. 
+During your time at school or college, you'll no doubt have written essays and assignments that took more than one session to complete, and you've probably experienced some annoyances associated with transferring the files containing your work between different machines. Perhaps you started writing on a PC at college, took it home to work on a bit more, and finished it off in a library or on a laptop in a cafe. You may have moved the file around using a cloud-based system like Dropbox or Google Drive, or perhaps you transported it around with you on a USB drive. In any case, it's more than likely that at some point you'll have got yourself muddled up working out which version of the file is the latest, or needed to undo some changes and had to remember which version of the file to go back to. If you've been unlucky, you may have lost important changes along the way, or got to a stage where it feels impossible to undo some unwanted change that you've made because it affects so many different parts of your work that you don't know how to remove their effects without messing up your whole document. If you've ever tried to work collaboratively on a project with someone else, you'll probably have found it quite hard to co-ordinate changes so that things you do don't trample on things that someone else is working on at the same time. 
 
-These are all well-known problems associated with doing any kind of writing or project work that takes more than a few minutes to complete, where you're using multiple machines and/or are working with other people; and as you work on more complex projects over longer periods of time and with bigger groups, the bad news is that these problems all get worse. You can, to a certain extent improve the situation by sticking to certain conventions, such as making regular backups of your work with particular kinds of filenames, or promising always to email your collaborators before you make a change to anything and emailing them again when you've finished your changes. But these informal `social agreements' easily collapse when you are tired or stressed, leaving you with a mess to clear up. The good news is that there are industry-standard ways of dealing with these problems, and in the last part of today's session we're going to introduce you to the basics of version control using Git and GitLab. 
+These are all well-known problems associated with doing any kind of writing or project work that takes more than a few minutes to complete, where you're using multiple machines and/or are working with other people; and as you work on more complex projects over longer periods of time and with bigger groups, the bad news is that these problems all get worse. You can, to a certain extent, improve the situation by sticking to certain conventions, such as making regular backups of your work with particular kinds of filenames, or promising always to email your collaborators before you make a change to anything and emailing them again when you've finished your changes. But these informal `social agreements' easily collapse when you are tired or stressed, leaving you with a mess to clear up. The good news is that there are industry-standard ways of dealing with these problems, and in the last part of today's session we're going to introduce you to the basics of version control using Git and GitLab. 
 
-Git and GitLab are tools to help you manage change. Whether you're working on something on your own or as part of a team, a little effort spent learning how to use these tools now will save you significant amounts of pain and hassle later on. 
+`Git' and `GitLab' are tools to help you manage change. Whether you're working on something on your own or as part of a team, a little effort spent learning how to use these tools now will save you significant amounts of pain and hassle later on. 
 
 Git is a version control system, and is one of the most popular of the thirty or so different systems in use today. It is arguably one of the most powerful and flexible version control systems available, and this does mean that your first contact with it can be a little daunting; but if you follow our instructions carefully and don't get too hung up on the bits that we're having to skim over to keep things simple, you'll soon get the hang of things. 
 
@@ -25,7 +25,7 @@ Before we can start to use the tools properly, there's some housekeeping that we
 
 \section{Configuring git}
 
-Git has already been installed on the school's system, but you'll need to set up some things that are specific to your user before it will work sensibly. 
+Git has already been installed on the School's PCs, but you'll need to set up some things that are specific to you, before it will work sensibly. 
 
 Fire up a terminal, and enter the following commands one by one:
 
@@ -63,7 +63,7 @@ Next we're going to set up GitLab. Point your browser at the School's installati
 \\
 \url{http://GitLab.cs.man.ac.uk}
 \\
-and log in with your University credentials. You should see GitLab's `dashboard' page and not much else (see Figure \ref{figure:GitLab-first-login}). Go to the `My Profile' section of GitLab using the icon at the top right of the page, and fill in any details about you that you're comfortable sharing with other students and staff within the school. At a minimum you should make sure that your Name and Email are set correctly; the other fields are optional. If you'd like your GitLab account to have an avatar image, you'll need to sign up for a \wikipedia{Gravatar}{Gravatar} account, which is a bit of a nuisance but not that hard.
+and, on the `UoM Login' tab, log in with your University credentials. You should see GitLab's `dashboard' page and not much else (see Figure \ref{figure:GitLab-first-login}). Go to the `My Profile' section of GitLab using the icon at the top right of the page, and fill in any details about you that you're comfortable sharing with other students and staff within the School. At a minimum you should make sure that your Name and Email are set correctly; the other fields are optional. If you'd like your GitLab account to have an avatar image, you'll need to sign up for a \wikipedia{Gravatar}{Gravatar} account, which is a bit of a nuisance but not that hard.
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/GitLab-first-login}}
@@ -75,12 +75,12 @@ and log in with your University credentials. You should see GitLab's `dashboard'
 Git and gitlab both refer to collections of files as `projects', because the most common case is that you are using them to control a software development project of some kind. There's no restriction on the size of a project really---it can have thousands of files in it, or just a few, and the layout of a project can mirror the kind of hierarchy that you'd have in your filestore, so you can have files and directories arranged however you like. We'll start off simple, and create a small project that represents the simple website you made in your previous lab sessions. Most version control systems use the term \concept{repository} to refer to the place where you store your files and the history associated with them. 
 
 \begin{diversion}{Repositories}
-Many version control systems such as \wikipedia{Subversion} have the idea of a central repository where you put your stuff, and from which you take copies of your files when you want to modify them. Git is rather different and is an example of what is called a Distributed Version Control system; in the world of git you can have as many repositories as you like, each of which has a complete history of all the changes you've made. Instead of uploading and downloading from a central place, git has mechanisms to keep them your repositories synchronised. 
+Many version control systems such as \wikipedia{Subversion}{Subversion} have the idea of a central repository where you put your stuff, and from which you take copies of your files when you want to modify them. Git is rather different and is an example of what is called a Distributed Version Control system; in the world of git you can have as many repositories as you like, each of which has a complete history of all the changes you've made. Instead of uploading and downloading from a central place, git has mechanisms to keep your repositories synchronised. 
 
-In this case, however, we're using GitLab as a kind of `central repository' for your stuff. There's nothing special about the repository that GitLab manages from git's point of view really, except that we've set it up on a central server that's visible on the internet, so you can connect to it from anywhere with your University login details.
+In this case, however, we're using GitLab as a kind of `central repository' for your stuff. There's nothing special about the repository that GitLab manages from git's point of view really, except that we've set it up on a central server that's visible on the internet, so you can connect to it from anywhere using your University login details.
 \end{diversion}
 
-Select thew `New Project' button from the icons at the top right (the one that looks like `+' symbol). Enter \ttout{aboutme} as the project name, and hit `Create project'. You'll see a page similar to Figure \ref{figure:GitLab-new-project}. Notice that the `Git global setup' section contains the commands that you used in the previous section to set up your git configuration; so you don't need to do that again. There are also two other sections of code on how to `create repository' or use `Existing Git Repo?' (`Repo' is a common abbreviation for repository). Ignore both of these for now and instead follow the instructions here (we'll come back to them later in this session). Notice at the top of the GitLab page a warning that `You won't be able to pull or push project code via SSH until you add an SSH key to your profile' -- we need to fix that first. Click on the `add an SSH key' link (marked with \protect\circled{1} on Figure \ref{figure:GitLab-new-project}), which will take you to the SSH key upload page which looks something like Figure \ref{figure:GitLab-ssh}.
+Select the `New Project' button from the icons at the top right (the one that looks like `+' symbol). Enter \ttout{aboutme} as the project name, and hit `Create project'. You'll see a page similar to Figure \ref{figure:GitLab-new-project}. Notice that the `Git global setup' section contains the commands that you used in the previous section to set up your git configuration; so you don't need to do that again. There are also two other sections of code on how to `create repository' or use `Existing Git Repo?' (`Repo' is a common abbreviation for repository). Ignore both of these for now and instead follow the instructions here (we'll come back to them later in this session). Notice at the top of the GitLab page a warning that `You won't be able to pull or push project code via SSH until you add an SSH key to your profile'---we need to fix that first. Click on the `add an SSH key' link (marked with \protect\circled{1} on Figure \ref{figure:GitLab-new-project}), which will take you to the SSH key upload page which looks something like Figure \ref{figure:GitLab-ssh}.
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/GitLab-new-project}}
@@ -92,7 +92,7 @@ Select thew `New Project' button from the icons at the top right (the one that l
 \caption{Adding a SSH key to GitLab. Once you have used \ttout{ssh-keygen} to create the key, paste the text into the `Key' box; if your key is valid then the title will be filled in for you.}\label{figure:GitLab-ssh}
 \end{figure}
 
-You'll now need to set up a means of securely identifying yourself to GitLab from whichever machine you're using at the time; this is done by creating what's called a `ssh key'. In a terminal, type
+You'll now need to set up a means of securely identifying yourself to GitLab from whichever machine you're using at the time; this is done by creating what's called a `ssh key'. In a terminal, type:
 
 \begin{ttoutenv}
 ssh-keygen -t rsa -C "[YOUR UNIVERSITY EMAIL]"
@@ -100,7 +100,7 @@ ssh-keygen -t rsa -C "[YOUR UNIVERSITY EMAIL]"
 
 to create yourself a SSH key. When prompted `Enter file in which to save the key' just press return to accept the default, and the same for `Enter passphrase' twice.  For now don't worry too much about exactly what a SSH key is---we'll just treat it as a way of identifying yourself to the GitLab server. 
 
-Look in a directory called \ttout{~/.ssh} and you'll find two new files have been created called \ttout{id\_rsa} and \ttout{id\_rsa.pub}. The first of these is the \textit{private} part of the SSH key that's just been generated for you, and you should keep this secret. The second of these is the \textit{public} part of the key, and this is the bit you need to hand over to GitLab for it to be able to identify you. Use the command
+Look in a directory called \verb!~/.ssh! and you'll find two new files have been created called \ttout{id\_rsa} and \ttout{id\_rsa.pub}. The first of these is the \textit{private} part of the SSH key that's just been generated for you, and you should keep this secret. The second of these is the \textit{public} part of the key, and this is the bit you need to hand over to GitLab for it to be able to identify you. Use the command
 
 \begin{ttoutenv}
 $ less ~/.ssh/id_rsa.pub
@@ -154,16 +154,16 @@ ssh://GitLab@GitLab.cs.man.ac.uk:22222/mrnoodle/aboutme.git
 
 but obviously yours will be slightly different, so don't just cut and paste this one!
 
-At this point, git will connect to GitLab, and make a copy of the empty \fname{aboutme} project in your filestore, creating you a copy of the project's repository. It should complete with the message `warning: You appear to have cloned an empty repository.' (which is fine, we know its an empty repository at this stage!).
+At this point, git will connect to GitLab, and make a copy of the empty \fname{aboutme} project in your filestore, creating you a copy of the project's repository. It should complete with the message `warning: You appear to have cloned an empty repository.' This is fine, because we know it's an empty repository at this stage.
 
-\begin{diversion}
+\begin{diversion}{Connecting to Git}
 We could have set up our new project a different way, by initialising the project in our home directory (using \ttout{git init}) and then connecting that up to GitLab, but it's slightly easier to explain what's going on the way we've done it here. We'll do it the `other way round' by starting with a directory full of files and sending that to GitLab later on in today's session. 
 \end{diversion}
 
 
 Change into the newly created \fname{aboutme} directory, and use \cmnd{ls}{ls -a} to see what's in there. It should be an empty except for a \concept{hidden directory} called \fname{.git}, which is where git is going to put its own administrative files. Feel free to take a look inside the \fname{.git} directory if you're interested, but please make sure you don't modify anything in there, otherwise you may get into a mess later on. 
 
-Now copy your HTML files from \fname{htmlexample2} (or your own website's directory) into \fname{aboutme}. If you're using the default Mister Noodle ones, you'll have three files: one HTML, one .jpg and one .png (of course if you're using your own files, these may be different). 
+Now copy your HTML files from \fname{htmlexample2} (or your own website's directory) into \fname{aboutme/}. If you're using the default Mister Noodle ones, you'll have three files: one HTML, one .jpg and one .png (of course if you're using your own files, these may be different). 
 
 Before we start adding these files to the project, let's see what git thinks the current status of that directory is. Use the \cmnd{git status}{git status} command 
 
@@ -173,7 +173,7 @@ $ git status
 
 and you'll see a message from git that, amongst other things tells you that there are `untracked files' (these should appear in red). 
 
-So we need now to tell git which files we want it to track for us. We need to \cmnd{git add} emph{each of the files in that directory} like this:
+So we need now to tell git which files we want it to track for us. We need to \cmnd{git add}{git add} \emph{each of the files in that directory} like this:
 
 \begin{ttoutenv}
 $ git add [FILENAME]
@@ -270,7 +270,7 @@ Use the \cmnd{git log}{git log} command to see what the history of this project 
 
 Make another change to one of the files, then \ttout{add}, \ttout{commit} and \ttout{push} that change to the GitLab server's repository. Check that you can see these latest changes in the GitLab web pages.
 
-Go back to your \emph{original} \fname{aboutme} directory (imagine that you're now back at The University doing some work in the lab, and want to pick up the changes you made to your stuff when you were at home). This time you want to do the opposite of a \ttout{push} in order to bring your local copy up to date with whatever is on the server. The command to achieve this is called, not unreasonably, \cmnd{git pull}{git pull}, so run that now, and you should find that you once more have an up-to-date version of your work. Hurrah!
+Go back to your \emph{original} \fname{aboutme} directory (imagine that you're now back at the University doing some work in the lab, and want to pick up the changes you made to your stuff when you were at home). This time you want to do the opposite of a \ttout{push} in order to bring your local copy up to date with whatever is on the server. The command to achieve this is called, not unreasonably, \cmnd{git pull}{git pull}, so run that now, and you should find that you once more have an up-to-date version of your work. Hurrah!
 
 Practice making changes in one or the other of the two \fname{aboutme} directories that you've made (imagining that one of them represents a directory on your machine at home), and make sure you're comfortable with the cycle of using \ttout{add}, \ttout{commit} and now both \ttout{push} and \ttout{pull} to move changes `between machines' via the GitLab server.
 
