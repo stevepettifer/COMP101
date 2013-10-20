@@ -10,8 +10,6 @@
   <file type = "comp" > image.tex </file>
   <file type = "comp" > courses-reflection.tex </file>
   <file type = "comp" > f-w.tex </file>
-  <file type = "opt" > neat-ls </file>
-  <file type = "opt" > make-rota </file>
   <mark-item>
        <text> A closer look </text>
        <mark> 2 </mark>
