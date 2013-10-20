@@ -10,12 +10,12 @@ staff: 101labs-staff.pdf ${PDFSV}
 
 stu: ${PDF}
 
-101labs.pdf: ${ROOT}.tex ${TEX} ${STY}
+101labs.pdf: ${ROOT}.tex ${TEX} git.tex ${STY}
 	echo > includes.tex
 	pdflatex ${ROOT}; biber ${ROOT}; pdflatex ${ROOT}; pdflatex ${ROOT}; mv ${ROOT}.pdf $@
 
 
-101labs-staff.pdf: ${ROOTSV}.tex ${TEX} ${STY}
+101labs-staff.pdf: ${ROOTSV}.tex git.tex ${TEX} ${STY}
 	echo > includes.tex
 	pdflatex ${ROOTSV}; biber ${ROOTSV}; pdflatex ${ROOTSV}; pdflatex ${ROOTSV}; mv ${ROOTSV}.pdf $@
 
