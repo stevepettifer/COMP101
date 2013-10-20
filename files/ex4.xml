@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<!DOCTYPE marking-scheme SYSTEM "/opt/info/courses/LabPrint/ms.dtd">
+<marking-scheme>
+  <course> COMP10120 </course>
+  <exercise> 4 </exercise>
+  <title> Git and GitLab </title>
+
+  <file type = "comp" > aboutme-gitlog </file>
+  <file type = "comp" > 10120-gitlog </file>
+  <file type = "comp" > 16121-gitlog </file>
+  <mark-item>
+       <text> Aboutme repository </text>
+       <mark> 2 </mark>
+   <mark-sub-item>
+       <text> Local repository created </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+   <mark-sub-item>
+       <text> GitLab repository created </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+  </mark-item>
+  <mark-item>
+       <text> COMP101 repository </text>
+       <mark> 2 </mark>
+   <mark-sub-item>
+       <text> Local repository created </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+   <mark-sub-item>
+       <text> GitLab repository created </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+  </mark-item>
+  <mark-item>
+       <text> COMP161 repository </text>
+       <mark> 2 </mark>
+   <mark-sub-item>
+       <text> Local repository created </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+   <mark-sub-item>
+       <text> GitLab repository created </text>
+       <mark> 1 </mark>
+    </mark-sub-item>
+  </mark-item>
+</marking-scheme>
