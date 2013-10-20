@@ -9,7 +9,7 @@ These are all well-known problems associated with doing any kind of writing or p
 
 Git is a version control system, and is one of the most popular of the thirty or so different systems in use today. It is arguably one of the most powerful and flexible version control systems available, and this does mean that your first contact with it can be a little daunting; but if you follow our instructions carefully and don't get too hung up on the bits that we're having to skim over to keep things simple, you'll soon get the hang of things. 
 
-GitLab is a web-based interface to git which makes it easy (at least, easier) to set up projects and teams for collaborative work. Mastering any version control system takes a long time, and you may find in the early days that using git feels as though its more hassle than its worth---but version control is a crucial skill for any modern computer scientist, and its important that you get used to the principles right from the start of your degree. And trust us, at some point it is going to save you an enormous amount of trouble!
+GitLab is a web-based interface to git which makes it easy (at least, easier) to set up projects and teams for collaborative work. Mastering any version control system takes a long time, and you may find in the early days that using git feels as though it's more hassle than it's worth---but version control is a crucial skill for any modern computer scientist, and it's important that you get used to the principles right from the start of your degree. And trust us, at some point it is going to save you an enormous amount of trouble!
 
 In combination git and GitLab provide mechanisms for:
 \begin{itemize}
@@ -212,7 +212,7 @@ Doing this is simple; just type:
 $ git push
 \end{ttoutenv}
 
-from within the \fname{aboutme} directory, and git will connect to your GitLab account, and copy the files and their revision history over on to the server for you (git knows where the files should go, because its remembered where you got them from in the first place by storing that information somewhere in the hidden \fname{.git} directory you saw earlier, so you don't need to keep reminding it). 
+from within the \fname{aboutme} directory, and git will connect to your GitLab account, and copy the files and their revision history over on to the server for you (git knows where the files should go, because it's remembered where you got them from in the first place by storing that information somewhere in the hidden \fname{.git} directory you saw earlier, so you don't need to keep reminding it). 
 
 Refresh your browser's GitLab project page again, and this time you should see a message saying that you have `pushed a new branch' (don't worry about the use of the word `branch' here---it's a reference to the fact that git can cope with multiple sets of changes happening in parallel and coming from different places). If you're not seeing that, summon a demonstrator to get help. 
 
@@ -230,11 +230,11 @@ $ git add [NAME OF THE FILE YOU CHANGED]
 
 so do this, and then run \ttout{git status} once more to check that git now knows that you have modified this file. 
 
-It's important to understand that you need to run \ttout{git add} whenever you want git to recognise a change you've made to a file; if you make changes \emph{after} having run \ttout{git add}, git will not take those into account unless you run \ttout{git add} again to tell it that your really did mean to make those changes. You don't have to do it after every edit; just after edits that you want to keep. 
+It's important to understand that you need to run \ttout{git add} whenever you want git to recognise a change you've made to a file; if you make changes \emph{after} having run \ttout{git add}, git will not take those into account unless you run \ttout{git add} again to tell it that you really did mean to make those changes. You don't have to do it after every edit; just after edits that you want to keep. 
 
 In git terminology, this process is called \concept{staging}; think of it as `setting the stage' or `getting things ready' to be put into your project's history. 
 
-But for now, let's assume that this is the only change you need to make right now, and that you want to git to remember this change as part of your project's history; the command for this is called \cmnd{git commit}{git commit} Type
+But for now, let's assume that this is the only change you need to make right now, and that you want  git to remember this change as part of your project's history; the command for this is called \cmnd{git commit}{git commit} Type
 
 \begin{ttoutenv}
 $ git commit -m "[SOME WORDS THAT DESCRIBE YOUR CHANGE]"
@@ -302,7 +302,7 @@ And yes, you'll probably think that using git is more hassle than just shoving a
 
 \section{Putting real work into git}
 
-So far we've experimented with some throw-away webpages in your \fname{aboutme} directory. Now its time to put some real content into git and GitLab.
+So far we've experimented with some throw-away webpages in your \fname{aboutme} directory. Now it's time to put some real content into git and GitLab.
 
 \subsection{Putting COMP10120 under version control}
 
@@ -314,7 +314,7 @@ Use \ttout{git status} regulary to check that the files you want to track, and \
 
 Next you'll want to synchronise your local repository with the one in GitLab. This is a little more fiddly than just doing a `clone' like we did earlier, but just follow these instructions and all will be well.
  
-Look back at the aboutme project's page on GitLab, and find the COMP10120 project's URL (again, this islabelled with \protect\circled{2} in Figure \ref{figure:GitLab-new-project}).
+Look back at the aboutme project's page on GitLab, and find the COMP10120 project's URL (again, this is labelled with \protect\circled{2} in Figure \ref{figure:GitLab-new-project}).
 
 Then enter the following command, copy-and-pasting the URL from the web page into the appropriate bit of commandline:
 
