@@ -61,7 +61,7 @@ Check that you've typed these correctly by using the command \ttout{git config -
 
 Next we're going to set up GitLab. Point your browser at the School's installation of GitLab at:
 \\
-\url{http://GitLab.cs.man.ac.uk}
+\url{http://gitlab.cs.man.ac.uk}
 \\
 and, on the `UoM Login' tab, log in with your University credentials. You should see GitLab's `dashboard' page and not much else (see Figure \ref{figure:GitLab-first-login}). Go to the `My Profile' section of GitLab using the icon at the top right of the page, and fill in any details about you that you're comfortable sharing with other students and staff within the School. At a minimum you should make sure that your Name and Email are set correctly; the other fields are optional. If you'd like your GitLab account to have an avatar image, you'll need to sign up for a \wikipedia{Gravatar}{Gravatar} account, which is a bit of a nuisance but not that hard.
 
@@ -72,7 +72,7 @@ and, on the `UoM Login' tab, log in with your University credentials. You should
 
 \section{Making your first project}
 
-Git and gitlab both refer to collections of files as `projects', because the most common case is that you are using them to control a software development project of some kind. There's no restriction on the size of a project really---it can have thousands of files in it, or just a few, and the layout of a project can mirror the kind of hierarchy that you'd have in your filestore, so you can have files and directories arranged however you like. We'll start off simple, and create a small project that represents the simple website you made in your previous lab sessions. Most version control systems use the term \concept{repository} to refer to the place where you store your files and the history associated with them. 
+Git and gitlab both refer to collections of files that are being managed as `projects', because the most common case is that you are using them to control a software development project of some kind. There's no restriction on the size of a project really---it can have thousands of files in it, or just a few---and the layout of a project can mirror the kind of hierarchy that you'd have in your filestore, so you can have files and directories arranged however you like. We'll start off simple, and create a small project that represents the simple website you made in your previous lab sessions. Most version control systems use the term \concept{repository} to refer to the place where you store your files and the history associated with them. 
 
 \begin{diversion}{Repositories}
 Many version control systems such as \wikipedia{Subversion}{Subversion} have the idea of a central repository where you put your stuff, and from which you take copies of your files when you want to modify them. Git is rather different and is an example of what is called a Distributed Version Control system; in the world of git you can have as many repositories as you like, each of which has a complete history of all the changes you've made. Instead of uploading and downloading from a central place, git has mechanisms to keep your repositories synchronised. 
@@ -103,7 +103,7 @@ to create yourself a SSH key. When prompted `Enter file in which to save the key
 Look in a directory called \verb!~/.ssh! and you'll find two new files have been created called \ttout{id\_rsa} and \ttout{id\_rsa.pub}. The first of these is the \textit{private} part of the SSH key that's just been generated for you, and you should keep this secret. The second of these is the \textit{public} part of the key, and this is the bit you need to hand over to GitLab for it to be able to identify you. Use the command
 
 \begin{ttoutenv}
-$ less ~/.ssh/id_rsa.pub
+$ cat ~/.ssh/id_rsa.pub
 \end{ttoutenv}
 % $
 to display the contents of your public key. You should see something like:
@@ -149,21 +149,20 @@ $ git clone [REPO-URL-GOES-HERE]
 replacing [REPO-URL-GOES-HERE] with the full URL (it will start with \texttt{ssh} rather than the more common \texttt{http}) that you can see at the top of your GitLab aboutme project page, which is marked \protect\circled{2} in Figure \ref{figure:GitLab-new-project}. The URL will look something like:
 
 \begin{ttoutenv}
-ssh://GitLab@GitLab.cs.man.ac.uk:22222/mrnoodle/aboutme.git
+ssh://gitlab@gitlab.cs.man.ac.uk:22222/mrnoodle/aboutme.git
 \end{ttoutenv}
 
 but obviously yours will be slightly different, so don't just cut and paste this one!
 
 At this point, git will connect to GitLab, and make a copy of the empty \fname{aboutme} project in your filestore, creating you a copy of the project's repository. It should complete with the message `warning: You appear to have cloned an empty repository.' This is fine, because we know it's an empty repository at this stage.
 
-\begin{diversion}{Connecting to Git}
-We could have set up our new project a different way, by initialising the project in our home directory (using \ttout{git init}) and then connecting that up to GitLab, but it's slightly easier to explain what's going on the way we've done it here. We'll do it the `other way round' by starting with a directory full of files and sending that to GitLab later on in today's session. 
+\begin{diversion}{Connecting git to GitLab}
+We could have set up our new project a different way, by initialising the project in our home directory (using \ttout{git init}) and then connecting that up to GitLab, but the later step of connecting a newly init'd repository with a project you've made in GitLab is a little fiddly, so it's slightly easier to explain what's going on the way we've done it here. We'll do it the `other way round' by starting with a directory full of files and sending that to GitLab later on in today's session. 
 \end{diversion}
-
 
 Change into the newly created \fname{aboutme} directory, and use \cmnd{ls}{ls -a} to see what's in there. It should be an empty except for a \concept{hidden directory} called \fname{.git}, which is where git is going to put its own administrative files. Feel free to take a look inside the \fname{.git} directory if you're interested, but please make sure you don't modify anything in there, otherwise you may get into a mess later on. 
 
-Now copy your HTML files from \fname{htmlexample2} (or your own website's directory) into \fname{aboutme/}. If you're using the default Mister Noodle ones, you'll have three files: one HTML, one .jpg and one .png (of course if you're using your own files, these may be different). 
+Now copy the files from \fname{htmlexample2} (or your own website's directory) into \fname{aboutme/}. If you're using the default Mister Noodle ones, you'll have three files: one HTML, one .jpg and one .png (of course if you're using your own files, these may be different). 
 
 Before we start adding these files to the project, let's see what git thinks the current status of that directory is. Use the \cmnd{git status}{git status} command 
 
@@ -257,7 +256,7 @@ Experiment a bit now by editing the files again (perhaps use the Gimp applicatio
 
 When you're happy that you understand these three commands, you're ready to move on to the next step.
 
-\section{Copying content from one repostiory to another}
+\section{Keeping files synchronised between two repositories}
 Imagine now that you've gone back home and want to retrieve the latest files you've been working on. Don't go back home though, there's still more work to do in the lab! 
 
 In git terms, what you want to do is to get a copy of your project repository on your home machine. For now we'll simulate that by just making a new directory in your CS filestore, and cloning your project into there. 
@@ -288,6 +287,27 @@ Look at the file you've just checked out, and you should see that it's one of th
 
 \section{A Recap}
 
+Before moving on to do some `real' stuff with git and GitLab, let's quickly revisit some of the key ideas.
+
+\begin{enumerate} 
+\item When you're working with git, the files and directories that you're editing are held locally in your filestore just like any other files or directories. In git terminology this local copy is called your \concept{workspace} or \concept{working copy}. 
+\item When you first want to tell git to track a file fore you, or after you've modified a file with a change that you want git to later remember when you do a commit, you use the \cmnd{git add}{git add} command to \concept{stage} the file. This records the current status of the file temporarily in what is called the \concept{staging area} (or is sometimes referred to as the \concept{index}). The content of staged files only get recorded in the project's history the next time you run \cmnd{git commit}{git commit}. 
+\item When you want to record a set of changes together, you use the \cmnd{git commit}{git commit} command, which takes any staged files and records their state in the \concept{local repository}, and the commit message in the project's log.
+\item If you want to synchronise your local repository with another repository elsewhere (referred to as the \concept{remote repository} or more correctly as the \concept{upstream repository}), you can either \cmnd{git pull} changes \emph{from} the upstream repository, or \cmnd{git push} them \emph{to} the upstream repository. In our case, we're using GitLab as your upstream repository.
+\end{enumerate}
+
+
+\subsection{The lifecycle of a file under git's control}
+
+It's also important to be clear about the \emph{lifecycle} of a file that's being looked after by git. This is illustrated in Figure \ref{figure:git-file-life-cycle}. A file \protect\circled{1} will start off life being \concept{untracked}, i.e. it's a file that git knows nothing about. Using the \cmnd{git add}{git add} command, you can ask git to track the status of the file, at which point the file is \concept{staged} \protect\circled{2}. You can them \cmnd{git commit}{git commit} this file, and any others that have been staged, which makes a copy of them in the project's local repository, and returns their status to being \concept{unmodified} \protect\circled{3} because now the file's content is in sync with the version you've just committed. Editing the file causes it's state to change to \concept{modified} (i.e. `not the same as what's in the latest commit') \protect\circled{4}; and you can use \cmnd{git add}{git add} to put the file back in the staging area ready to commit again. This cycle is repeated until the project is finished. 
+
+
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/git-file-life-cycle}}
+\caption{The life cycle of a file under git's control.}\label{figure:git-file-life-cycle}
+\end{figure}
+
 You should now have enough knowledge to be able to do three things with git and GitLab.
 
 \begin{enumerate}
@@ -300,6 +320,27 @@ Git and GitLab together can do much more than this, and will be invaluable tools
 
 And yes, you'll probably think that using git is more hassle than just shoving all your stuff into a cloud based system and hoping for the best; but please trust us, by practising this stuff now you're not only developing an essential skill for your future careers, you will find at some point soon that it saves you a lot of pain and hassle. 
 
+
+\subsection{Basic git commands again}
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/git-commands}}
+\caption{Basic git commands and their interaction with the various repositories}\label{figure:git-commands}
+\end{figure}
+
+Figure \ref{figure:git-commands} shows how the various commands we've looked at so far interact with the different repositories used by git. 
+
+\begin{itemize}
+\item \ttout{git init} creates an empty local repository in the current working directory. 
+\item \ttout{git add} `stages' a file by adding the \emph{current content} of new or modified files to the staging area. 
+\item \ttout{git status} gives you the status of files in the workspace and staging area. It will tell you which stage of the file life cycle (Figure \ref{figure:life-cycle} each file is in. This command doesn't know anything about the status of any upstream repositories.
+\item \ttout{git log} gives you the commit history of your project, giving you the unique identifiers and messages associated with each commit.
+\item \ttout{git commit} bundles together all staged files, and commits them to the local repository along with a message describing the change. Remember, this doesn't automatically push your changes to the upstream repository, it's only makes the changes locally. 
+\item \ttout{git push} updates the upstream repository with any commits that have happened since the last push. If the upstream repository has changed in the meantime (for example, because someone else has pushed new changes before you), this command will fail with an error to prevent you accidentally over-writing something else.
+\item \ttout{git pull} fetches the latest changes from the upstream repository, and merges them into the local one, updating the workspace versions in the process.
+\item \ttout{git clone} downloads a repository from a server.  
+\end{itemize}
+
 \section{Putting real work into git}
 
 So far we've experimented with some throw-away webpages in your \fname{aboutme} directory. Now its time to put some real content into git and GitLab.
@@ -310,7 +351,7 @@ Make a new project in GitLab called COMP10120.
 
 This time, because you already have some content that you want to put into a project (rather than starting `from scratch' like we did earlier), go to your \fname{COMP10120} directory and type \ttout{git init}. This should respond by saying that it has `initialized empty Git repository'. Now look through the different files and directories that are in \fname{COMP10120}, and use \ttout{git add} to add \emph{only those files that you want git to track for you}. What's important here is that you only add files that are your original source files (for example, those that end with .tex), and not things which are automatically generated by tools such as the .pdf or .aux files created by LaTeX.
 
-Use \ttout{git status} regulary to check that the files you want to track, and \ttout{only} the files you want to track have been added to git's list, and then use \ttout{git commit} to make your initial commit. 
+Use \ttout{git status} regularly to check that the files you want to track, and \ttout{only} the files you want to track have been added to git's list, and then use \ttout{git commit} to make your initial commit. 
 
 Next you'll want to synchronise your local repository with the one in GitLab. This is a little more fiddly than just doing a `clone' like we did earlier, but just follow these instructions and all will be well.
  
@@ -351,8 +392,34 @@ To finish off today's exercises, create a project for COMP16121 and put all the 
 
 When your Java code is all safely in GitLab, you're done for today (but if you have a machine that you can use at home, please take the opportunity to see if you can clone the projects you've made today onto that to experiment further). 
 
+\section{Other git learning resources}
+
+Git is widely documented and discussed online, and there are loads of excellent resources (and of course quite a few duff ones!) that you can use to improve your understanding of using source code control systems generally, and git specifically. In particular:
+
+\begin{itemize}
+
+\item Schott Chacon's `Pro Git' book is available online for free and is an excellent guide to git from the very basics to much more advanced use than is covered in today's lab session. It is well worth a read. \url{http://git-scm.com/book}
+
+\item There's a very useful quick-reference site at \url{http://gitref.org}
+
+\item Andrew Peterson's Interactive Git Cheat Sheet is also a very useful reference tool, though probably only makes sense when you are reasonably familiar with git. http://ndpsoftware.com/git-cheatsheet.html
+\end{itemize}
+
+\section{Git `Best Practice'}
+
+These are some basic principles that you should keep in mind when you're using git (or any version control system, really). They are very much \emph{principles} rather than rules; things that you should aspire to do unless there are very good reasons not to. On the whole sticking to these means that you'll be able to use source code control systems more effectively, and will avoid some of the pitfalls that can trap you if you're careless. 
+
+\begin{enumerate}
+\item \textbf{Commit \emph{related} changes}. A commit should really represent one conceptual change to your work. This may (and probably will) involve changes in several files, but ideally you should be able to describe what the commit means in a single sentence. For example, if you are fixing more than one bug, you should probably be doing more than one commit. If you find that the message you'd be putting into the log to describe the change involves the word `and', you may want to think again (for example, a change that `fixes the startup bug, and improves the colour scheme in the logo' should really be two separate commits). The universe won't grind to a halt if you do this, but it does mean that in future it would be harder to change your logo colour without undoing the startup bug fix as well.
+
+\item \textbf{Commit frequently} Making lots of smallish commits helps avoid the problem described above, and also makes it easier to undo changes if you find something bad has happened. 
+
+\item \textbf{Avoid committing half-finished things}. Try to make sure that when you do a commit it represents exactly one fully finished change; a commit that's only half a change is much harder to describe in a commit message, and harder to understand later when you come back to your work. This is especially important when you are working in collaboration with other people; a half-working (which of course means half-not-working!) commit means that your collaborators get a broken system to work with, and that won't make you popular.
+
+\item \textbf{Write meaningful commit messages}. Its tempting sometimes to abbreviate or put junk into your commit messages to save hassle at the point of committing, but this will come back to bite you later; your collaborators will not appreciate this at all either. Ideally the first line of your message should be a short (around 50 character) description of the change, so that it can fit onto a single line of a terminal when you look at the log. You can then add a blank line, followed by a more comprehensive description of what changes you've made (why did you make this change? how is it different from before?)
 
 
+\end{enumerate}
 
 
 
