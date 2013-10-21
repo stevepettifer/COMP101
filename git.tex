@@ -30,29 +30,29 @@ Git has already been installed on the School's PCs, but you'll need to set up so
 Fire up a terminal, and enter the following commands one by one:
 
 \begin{ttoutenv}
-git config --global user.name "[YOUR NAME GOES HERE]"
-git config --global user.email "[YOUR UNIVERSITY EMAIL ADDRESS GOES HERE]" 
+\$ git config --global user.name "[YOUR NAME GOES HERE]"
+\$ git config --global user.email "[YOUR UNIVERSITY EMAIL ADDRESS GOES HERE]" 
 \end{ttoutenv}
 
 Hopefully the purpose of these commands is self-explanatory; you're just telling git who you are and how to contact you by email if it needs to. The next bits of configuration are a bit more mysterious, and explaining them in detail would take up way more space than we have here; for now we'll just say that they set the default way in which git interacts with GitLab:
 
 \begin{ttoutenv}
-git config --global push.default simple
-git config --global branch.autosetuprebase always 
+\$ git config --global push.default simple
+\$ git config --global branch.autosetuprebase always 
 \end{ttoutenv}
 
 The next few instructions are optional, but make the output of git nicer to read, so we recommend you also do:
 
 \begin{ttoutenv}
-git config --global color.ui true
-git config --global color.status auto
-git config --global color.branch auto 
+\$ git config --global color.ui true
+\$ git config --global color.status auto
+\$ git config --global color.branch auto 
 \end{ttoutenv}
 
 and finally you should configure git to use whatever editor you've decided is your favourite at the moment, for example:
 
 \begin{ttoutenv}
-git config --global core.editor nano 
+\$ git config --global core.editor nano 
 \end{ttoutenv}
 
 Check that you've typed these correctly by using the command \ttout{git config --list}. You should see all the things you've entered just now, along with a few other bits of default configuration that were set automatically for you by the system (you can safely ignore these for now).
@@ -62,7 +62,6 @@ Check that you've typed these correctly by using the command \ttout{git config -
 Next we're going to set up GitLab. Point your browser at the School's installation of GitLab at:
 \\
 \url{http://gitlab.cs.man.ac.uk}
-\\
 and, on the `UoM Login' tab, log in with your University credentials. You should see GitLab's `dashboard' page and not much else (see Figure \ref{figure:GitLab-first-login}). Go to the `My Profile' section of GitLab using the icon at the top right of the page, and fill in any details about you that you're comfortable sharing with other students and staff within the School. At a minimum you should make sure that your Name and Email are set correctly; the other fields are optional. If you'd like your GitLab account to have an avatar image, you'll need to sign up for a \wikipedia{Gravatar}{Gravatar} account, which is a bit of a nuisance but not that hard.
 
 \begin{figure}
@@ -84,7 +83,7 @@ Many version control systems such as \wikipedia{Subversion}{Subversion} have the
 In this case, however, we're using GitLab as a kind of `central repository' for your stuff. There's nothing special about the repository that GitLab manages from git's point of view really, except that we've set it up on a central server that's visible on the internet, so you can connect to it from anywhere using your University login details.
 \end{diversion}
 
-Select the `New Project' button from the icons at the top right (the one that looks like `+' symbol). Enter \\fname{aboutme} as the project name, and hit `Create project'. You'll see a page similar to Figure \ref{figure:GitLab-new-project}. Notice that the `Git global setup' section contains the commands that you used in the previous section to set up your git configuration; so you don't need to do that again. There are also two other sections of code on how to `create repository' or use `Existing Git Repo?' (`Repo' is a common abbreviation for repository). Ignore both of these for now and instead follow the instructions here (we'll come back to them later in this session). Notice at the top of the GitLab page a warning that `You won't be able to pull or push project code via SSH until you add an SSH key to your profile'---we need to fix that first. Click on the `add an SSH key' link (marked with \protect\circled{1} on Figure \ref{figure:GitLab-new-project}), which will take you to the SSH key upload page which looks something like Figure \ref{figure:GitLab-ssh}.
+Select the `New Project' button from the icons at the top right (the one that looks like `+' symbol). Enter \fname{aboutme} as the project name, and hit `Create project'. You'll see a page similar to Figure \ref{figure:GitLab-new-project}. Notice that the `Git global setup' section contains the commands that you used in the previous section to set up your git configuration; so you don't need to do that again. There are also two other sections of code on how to `create repository' or use `Existing Git Repo?' (`Repo' is a common abbreviation for repository). Ignore both of these for now and instead follow the instructions here (we'll come back to them later in this session). Notice at the top of the GitLab page a warning that `You won't be able to pull or push project code via SSH until you add an SSH key to your profile'---we need to fix that first. Click on the `add an SSH key' link (marked with \protect\circled{1} on Figure \ref{figure:GitLab-new-project}), which will take you to the SSH key upload page which looks something like Figure \ref{figure:GitLab-ssh}.
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/GitLab-new-project}}
@@ -99,7 +98,7 @@ Select the `New Project' button from the icons at the top right (the one that lo
 You'll now need to set up a means of securely identifying yourself to GitLab from whichever machine you're using at the time; this is done by creating what's called a \concept{SSH key}. In a terminal, type:
 
 \begin{ttoutenv}
-ssh-keygen -t rsa -C "[YOUR UNIVERSITY EMAIL]"
+\$ ssh-keygen -t rsa -C "[YOUR UNIVERSITY EMAIL]"
 \end{ttoutenv}
 
 to create yourself a SSH key. When prompted `Enter file in which to save the key' just press return to accept the default, and the same for `Enter passphrase' twice.  For now don't worry too much about exactly what a SSH key is---we'll just treat it as a way of identifying yourself to the GitLab server. 
@@ -107,7 +106,7 @@ to create yourself a SSH key. When prompted `Enter file in which to save the key
 Look in a directory called \verb!~/.ssh! and you'll find two new files have been created called \ttout{id\_rsa} and \ttout{id\_rsa.pub}. The first of these is the \textit{private} part of the SSH key that's just been generated for you, and you should keep this secret. The second of these is the \textit{public} part of the key, and this is the bit you need to hand over to GitLab for it to be able to identify you. Use the command
 
 \begin{ttoutenv}
-cat ~/.ssh/id_rsa.pub
+\$ cat ~/.ssh/id_rsa.pub
 \end{ttoutenv}
 % $
 to display the contents of your public key. You should see something like:
@@ -139,15 +138,15 @@ The URL for these is
 and you will need to use \cmnd{tar}{tar} to `untar' this bundle of files using the command
 
 \begin{ttoutenv}
-tar xvzf mrnoodle.tar.gz
+\$ tar xvzf mrnoodle.tar.gz
 \end{ttoutenv}
 
 This will create a directory called \fname{htmlexample2}. 
 
-Next we are going to \concept{clone} the (empty) project called \fname{aboutme} that you created in GitLab a moment ago onto your local filestore. Use the \cmnd{git clone}{git clone} command
+Next we are going to \concept{clone} the (empty) project called \fname{aboutme} that you created in GitLab a moment ago onto your local filestore. Use the \cmnd{git}{git clone} command
 
 \begin{ttoutenv}
-git clone [REPO-URL-GOES-HERE]
+\$ git clone [REPO-URL-GOES-HERE]
 \end{ttoutenv}
 
 replacing [REPO-URL-GOES-HERE] with the full URL (it will start with \texttt{ssh} rather than the more common \texttt{http}) that you can see at the top of your GitLab \fname{aboutme} project page, which is marked \protect\circled{2} in Figure \ref{figure:GitLab-new-project}. The URL will look something like:
@@ -168,30 +167,30 @@ Change into the newly created \fname{aboutme} directory, and use \cmnd{ls}{ls -a
 
 Now copy the files from \fname{htmlexample2} (or your own website's directory) into \fname{aboutme/}. If you're using the default Mister Noodle ones, you'll have three files: one HTML, one .jpg and one .png (of course if you're using your own files, these may be different). 
 
-Before we start adding these files to the project, let's see what git thinks the current status of that directory is. Use the \cmnd{git status}{git status} command 
+Before we start adding these files to the project, let's see what git thinks the current status of that directory is. Use the \cmnd{git}{git  status} command 
 
 \begin{ttoutenv}
-git status
+\$ git status
 \end{ttoutenv}
 
 and you'll see a message from git that, amongst other things tells you that there are `untracked files' (these should appear in red). 
 
-So we need now to tell git which files we want it to track for us. We need to \cmnd{git add}{git add} \emph{each of the files in that directory} like this:
+So we need now to tell git which files we want it to track for us. We need to \cmnd{git}{git add} \emph{each of the files in that directory} like this:
 
 \begin{ttoutenv}
-git add [FILENAME]
+\$ git add [FILENAME]
 \end{ttoutenv}
 
 % $
 
 replacing [FILENAME] with each of the file names in turn. Once you've done this, run \ttout{git status} again, and this time you should see that there are a list of `Changes to be committed' and all the files that you'd just added should appear in green. 
 
-Now git knows which of the files in this directory you want to track (which in this case is all of them), we want to do our first \concept{commit}, which tells git that we've made a set of changes that we want to keep together: in this case the `changes' are to create the files in the first place; later on we'll go through a similar pattern of \ttout{git add} and {git commit} whenever we've done a set of changes that we think we are happy with. 
+Now git knows which of the files in this directory you want to track (which in this case is all of them), we want to do our first \concept{commit}, which tells git that we've made a set of changes that we want to keep together: in this case the `changes' are to create the files in the first place; later on we'll go through a similar pattern of \ttout{git add} and \ttout{git commit} whenever we've done a set of changes that we think we are happy with. 
 
 The \ttout{-m "Initial Commit"} part of the commit line gives git a label to associate with this particular commit, and it's traditional to put the message `Initial Commit' the first time you tell git about a new set of files. In future you'll be putting text here that summarises in human-readable form what changes you've made in this commit, but more on that later.
 
 \begin{ttoutenv}
-git commit -m "Initial Commit"
+\$ git commit -m "Initial Commit"
 \end{ttoutenv}
 
 Don't worry about what git's response means here, that will become clear as you learn more. Type \ttout{git status} once again and if everything has gone to plan you should see the response
@@ -205,14 +204,14 @@ If you get a different message here, then something has gone wrong in one of the
 
 So to recap: in GitLab we've created a project repository called `aboutme' ready to accept some files, and we have then \concept{cloned} this empty repository into your home directory (essentially making an exact copy of it). We then created some files in our local directory, used \ttout{git add} to tell git that we wanted to track them, and then \ttout{git commit} to tell git that those files in their current state form a sensible collection. 
 
-Use the web-browser to go back to your \\fname{aboutme} project page on GitLab. You'll see that nothing has changed on the server yet; that's because \ttout{git add} and \ttout{git commit} only make changes to the git repository \emph{that's on your local machine}.
+Use the web-browser to go back to your \fname{aboutme} project page on GitLab. You'll see that nothing has changed on the server yet; that's because \ttout{git add} and \ttout{git commit} only make changes to the git repository \emph{that's on your local machine}.
 
 The next step is to send a copy of these files to the GitLab server for safe keeping, and so that you can fetch them back from, say, your home machine. In git terminology, synchronising changes \emph{from} one repository (in this case your local one) \emph{to} another (in this case the one hosted on the GitLab server) is called a \concept{push}. 
 
 Doing this is simple; just type:
 
 \begin{ttoutenv}
-git push
+\$ git push
 \end{ttoutenv}
 
 from within the \fname{aboutme} directory, and git will connect to your GitLab account, and copy the files and their revision history over on to the server for you (git knows where the files should go, because it's remembered where you got them from in the first place by storing that information somewhere in the hidden \fname{.git} directory you saw earlier, so you don't need to keep reminding it). 
@@ -221,14 +220,14 @@ Refresh your browser's GitLab project page again, and this time you should see a
 
 If you now look at the `Files' menu in GitLab's page for your \fname{aboutme} project, you should see all the files that you added, committed and pushed; clicking on the individual file names should show you their content, so you can see what their latest status is. 
 
-Look at the header of the table that contains your files, where it says `Name', `Last Update' and `Last Commit', and next to the `Last Commit' you will see a string of characters containing letters and numbers; this is a unique string that identifies your commit, and you can use it later to revert files back to the state they were in when you did that particular commit. Note that some times you'll see longer versions of this string (for example later when you use the \cmnd{git log}{git log} command; as long as you give git enough characters for it to be able to uniquely identify a particular commit that you've made, git will be happy. So usually you don't need to use the long version).
+Look at the header of the table that contains your files, where it says `Name', `Last Update' and `Last Commit', and next to the `Last Commit' you will see a string of characters containing letters and numbers; this is a unique string that identifies your commit, and you can use it later to revert files back to the state they were in when you did that particular commit. Note that some times you'll see longer versions of this string (for example later when you use the \cmnd{git}{git log} command; as long as you give git enough characters for it to be able to uniquely identify a particular commit that you've made, git will be happy. So usually you don't need to use the long version).
 
 Back at the command prompt, fire up an editor and make a small change to the HTML file; it doesn't really matter what the change is as long as it is something you can recognise as being different from the original version.
 
 Then type \ttout{git status} again, and you'll see that git knows that you have modified that file since your last commit. Lets say that you want to remember this change next time you do a commit; you need to tell git this using 
 
 \begin{ttoutenv}
-git add [NAME OF THE FILE YOU CHANGED]
+\$ git add [NAME OF THE FILE YOU CHANGED]
 \end{ttoutenv}
 
 so do this, and then run \ttout{git status} once more to check that git now knows that you want it to remember the changes to this file since the last commit. 
@@ -237,10 +236,10 @@ It's important to understand that you need to run \ttout{git add} whenever you w
 
 In git terminology, this process is called \concept{staging}; think of it as `setting the stage' or `getting things ready' to be put into your project's history. 
 
-But for now, let's assume that this is the only change you need to make right now, and that you want  git to remember this change as part of your project's history; the command for this is called \cmnd{git commit}{git commit} Type
+But for now, let's assume that this is the only change you need to make right now, and that you want  git to remember this change as part of your project's history; the command for this is called \cmnd{git}{git  commit} Type
 
 \begin{ttoutenv}
-git commit -m "[SOME WORDS THAT DESCRIBE YOUR CHANGE]"
+\$ git commit -m "[SOME WORDS THAT DESCRIBE YOUR CHANGE]"
 \end{ttoutenv}
 
 replacing the text in braces (and the braces themselves) with something that would help you remember what you did if you needed ever to check in future. 
@@ -248,7 +247,7 @@ replacing the text in braces (and the braces themselves) with something that wou
 At this stage, your change has been recorded in the \emph{local} git repository in your filestore. To push this change over onto the GitLab server, you just need to type
 
 \begin{ttoutenv}
-git push
+\$ git push
 \end{ttoutenv}
 
 once more, and everything will get synchronised with your GitLab account.
@@ -269,11 +268,11 @@ In your home directory make a new directory called \fname{gittest}, and \ttout{c
 
 Use the same \ttout{git clone} command that you used earlier to get yourself a \emph{new copy} of your \fname{aboutme} project from GitLab; you should then find a copy of \fname{aboutme} has appeared in your current working directory. Unlike previously where \ttout{git clone} created an empty directory for you (because you'd not put any files into the project at that stage), you should now find that this new \fname{aboutme} contains the latest versions of the files from your other version of the project.
 
-Use the \cmnd{git log}{git log} command to see what the history of this project is; you should see all the commits that you've made so far, along with the descriptions gave for what the commits meant. 
+Use the \cmnd{git}{git log} command to see what the history of this project is; you should see all the commits that you've made so far, along with the descriptions gave for what the commits meant. 
 
 Make another change to one of the files, then \ttout{add}, \ttout{commit} and \ttout{push} that change to the GitLab server's repository. Check that you can see these latest changes in the GitLab web pages.
 
-Go back to your \emph{original} \fname{aboutme} directory (imagine that you're now back at the University doing some work in the lab, and want to pick up the changes you made to your stuff when you were at home). This time you want to do the opposite of a \ttout{push} in order to bring your local copy up to date with whatever is on the server. The command to achieve this is called, not unreasonably, \cmnd{git pull}{git pull}, so run that now, and you should find that you once more have an up-to-date version of your work. Hurrah!
+Go back to your \emph{original} \fname{aboutme} directory (imagine that you're now back at the University doing some work in the lab, and want to pick up the changes you made to your stuff when you were at home). This time you want to do the opposite of a \ttout{push} in order to bring your local copy up to date with whatever is on the server. The command to achieve this is called, not unreasonably, \cmnd{git}{git pull}, so run that now, and you should find that you once more have an up-to-date version of your work. Hurrah!
 
 Practice making changes in one or the other of the two \fname{aboutme} directories that you've made (imagining that one of them represents a directory on your machine at home), and make sure you're comfortable with the cycle of using \ttout{add}, \ttout{commit} and now both \ttout{push} and \ttout{pull} to move changes `between machines' via the GitLab server.
 
@@ -282,7 +281,7 @@ Practice making changes in one or the other of the two \fname{aboutme} directori
 Let's say you've messed one of your files up in a recent change, and want to go back to a previous version. You need to find the unique number that's associated with the commit that had the version you want. Use \ttout{git log} to see your change history and pick one of the commits that you've made already (your comments should tell you what you did in that commit; if they're not helpful, you might want to think about what kind of comments you're using!). Find the long number associated with that commit, and type
 
 \begin{ttoutenv}
-git checkout [UNIQUE NUMBER FOR COMMIT] [NAME OF FILE YOU WANT TO REVERT]
+\$ git checkout [UNIQUE NUMBER FOR COMMIT] [NAME OF FILE YOU WANT TO REVERT]
 \end{ttoutenv}
 
 If you've got this right, git will just return you to the command prompt without complaining; if you get an error or warning that you don't understand, grab a demonstrator. 
@@ -296,15 +295,15 @@ Before moving on to do some `real' stuff with git and GitLab, let's quickly revi
 
 \begin{enumerate} 
 \item When you're working with git, the files and directories that you're editing are held locally in your filestore just like any other files or directories. In git terminology this local copy is called your \concept{workspace} or \concept{working copy}. 
-\item When you first want to tell git to track a file fore you, or after you've modified a file with a change that you want git to later remember when you do a commit, you use the \cmnd{git add}{git add} command to \concept{stage} the file. This records the current status of the file temporarily in what is called the \concept{staging area} (or is sometimes referred to as the \concept{index}). The content of staged files only get recorded in the project's history the next time you run \cmnd{git commit}{git commit}. 
-\item When you want to record a set of changes together, you use the \cmnd{git commit}{git commit} command, which takes any staged files and records their state in the \concept{local repository}, and the commit message in the project's log.
-\item If you want to synchronise your local repository with another repository elsewhere (referred to as the \concept{remote repository} or more correctly as the \concept{upstream repository}), you can either \cmnd{git pull} changes \emph{from} the upstream repository, or \cmnd{git push} them \emph{to} the upstream repository. In our case, we're using GitLab as your upstream repository.
+\item When you first want to tell git to track a file fore you, or after you've modified a file with a change that you want git to later remember when you do a commit, you use the \cmnd{git}{git add} command to \concept{stage} the file. This records the current status of the file temporarily in what is called the \concept{staging area} (or is sometimes referred to as the \concept{index}). The content of staged files only get recorded in the project's history the next time you run \cmnd{git}{git commit}. 
+\item When you want to record a set of changes together, you use the \cmnd{git}{git commit} command, which takes any staged files and records their state in the \concept{local repository}, and the commit message in the project's log.
+\item If you want to synchronise your local repository with another repository elsewhere (referred to as the \concept{remote repository} or more correctly as the \concept{upstream repository}), you can either \cmnd{git}{git pull} changes \emph{from} the upstream repository, or \cmnd{git}{git push} them \emph{to} the upstream repository. In our case, we're using GitLab as your upstream repository.
 \end{enumerate}
 
 
 \subsection{The lifecycle of a file under git's control}
 
-It's also important to be clear about the \emph{lifecycle} of a file that's being looked after by git. This is illustrated in Figure \ref{figure:git-file-life-cycle}. A file \protect\circled{1} will start off life being \concept{untracked}, i.e. it's a file that git knows nothing about. Using the \cmnd{git add}{git add} command, you can ask git to track the status of the file, at which point the file is \concept{staged} \protect\circled{2}. You can them \cmnd{git commit}{git commit} this file, and any others that have been staged, which makes a copy of them in the project's local repository, and returns their status to being \concept{unmodified} \protect\circled{3} because now the file's content is in sync with the version you've just committed. Editing the file causes it's state to change to \concept{modified} (i.e. `not the same as what's in the latest commit') \protect\circled{4}; and you can use \cmnd{git add}{git add} to put the file back in the staging area ready to commit again. This cycle is repeated until the project is finished. 
+It's also important to be clear about the \emph{lifecycle} of a file that's being looked after by git. This is illustrated in Figure \ref{figure:git-file-life-cycle}. A file \protect\circled{1} will start off life being \concept{untracked}, i.e. it's a file that git knows nothing about. Using the \cmnd{git}{git add} command, you can ask git to track the status of the file, at which point the file is \concept{staged} \protect\circled{2}. You can them \cmnd{git}{git commit} this file, and any others that have been staged, which makes a copy of them in the project's local repository, and returns their status to being \concept{unmodified} \protect\circled{3} because now the file's content is in sync with the version you've just committed. Editing the file causes it's state to change to \concept{modified} (i.e. `not the same as what's in the latest commit') \protect\circled{4}; and you can use \cmnd{git}{git add} to put the file back in the staging area ready to commit again. This cycle is repeated until the project is finished. 
 
 
 
@@ -349,13 +348,13 @@ Figure \ref{figure:git-commands} shows how the various commands we've looked at 
 
 \exercisess{Recording your progress so far}
 
-In your \fname{COMP10120} directory, create a new subdirectory called \fname{ex4}. In your \fname{aboutme} directory, run the \cmnd{git log}{git log} command, and redirect its output to a file called
-\begin{center}
+In your \fname{COMP10120} directory, create a new subdirectory called \fname{ex4}. In your \fname{aboutme} directory, run the \cmnd{git}{git log} command, and redirect its output to a file called
+\begin{ttoutenv}
 \fname{\$HOME/COMP10120/ex4/aboutme.gitlog}
-\end{center}
+\end{ttoutenv}
  using the command  
 \begin{ttoutenv}
-git log > \$HOME/COMP10120/ex4/aboutme.gitlog
+\$ git log > \$HOME/COMP10120/ex4/aboutme.gitlog
 \end{ttoutenv}
 
 Then change into the \fname{ex4} directory and check that the contents of \fname{aboutme.gitlog} is what you expect. This file is one of the things that \ttout{submit} will pick up when you run it at the end of the lab sessions; the \emph{exact} contents of the file don't matter, but we will expect it to show the history of your \fname{aboutme} project, and to have some sensible commit messages. 
@@ -379,7 +378,7 @@ Look back at the aboutme project's page on GitLab, and find the \fname{COMP10120
 Then enter the following command, copy-and-pasting the URL from the web page into the appropriate bit of command line:
 
 \begin{ttoutenv}
-git remote add origin [GitLab-URL-GOES-HERE]
+\$ git remote add origin [GitLab-URL-GOES-HERE]
 \end{ttoutenv}
 
 This makes an association between the repository that you've created in your filestore, and the project in GitLab.
@@ -387,7 +386,7 @@ This makes an association between the repository that you've created in your fil
 Finally to send this first version of the repository over to the GitLab server, enter
 
 \begin{ttoutenv}
-git push -u origin master
+\$ git push -u origin master
 \end{ttoutenv}
 
 which should respond with some variation of 
@@ -401,7 +400,7 @@ To ssh://GitLab@GitLab.cs.man.ac.uk:22222/mister.noodle/aboutme.git
 Branch master set up to track remote branch master from origin by rebasing.
 \end{ttoutenv}
  
-Check using your browser that GitLab has now received the right versions of your files for the \\fname{COMP10120} project.
+Check using your browser that GitLab has now received the right versions of your files for the \fname{COMP10120} project.
 
 Use the same output redirection mechanism we used a moment ago to record the output from \ttout{git log} for the \fname{COMP10120} project into a file called \fname{COMP10120.gitlog} in your \fname{COMP10120/ex4} directory so that \ttout{submit} can find it later. Once again, the \emph{exact} contents of the file don't matter as long as it is a sensible representation of your commit history for this project.
 
@@ -414,13 +413,13 @@ To finish off this laboratory session, create a project for \fname{COMP16121} an
 Now this time there are probably a lot more files to worry about, and you might not want to go through them one by one \ttout{git add}ing them each individually. Instead you could use something like this to add them to the staging area:
 
 \begin{ttoutenv}
-cd ~/COMP16121
-git add ex*/run-alltests
-git add ex*/task*/run-tests
-git add ex*/task*/*.java
+\$ cd ~/COMP16121
+\$ git add ex*/run-alltests
+\$ git add ex*/task*/run-tests
+\$ git add ex*/task*/*.java
 \end{ttoutenv}
 
-Check that only the files you want to add have now been staged using \cmnd{git status}{git status}, and get help from a demonstrator if the result isn't what you expected.
+Check that only the files you want to add have now been staged using \cmnd{git}{git status}, and get help from a demonstrator if the result isn't what you expected.
 
 When you're happy that the staged files are the correct ones, use \ttout{git commit} to commit them, and then save the git log to a file called \fname{COMP16121.gitlog} in your \fname{COMP10120/ex4} directory (this is your final submittable deliverable for today's session). 
 
@@ -433,7 +432,7 @@ It's really important that you're comfortable with basic git usage, and you shou
 
 \section{Other git learning resources}
 
-Git is widely documented and discussed online, and there are loads of excellent resources (and of course quite a few duff ones!) that you can use to improve your understanding of using source code control systems generally, and git specifically. In particular:
+Git is widely documented and discussed online, and there are loads of excellent resources that you can use to improve your understanding of  source code control systems generally, and git specifically. In particular:
 
 \begin{itemize}
 
@@ -462,8 +461,7 @@ These are some basic principles that you should keep in mind when you're using g
 
 \section{Marking Scheme}
 
-You can view a copy of the marking scheme used by \texttt{submit} and \texttt{labprint} at\\
-{\small \urlnop{studentnet.cs.manchester.ac.uk/ugt/labprint/readms.php?unit=COMP10120\&ex=ex4.xml}}
+\markschemeurl{4}
 
 
 
