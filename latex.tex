@@ -64,7 +64,7 @@ So what's the purpose of \LaTeX ? It's purely a layer of software to make \TeX\ 
 
 \subsection{Pronunciation}
 \label{sec:pronunciation}
-  The name \TeX\ is intended by its creator to be pronounced with the final consonant as in the word loch or the name Bach, but English speakers often pronounce it like the first syllable of technical. The first syllable of \LaTeX\ is pronounced as in 'lay'\footnote{The Greek prefix `tex' means `art' as well as `technology', so it's a very nicely chosen name for a piece of software that produces such beautiful output. Knuth explained \citep{knuth1984} that one should ``pronounce the X of TeX as a Greek chi, not as an `x', so that TeX rhymes with the word blecchhh.''. We're not too sure that helps much, unless you are confident in your pronunciation of the word `blecchh'. Maybe it's an American thing.}.
+  The name \TeX\ is intended by its creator to be pronounced with the final consonant as in the word loch or the name Bach, but English speakers often pronounce it like the first syllable of technical. The first syllable of \LaTeX\ is pronounced as in 'lay'\footnote{The Greek prefix `tex' means `art' as well as `technology', so it's a very nicely chosen name for a piece of software that produces such beautiful output. Knuth explained \citep{knuth1984} that one should `pronounce the X of TeX as a Greek chi, not as an `x', so that TeX rhymes with the word blecchhh.'. We're not too sure that helps much, unless you are confident in your pronunciation of the word `blecchh'. Maybe it's an American thing.}.
 
 
 \section{Why \LaTeX?}
@@ -72,7 +72,7 @@ So what's the purpose of \LaTeX ? It's purely a layer of software to make \TeX\ 
  Before we go any further, why do we think \LaTeX\ is important for you---a Computer Science student---to know about? Here are some reasons, in no particular order.
 
 \begin{itemize}
-\item \LaTeX\ and \TeX\ are superb examples of Computer Science in action. \TeX\ was designed by Knuth from \concept{first principles}---in other words, from scratch.  \TeX\ is actually a programming language, and \LaTeX\ is a set of functions defined in the \TeX\ language. The \TeX\ `compiler'  is  written in \wikipedia{WEB}{WEB}, a mixture of documentation written in TeX and a \wikipedia{Pascal_(programming_language)}{Pascal} subset, in order to ensure portability; it reads a \TeX\ program and outputs documents. \TeX\ is completely self-contained and designed to be portable to any computer architecture. For example, it implements its own \wikipedia{Call_stack)}{stack} and \wikipedia{Heap_(programming)}{heap} (with \wikipedia{Garbage_collection_(computer_science)}{garbage collection}), and it does \wikipedia{Fixed-point_arithmetic}{fixed-precision arithmetic}; don't worry of these terms don't make much sense to you at the moment, they soon will. 
+\item \LaTeX\ and \TeX\ are superb examples of Computer Science in action. \TeX\ was designed by Knuth from \concept{first principles}---in other words, from scratch.  \TeX\ is actually a programming language, and \LaTeX\ is a set of functions defined in the \TeX\ language. The \TeX\ `compiler'  is  written in \wikipedia{WEB}{WEB}, a mixture of documentation written in TeX and a \wikipedia{Pascal_(programming_language)}{Pascal} subset, in order to ensure portability; it reads a \TeX\ program and outputs documents. \TeX\ is completely self-contained and designed to be portable to any computer architecture. For example, it implements its own \wikipedia{Call_stack)}{stack} and \wikipedia{Heap_(programming)}{heap} (with \wikipedia{Garbage_collection_(computer_science)}{garbage collection}), and it does \wikipedia{Fixed-point_arithmetic}{fixed-precision arithmetic}; don't worry if these terms don't make much sense to you at the moment, they soon will. 
 \item \LaTeX\ is a new, interesting, way for you to think about preparing documents. 
 \item \LaTeX\ has a practical advantage for the writer, in that it helps you think more about \emph{what} you want to write, rather than worrying about \emph{how it looks}.
 \item \LaTeX\ is a powerful tool for professional scientific documentation, and as a Computer Scientist, you should know about it.
@@ -91,7 +91,7 @@ In the days before computers, books and newspapers were printed with \wikipedia{
 
 \begin{figure}
 \centerline{\includegraphics[width=12cm]{images/movable-type.png}}
-\caption{On the left, a piece of cast movable type in the Garamond font. On the right, a case of cast metal type pieces and typeset matter in a composing stick. The text reads `The quick brown fox jumps over the lazy dog and feels as if he were in the seventh heaven of typography together with Hermann Zapf, the most famous artist of the' (this document is typeset in a font called Palatino, created by Hermann Zapf. You may have also seen 'Zapf Dingbats' in the font lists of various desktop applications. Now you know why.)} \label{figure:movabletype}
+\caption{On the left, a piece of cast movable type in the Garamond font. On the right, a case of cast metal type pieces and typeset matter in a composing stick. The text reads `The quick brown fox jumps over the lazy dog and feels as if he were in the seventh heaven of typography together with Hermann Zapf, the most famous artist of the'. This document is typeset in a font called Palatino, created by Hermann Zapf. You may have also seen 'Zapf Dingbats' in the font lists of various desktop applications. Now you know why.} \label{figure:movabletype}
 \end{figure}
 
 As technology progressed, machines controlled by typewriters would mechanically juggle the blocks into the right order. This conceptual model is the basis on which \TeX\ operates. Only now, the metal blocks are little pieces of data, arranged into data structures. 
@@ -136,7 +136,7 @@ Up until now, you have probably used wordprocessing applications such as Microso
 \end{figure}
 
 
-The huge advantage of WYSIWYG is that it's really easy to understand what's going on, and most people can create reasonably nicely formatted documents with relatively little effort. For short informal documents, one-off letters, memos and such, WYSIWYG works quite nicely. But if you've ever tried writing anything much longer, or that includes images and tables, you may have already started to see where the paradigm breaks down. For example, if you write ``Figure \ref{figure:menandcheeses} on page \pageref{figure:menandcheeses}  shows a picture of some men looking at cheese'', but then later on edit your document to include some more text at the start, and a new picture of a some broccoli (as in Figure \ref{figure:broccoli}), you'd have to search through your report to find all mentions of `Figure \ref{figure:menandcheeses}' and `page \pageref{figure:menandcheeses}' and manually update them to reflect the new numbering. This might be fine if you have two figures and five pages; but for a hundred-page report containing lots of pictures, you can see how this becomes tedious and error prone very quickly. 
+The huge advantage of WYSIWYG is that it's really easy to understand what's going on, and most people can create reasonably nicely formatted documents with relatively little effort. For short informal documents, one-off letters, memos and such, WYSIWYG works quite nicely. But if you've ever tried writing anything much longer, or that includes images and tables, you may have already started to see where the paradigm breaks down. For example, if you write `Figure \ref{figure:menandcheeses} on page \pageref{figure:menandcheeses}  shows a picture of some men looking at cheese', but then later on edit your document to include some more text at the start, and a new picture of a some broccoli (as in Figure \ref{figure:broccoli}), you'd have to search through your report to find all mentions of `Figure \ref{figure:menandcheeses}' and `page \pageref{figure:menandcheeses}' and manually update them to reflect the new numbering. This might be fine if you have two figures and five pages; but for a hundred-page report containing lots of pictures, you can see how this becomes tedious and error prone very quickly. 
 
 \begin{figure}
 \centerline{\includegraphics[width=10cm]{images/men-and-cheese.jpg}}
@@ -150,7 +150,7 @@ The huge advantage of WYSIWYG is that it's really easy to understand what's goin
 
 \section{Style and content}
 
-The other thing about WYSIWYG is that it puts you entirely in control of the visual layout and style of your article, and this isn't necessarily a good thing for two reasons. First, it means that instead of focusing on the content and structure of what you're writing, it makes it easy to get distracted by tinkering with the layout and style. And although layout and style are of course important if you want to create a professional-looking document, they are definitely always secondary to content and structure. Second, it means that you are, well, entirely in control of the visual layout and style of your article. And although it might not be obvious up-front, such control is not necessarily a good thing unless you really know what you're doing (and unless you are a talented graphic designer with a deep understanding of typography, you almost certainly don't\footnote{Don't take this personally; we're in the same boat. If you think that this document is nicely formatted, that's all down to \LaTeX, not us!}). Creating documents that are aesthetically pleasing and easy to read is rather a specialist skill with its origins going all the way back to Caxton's invention of the printing press in the fifteenth century.  Over the years, typographers have honed their skills, arriving at complex rules and heuristics that determine the optimum number of characters on a line, ideal relative and absolute font sizes, spacings, margins, figure placement and so on that lead to attractive---and most importantly---readable documents. You could of course learn all these rules, and make sure you implement them manually using your favourite WYSIWG editor, but that's not what a Computer Science degree is about. The \LaTeX\ system implements many of these rules, making decisions for you about the best way to lay your document out on the page. This allows you to concentrate on creating good quality content, safe in the knowledge that \LaTeX\ will do a good job of presenting it out for you. The idea of separating out \concept{content} from \concept{presentation} is something you'll encounter many times during your studies of Computer Science. You'll see it again in a fairly obvious way soon when you come to writing some HTML and CSS in Phase 3 of this course unit: but the concept of distinguishing between a \concept{model} and a \concept{view} will reappear in increasingly subtle ways throughout your degree. 
+The other thing about WYSIWYG is that it puts you entirely in control of the visual layout and style of your article, and this isn't necessarily a good thing for two reasons. First, it means that instead of focusing on the content and structure of what you're writing, it makes it easy to get distracted by tinkering with the layout and style. And although layout and style are of course important if you want to create a professional-looking document, they are definitely always secondary to content and structure. Second, it means that you are, well, entirely in control of the visual layout and style of your article. And although it might not be obvious up-front, such control is not necessarily a good thing unless you really know what you're doing (and unless you are a talented graphic designer with a deep understanding of typography, you almost certainly don't\footnote{Don't take this personally; we're in the same boat. If you think that this document is nicely formatted, that's all down to \LaTeX, not us!}). Creating documents that are aesthetically pleasing and easy to read is rather a specialist skill with its origins going all the way back to Caxton's invention of the printing press in the fifteenth century.  Over the years, typographers have honed their skills, arriving at complex rules and heuristics that determine the optimum number of characters on a line, ideal relative and absolute font sizes, spacings, margins, figure placement and so on that lead to attractive---and most importantly---readable documents. You could of course learn all these rules, and make sure you implement them manually using your favourite WYSIWG editor, but that's not what a Computer Science degree is about. The \LaTeX\ system implements many of these rules, making decisions for you about the best way to lay your document out on the page. This allows you to concentrate on creating good quality content, safe in the knowledge that \LaTeX\ will do a good job of presenting it  for you. The idea of separating out \concept{content} from \concept{presentation} is something you'll encounter many times during your studies of Computer Science. You'll see it again in a fairly obvious way soon when you come to writing some HTML and CSS in Phase 3 of this course unit: but the concept of distinguishing between a \concept{model} and a \concept{view} will reappear in increasingly subtle ways throughout your degree. 
 
 \section{The right tool for the right job}
 
@@ -197,7 +197,7 @@ Transcript written on fire-and-ice.log.
 %
 after which \LaTeX\ will return you to the command prompt. If you've made a mistake typing in the file, \LaTeX\ will stop part way through processing your work, and display an error (possibly, quite an obscure one) and show a `?' prompt. The best thing to do at this stage is to press \ctrl{d}, or \ttout{x}, to tell \LaTeX\ to give up trying to process your file. Then fix the mistake, and try again.  
 
-If you now list the directory contents, you should see that a file  \fname{fire-and-ice.pdf} has been created (along with two other files, \fname{fire-and-ice.aux} and \fname{fire-and-ice.log} both of which we will ignore for now). Use one of the PDF readers (such as \cmdname{evince}) to look at the contents of \fname{fire-and-ice.pdf}.  Admittedly, it's not the most exciting result; if everything has worked properly so far, you should see single-page document with the words `Some say the world will end in fire,' a little way down from the top of the page\footnote{If you have been carried away with the sheer excitement and joy of learning to use \LaTeX\, and improvised the text rather than typing the first line of `Fire and Ice' as requested, please go back and change it now: it really is important that you use exactly that text. Really, it is. That's better. Thanks.}.
+If you now list the directory contents, you should see that a file  \fname{fire-and-ice.pdf} has been created (along with two other files, \fname{fire-and-ice.aux} and \fname{fire-and-ice.log} both of which we will ignore for now). Use one of the PDF readers (such as \cmdname{evince}) to look at the contents of \fname{fire-and-ice.pdf}.  Admittedly, it's not the most exciting result; if everything has worked properly so far, you should see a single-page document with the words `Some say the world will end in fire,' a little way down from the top of the page\footnote{If you have been carried away with the sheer excitement and joy of learning to use \LaTeX\, and improvised the text rather than typing the first line of `Fire and Ice' as requested, please go back and change it now: it really is important that you use exactly that text. Really, it is. That's better. Thanks.}.
 
 But now look more closely. A lot more closely\ldots really zoom in. See anything interesting?
 
@@ -214,7 +214,7 @@ But that's enough about the typography of the word `fire' for now. Let's put tog
 %\subsection{Exercise 2}
 \label{sec:exercise-2}
 
- Create yourself a new file, called \fname{sections.tex} by copying \fname{fire-and-ice.tex}. In \fname{sections.tex}, replace the line of poetry with the text from Figure \ref{figure:bleakhouse} (which contains the first three paragraphs of Dickens' novel, `Bleak House' \citep{dickens1852}).
+ Create yourself a new file, called \fname{sections.tex} by copying \fname{fire-and-ice.tex}. In \fname{sections.tex}, replace the line of poetry by copying and pasting the text from Figure \ref{figure:bleakhouse} (which contains the first three paragraphs of Dickens' novel, `Bleak House' \citep{dickens1852}).
 
 \begin{figure}[tbp]
 
@@ -268,7 +268,18 @@ look.
 \caption{Some sample text from the opening of the Dickens' novel `Bleak House' \citep{dickens1852}.}\label{figure:bleakhouse}
 \end{figure}
 
-Edit the text to make sure that there is a blank line between each of the three paragraphs (it's not enough that each paragraph starts on a new line of its own, there has to be an empty line in between them). That's how paragraphs are distinguished in \LaTeX\ (in fact, it doesn't matter how many blank lines you put as long as there is at least one\ldots for the most part \LaTeX\ ignores spare whitespace). Now type a paragraph of gibberish by randomly hitting keys on the keyboard, and putting spaces in to make `words' in the text file. You should end up with something like the following, but about three times as long (don't cut and paste this from here\ldots it's important that you actually create some unique gibberish yourself!):
+Edit the text to make sure that there is a blank line between each of
+the three paragraphs (it's not enough that each paragraph starts on a
+new line of its own, there has to be an empty line in between
+them). That's how paragraphs are distinguished in \LaTeX\ (in fact, it
+doesn't matter how many blank lines you put as long as there is at
+least one\ldots for the most part \LaTeX\ ignores spare
+whitespace). After the `Bleak House' text, type a paragraph of gibberish by randomly hitting
+keys on the keyboard, and putting spaces in to make `words' in the
+text file. You should end up with something like the following, but
+about three times as long (don't cut and paste this from here\ldots
+it's important that you actually create some unique gibberish
+yourself!):
 
 \begin{verbatim}
 Oisjdf oqweqwe oi soijs hbweo kbsd oijsdf 
@@ -279,9 +290,9 @@ qiqks odfubfi psdiweneq.
 
 Be careful at this stage to only include letters (uppercase and lowercase), commas, full-stops and perhaps numbers in your gibberish text: if you use any other symbols, you may upset \LaTeX. 
 
-Next go to the website \href{http://www.lipsum.com/}{http://www.lipsum.com} and follow the instructions to generate yourself three paragraphs of what's called \concept{Lorem Ipsum} text. Copy and paste that text into your \LaTeX\ document too (don't worry about what it means at this stage), again making sure that you have a blank line between the paragraphs.
+Next go to the website \hrefnop{www.lipsum.com} and follow the instructions to generate yourself three paragraphs of what's called \concept{Lorem Ipsum} text. Copy and paste that text into your \LaTeX\ document too (don't worry about what it means at this stage), again making sure that you have a blank line between the paragraphs.
 
-Re-run \texttt{pdflatex} and look at the resulting \fname{sections.pdf}. Again, at first glance, there's nothing hugely exciting going on here: the text from your \fname{.tex} file has been assembled into a (probably) two page PDF document. But in fact quite a few things have happened: 
+Run \texttt{pdflatex} and look at the resulting \fname{sections.pdf}. Again, at first glance, there's nothing hugely exciting going on here: the text from your \fname{.tex} file has been assembled into a (probably) two page PDF document. But in fact quite a few things have happened: 
 
 % \begin{note}
 %   Why don't we indent pars? Because we have lots of short ones?
@@ -289,20 +300,20 @@ Re-run \texttt{pdflatex} and look at the resulting \fname{sections.pdf}. Again, 
 
 \begin{itemize}
 \item The blank lines that separate the paragraphs in your source file are gone, and instead \LaTeX\ has indented the first line of each paragraph. There's nothing profound here about the decision to indent paragraphs rather than (say) to leave a gap between them (so called \concept{block paragraphs}); it's just \LaTeX's default paragraph style, and can be changed easily enough.\footnote{Though apparently, there is some evidence in \cite{tinker63} that indented paragraphs increase readability}
-\item There are page numbers at the bottom of each page. This is a very sensible default, allowing you in meetings to ask people to ``turn to page 4'' and so on (it's a bit odd, and a source of some annoyance, that most wordprocessors don't do this by default too). But you can easily switch page numbers off, change their style or move them elsewhere if you need to. 
+\item There are page numbers at the bottom of each page (except page 1). This is a very sensible default, allowing you in meetings to ask people to `turn to page 4' and so on (it's a bit odd, and a source of some annoyance, that most wordprocessors don't do this by default too). But you can easily switch page numbers off, change their style or move them elsewhere if you need to. 
 \item The text is \concept{fully justified} so that it's flush on both the left and right hand edges.
 \item Certain words that fall at the end of lines have been hyphenated, even if they weren't originally split by hyphens in the source text.
 \end{itemize}
 
-These last two points about justification and hyphenation might seem utterly trivial, but getting these factors right turns out to be an important part of making readable documents; readability is not just about which font you choose, but about how the characters and spaces are distributed on each line. It's something that you will have seen happen so often in professionally typeset materials that you'll have taken it for granted, and you may not have spotted that it doesn't happen in quite the same way when you use a wordprocessor. The principle behind justifying text seems easy enough at first glance: you simply have to take any `left over' space that would be at the end of a line, and redistribute it between the words in some way to `space them out' a bit more so that they take up all the available horizontal room. But it turns out to be much harder than it seems, and all the simple ways you might think of for doing this on a per-line basis give results that are visually quite unsatisfactory, with nasty patterns made up of neighbouring whitespace appearing in the layout and ruining everything. The added complication here is that to do the optimum job of shuffling the words round on their lines, you really need the flexibility of being able to hyphenate words to give you extra space on lines that would otherwise be tightly packed with characters. But if you hyphenate words badly, by breaking them in inappropriate places, or do it too often then that makes the text hard to read too. It's all deeply inconvenient and inter-related. The best solution to this aesthetic conundrum so far was developed by \cite{SPE:SPE4380111102} and later improved by Frank Liang during his PhD research \citep{liang}, and it's a technique that tries to optimise the layout of whole paragraphs rather than individual lines. The algorithm takes into account all manner of different things: language-specific character patterns, the number of consecutive lines that end with hyphens, the word `tightness' on each line\ldots any many others. The details don't really matter here, but the really important thing insight is that you get better results by working on a bigger chunk of the document (in this case a paragraph at a time) rather than trying to independently optimise lots of small bits (say, lines) and hoping that the result of joining them all together turns out nicely. This idea of optimising things \concept{globally} versus \concept{locally} is something you'll see many times throughout your Computer Science degree; watch out for it in all the algorithms courses.
+These last two points about justification and hyphenation might seem utterly trivial, but getting these factors right turns out to be an important part of making readable documents; readability is not just about which font you choose, but about how the characters and spaces are distributed on each line. It's something that you will have seen happen so often in professionally typeset materials that you'll have taken it for granted, and you may not have spotted that it doesn't happen in quite the same way when you use a wordprocessor. The principle behind justifying text seems easy enough at first glance: you simply have to take any `left over' space that would be at the end of a line, and redistribute it between the words in some way to `space them out' a bit more so that they take up all the available horizontal room. But it turns out to be much harder than it seems, and all the simple ways you might think of for doing this on a per-line basis give results that are visually quite unsatisfactory, with nasty patterns made up of neighbouring whitespace appearing in the layout and ruining everything. The added complication here is that to do the optimum job of shuffling the words round on their lines, you really need the flexibility of being able to hyphenate words to give you extra space on lines that would otherwise be tightly packed with characters. But if you hyphenate words badly, by breaking them in inappropriate places, or do it too often then that makes the text hard to read too. It's all deeply inconvenient and inter-related. The best solution to this aesthetic conundrum so far was developed by \cite{SPE:SPE4380111102} and later improved by Frank Liang during his PhD research \citep{liang}, and it's a technique that tries to optimise the layout of whole paragraphs rather than individual lines. The algorithm takes into account all manner of different things: language-specific character patterns, the number of consecutive lines that end with hyphens, the word `tightness' on each line\ldots any many others. The details don't really matter here, but the really important insight is that you get better results by working on a bigger chunk of the document (in this case a paragraph at a time) rather than trying to independently optimise lots of small bits (say, lines) and hoping that the result of joining them all together turns out nicely. This idea of optimising things \concept{globally} versus \concept{locally} is something you'll see many times throughout your Computer Science degree; watch out for it in all the algorithms courses.
 
-This highlights a fundamental difference between the WYSIWYG para\-digm and the way that documents are produced using \LaTeX. As we've seen, small changes down at the the level of individual characters can have fairly large knock-on consequences for the optimal layout of a document: changing one letter for another affects the length of a line, which in turn affects the hyphenation options, which then affects the length of a paragraph, which means that the best place for a figure that was on page 99 might now on page 100, but that means that all references to `page 99' now need a bit more room to account for the extra digit which means that the some line lengths have changed which means\ldots well, you get the idea. It's more complicated that it first seems. \LaTeX\ gets to see the \emph{whole of your document at once}, and can therefore make decisions about how best to hyphenate lines,  position figures or whatever else it likes \emph{before} it shows you the results; so it can make solutions that are optimal for the whole document, as well as looking at details such as ligated characters. Wordprocessors can't afford to do this since it would be deeply distracting if every time you typed a character, the whole layout of the document flapped around in front of your eyes. Wordprocessors can only sensibly make little optimisations at a local (probably per-line level). It's not that wordprocessors are rubbish, or that the people that programmed them were lazy: it's a fundamentally different way of working, and knowing the pros and cons of the different approaches will help you pick the right tool for the job. 
+This highlights a fundamental difference between the WYSIWYG para\-digm and the way that documents are produced using \LaTeX. As we've seen, small changes down at the the level of individual characters can have fairly large knock-on consequences for the optimal layout of a document: changing one letter for another affects the length of a line, which in turn affects the hyphenation options, which then affects the length of a paragraph, which means that the best place for a figure that was on page 99 might now be on page 100, but that means that all references to `page 99' now need a bit more room to account for the extra digit which means that the some line lengths have changed which means\ldots well, you get the idea. It's more complicated than it first seems. \LaTeX\ gets to see the \emph{whole of your document at once}, and can therefore make decisions about how best to hyphenate lines,  position figures or whatever else it likes \emph{before} it shows you the results; so it can make solutions that are optimal for the whole document, as well as looking at details such as ligated characters. Wordprocessors can't afford to do this since it would be deeply distracting if every time you typed a character, the whole layout of the document flapped around in front of your eyes. Wordprocessors can only sensibly make little optimisations at a local (probably per-line level). It's not that wordprocessors are rubbish, or that the people that programmed them were lazy: it's a fundamentally different way of working, and knowing the pros and cons of the different approaches will help you pick the right tool for the job. 
 
 You may have noticed that actual text in your document (and in fact, this one) takes up a (perhaps) surprisingly narrow horizontal region of the page. This last `feature' might seem odd at first, but it illustrates another important typographical point that you may never have thought of before: reading long lines of text is hard, because your eyes find it hard to move in a completely straight line as they scan from left to right. So the longer the line of words, the more you have to work to keep your eyes from accidentally drifting up or down onto a neighbouring line (perhaps you've experienced the phenomenon of accidentally re-reading the same line over and over as your eyes get tired). It may never have occurred to you, but most books have relatively short lines of text; and those that use large pages often split text into several columns so that individual lines are kept relatively short. The widely trusted book `The Elements of Typographic Style' \citep{bringhurst92} makes the following assertion:
 
 \begin{quote}
 \emph{
-``Anything from 45 to 75 characters is widely-regarded as a satisfactory length of line for a single-column page set in a serifed text face in a text size. The 66-character line (counting both letters and spaces) is widely regarded as ideal.''}
+`Anything from 45 to 75 characters is widely-regarded as a satisfactory length of line for a single-column page set in a serifed text face in a text size. The 66-character line (counting both letters and spaces) is widely regarded as ideal.'}
 \end{quote}
 
 \LaTeX\ knows about this issue, so made a sensible default decision for you. You may have noticed that there is a subtle difference in appearance of this chapter from previous ones: the lines are shorter and paragraphs are indented. We wanted to use the default \LaTeX\ layout for this chapter, but changed it for earlier chapters in an effort to save paper.
@@ -319,7 +330,7 @@ Next let's give our document some structure by dividing it up into sections. On 
 \section{Bleak House}
 \end{verbatim}
 %
-making sure it appears on a line of its own. Then just before your paragraph of gibberish, put similar a similar instruction (again, on its own line), and then create a final section before the Lorem Ipsum. Rerun pdflatex and look at the results. You should see the section headings appear in the appropriate places in the PDF, automatically having been given section numbers. Experiment by adding in a couple of sub-sections towards the end of the document using the  \verb|\subsection| command, which like \verb|\section| command above takes as a parameter some text in contained in wiggly brackets. 
+making sure it appears on a line of its own. Then just before your paragraph of gibberish, put  a similar instruction (again, on its own line), and then create a final section before the Lorem Ipsum. Rerun pdflatex and look at the results. You should see the section headings appear in the appropriate places in the PDF, automatically having been given section numbers. Experiment by adding in a couple of sub-sections towards the end of the document using the  \verb|\subsection| command, which like the \verb|\section| command above takes as a parameter some text  contained in curly brackets. 
 
 Now, at the top of your document after the \verb|\begin{document}| line and before the command defining the first section, add the following two commands, each on their own line:
 
@@ -347,7 +358,7 @@ Creating bulleted or numbered lists in \LaTeX\ is straightforward, and is done l
 \end{enumerate}
 \end{verbatim}
 %
-You must make sure that you both \texttt{begin} and \texttt{end} your list, and that each item is terminated by a newline. Changing `enumerate' to `itemize' gives you a bulleted rather than numbered list (note the American spelling of `itemize').  
+You must make sure that you both \texttt{begin} and \texttt{end} your list, and that each item is terminated by a newline. Changing \texttt{enumerate} to \texttt{itemize} gives you a bulleted rather than numbered list (note the American spelling of `itemize').  
 
 \subsection{Changing the appearance of text}
 Text can be typeset in \textbf{bold} font using the \verb|\textbf|, in \textit{italics} using \verb|\textit|and in a \texttt{fixed-width font}  using \verb+\texttt+ as in the example below:
@@ -372,7 +383,7 @@ at the point in the document you want to refer to, and then use the command
 \begin{verbatim}
 \ref{mymarker}
 \end{verbatim}
-when you want to use the reference. Obviously you replace the text `mymarker' with something more meaningful. An important tip here is to call the marker something that refers to the content of that part of the document, and to avoid the temptation to use numbers (so don't call your marker `section1', instead call it `introduction'; if you reorder your document, it's still likely to be the introduction, but it may no longer be Section 1). For example:
+when you want to use the reference. Obviously you replace the text \texttt{mymarker} with something more meaningful. An important tip here is to call the marker something that refers to the content of that part of the document, and to avoid the temptation to use numbers (so don't call your marker \texttt{section1}, instead call it \texttt{introduction}; if you reorder your document, it's still likely to be the introduction, but it may no longer be Section 1). For example:
 
 \begin{verbatim}
 \section{Reflection on Welcome Week}
@@ -390,7 +401,7 @@ mentioned in Section \ref{welcomeweek}.
 I've discovered that I don't like soggy chips.
 \end{verbatim}
 
-The really useful thing about cross-referencing in \LaTeX\ is that you'll get warnings when you compile your document if cross-references are undefined or used incorrectly. This means you don't have to manually check every reference in your document to make sure its still right. You do, however, have to run \LaTeX\ twice, for similar reasons to those given above.
+The really useful thing about cross-referencing in \LaTeX\ is that you'll get warnings when you compile your document if cross-references are undefined or used incorrectly. This means you don't have to manually check every reference in your document to make sure it's still right. You do, however, have to run \LaTeX\ twice, for similar reasons to those given above.
 
 \subsection{Figures and pictures}
 
@@ -403,42 +414,42 @@ Including figures and pictures in your document is easy. You do it like this:
 \label{figure:menandcheeses}
 \end{figure}
 \end{verbatim}
-which we used to create Figure~\ref{figure:menandcheeses}. You can
+which is the code we used to create Figure~\ref{figure:menandcheeses}. You can
 probably see what's happening. The command \verb|\includegraphics{}|
 gets your image, which can be PDF, PNG, JPG, GIF or PostScript. The
-\verb|\begin...\end| code `wraps' up whatever picture you're
+\verb|\begin{figure}...\end{figure}| code `wraps' up whatever picture you're
 including, and allows \LaTeX\ to treat it as an unbreakable
 \concept{floating} thing that it will position for you as best it can
 in the document, while maintaining an overall nice typographical
 layout. This floating of figures can sometimes result in the figure
 ending up in a place you didn't expect, but in most cases \LaTeX\ will
-make the most sensible choice. It's possible to exercise finer control
-over figure placement, but that's beyond the scope of this exercise.
+make the most sensible choice. It's possible to employ finer control
+over figure placement, but that's beyond the scope of this introduction.
 
 The \verb+\includegraphics+ command is not built in to core \LaTeX\
 but is in an additional \concept{package}, which needs to be
-explicitly loaded. We load this package by this using the command
+explicitly loaded. We load this package by  using the command
 \verb+\usepackage{graphicx}+ in the document preamble, i.e.\ after
 the \verb+\documentclass+ command, but before
 \verb+\begin{document}+. There are hundreds of such packages that
-  extend \LaTeX{}'s functionality; these lab scripts use over 30 of them.
+  extend \LaTeX{}'s functionality; the lab scripts you are reading now use over 30 of them.
 
 
 \exercisess{Including images}
-Create a document \fname{image.tex}, that contains some text (maybe from 'Lorem Ipsum', together with a figure containing an image of your choice, perhaps the one you made in Intro Lab 2 like Steve's Mr Noodle. There should also be a reference to the figure in the text. You should first use the program \cmdname{convert} (check its man page) to create a \fname{PDF} version of the file.
+Create a document \fname{image.tex}, that contains some text (maybe from 'Lorem Ipsum', together with a figure containing an image of your choice, perhaps the one you made in Intro Lab 2 like Steve's Mr Noodle. There should also be a reference to the figure in the text. You should first use the program \cmdname{convert} (check its man page) to create a \fname{PDF} version of the image.
 
 \begin{demonote}
   Here's a solution to this exercise. For convenience, we have used the \fname{lipsum}
   package to generate the Lorem Ipsum text rather than cutting and
   pasting text from the web. Note that the reference to the figure and a
-  `sensible' caption are required,
+  `sensible' caption are required.
   
   \small
 \lstinputlisting[linewidth=\textwidth,language={[LaTeX]TeX}]{solutions/lab3/image.tex}
 \end{demonote}
 
 \exercisess{A reflection on your studies}
-Your first \LaTeX\ document will be a very brief reflection on your studies so far.
+Your first proper \LaTeX\ document will be a very brief reflection on your studies so far.
 
 Write a hand-crafted
 \LaTeX\ document called \fname{courses-reflection.tex} (exact name as usual
@@ -481,9 +492,9 @@ It looks nice, doesn't it? To tell \LaTeX\ to display this, you have to type a b
 \begin{verbatim}
      \[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \]
 \end{verbatim}
-You can probably work out how most of this creates the formula, but it won't be obvious that the \verb|\[| and  \verb|\]| characters that enclose the formula mean ``typeset this as a displayed formula, giving it some vertical space from the surrounding text''. If we'd used \verb|\(| and \verb|\)| instead to enclose the formula it would appear in-line, like this: \(  x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \). It still looks very nice, and observe how it's automatically been resized to fit, and that the lines of text have had their spacing changed a bit. This all looks simple, but the implementation inside \LaTeX\ and \TeX\ is complex. It involves parsing the description of the formula to create a corresponding tree data structure, which is then \concept{recursively walked}' to work out the horizontal and vertical typographical spacings needed. You'll meet these ideas in \courseunit{COMP11120} and \courseunit{COMP26120} Algorithms and Imperative Programming.
+You can probably work out how most of this creates the formula, but it won't be obvious that the \verb|\[| and  \verb|\]| symbols that enclose the formula mean `typeset this as a displayed formula, giving it some vertical space from the surrounding text'. If we'd used \verb|\(| and \verb|\)| instead to enclose the formula it would appear in-line, like this: \(  x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \). It still looks very nice, and observe how it's automatically been resized to fit, and that the lines of text have had their spacing changed a bit. This all looks simple, but the implementation inside \LaTeX\ and \TeX\ is complex. It involves \concept{parsing} the description of the formula to create a corresponding tree data structure, which is then \concept{recursively walked} to work out the horizontal and vertical typographical spacings needed. You'll meet these ideas in \courseunit{COMP11120} and \courseunit{COMP26120} Algorithms and Imperative Programming.
 
-Here's another example, taken from \courseunit{COMP27112} Computer Graphics (it's a `simple' local illumination model incorporating ambient, diffuse and specular reflection by multiple lights):
+Here's another example, taken from \courseunit{COMP27112} Computer Graphics (it's a `simple' \concept{local illumination model} incorporating ambient, diffuse and specular reflection by multiple lights):
 
 \[ I = k_a I_a + \sum_{i=1}^M {\frac{{I_p}_i}{d'_i}} [ k_d(\hat{N}\cdot\hat{L_i}) + k_s(\hat{R_i}\cdot\hat{V})^n] \]
 %
@@ -495,7 +506,7 @@ We write this in \LaTeX\ as follows:
     + k_s(\hat{R_i} \cdot \hat{V})^n] \]
 \end{verbatim}
 %
-Try to match the \LaTeX\ commands with the formula displayed above. You'll see lots of curly brackets, and this example illustrates their two uses in \LaTeX. The first is to provide an argument to a command; for example \verb|\hat{N}| means ``apply the \verb|\hat| command to $N$'', which creates \(\hat{N}\), the vector \( N \) with a little hat  on.  
+Try to match the \LaTeX\ commands with the formula displayed above. You'll see lots of curly brackets, and this example illustrates their two uses in \LaTeX. The first is to provide an argument to a command; for example \verb|\hat{N}| means `apply the \verb|\hat| command to $N$', which creates \(\hat{N}\), the vector \( N \) with a little hat  on.  
 
 The second use of curly brackets is to group things together to avoid ambiguities. In the example you can see \verb|\sum_{i=1}^M|, which creates a summation sign and its lower and upper limits: \( \sum_{i=1}^{M} \). We wrap the lower bound, \verb|i=1|, in curly brackets to group it into an indivisible unit. If we were to omit the brackets, writing \verb|\sum_i=1^M|, \LaTeX\ would then produce \( \sum_i=1^M \), which is not at all what we want (even \LaTeX\ can't always know what we really want).
 
@@ -512,7 +523,7 @@ One final example. If we tell \LaTeX:
     \right] \]
 \end{verbatim}
 %
-we'll get a splendid matrix which expresses a particular 3D geometrical transformation (don't worry if you don't recognise this, you'll be introduced to matrix notation in the latter part of \courseunit{COMP11120}: Mathematical Techniques for Computer Science. For now you can just treat it as some mysterious maths):
+we'll get a splendid matrix which expresses a particular 3D geometrical transformation. (Don't worry if you don't recognise this, you'll be introduced to matrix notation in the latter part of \courseunit{COMP11120}: Mathematical Techniques for Computer Science. For now you can just treat it as some mysterious maths):
 
 \[   T_1 = \left[
     \begin{array}{cccc}
@@ -525,7 +536,7 @@ we'll get a splendid matrix which expresses a particular 3D geometrical transfor
 \]
 %
 
-In the \LaTeX\ code,  \verb|\left[| means ``big opening square bracket please'';  \verb|{cccc}| means ``an array with 4 columns please, with the items in each column centred"; \verb|&| means ``start a new column''; and \verb|\\| means ``start a new row''. You'll notice that \LaTeX\ knows about  greek letters; it knows about most standard maths symbols too, and also they ways  they're usually used.
+In the \LaTeX\ code,  \verb|\left[| means `big opening square bracket please';  \verb|{cccc}| means `an array with 4 columns please, with the items in each column centred'; \verb|&| means `start a new column'; and \verb|\\| means `start a new row'. You'll notice that \LaTeX\ knows about  greek letters; it knows about most standard maths symbols too, and also the ways  they're usually used.
 
   There are some symbols that you might need (for example \verb+\therefore+, which produces the usual three dots symbol \(\therefore\)) that are not part of standard \LaTeX{}. Many such symbols are provided by the \ttout{amssymb} package of symbols compiled by the American Mathematical Society. Details of the many symbols provided by this package can be found online at
   \begin{center}
@@ -593,12 +604,12 @@ are both even we have a contradiction to our initial assumption,
 so no such $p$ and $q$ exist.
 \end{verbatim}
 }
-Notice the use of the \\ttout{array} environment for getting things lined up. You can find much more information about this on the web.
+Notice the use of the \ttout{array} environment for getting things lined up. You can find much more information about this on the web.
 
   \LaTeX\ really shines at typesetting mathematics, and it would take pages and pages to describe all the features. Have a look at:
 \\
 \\
-\href{http://en.wikibooks.org/wiki/LaTeX/Mathematics}{http://en.wikibooks.org/wiki/LaTeX/Mathematics}
+\hrefnop{en.wikibooks.org/wiki/LaTeX/Mathematics}
 \\
 \\
 for a flavour. 

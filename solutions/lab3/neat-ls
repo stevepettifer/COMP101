@@ -39,7 +39,6 @@ cat << "."
 .
 ) > ls.tex
 
-viewer=acroread4
 viewer=evince
 
 pdflatex ls.tex && pdflatex ls.tex && $viewer ls.pdf

@@ -30,8 +30,8 @@ Git has already been installed on the School's PCs, but you'll need to set up so
 Fire up a terminal, and enter the following commands one by one:
 
 \begin{ttoutenv}
-\$ git config --global user.name "[YOUR NAME GOES HERE]"
-\$ git config --global user.email "[YOUR UNIVERSITY EMAIL ADDRESS GOES HERE]" 
+\$ git config --global user.name '[YOUR NAME GOES HERE]'
+\$ git config --global user.email '[YOUR UNIVERSITY EMAIL ADDRESS GOES HERE]' 
 \end{ttoutenv}
 
 Hopefully the purpose of these commands is self-explanatory; you're just telling git who you are and how to contact you by email if it needs to. The next bits of configuration are a bit more mysterious, and explaining them in detail would take up way more space than we have here; for now we'll just say that they set the default way in which git interacts with GitLab:
@@ -98,7 +98,7 @@ Select the `New Project' button from the icons at the top right (the one that lo
 You'll now need to set up a means of securely identifying yourself to GitLab from whichever machine you're using at the time; this is done by creating what's called a \concept{SSH key}. In a terminal, type:
 
 \begin{ttoutenv}
-\$ ssh-keygen -t rsa -C "[YOUR UNIVERSITY EMAIL]"
+\$ ssh-keygen -t rsa -C '[YOUR UNIVERSITY EMAIL]'
 \end{ttoutenv}
 
 to create yourself a SSH key. When prompted `Enter file in which to save the key' just press return to accept the default, and the same for `Enter passphrase' twice.  For now don't worry too much about exactly what a SSH key is---we'll just treat it as a way of identifying yourself to the GitLab server. 
@@ -187,10 +187,10 @@ replacing [FILENAME] with each of the file names in turn. Once you've done this,
 
 Now git knows which of the files in this directory you want to track (which in this case is all of them), we want to do our first \concept{commit}, which tells git that we've made a set of changes that we want to keep together: in this case the `changes' are to create the files in the first place; later on we'll go through a similar pattern of \ttout{git add} and \ttout{git commit} whenever we've done a set of changes that we think we are happy with. 
 
-The \ttout{-m "Initial Commit"} part of the commit line gives git a label to associate with this particular commit, and it's traditional to put the message `Initial Commit' the first time you tell git about a new set of files. In future you'll be putting text here that summarises in human-readable form what changes you've made in this commit, but more on that later.
+The \ttout{-m 'Initial Commit'} part of the commit line gives git a label to associate with this particular commit, and it's traditional to put the message `Initial Commit' the first time you tell git about a new set of files. In future you'll be putting text here that summarises in human-readable form what changes you've made in this commit, but more on that later.
 
 \begin{ttoutenv}
-\$ git commit -m "Initial Commit"
+\$ git commit -m 'Initial Commit'
 \end{ttoutenv}
 
 Don't worry about what git's response means here, that will become clear as you learn more. Type \ttout{git status} once again and if everything has gone to plan you should see the response
@@ -239,7 +239,7 @@ In git terminology, this process is called \concept{staging}; think of it as `se
 But for now, let's assume that this is the only change you need to make right now, and that you want  git to remember this change as part of your project's history; the command for this is called \cmnd{git}{git  commit} Type
 
 \begin{ttoutenv}
-\$ git commit -m "[SOME WORDS THAT DESCRIBE YOUR CHANGE]"
+\$ git commit -m '[SOME WORDS THAT DESCRIBE YOUR CHANGE]'
 \end{ttoutenv}
 
 replacing the text in braces (and the braces themselves) with something that would help you remember what you did if you needed ever to check in future. 
@@ -414,7 +414,7 @@ Now this time there are probably a lot more files to worry about, and you might 
 
 \begin{ttoutenv}
 \$ cd ~/COMP16121
-\$ git add ex*/run-alltests
+\$ git add ex*/run-all-tests
 \$ git add ex*/task*/run-tests
 \$ git add ex*/task*/*.java
 \end{ttoutenv}
