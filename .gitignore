@@ -23,7 +23,7 @@ images/.DS_Store
 *.log
 *.lot
 *.maf
-*.mtc
+*.mtc*
 *.mtc0
 *.nav
 *.nlo
@@ -38,7 +38,11 @@ images/.DS_Store
 *.tdo
 linux1.pdf
 linux2.pdf
-101labs*.pdf
+intro*.pdf
+101lab*.pdf
+101app*.pdf
+all*labs.pdf
+all*labs-staff.pdf
 comment.cut
 welcome*.pdf
 desktop*.pdf
