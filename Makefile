@@ -29,8 +29,8 @@ staff101: all-101labs-staff.pdf ${PDF101STAFF}
 
 
 stu: stuintro stu101
-stuintro: ${PDFINTRO}
-stu101: ${PDF101}
+stuintro: all-introlabs.pdf ${PDFINTRO}
+stu101: all-101labs.pdf ${PDF101}
 
 all-introlabs.pdf: ${ROOTINTRO}.tex ${TEXINTRO}  ${STY}
 	echo > includes.tex
