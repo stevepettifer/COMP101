@@ -1,8 +1,0 @@
-#!/bin/sh
-
-for i in $*
-do 
-    echo $i
-    rm $i
-    make $i
-done
