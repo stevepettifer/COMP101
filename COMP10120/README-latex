@@ -1,0 +1,14 @@
+The LaTeX source files in this repository rely on some style files
+that are not present and not part of the standard texlive
+distribution.
+
+In order to use them you need to run the command
+
+git clone https://github.com/gdg8/csstyles.git
+
+in a directory which LaTeX will find them.
+
+On a Mac a good place is in ~/Library/texmf/tex/latex
+On Linux it's ~/texmf/tex/latex
+
+You also need an up to date version of texlive (we have used the 2013 distribution)

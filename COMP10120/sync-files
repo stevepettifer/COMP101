@@ -1,0 +1,46 @@
+#!/bin/sh
+V="-v"
+
+## Script to update web resources. Usually invoked as ./sync-files -v
+## Needs to be run from the dir containing the COMP101 notes
+
+## Things to update
+YEAR=2013
+COMP101HOME=.
+USR=graham
+
+while getopts qnu: c
+do
+    case $c in
+	v) V=${V}v;;
+	q) V=-q;;
+	n) V=${V}n;;
+	u) USR=$OPTARG;;
+    esac
+done
+
+if [ X$V = X-q ]
+then
+   :
+else
+    echo `basename $0`
+fi
+
+##### update course material on waldorf
+if [ X$V = X-q ]
+then
+   :
+else
+    echo 'Updating waldorf'
+fi
+
+## Use sonofis7 so can update from outside School
+
+for file in all-101labs.pdf  101lab1.pdf 101lab2.pdf 101lab3.pdf 101lab4.pdf
+do 
+echo $file
+done | rsync -a  $V  -e  'ssh -p1001' --files-from=- . $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/labscripts
+
+
+
+exit
