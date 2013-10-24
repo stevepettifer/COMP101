@@ -36,8 +36,6 @@ images/.DS_Store
 *.vrb
 *.xdy
 *.tdo
-linux1.pdf
-linux2.pdf
 intro*.pdf
 101lab*.pdf
 101app*.pdf
@@ -45,14 +43,9 @@ all*labs.pdf
 all*labs-staff.pdf
 comment.cut
 welcome*.pdf
-desktop*.pdf
 git-tutorial.pdf
-rpi*.pdf
-latex*.pdf
 myconfig.cfg
 appendix*.pdf
-desktop2.rel
 labs*.pdf
 labs*.mtc*
 sync-staff-files
-latex.rel
