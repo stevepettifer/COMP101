@@ -119,8 +119,8 @@ def main(argv):
 		fullseq = (line.split(",")[-1]).split("/")
 		if int(fullseq[0]) == year and int(fullseq[1]) > nextseq:
 			nextseq=int(fullseq[1])	# get sequence number of string
-			nextseq+=1
 	f.seek(0, 0) # seek back to start for subsequent access
+	nextseq+=1
 	print "Ready, awaiting Pi connection. To exit press Ctrl+C"
 	print "Note: Raspberry Pi's take a few minutes to boot up once switched on"
 	print " "
