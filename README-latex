@@ -12,3 +12,7 @@ On a Mac a good place is in ~/Library/texmf/tex/latex
 On Linux it's ~/texmf/tex/latex
 
 You also need an up to date version of texlive (we have used the 2013 distribution)
+
+Note: If you are using TexLive 2014, you may need to remove or rename the file
+mdframed.sty in the csstyles directory, as a newer version is available as part
+of the TexLive distribution.
