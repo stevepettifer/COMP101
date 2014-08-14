@@ -230,7 +230,7 @@ In a terminal, type the command \ttout{ifconfig}, short for `interface configura
 
 \begin{ttoutenv}
 eth0      Link encap:Ethernet  HWaddr b8:27:eb:a5:d5:82
-          inet addr:10.2.215.1  Bcast:10.2.215.255  Mask:255.255.255.0
+          inet addr:10.2.233.1  Bcast:10.2.239.255  Mask:255.255.248.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:39778 errors:0 dropped:0 overruns:0 frame:0
           TX packets:4338 errors:0 dropped:0 overruns:0 carrier:0
@@ -248,7 +248,7 @@ lo        Link encap:Local Loopback
 
 This tells you that the Pi has two network devices currently active: one called `eth0', which represents the physical ethernet socket into which you plugged the blue network cable, and which allows the Pi to communicate with other computers on the network (and in this case, on the internet); and a second one called `lo' which is a `virtual connection' or \concept{local loopback} connection that allows the Pi to route network traffic back to itself (this is how the `localhost' trick you used earlier to look at web pages on the Pi worked). You can learn a lot more about network configuration in the second year Computer Networks course (COMP28411). 
 
-The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is \texttt{10.2.215.1} but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network. 
+The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is \texttt{10.2.233.1} but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network. 
 
 Quit the graphical environment, and log out of your Pi by typing \cmnd{logout}{logout} at the console's command prompt (or you can press \ctrl{d} to achieve the same effect). Leave the network connection and power supply plugged in, but disconnect the mouse/keyboard lead, and reconnect them to the desktop PC. Switch the monitor over to display the desktop PC's screen, and log in to that with your University credentials. 
 
