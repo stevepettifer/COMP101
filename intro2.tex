@@ -601,13 +601,13 @@ PATH=\$PATH:/opt/teaching/bin:/opt/common/bin
 
 This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}. Run \ttout{echo \$PATH} and you will see the new value, with your own \ttout{bin} directory at the end, preceded by the two \ttout{/opt} directories.
 
-Before we move on to mail reading, we would like you to make another modification to your \fname{.bash\_profile} file. Earlier you added the line \ttout{exec startx} to fire up X automatically when you login. This works fine when you login directly to a PC, but will cause problems if you login remotely from another machine, as you will in the next lab. We won't explain the exact meaning of this piece of code now but will do in a later lab.
+Before we move on to mail reading, we would like you to make another modification to your \fname{.bash\_profile} file. Earlier you added the line \ttout{exec startx} to fire up X automatically when you login. This works fine when you login directly to a PC, but will cause problems if you login remotely from another machine, as you will in the next lab. We won't explain the exact meaning of this piece of code now but will do in a lecture.
 
 Replace the line \ttout{exec startx} at the end of \fname{.bash\_profile} with the lines
 
 \begin{ttoutenv}
 case `tty` in
-/dev/tty*) exec startx
+/dev/tty1) exec startx
 esac 
 \end{ttoutenv}
 
