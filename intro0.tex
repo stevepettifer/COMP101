@@ -172,7 +172,186 @@ some useful and interesting background information about Linux. If you
 don't have time to finish reading it in the lab, please make sure you
 do so before the next lab session.
 
+Before we move on to this reading we would like you to make a start in setting up your very own Raspberry Pi computer. During this process there will be a period where you have to sit and wait for something to happen; this will give you a good opportunity to read the background information about Linux.
 %\section{Using the School Linux system}
+
+\section{Getting started with Raspberry Pi}
+
+\minitoc
+
+\notesurl{intro1}
+
+% TODO: Intro to what they have been given, and labelling their Pi
+% TODO: References, references.
+% TODO: Wikipedia links
+% TODO: The Pi is yours to keep; if you lose it you'll have to buy another
+% TODO: What you'll need to use the Pi at home
+% TODO: Where do we introduce 'devices', 'files' and 'processes'? They will see virtual devices like tty0 and sda1 
+
+
+The Raspberry Pi is an astonishing piece of hardware. Not because it is super-fast or super-powerful---it's actually quite a slow computer by today's standards---but because it is small, cheap and needs very little energy to run. Its cheapness means you can experiment with it safe in the knowledge that if you mess it up, lose it, or drop it into the canal, getting hold of a replacement isn't going to cost you much more than a text-book or a night out at the cinema. Its small size and fairly modest power requirements mean you can be put to use in lots of applications where a regular-sized PC would be impractical.  We hope this will encourage you to experiment and explore, and to take risks playing with both its hardware and software that you might be reluctant to do on your own computer or tablet, or simply can't do with the School's lab machines. 
+
+This lab session is designed to get you familiar with the Raspberry Pi itself, and with some of the basics of the Linux operating system it uses. We're going to be covering a lot of ground quite quickly, and it's important that you read these notes carefully and follow the instructions precisely for now. As the lab sessions progress, the instructions will become much less prescriptive, and we'll be encouraging you to experiment and explore much more, and to find out things for yourself. But for now, just follow our lead. 
+
+\subsection{Breakout boxes}
+
+Scattered throughout the main text of these exercises there are information boxes of various kinds:
+\\
+
+\begin{tabular}{m{1.5cm}m{12cm}}
+{\includegraphics[width=1.5cm]{images/bomb}} & \textbf{Danger!} The bomb icon explains problems and pitfalls, and how to avoid them. It's really important that you read these sections, or you may regret it later.\\
+\\
+\includegraphics[width=1.5cm]{images/rpi-logo} & \textbf{Raspberry Pi Facts and Factoids.} These sections explain useful but non-essential things about the Raspberry Pi. If you're pushed for time, you can safely skip these boxes and perhaps come back to them another time.\\
+\\
+\includegraphics[width=1.5cm]{images/diversion} & \textbf{We digress\ldots} Boxes marked with this icon contain digressions and facts that are hopefully interesting but are probably tangential to the main flow of the exercise.\\
+\includegraphics[width=1.5cm]{images/roadblock} & \textbf{Stop here\ldots} Boxes marked with this icon contain checkpoint activities that you should complete before proceeding further.\\
+\end{tabular}
+
+\subsection{Styles and conventions}
+
+We'll be using various typographic styles to indicate different things throughout these notes. When we introduce new concepts, or use terms that have a different meaning in computer science to their everyday use, they will appear \concept{like this}, and will be explained in the nearby text. Things that are either the input or output to commands will appear \ttout{in this font}. And many words or phrases will have a little `w' after them, meaning that if you click on the term (if you're reading the notes online) or type the phrase into \wikipedia{wikipedia}{Wikipedia} (if you're reading this on paper), you should be taken to a sensible definition in case you want to learn more about something that we've touched on here. 
+
+Where you see text in square brackets [LIKE THIS] it will mean that when you're typing things you should replace the text with something that the text describes; for example [NAME OF THIS CITY], would become Manchester.
+
+\FloatBarrier 
+\section{The Raspberry Pi}
+
+The most remarkable thing about the Pi is that, although it's not the most powerful of computers, it is capable of running the same full \wikipedia{Linux}{Linux} operating system as the machines that you'll be using in the labs for the duration of your studies, and which you'll undoubtedly encounter in your future careers. We're actually going to be using slightly different flavours of Linux on the Pi and the lab machines, but the differences are fairly minor---more on that later. Let's get started. 
+
+The Raspberry Pi itself is just the circuit board shown from the top in Figure \ref{figure:bare-rpi}. The case we've provided is opaque so you can't see the Pi inside, but you're welcome to change it for another style if you prefer (there are plenty available to buy online, and lots of people have made their own unique ones just for the fun of it). If you do put it in your own case, please remember to transfer the `sequence number' sticker we've placed on the original box to the new box so that if the Pi is left behind in the lab it can be returned to you (this number is also labelled on the ethernet port). The Pi is reasonably robust, and you can use it without a case, but obviously it's a bit more vulnerable if it's not in a box of some sort. Figure \ref{figure:bare-rpi-underside} shows the Pi's circuit board from beneath, with an SD card inserted.
+
+\begin{rpi}{Why Pi?}
+  The Raspberry Pi apparently got its name because (a) lots of other computer systems have been named after fruit (you'll know of Apple and Blackberry, but in the past there has also been at least Apricot and Tangerine), and (b) the \wikipedia{Python_(programming_language)}{Python language} was one of the first things ported to run on it. The logo was created by Paul Beech, and is based on \wikipedia{Buckminsterfullerene}{Buckminsterfullerene}, a spherical fullerene molecule more commonly called a Buckyball. Its designer pointed out that a full buckyball has 32 faces, but that only 11 are visible in the 2D logo; and that the Raspberry Pi has a 32-bit processor and an ARM11 on board.
+
+The ARM processor, on which the Pi and the vast majority of the world's other mobile devices are based, was originally designed by a team led by \wikipedia{Steve_Furber}{Steve Furber}, who is a Professor in this School.  
+\end{rpi}
+
+\subsection{Connecting the Pi}
+\label{sec:connecting-pi}
+
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/bare-rpi-annotated}}
+\caption{An uncased Raspberry Pi, and an expanded view of the indicator LEDs at the board's top right. The numbered connectors are \protect\circled{1} HDMI output,  \protect\circled{2} USB,  \protect\circled{3} power,  \protect\circled{5} audio output,  \protect\circled{6} composite video out,  \protect\circled{7} General Purpose Input/Output (GPIO),  \protect\circled{8} Ethernet.}\label{figure:bare-rpi}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/bare-rpi-underside-annotated}}
+\caption{A naked Raspberry Pi. The circle indicates the location of the bevelled corner to orient the card. The ports are numbered as in Figure~\ref{figure:bare-rpi}, and in addition \protect\circled{4} shows the location of the SD (Secure Digital) memory card.  The locating bevel on the card is circled.}\label{figure:bare-rpi-underside}
+\end{figure}
+
+It's important that you connect the Pi up in exactly the order specified here---so even if you are familiar with using a Pi, please don't jump ahead and plug everything in at once (no harm will come to the Pi if you do, but this exercise relies on your following our instructions closely). Refer to Figure \ref{figure:cables}, and then connect your Pi up like this:
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/cables}}
+\caption{The following cables are available to connect up your Pi. \protect\circled{1} HDMI, \protect\circled{2} Keyboard and Mouse, \protect\circled{3} 5 Volt Micro USB power supply, and \protect\circled{4} network.}\label{figure:cables}
+\end{figure}
+
+
+\begin{itemize}
+\item The monitors in the LF31 Lab are all fitted with an extra video lead for connecting up the Pis. Locate the HDMI lead (labelled \protect\circled{1} in Figure \ref{figure:cables}), and plug this into the socket marked \circled{1} on Figure~\ref{figure:bare-rpi}. 
+\item Next we'll need to connect a keyboard and mouse. Separate the male and female USB connectors marked \protect\circled{2} on Figure \ref{figure:cables}, and plug the male end into one of the two USB sockets on your Pi (marked with \protect\circled{2} on the Figure~\ref{figure:bare-rpi}). It doesn't matter which USB socket you choose, but please make sure to reconnect this to the PC when you're done with these experiments as a courtesy to the next user. 
+\item \textbf{Do not connect the power or network connectors at this stage!}
+\end{itemize}
+
+Next, we need to insert the \wikipedia{Secure_Digital}{Secure Digital} (SD) card that contains the Pi's operating system, and on which you'll be storing your own files. Look at Figure ~\ref{figure:bare-rpi-underside}, make sure the SD card is orientated correctly (note the position of the little cut corner) and gently push it into the socket; around half of the card will remain protruding outside the case. 
+
+
+Now you're ready to power up the Pi. In our lab setup in LF31 the power to the Pi is supplied via the monitor, so it is important that the monitor is not in standby mode. Standby is indicated by an orange light on the on/off button at the bottom right of the screen, rather than blue if it is on. If the light is orange, press it to turn the monitor off, then again to switch it back on and turn it blue. Now locate the 5v Micro USB cable (the same connector that you'll find on many modern smartphones and tablet devices); this is labelled \protect\circled{3} on Figure~\ref{figure:cables}. This goes into the socket marked \circled{3} on Figure \ref{figure:bare-rpi}. There is no power switch on the Pi, so as soon as the power cable goes in, it will start to boot (this strange term is explained in breakout box~\ref{bootbox}): the red PWR LED should light up and stay on, and you'll also notice that the OK LED (which indicates SD-card activity) to its left also flickers. If any of the other three LEDs marked FDX, LNK, or 10M are lit, then that means you've already plugged a network cable into your Pi, in which case please unplug that now!
+
+\begin{danger}{Pi Power} 
+Like most other computers, the Pi doesn't like having its power removed without being shut down properly. Although you might get away with it, there's a reasonable chance of messing up the operating system if you remove the power while the Pi is in the middle of doing something. And because the Pi runs a multi-tasking operating system, it's almost always `doing something', so pulling the power out unexpectedly is always a bad idea. You're unlikely to damage the Pi's hardware like this, but you may find that you lose work, and may have to reinstall the operating system. For instructions on how to shut the Pi down safely, see Section \ref{section:shutdown}.
+\end{danger}
+
+Now we need to switch the input on the monitor from DisplayPort (which
+is the input used by the PC under the desk) to DVI (the cable you've
+connected your Pi to is a HDMI to DVI cable). On the lower-right side
+of the monitor you will see 4 buttons -- see
+Figure~\ref{figure:monitorswitch}. Press any of them to bring up the
+monitor's menu. Now press the 3rd button down and navigate to the
+input selection menu. Switch the Input to DVI and all being well you
+should see a black screen containing the Raspberry Pi logo at the top
+left, and white text that scrolls up the screen as the Pi boots. When
+the boot process finishes for the first time (it will take somewhere
+about 20--30 seconds), if all has gone well you should see the NOOBS (New Out Of Box)
+installation tool appear (see Figure \ref{figure:noobs-install-screen}).
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/noobs-install-screen}}
+\caption{NOOBS Install Screen}\label{figure:noobs-install-screen}
+\end{figure}
+
+\subsection{Installing Raspbian}
+
+The SD card that comes with your Pi has a range of operating systems installed on it, but we are going to use Raspbian for all of the labs. Scroll down the list until you see an option labelled Raspbian with an SD card icon to the right, and check the left hand box as shown in Figure \ref{figure:noobs-select-raspbian}. Take care not to select the other Raspbian option with a network connection icon, as this will attempt to download Raspbian over the network.
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/noobs-select-raspbian}}
+\caption{Selecting Raspbian}\label{figure:noobs-select-raspbian}
+\end{figure}
+
+Click the Install button and you will see a final warning message as in Figure \ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete.
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/noobs-install-warning}}
+\caption{Final warning/confirmation from NOOBS}\label{figure:noobs-install-warning}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics{images/noobs-install-progress}}
+\caption{NOOBS installation progress}\label{figure:noobs-install-progress}
+\end{figure}
+
+\begin{rpi}{Raspbian}
+  Raspbian is a version of the Debian release of Linux, tuned for the Pi. If you manage to corrupt the operating system, or just want to start from scratch, then re-writing the SD card with a fresh image is reasonably straightforward: simply reboot your Pi and press the Shift key when the initial splash screen loads (you will need to be quick, as it only appears for a few seconds). This will present you with a list of options - ensure that Raspbian is selected and then click the Install icon to re-write the SD card with a fresh image. This will erase all of the data on the Pi, so please make sure that you have a backup of anything important.
+
+  If you buy a new SD card, instructions on how to get hold of the files you'll need, and how to write them to the SD card on various operating systems are available at \urlnop{www.raspberrypi.org/downloads}. You might want to think about getting a larger SD card in any case; the one we've given you is fine for the labwork we've set, but probably a bit on the small side for anything else. SD cards are widely available in shops and online, and aren't expensive. But you should check whether the specific card you're going to buy is compatible with the Pi before parting with any money---differences in the read/write speeds of some cards mean they don't play nicely with the Pi.
+\end{rpi}
+
+
+% TODO: needs a photo of the monitor / switch here
+\begin{figure}
+\centerline{\includegraphics[width=12cm]{images/DellInputMenu.jpg}}
+\caption{The Input Selection menu on the monitor. This image  of the Dell U2412M Monitor has been reproduced with the kind permission of Dell. All rights reserved.}\label{figure:monitorswitch}
+\end{figure}
+
+\begin{diversion}{Booting}
+\label{bootbox}
+The phrase `booting' to refer to the process of starting up some computer system has become quite commonplace, but its origins are rather strange. It's thought to have first been used in early 19th Century America as a way of describing an obviously impossible action such as to ``pull oneself over a fence by one's bootstraps''. These days it is used to refer to any self-sustaining process that is able to happen without external help. 
+
+So why is starting a computer a bootstrapping process? In order for you as a user to be able to run a program, the computer needs an operating system. But in order to load its operating system, it needs some instructions that tell it how to understand the file system. And in order to load the instructions that tell it how to understand the file system it needs to\ldots well, you get the idea. In reality, most computers have a very small set of instructions hardwired into them that begin the process of loading a  slightly more complex `bootloader', which then begins the process of loading the OS kernel and any modules needed to interact with the hardware, and then starts loading services and features of increasing sophistication that rely on the simpler ones loaded previously to function. 
+
+As an aside, you may want to consider this: if you need a text editor to write programs, how did the first text editor (which is itself a program) get written?
+\end{diversion}
+
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/raspi-config.png}}
+\caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using cursor keys.}\label{figure:raspi-config}
+\end{figure}
+
+Once Raspbian has finished installing, the Pi will reboot and you will
+be presented with a configuration screen as shown in Figure \ref{figure:raspi-config}.
+At this stage you could tweak various other options that affect the
+display and the layout of keyboard being used; but conveniently the
+defaults set on the Pi will do just fine for now (it is a mostly
+British invention after all, so it defaults to UK keyboard layout!)
+Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit
+Enter again. Confirm that the Pi should reboot (an example of what
+this looks like is shown in Figure \ref{figure:piboot}) and this time
+when the process finishes you'll be presented by a Unix login prompt
+which will say something like:
+
+\begin{figure}
+\centerline{\includegraphics[width=15cm]{images/bootscreen}}
+\caption{A sample Raspberry Pi bootscreen. The exact layout and details may vary depending on the size/shape of the screen and the configuration of the Pi.}\label{figure:piboot}
+\end{figure}
+
+\begin{ttoutenv}
+Debian GNU/Linux wheezy/sid raspberrypi tty1
+
+raspberrypi login:
+\end{ttoutenv}
+That's all we want you to do with the Raspberry Pi for this session, we will start using it in earnest in the next session. While you are waiting for Raspbian  to finish installing please take this opportunity to start reading the remaining material for this session. Remember, if you don't finish it during the lab session, please try to do so before the next one.
 \section{Unix and Linux}
 
 Over the next couple of weeks you will be undertaking a number of
