@@ -178,20 +178,22 @@
 % raspberrypi login:
 % \end{ttoutenv}
 
-\begin{demonote}
-   This starts a bit abruptly. Needs some opening words.
-\end{demonote}
-
 \subsection{Using the Pi}
 \label{sec:using-pi}
 
-At the login line enter \totype{pi} as the username, and when prompted for the password, type \totype{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not} (so make sure you're typing carefully!) You should see:
+If all went well in the last lab session, your Pi should be ready for use, but if you did not complete the Raspbian installation, please go back to the Intro 0 notes and finish it now.
+
+In this session we are going to complete the setup of your Rapberry Pi and explore some of its capabilities. 
+
+At the login line enter \totype{pi} as the username, and when prompted for the password, type \totype{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not} (so make sure you're typing carefully!). Not echoing anything during password typing is fairly universal in Unix systems.
+
+You should now see:
 
 \input{./startuptext.tex}
 
 %
 
-The last line of this text (which is shown in bold here but will be green and blue on your screen) is the \wikipedia{Command_Prompt}{command prompt}. It might look innocent enough, but in the right hands, the command prompt is one of the most powerful ways of controlling a computer. Your previous interaction with a computer was probably via  a \wikipedia{Graphical_User_Interface}{graphical user interface}, or GUI, such as that provided by Windows or Mac OS X, so  it may feel a bit odd at first to be issuing instructions to a machine via a textual command-line. However, this is a crucial skill that you'll need during your studies here at University, and also in your future career. In fact, employers have often said that our students' abilities with the command line come as a very pleasant surprise to them.
+The last line of this text (which is shown in bold here but will be green and blue on your screen) is the \wikipedia{Command_Prompt}{command prompt}. It might look innocent enough, but in the right hands, the command prompt is one of the most powerful ways of controlling a computer. Your previous interaction with a computer was probably via  a \wikipedia{Graphical_User_Interface}{graphical user interface}, or GUI, such as that provided by Windows or Mac OS X, so  it may feel a bit odd at first to be issuing instructions to a machine via a textual command-line. However, this is a crucial skill that you'll need during your studies here at University, and also in your future career. In fact, employers have often said that our students' abilities with the command line come as a very pleasant surprise to them and set them apart from many other students.
 
 
 \begin{diversion}{Don't be a WIMP}
@@ -257,14 +259,14 @@ Retype new Unix password:
 Are you sure you know what your password is? If so then type \cmnd{logout}{logout} at the command prompt. Not surprisingly this will log you out of your Pi. Then log back in again using your new password. 
 
 \begin{danger}{Memory Loss} 
-Although the Pi uses a fairly standard Unix operating system, it's probably not quite as secure as a normal desktop machine because of its small size and easily-removable storage media. Once the Pi has booted from the SD card, it's about as secure as any other Linux machine. But because the memory card is easily removable, it can trivially be connected to another machine as a `removable media' device; and at that point the host machine can almost certainly see its contents, including any of the files you've created, because the filesystem itself isn't encrypted. And because the Pi is small and portable, it's easier to lose it than a laptop or desktop machine; so, be careful!
+Although the Pi uses a fairly standard Unix operating system, it's probably not quite as secure as a normal desktop machine because of its small size and easily-removable storage media. Once the Pi has booted from the SD card, it's about as secure as any other Linux machine, but because the memory card is easily removable, it can trivially be connected to another machine as a `removable media' device; and at that point the host machine can almost certainly see its contents, including any of the files you've created, because the filesystem itself isn't encrypted. And because the Pi is small and portable, it's easier to lose it than a laptop or desktop machine; so, be careful!
 \end{danger}
 
 Now that your password isn't the same as the `out of the box' Pi one, it's safe to plug your Pi into the network. Locate the blue ethernet cable poking out of the desk (labelled \protect\circled{4} on Figure~\ref{figure:cables}); plug that into the appropriate socket on your Pi (number \circled{8} on Figure~\ref{figure:bare-rpi}) and you should see the FDX, LNK and 10M LEDs light up. To confirm that you're now connected to the network, use the \cmnd{ping}{ping} command, which sends a low-level network message to a designated place and checks for a response, to see if you can reach our School's web server. 
 
 \begin{ttoutenv} 
 $ ping www.cs.manchester.ac.uk
-PING waldorf.cs.manchester.ac.uk (130.88.194.191): 56 data bytes
+PING cmpsci.eps.its.man.ac.uk (130.88.98.241): 56 data bytes
 64 bytes from 130.88.194.191: icmp_seq=0 ttl=52 time=37.914 ms
 64 bytes from 130.88.194.191: icmp_seq=1 ttl=52 time=40.392 ms
 64 bytes from 130.88.194.191: icmp_seq=2 ttl=52 time=41.006 ms
@@ -338,11 +340,11 @@ Next we're going to explore the Pi's filesystem a little. You'll be familiar wit
 
 Interacting with a standard Unix filesystem via the command-line uses similar concepts (actually, it's the graphical environment that's being `similar' here really, since the Unix command-line existed quite some time before anything graphical appeared). Files are called files, but what are commonly represented as `folders' in graphical environments are more correctly called `directories' when we are operating at this level (and we'll call them directories from now on, because it'll make some of the command names and manual pages make more sense). 
 
-Let's first see what stuff we already have on our Pi. The \cmnd{ls}{ls} command lists files and directories. Type it now, and you should see that two folders have already been created for you, one called \fname{python\_games} and the other called \fname{Desktop}. 
+Let's first see what stuff we already have on our Pi. The \cmnd{ls}{ls} command lists files and directories. Type it now, and you should see that two directories/folders have already been created for you, one called \fname{python\_games} and the other called \fname{Desktop}. 
 
 \begin{ttoutenv}
 $ ls
-Desktop python_games
+Desktop python\_games
 \end{ttoutenv}
 
 % $
@@ -613,6 +615,8 @@ $ cd quake3
 $ ./ioquake3.arm
 \end{ttoutenv}
 
+% $
+
 \noindent After the startup screen, the game will ask you for a code, but you can just skip this and use the mouse to select the play option. The rest, we're sure, you can figure out for yourself. 
 
 \begin{diversion}{Multiplayer Quake?}
@@ -624,7 +628,7 @@ You can play this version of Quake3 Arena with friends over the network. We'll l
 
 Although we've introduced several Unix commands in this lab, we've only done so quite superficially in this session, giving you just enough detail to get through the tasks we've given you. Each of the commands is much more powerful than what you've been exposed to so far. Though you won't need to know every possible option off by heart, there are a lot of useful things you can learn about them quite easily. 
 
-Most Unix systems, including the one on your Pi have an instruction-manual system that gives more details about the available commands (and most things that you install yourself, such as \totype{frotz} also install their own manual pages).  Try running:
+Most Unix systems, including the one on your Pi, have an instruction-manual system that gives more details about the available commands (and most things that you install yourself, such as \totype{frotz} also install their own manual pages).  Try running:
 
 \begin{ttoutenv}
 $ man ls
