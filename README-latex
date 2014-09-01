@@ -6,7 +6,7 @@ In order to use them you need to run the command
 
 git clone https://github.com/gdg8/csstyles.git
 
-in a directory which LaTeX will find them.
+in a directory where LaTeX will find them.
 
 On a Mac a good place is in ~/Library/texmf/tex/latex
 On Linux it's ~/texmf/tex/latex
