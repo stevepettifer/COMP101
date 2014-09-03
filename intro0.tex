@@ -3,6 +3,7 @@
 \label{cha:getting-started}
 
 \minitoc
+\notesurl{intro0}
 
 \section{Welcome}
 
@@ -22,6 +23,27 @@ Linux, but some use Windows, and of course, outside the labs, you're free to use
 whichever you prefer for any aspect of your studies that does not require use of a particular operating system. If you're not
 familiar with Linux, don't worry. We'll be telling you a bit about it
 in this lab, and you'll be looking at it in much more detail in subsequent labs.
+
+\section{About these notes}
+\subsection{Breakout boxes}
+
+Scattered throughout the main text of these exercises there are information boxes of various kinds:
+\\
+
+\begin{tabular}{m{1.5cm}m{12cm}}
+{\includegraphics[width=1.5cm]{images/bomb}} & \textbf{Danger!} The bomb icon explains problems and pitfalls, and how to avoid them. It's really important that you read these sections, or you may regret it later.\\
+\\
+\includegraphics[width=1.5cm]{images/rpi-logo} & \textbf{Raspberry Pi Facts and Factoids.} These sections explain useful but non-essential things about the Raspberry Pi. If you're pushed for time, you can safely skip these boxes and perhaps come back to them another time.\\
+\\
+\includegraphics[width=1.5cm]{images/diversion} & \textbf{We digress\ldots} Boxes marked with this icon contain digressions and facts that are hopefully interesting but are probably tangential to the main flow of the exercise.\\
+\includegraphics[width=1.5cm]{images/roadblock} & \textbf{Stop here\ldots} Boxes marked with this icon contain checkpoint activities that you should complete before proceeding further.\\
+\end{tabular}
+
+\subsection{Styles and conventions}
+
+We'll be using various typographic styles to indicate different things throughout these notes. When we introduce new concepts, or use terms that have a different meaning in computer science to their everyday use, they will appear \concept{like this}, and will be explained in the nearby text. Things that are either the input or output to commands will appear \ttout{in this font}. And many words or phrases will have a little `w' after them, meaning that if you click on the term (if you're reading the notes online) or type the phrase into \wikipedia{wikipedia}{Wikipedia} (if you're reading this on paper), you should be taken to a sensible definition in case you want to learn more about something that we've touched on here. 
+
+Where you see text in square brackets [LIKE THIS] it will mean that when you're typing things you should replace the text with something that the text describes; for example [NAME OF THIS CITY], would become Manchester.
 
 \section{Using Windows}
 \label{sec:using-windows}
@@ -174,44 +196,10 @@ Before we move on to this reading we would like you to make a start in setting u
 
 \section{Getting started with Raspberry Pi}
 
-\minitoc
-
-\notesurl{intro1}
-
-% TODO: Intro to what they have been given, and labelling their Pi
-% TODO: References, references.
-% TODO: Wikipedia links
-% TODO: The Pi is yours to keep; if you lose it you'll have to buy another
-% TODO: What you'll need to use the Pi at home
-% TODO: Where do we introduce 'devices', 'files' and 'processes'? They will see virtual devices like tty0 and sda1 
-
-
 The Raspberry Pi is an astonishing piece of hardware. Not because it is super-fast or super-powerful---it's actually quite a slow computer by today's standards---but because it is small, cheap and needs very little energy to run. Its cheapness means you can experiment with it safe in the knowledge that if you mess it up, lose it, or drop it into the canal, getting hold of a replacement isn't going to cost you much more than a text-book or a night out at the cinema. Its small size and fairly modest power requirements mean you can be put to use in lots of applications where a regular-sized PC would be impractical.  We hope this will encourage you to experiment and explore, and to take risks playing with both its hardware and software that you might be reluctant to do on your own computer or tablet, or simply can't do with the School's lab machines. 
 
 This lab session is designed to get you familiar with the Raspberry Pi itself, and with some of the basics of the Linux operating system it uses. We're going to be covering a lot of ground quite quickly, and it's important that you read these notes carefully and follow the instructions precisely for now. As the lab sessions progress, the instructions will become much less prescriptive, and we'll be encouraging you to experiment and explore much more, and to find out things for yourself. But for now, just follow our lead. 
 
-\subsection{Breakout boxes}
-
-Scattered throughout the main text of these exercises there are information boxes of various kinds:
-\\
-
-\begin{tabular}{m{1.5cm}m{12cm}}
-{\includegraphics[width=1.5cm]{images/bomb}} & \textbf{Danger!} The bomb icon explains problems and pitfalls, and how to avoid them. It's really important that you read these sections, or you may regret it later.\\
-\\
-\includegraphics[width=1.5cm]{images/rpi-logo} & \textbf{Raspberry Pi Facts and Factoids.} These sections explain useful but non-essential things about the Raspberry Pi. If you're pushed for time, you can safely skip these boxes and perhaps come back to them another time.\\
-\\
-\includegraphics[width=1.5cm]{images/diversion} & \textbf{We digress\ldots} Boxes marked with this icon contain digressions and facts that are hopefully interesting but are probably tangential to the main flow of the exercise.\\
-\includegraphics[width=1.5cm]{images/roadblock} & \textbf{Stop here\ldots} Boxes marked with this icon contain checkpoint activities that you should complete before proceeding further.\\
-\end{tabular}
-
-\subsection{Styles and conventions}
-
-We'll be using various typographic styles to indicate different things throughout these notes. When we introduce new concepts, or use terms that have a different meaning in computer science to their everyday use, they will appear \concept{like this}, and will be explained in the nearby text. Things that are either the input or output to commands will appear \ttout{in this font}. And many words or phrases will have a little `w' after them, meaning that if you click on the term (if you're reading the notes online) or type the phrase into \wikipedia{wikipedia}{Wikipedia} (if you're reading this on paper), you should be taken to a sensible definition in case you want to learn more about something that we've touched on here. 
-
-Where you see text in square brackets [LIKE THIS] it will mean that when you're typing things you should replace the text with something that the text describes; for example [NAME OF THIS CITY], would become Manchester.
-
-\FloatBarrier 
-\section{The Raspberry Pi}
 
 The most remarkable thing about the Pi is that, although it's not the most powerful of computers, it is capable of running the same full \wikipedia{Linux}{Linux} operating system as the machines that you'll be using in the labs for the duration of your studies, and which you'll undoubtedly encounter in your future careers. We're actually going to be using slightly different flavours of Linux on the Pi and the lab machines, but the differences are fairly minor---more on that later. Let's get started. 
 
