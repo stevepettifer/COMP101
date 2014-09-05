@@ -120,7 +120,7 @@ Does it still look like this? Could the arrow be made a bit clearer?
 
 We use email extensively in the School, so it's vitally important that
 you read your mail regularly -- at least once a day (and probably much
-more often!).ON the My Manchester page, follow the mail link (indicated by the hand drawn arrow  in
+more often!). On the My Manchester page, follow the mail link (indicated by the hand drawn arrow  in
 Figure~\ref{figure:welc-mymanchester}) to access your email on the
 University's Office365 system. This is a fully-featured system that
 gives you 25GB of email storage space and an integrated calendar. You should
@@ -259,8 +259,14 @@ Figure~\ref{figure:monitorswitch}. Press any of them to bring up the
 monitor's menu. Now press the 3rd button down and navigate to the
 input selection menu. Switch the Input to DVI and all being well you
 should see a black screen containing the Raspberry Pi logo at the top
-left, and white text that scrolls up the screen as the Pi boots. When
-the boot process finishes for the first time (it will take somewhere
+left, and white text that scrolls up the screen as the Pi boots.
+
+\begin{figure}
+\centerline{\includegraphics[width=12cm]{images/DellInputMenu.jpg}}
+\caption{The Input Selection menu on the monitor. This image  of the Dell U2412M Monitor has been reproduced with the kind permission of Dell. All rights reserved.}\label{figure:monitorswitch}
+\end{figure}
+
+When the boot process finishes for the first time (it will take somewhere
 about 20--30 seconds), if all has gone well you should see the NOOBS (New Out Of Box)
 installation tool appear (see Figure \ref{figure:noobs-install-screen}).
 
@@ -278,7 +284,7 @@ The SD card that comes with your Pi has a range of operating systems installed o
 \caption{Selecting Raspbian}\label{figure:noobs-select-raspbian}
 \end{figure}
 
-Click the Install button and you will see a final warning message as in Figure \ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete.
+Click the Install button and you will see a final warning message as in Figure \ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete, so while you're waiting please use the time to read Section~\ref{sec:unix-linux}.
 
 \begin{figure}
 \centerline{\includegraphics[width=13cm]{images/noobs-install-warning}}
@@ -296,12 +302,6 @@ Click the Install button and you will see a final warning message as in Figure \
   If you buy a new SD card, instructions on how to get hold of the files you'll need, and how to write them to the SD card on various operating systems are available at \urlnop{www.raspberrypi.org/downloads}. You might want to think about getting a larger SD card in any case; the one we've given you is fine for the labwork we've set, but probably a bit on the small side for anything else. SD cards are widely available in shops and online, and aren't expensive. But you should check whether the specific card you're going to buy is compatible with the Pi before parting with any money---differences in the read/write speeds of some cards mean they don't play nicely with the Pi.
 \end{rpi}
 
-
-% TODO: needs a photo of the monitor / switch here
-\begin{figure}
-\centerline{\includegraphics[width=12cm]{images/DellInputMenu.jpg}}
-\caption{The Input Selection menu on the monitor. This image  of the Dell U2412M Monitor has been reproduced with the kind permission of Dell. All rights reserved.}\label{figure:monitorswitch}
-\end{figure}
 
 \begin{diversion}{Booting}
 \label{bootbox}
@@ -340,7 +340,10 @@ Debian GNU/Linux wheezy/sid raspberrypi tty1
 raspberrypi login:
 \end{ttoutenv}
 That's all we want you to do with the Raspberry Pi for this session, we will start using it in earnest in the next session. While you are waiting for Raspbian  to finish installing please take this opportunity to start reading the remaining material for this session. Remember, if you don't finish it during the lab session, please try to do so before the next one.
+
 \section{Unix and Linux}
+\label{sec:unix-linux}
+
 
 Over the next couple of weeks you will be undertaking a number of
 introductory labs to familiarise yourself with the School's computing
