@@ -26,7 +26,7 @@ You are now logged in to a PC that is part of our School Linux network. Type \cm
 
 \section{Reading email at the console}
 
-You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out Alpine as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, Elm (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
+You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out \ttout{Alpine} as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, \ttout{Elm} (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
 
 First, let's confirm that \cmnd{mutt}{Mutt} is actually installed. 
 
@@ -36,7 +36,7 @@ To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd
 \$ which mutt
 \end{ttoutenv}
 
-This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Remember in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}? Well \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot/work without them, but it just wouldn't be very useful.) 
+This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Remember in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}? Well \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot and work without them, but it just wouldn't be very useful.) 
 
 List the contents of \fname{/usr/bin} by typing
 \begin{ttoutenv}
@@ -241,7 +241,7 @@ and you should see a list of all the lines from \ttout{weather.txt} that contain
 Rather like \cmnd{less}{less}, if \cmnd{grep}{grep} isn't given the name of a file as its last command-line argument (in this case we used \fname{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \cmnd{lynx}{lynx} and \cmnd{grep}{grep} so that the output is a single line describing the weather in Manchester right now. The output should look something like:
 
 \begin{ttoutenv}
-   [33]Manchester 22°C 72°F
+   [33]Manchester 22\textdegree{}C 72\textdegree{}F
 \end{ttoutenv}
 
 As a final flourish, let's create a new a way of accessing this new `weather in Manchester' tool that you've created. Type:
