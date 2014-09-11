@@ -20,7 +20,7 @@
 
 If all went well in the last lab session, your Pi should be ready for use, but if you did not complete the Raspbian installation, please go back to the Welcome Lab 0 notes and finish it now.
 
-In this session we are going to complete the setup of your Raspberry Pi and explore some of its capabilities. 
+In this session we are going to complete the setup of your Raspberry Pi and explore some of its capabilities. Please connect your Pi as you did in the previous lab.
 
 At the login line enter \totype{pi} as the username, and when prompted for the password, type \totype{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not} (so make sure you're typing carefully!). Not echoing anything during password typing is fairly universal in Unix systems.
 
@@ -91,7 +91,13 @@ Retype new Unix password:
 \end{ttoutenv}
 
 
-\noindent Note in the above, we're using lines that don't start with the dollar symbol to show output as a result of what you've typed, and that none of the passwords you're typing actually appear on screen for obvious sneaky over-the-shoulder-peeking reasons. \textbf{Don't forget this password: there's no easy way to get back into your Pi without resetting everything.}
+\noindent Note in the above, we're using lines that don't start with the dollar symbol to show output as a result of what you've typed, and that none of the passwords you're typing actually appear on screen for obvious sneaky over-the-shoulder-peeking reasons.
+
+In the previous lab session we introduced you to \concept{Danger boxes}, here is the first example, so please take note.
+
+\begin{danger}{Don't forget your password}
+It is very important that you do not forget this password; there's no easy way to get back into your Pi without resetting everything.
+\end{danger}
 
 Are you sure you know what your password is? If so then type \cmnd{logout}{logout} at the command prompt. Not surprisingly this will log you out of your Pi. Then log back in again using your new password. 
 
@@ -412,7 +418,7 @@ Use \cmnd{curl}{curl} to fetch the file hosted at
 \\
 \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/quake3.tar.gz}
 \\
-making sure you save it in your home directory. 
+making sure you save it in your home directory. Remember that, by default, \ttout{curl} will just output whatever it has fetched to the screen. Use the option you learned about earlier to save it to a file.
 
 Notice that this file ends with \fname{.tar.gz}. The \fname{.gz} suffix tells us that this file has been compressed using a utility called \cmnd{gzip}{gzip}, so the first task is to uncompress the file. Type:
 
@@ -498,6 +504,8 @@ $ sudo halt
 \end{ttoutenv}
 
 \noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order. When all these services have closed down tidily, the Pi will power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi. 
+
+When you have completed the work for this session, please tell the lab supervisor
 
 \FloatBarrier
 \section{What have you learned?}

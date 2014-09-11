@@ -151,14 +151,16 @@ Office365, like most modern email systems, supports the IMAP
 protocol -- which means that you can access your mail from any device
 that can run an IMAP mail client. Some examples of such clients are:
 Mozilla Thunderbird, Mac Mail, Windows Live Mail and mail apps on mobile devices. No matter what
-client you use, you need to tell it the appropriate settings. The mechanism for finding these setting can be found in our CS student IT wiki, which is located on the web at \urlnop{wiki.cs.manchester.ac.uk/index.php/StudentFAQ/IT}. Look for the answer to question 'How do I configure my favourite IMAP mail client?'. This wiki provides help about the IT infrastructure within the School; it is one of several School FAQ lists, which can be found \urlnop{wiki.cs.manchester.ac.uk/index.php/StudentFAQ}. Please make use of these valuable sources of information.
+client you use, you need to tell it the appropriate settings. The mechanism for finding these setting can be found in our CS student IT wiki, which is located on the web at \urlnop{wiki.cs.manchester.ac.uk/index.php/StudentFAQ/IT}. Look for the answer to question 'How do I configure my favourite IMAP mail client?'. This wiki provides help about the IT infrastructure within the School; it is one of several School FAQ lists, which can be found at \urlnop{wiki.cs.manchester.ac.uk/index.php/StudentFAQ}. Please make use of these valuable sources of information.
 
 Once you've found the settings, use Office365 to email this information to yourself, to your
 University account, which is usually of the form:
 
 \url{firstname.lastname@student.manchester.ac.uk}
 
+\enlargethispage{\baselineskip}
 \emph{You'll need this information in a later lab so please don't delete this email after you've read it.}
+
 
 Finally, if you use an IMAP mail client on your phone or mobile
 device, you can configure it to use the settings you've just found, and check
@@ -233,7 +235,7 @@ It's important that you connect the Pi up in exactly the order specified here---
 
 \begin{itemize}
 \item The monitors in the LF31 Lab are all fitted with an extra video lead for connecting up the Pis. Locate the HDMI lead (labelled \protect\circled{1} in Figure \ref{figure:cables}), and plug this into the socket marked \circled{1} on Figure~\ref{figure:bare-rpi}. 
-\item Next we'll need to connect a keyboard and mouse. Separate the male and female USB connectors marked \protect\circled{2} on Figure \ref{figure:cables}, and plug the male end into one of the two USB sockets on your Pi (marked with \protect\circled{2} on the Figure~\ref{figure:bare-rpi}). It doesn't matter which USB socket you choose, but please make sure to reconnect this to the PC when you're done with these experiments as a courtesy to the next user. Take care to connect the USB cable the correct way round. 
+\item Next we'll need to connect a keyboard and mouse. Separate the male and female USB connectors marked \protect\circled{2} on Figure \ref{figure:cables}, and plug the male end into one of the two USB sockets on your Pi (marked with \protect\circled{2} on the Figure~\ref{figure:bare-rpi}). It doesn't matter which USB socket you choose, but please make sure to reconnect this to the PC when you're done with these experiments as a courtesy to the next user. 
 \item \textbf{Do not connect the power or network connectors at this stage!}
 \end{itemize}
 
@@ -282,8 +284,8 @@ The SD card that comes with your Pi is set up so that when you first start the d
 \caption{Selecting Raspbian}\label{figure:noobs-select-raspbian}
 \end{figure}
 
-Click the Install button and you will see a final warning message as in Figure~\ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete, so while you're waiting for Figure~\ref{figure:raspi-config} to appear please use the time to read Section~\ref{sec:unix-linux} then come back here to complete the installation process.
-\label{page:raspbian-install}.
+Click the Install button and you will see a final warning message as in Figure~\ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete, so while you're waiting for Figure~\ref{figure:raspi-config} to appear please use the time to read Section~\ref{sec:unix-linux} in the separate handout then come back here to complete the installation process.
+\label{page:raspbian-install}
   
 \begin{figure}
 \centerline{\includegraphics[width=13cm]{images/noobs-install-warning}}
@@ -343,17 +345,26 @@ raspberrypi login:
 \subsection{Shutting down the Pi}
 \label{sec:shutting-down-pi}
 
-Like any other computer, its really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely you first need to login using the username \ttout{pi} and the password \ttout{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not}. You will then see a screen on which you should type the command
+Like any other computer, its really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely you first need to login using the username \ttout{pi} and the password \ttout{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not}. You will then see a screen which contains a prompt looking like
 
 \begin{ttoutenv}
-\$ sudo halt
+\textbf{pi@raspberrypi ~ $  }
 \end{ttoutenv}
+on which you should type the command
+% $
+
+\begin{ttoutenv}
+sudo halt
+\end{ttoutenv}
+followed by the Return key.
 
 \noindent We'll explain a bit more about what's going on here in the next lab session, but for now please just follow the instructions.
 
-\noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order. When all these services have closed down tidily, the Pi will power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi.
+\noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order. When all these services have closed down tidily, the Pi will power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi. Please make sure you reconnect the USB connector for use with the PC  as a courtesy to the next user, taking care to connect the USB cable the correct way round. 
 
-That's all we want you to do with the Raspberry Pi for this session, we will start using it in earnest in the next session. While you are waiting for Raspbian  to finish installing please take this opportunity to start reading the remaining material for this session. When you have completed the work for this session, please tell one of the lab staff, so we know how you're getting on. Remember, if you don't finish it during the lab session, please try to do so before the next one.
+That's all we want you to do with the Raspberry Pi for this session, we will start using it in earnest in the next session.  When you have completed the work for this session, please tell the lab supervisor so we know how you're getting on. Remember, if you don't finish it during the lab session, please try to do so before the next one.
+
+\textbf{Please make sure you bring your Pi and this set of notes to all the introductorylab sessions.}
 
 \cleardoublepage
 
@@ -486,4 +497,6 @@ systems. Learning Unix is not only a crucial skill for any serious
 computer scientist, it is a very rewarding experience; the labs over
 the next couple of weeks are designed to help you become familiar with what will be your daily working environment.
 
-If you haven't done so already, please return to Section~\ref{page:raspbian-install} on page~\pageref{page:raspbian-install} to complete the Raspbian installation. When you have completed the work for this session, please tell one of the lab staff, so we know how you're getting on.
+If you haven't done so already, please return to Section~\ref{page:raspbian-install} on page~\pageref{page:raspbian-install} to complete the Raspbian installation. When you have completed the work for this session, please tell the lab supervisor, so we know how you're getting on.
+
+\textbf{Please make sure you bring your Pi and this set of notes to all the introductorylab sessions.}
