@@ -325,30 +325,32 @@ display and the layout of keyboard being used; but conveniently the
 defaults set on the Pi will do just fine for now (it is a mostly
 British invention after all, so it defaults to UK keyboard layout!)
 Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit
-Enter again. Confirm that the Pi should reboot (an example of what
-this looks like is shown in Figure \ref{figure:piboot}) and this time
-when the process finishes you'll be presented by a Unix login prompt
-which will say something like:
+Enter again.
+% Confirm that the Pi should reboot (an example of what
+% this looks like is shown in Figure \ref{figure:piboot}) and this time
+% when the process finishes you'll be presented by a Unix login prompt
+% which will say something like:
 
-\begin{figure}
-\centerline{\includegraphics[width=15cm]{images/bootscreen}}
-\caption{A sample Raspberry Pi bootscreen. The exact layout and details may vary depending on the size/shape of the screen and the configuration of the Pi.}\label{figure:piboot}
-\end{figure}
+%\begin{figure}
+%\centerline{\includegraphics[width=15cm]{images/bootscreen}}
+%\caption{A sample Raspberry Pi bootscreen. The exact layout and details may vary depending on the size/shape of the screen and the configuration of the Pi.}\label{figure:piboot}
+%\end{figure}
+
+%\begin{ttoutenv}
+%Debian GNU/Linux wheezy/sid raspberrypi tty1
+
+%raspberrypi login:
+%\end{ttoutenv}
+
+
+%\subsection{Shutting down the Pi}
+%\label{sec:shutting-down-pi}
+
+%Like any other computer, its really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely you first need to login using the username \ttout{pi} and the password \ttout{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not}.
+You will then see a screen which contains a prompt looking like
 
 \begin{ttoutenv}
-Debian GNU/Linux wheezy/sid raspberrypi tty1
-
-raspberrypi login:
-\end{ttoutenv}
-
-
-\subsection{Shutting down the Pi}
-\label{sec:shutting-down-pi}
-
-Like any other computer, its really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely you first need to login using the username \ttout{pi} and the password \ttout{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not}. You will then see a screen which contains a prompt looking like
-
-\begin{ttoutenv}
-\textbf{pi@raspberrypi ~ $  }
+\textbf{pi@raspberrypi ~ \$  }
 \end{ttoutenv}
 on which you should type the command
 % $
@@ -360,7 +362,9 @@ followed by the Return key.
 
 \noindent We'll explain a bit more about what's going on here in the next lab session, but for now please just follow the instructions.
 
-\noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order. When all these services have closed down tidily, the Pi will power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi. Please make sure you reconnect the USB connector for use with the PC  as a courtesy to the next user, taking care to connect the USB cable the correct way round. 
+%\noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order.
+
+The  Pi will now power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi. Please make sure you reconnect the USB connector for use with the PC  as a courtesy to the next user, \emph{taking care to connect the USB cable the correct way round. } Make sure that you leave the desktop PC booted into Linux.
 
 That's all we want you to do with the Raspberry Pi for this session, we will start using it in earnest in the next session.  When you have completed the work for this session, please tell the lab supervisor so we know how you're getting on. Remember, if you don't finish it during the lab session, please try to do so before the next one.
 
