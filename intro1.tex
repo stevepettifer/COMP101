@@ -119,7 +119,7 @@ PING cmpsci.eps.its.man.ac.uk (130.88.98.241): 56 data bytes
 
 % $
 
-Each of the lines starting with `\ttout{64 bytes}' represents a short response from the machine you've just pinged, and you're shown the round-trip time for ping's data to leave your Pi, find (in this case) \url{www.cs.manchester.ac.uk} on the network, and return back to your Pi. Since we're just using ping here to give us some confidence that the network is okay, we don't need to leave it pinging away for ages, so let's stop the ping command in its tracks. Hold down the control key (marked `ctrl' on the keyboard), and press `c'. This will signal the currently executing command that it should stop what its doing and return to the command prompt (quite often this is referred to as ``control-c'ing'' a command, and it will have the same effect on the majority of command-line tools). This key combination is often written \ctrl{c}. \textbf{If you see this notation in these notes, don't type the individual characters, press the key marked ctrl and the appropriate letter key}. 
+Each of the lines starting with `\ttout{64 bytes}' represents a short response from the machine you've just pinged, and you're shown the round-trip time for ping's data to leave your Pi, find (in this case) \url{www.cs.manchester.ac.uk} on the network, and return back to your Pi. Since we're just using ping here to give us some confidence that the network is okay, we don't need to leave it pinging away for ages, so let's stop the ping command in its tracks. Hold down the control key (marked `ctrl' on the keyboard), and press `c'. This will signal the currently executing command that it should stop what its doing and return to the command prompt (quite often this is referred to as ``control-c-ing'' a command, and it will have the same effect on the majority of command-line tools). This key combination is often written \ctrl{c}. \textbf{If you see this notation in these notes, don't type the individual characters, press the key marked ctrl and the appropriate letter key}. 
 
 \begin{diversion}{Ping}
   The \ttout{ping} command is named after its use in the field of active sonar, where an actual `ping' sound was sent through water, and distance calculated by listening for the echo to return. It's the classic boingy pingy noise associated with submarine movies! 
@@ -132,11 +132,12 @@ Before doing anything else, let's take a few steps back and look in a bit more d
 The first concept you'll need to understand is that you have been
 interacting with what is known in Unix circles as a \wikipedia{Shell_(computing)}{shell}: a program that prompts
 the user for commands, accepts them, executes them and displays the
-results. A shell is just a program running on the Linux operating system like any other program---it's not `built in' to the computer or the operating system in any special way, it just happens that by default, the Pi is set up so that when a user logs in, the first program that gets executed on behalf of that user is an interactive shell that allows users to execute further programs themselves. Later in your degree programme you'll look at the file that determines which program gets executed first for a user, and indeed at the order in which programs are run by the operating system as it boots up, because in Linux all of these things can be easily configured by changing a few lines in the appropriate text file. For now, it's enough to understand that the shell is just a program that interacts with the user via the keyboard and display, and allows you to execute commands to do useful things.
+results. A shell is just a program running on the Linux operating system like any other program---it's not `built in' to the computer or the operating system in any special way, it just happens that by default, the Pi is set up so that when a user logs in, the first program that gets executed on behalf of that user is an interactive shell that allows users to execute further programs themselves.
+%Later in your degree programme you'll look at the file that determines which program gets executed first for a user, and indeed at the order in which programs are run by the operating system as it boots up, because in Linux all of these things can be easily configured by changing a few lines in the appropriate text file. For now, it's enough to understand that the shell is just a program that interacts with the user via the keyboard and display, and allows you to execute commands to do useful things.
 
 But what do we mean by `execute commands'? And if the shell is `just a program', how does it get to communicate with the keyboard and screen? What is a `command' anyway, where do commands come from?
 
-To understand what's going on here you'll need to make sense of a concept that's fundamental to pretty-much any operating system; that of a \wikipedia{Process_(computing)}{process}. As you no-doubt know, modern computers have one or more \wikipedia{Central_processing_unit}{Central Processing Units} (CPUs) which are capable of carrying out simple instructions; a basic computer like your Pi will have a single CPU, whereas a big server machine or supercomputer may have several tens of CPUs in a single box. To a first approximation, each CPU is only capable of following one instruction at a time, and the illusion that a computer is capable of doing a very large number of things simultaneously (e.g. streaming music, displaying web pages, downloading a video of a unicycling kitten and playing \wikipedia{Minecraft}{Minecraft}) is achieved by the operating system arranging for each of these tasks to be given access in turn to the CPU for a tiny fraction of a second. More technically, the unit of activity that's being scheduled to run on the CPU is called a \wikipedia{Process_(computing)}{process}. The relationship between anything that you as a user may recognise---for example a desktop application---and what's happening in the operating system in terms of processes is quite complex, since many applications are made up of several processes, and there will be a whole load of other processes doing housekeeping jobs that aren't immediately obvious to a user. But for now we'll gloss over this detail and work on the assumption that when you ask a computer to do something for you, a process will be started to deal with that task for you. 
+To understand what's going on here you'll need to make sense of a concept that's fundamental to pretty-much any operating system; that of a \wikipedia{Process_(computing)}{process}. As you no-doubt know, modern computers have one or more \wikipedia{Central_processing_unit}{Central Processing Units} (CPUs) which are capable of carrying out simple instructions; a basic computer like your Pi will have a single CPU, whereas a big server machine or supercomputer may have several tens of CPUs in a single box. To a first approximation, each CPU is only capable of following one instruction at a time, and the illusion that a computer is capable of doing a very large number of things simultaneously (e.g. streaming music, displaying web pages, downloading a video of a unicycling kitten and playing \wikipedia{Minecraft}{Minecraft}) is achieved by the operating system arranging for each of these tasks to be given access in turn to the CPU for a tiny fraction of a second. More technically, these tasks are called \wikipedia{Process_(computing)}{processes}. The relationship between anything that you as a user may recognise---for example a desktop application---and what's happening in the operating system in terms of processes is quite complex, since many applications are made up of several processes, and there will be a whole load of other processes doing housekeeping jobs that aren't immediately obvious to a user. But for now we'll gloss over this detail and work on the assumption that when you ask a computer to do something for you, a process will be started to deal with that task for you. 
 
 \begin{figure}
 \centerline{\includegraphics[width=7cm]{images/bashandping}}
@@ -162,7 +163,8 @@ You will learn much more about processes and the way they are managed in COMP151
 \subsection{The process `family tree'}
 \label{section:family-tree}
 
-When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in the next Pi lab), generally speaking the child cannot exist without its parent. If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be its children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail later in the course.
+When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in the next Pi lab), generally speaking the child cannot exist without its parent.
+%If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be its children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail later in the course.
 
 
 \begin{diversion}{Unix shells}
@@ -178,10 +180,6 @@ Windows, except that Unix shells are considerably more sophisticated.
 \end{diversion}
 
 
-
-\begin{danger}{Pi Power} 
-Like most other computers, the Pi doesn't like having its power removed without being shut down properly. Although you might get away with it, there's a reasonable chance of messing up the operating system if you remove the power while the Pi is in the middle of doing something. And because the Pi runs a multi-tasking operating system, it's almost always `doing something', so pulling the power out unexpectedly is always a bad idea. You're unlikely to damage the Pi's hardware like this, but you may find that you lose work, and may have to reinstall the operating system. For instructions on how to shut the Pi down safely, see Section \ref{section:shutdown}. 
-\end{danger}
 
 \section{File systems and files}
 
@@ -203,10 +201,12 @@ When we're using a command-line prompt, we have the notion of of \wikipedia{http
 Let's say we want to look at the contents of the \fname{python\_games} directory. There are several ways of doing this, but for now we'll break the process down into simple steps. Use the \cmnd{cd}{cd} command to Change Directory to \fname{python\_games}:
 
 \begin{ttoutenv}
-$ cd python_games
+\$ cd python_games
 \end{ttoutenv}
 
-and look at what's happened to the command prompt. Whereas before it was just
+Here we have a \concept{command}, \ttout{cd}, together with an \concept{argument}, \ttout{python\_games} which specifies the object on which the command is to operate.
+
+Now look at what's happened to the command prompt. Whereas before it was just
 \\
 \\
 \totype{pi@raspberrypi \texttildelow{} \$}
@@ -264,11 +264,11 @@ $ cd
 You should see the command prompt change back to being as it was when we first logged in. So where in the filesystem is our home directory? We can find out where we currently are using the \totype{pwd} command, which stands for Print Working Directory:
 
 \begin{ttoutenv}
-$ pwd
+\$ pwd
 /home/pi
 \end{ttoutenv}
 
-So apparently we're in a directory called \fname{/home/pi} which sounds plausible enough. Notice that the \cmnd{pwd}{pwd} command has returned us an \wikipedia{Path_(computing)}{absolute pathname}, that is, it starts with a \fname{/} character. Absloute paths, such as \fname{/home/pi} are given by their 'steps' from the root. So we now know that the home directory for the user \fname{pi} is in a directory called \fname{home} which itself is a subdirectory of the root \fname{/}. 
+So apparently we're in a directory called \fname{/home/pi} which sounds plausible enough. Notice that the \cmnd{pwd}{pwd} command has returned us an \wikipedia{Path_(computing)}{absolute pathname}, that is, it starts with a \fname{/} character. Absolute paths, such as \fname{/home/pi} are given by their 'steps' from the root. So we now know that the home directory for the user \fname{pi} is in a directory called \fname{home} which itself is a subdirectory of the root \fname{/}. 
 
 Let's confirm that this is true. Issue the command:
 \begin{ttoutenv}
@@ -282,15 +282,18 @@ which just means `change directory to the root directory' and use the \cmnd{ls}{
 \$ ls
 \end{ttoutenv}
 
-\noindent You should see a fairly long list of files. Look carefully, and you'll find two names that you recognise: \cmnd{ls}{ls} and \cmnd{pwd}{pwd}. These are the `binary executable' files for the commands that you've just been using (which is why they are in the `bin' directory, which is short for binary). In Unix, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes Unix very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
+\noindent Here the argument to \ttout{cd} is not an absolute pathname (starting with \ttout{/}) but a \concept{relative pathname} (not starting with \ttout{/}). A relative pathname can be thought of as a `pathname starting from here', where `here' means the current working directory. So, because we are in \fname{/usr}, the relative pathname \fname{bin} refers to the directory \fname{/usr/bin}.
 
-We now need to get back to our home directory. You should by now be able to think of at least four different ways of getting there!
+\noindent The above commands should have produced  a fairly long list of files. Look carefully, and you'll find two names that you recognise: \cmnd{ls}{ls} and \cmnd{pwd}{pwd}. Files like these are called \concept{binary executable} files and are the programs run when the commands are used  (which is why they are in the `bin' directory, which is short for binary). In Unix, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes Unix very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
+
+We now need to get back to our home directory. You should by now be able to think of There are many ways of doing this, including the following:
 
 \begin{enumerate}
-\item \totype{cd} on its own means `take me directly to my home directory'.
+\item \totype{cd} on its own means `take me directly to my home directory'
 \item We know that the tilde symbol also means `my home directory', so \totype{cd \texttildelow{}} will also work (though at the expense of two extra keystrokes!)
 \item We could go back to the root directory by first typing \totype{cd /}, then \totype{cd home} and finally \totype{cd pi}
-\item We could go straight from where we are now (which is \fname{/bin}, remember) by typing \totype{cd /home/pi}
+\item We could go back to the root directory by first typing \totype{cd /}, then \totype{cd home/pi}
+\item We could go straight from where we are now (which is \fname{/bin}, remember) by typing \totype{cd /home/pi} -- use this method now 
 \end{enumerate}
 
 Now we're back in our home directory (check the command prompt to make sure), you may have noticed that our commands for navigating around the filesystem are missing one feature. We can go to the `top' of our home directory easily enough; and we can go straight to very top of the whole filestore using \cmnd{cd}{cd /}~; and we know how to descend into a subdirectory (e.g. \cmnd{cd}{cd python\_games}). But how do we go up one level? If we were in some nested subdirectory several levels below our home, and wanted to go just one level back up the tree, it would be very tedious to have to start back at our home directory and traverse back down to where we wanted to be. 
@@ -301,7 +304,9 @@ Unix represents the idea of going `up' one directory with the \fname{..} symbol 
 \$ cd ..
 \end{ttoutenv}
 
-You can mix in the \fname{..} notation in relative and absolute paths anywhere you like. So, assuming you are still in \fname{python\_games}, how could you get into \fname{/bin} using only a \textit{relative} path in the \totype{cd} command? Yes, this is a slightly artificial exercise because the simplest solution would just be to use the absolute path \totype{cd /bin}, but just go with the flow for now and work it out using a relative path. The answer is shown in Figure \ref{figure:simple-navigation}. 
+You can mix in the \fname{..} notation in relative and absolute paths anywhere you like. So, assuming you are still in \fname{python\_games}, how could you get into \fname{/bin} using only a \textit{relative} path in the \totype{cd} command? Yes, this is a slightly artificial exercise because the simplest solution would just be to use the absolute path \totype{cd /bin}, but just go with the flow for now and work it out using a relative path. The answer is shown in Figure \ref{figure:simple-navigation}.
+
+We can also refer to the current directory in a similar manner. Just as the directory above is referred to as \ttout{..}, the current directory can be referred to as \ttout{.}, or `dot'. So the relative pathname \fname{x/y/z} refers to exactly the same place as \fname{./x/y/z}/
 
 
 \begin{figure}[t]
@@ -313,7 +318,7 @@ You can mix in the \fname{..} notation in relative and absolute paths anywhere y
 
 The files we've looked at so far, and the behaviour of the commands we've used to manipulate them shouldn't feel too alien---we're just doing similar things on the command line to actions that you'll have performed using a graphical interface before. But the Unix take on files is rather more sophisticated than this, and to understand that, we'll need to think in a bit more detail about what a file actually is. When we think of an image or a music track as being stored `in a file', what do we actually mean? 
 
-In abstract terms, a file is just a sequence of numbers, ultimately stored in binary on some storage device such as a hard drive. The right program can interpret these numbers, and turn them into pictures on screen, or sounds coming out of your speakers. The wrong program would be able to make no sense of a file at all; if you could `display' an audio track on screen, or `play' an image file as sound, it would just be a meaningless mess. So there's nothing very special about a file that makes its contents mean one thing or another; it's just up to a program to interpret what's in the file correctly. So what are the properties of a file? So far we've seen that files have a filename, and a location within a file system. We've seen that some files can be executed (which means their contents are instructions to the computer's CPU to do something), whereas other files contain data. But in both these cases, files are just sequences of numbers. Although we've not explored this yet, some files can be written to or modified, whereas others can only be read from; but they are still just sequences of numbers which when interpreted correctly have a particular meaning. 
+In abstract terms, a file is just a sequence of numbers on some storage device such as a hard drive. The right program can interpret these numbers, and turn them into pictures on screen, or sounds coming out of your speakers. The wrong program would be able to make no sense of a file at all; if you could `display' an audio track on screen, or `play' an image file as sound, it would just be a meaningless mess. So there's nothing very special about a file that makes its contents mean one thing or another; it's just up to a program to interpret what's in the file correctly. So what are the properties of a file? So far we've seen that files have a filename, and a location within a file system. We've seen that some files can be executed, whereas other files contain data. But in both these cases, files are just sequences of numbers. Although we've not explored this yet, some files can be written to or modified, whereas others can only be read from; but they are still just sequences of numbers which when interpreted correctly have a particular meaning. 
 
 The designers of Unix exploited this idea to create a very elegant way of representing the hardware of the underlying computer, and many of the properties of the operating system by treating anything that can be thought of as behaving like a file as being a file. 
 
@@ -321,7 +326,7 @@ What, for example, might a hard disk look like to the operating system? Well, a 
 
 What about a process? Well that's a sequence of numbers in memory that happen to be instructions to the CPU to do useful things; so that's a file too (probably in this case a read-only file). 
 
-What about a keyboard? Surely that's not a file? Actually it can be thought of as having some file-like properties; it's a stream of numbers that represent the keys pressed by the user, so it too is a sort-of read-only file. And the console? That too is file-like\ldots because it represents a sequence of numbers that can be interpreted as the output from various processes; so it's a bit like a write-only file. 
+What about a keyboard? Surely that's not a file? Actually it can be thought of as having some file-like properties; it's a stream of numbers that represent the keys pressed by the user, so it too is a sort-of read-only file. And the screen? That too is file-like\ldots because it represents a sequence of numbers that can be interpreted as the output from various processes; so it's a bit like a write-only file. 
 
 This may seem all a bit esoteric and confusing right now, but as we explore more examples of these file-like things, you'll start to see how elegant the idea is. 
 
@@ -346,7 +351,7 @@ Unlike the other commands that you've used so far, the program we need to be abl
 
 But first, we're going to have to understand a command called \cmnd{sudo}{sudo}. Everything that you've done so far has involved looking at files that either belong to the `pi' user, or are parts of the system that can be read or executed by any user. But of course, installing a new piece of software involves \textit{modifying} the Pi's operating system in some way, and that's not something that you want to do casually since mistakes could potentially mess up the whole device. 
 
-You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had two major downsides: first, that if you accidentally left yourself logged in as the superuser when you nipped out for a coffee, the machine was vulnerable to misuse by anybody who could get at the keyboard; but second and more serious, all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disastrous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{sudo}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. 
+You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had the major downside that all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disastrous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{sudo}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. \ttout{sudo} privileges are not normally given to every user.
 
 The system that we're going to use to install this game is called \cmnd{apt}{apt}, which stands for \wikipedia{Advanced_Packaging_Tool}{Advanced Packaging Tool}. This tool maintains a list of remote \textit{repositories} in which packages have been put that contain all the programs, libraries and data files necessary to install a particular Linux program. It can deal with fetching packages over the Internet, as well as extracting and copying their contents into the right places on your system. It also performs a series of sanity-checks to make sure that what you're adding is compatible with whatever you've already got in place.
 
@@ -392,7 +397,7 @@ The \ttout{frotz} system on its own is just a virtual machine into which you can
 
 \noindent so you can fetch it from there. Oh, hang on. No web browser. Oh dear.
 
-Although it is actually possible to browse the web without a conventional web browser on the Pi (we'll experiment in another lab session because there are interesting lessons to be learned by doing so), there's an easier way to interact with the web to get the file that we need, using a command called \cmnd{curl}{curl}. First, use \cmnd{cd}{cd} to change to your home directory if you're not there already, then
+Rather than browsing the web in the normal way, we sometimes want to just obtain a copy of file; we can do this the command  \cmnd{curl}{curl}. First, use \cmnd{cd}{cd} to change to your home directory if you're not there already, then
 
 \begin{ttoutenv}
 \footnotesize
@@ -407,8 +412,8 @@ Use \cmnd{ls}{ls} to confirm that you can see the file \fname{Advent.z5} in your
 $ frotz Advent.z5
 \end{ttoutenv}
 
-\noindent to start playing the Colossal Cave Adventure. Once the game has started (the screen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There are some parallels between using commands to wander around Colossal Cave and using Unix commands to navigate around the Pi's filesystem. There's a map of the entire Colossal Cave world in Appendix \ref{appendix:colossal-map}, and we'll look at some commands that will help you if you get totally lost in a Unix filesystem in %section \ref{section:advanced-navigation} in
-a later lab session.
+\noindent to start playing the Colossal Cave Adventure. Once the game has started (the screen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There are some parallels between using commands to wander around Colossal Cave and using Unix commands to navigate around the Pi's filesystem.
+%There's a map of the entire Colossal Cave world in Appendix \ref{appendix:colossal-map}, and we'll look at some commands that will help you if you get totally lost in a Unix filesystem in %section \ref{section:advanced-navigation} in a later lab session.
 
 Earlier, we referred to Colossal Cave as a work of Interactive Fiction (IF). In truth, this is perhaps stretching the term somewhat, since the genre has matured considerably in the decades since this first adventure game. For a much more compelling example of Interactive Fiction with beautifully written prose, and funny and challenging puzzles we suggest you have a go at playing Curses by \wikipedia{Graham_Nelson}{Graham Nelson}, or one of the many other games written by Interactive Fiction enthusiasts that are available for free from \url{www.ifarchive.org}. If you find yourself getting hooked on playing IF, the frotz interpreter is available for most platforms, including iOS, Android, OS X and Windows. 
 
@@ -446,7 +451,7 @@ To see what's in this archive, run the command
 \noindent To actually extract the contents of the archive we issue the command:
 
 \begin{ttoutenv}
-$ tar xvf quake3.tar
+\$ tar xvf quake3.tar
 \end{ttoutenv}
 
 \noindent where
@@ -460,13 +465,11 @@ $ tar xvf quake3.tar
 \noindent When tar has finished working you're presented again with the command prompt. Use \cmnd{ls}{ls} to confirm that you now have a directory called \fname{quake3} in your home directory.  You might also want to plug some headphones into the Pi at this point too, if you happen to have a pair with you. 
 
 \begin{ttoutenv}
-$ cd quake3
-$ ./ioquake3.arm
+\$ cd quake3
+\$ ./ioquake3.arm
 \end{ttoutenv}
 
-% $
-
-\noindent After the startup screen, the game will ask you for a code, but you can just skip this and use the mouse to select the play option. The rest, we're sure, you can figure out for yourself. 
+This command executes the file \fname{ioquake3.arm} which is in the current directory. After the startup screen, the game will ask you for a code, but you can just skip this and use the mouse to select the play option. The rest, we're sure, you can figure out for yourself. 
 
 \begin{diversion}{Multiplayer Quake?}
 You can play this version of Quake3 Arena with friends over the network. We'll leave you to figure out how to configure that yourself (hint: the \cmnd{ifconfig}{ifconfig} command will tell you what IP address has been allocated to your Pi).
@@ -496,6 +499,11 @@ The acronym RTFM stands for Read The Flipping Manual, and is sometimes used as a
 \end{diversion}
 
 \FloatBarrier
+
+\begin{danger}{Pi Power} 
+Like most other computers, the Pi doesn't like having its power removed without being shut down properly. Although you might get away with it, there's a reasonable chance of messing up the operating system if you remove the power while the Pi is in the middle of doing something. And because the Pi runs a multi-tasking operating system, it's almost always `doing something', so pulling the power out unexpectedly is always a bad idea. You're unlikely to damage the Pi's hardware like this, but you may find that you lose work, and may have to reinstall the operating system. For instructions on how to shut the Pi down safely, see Section \ref{section:shutdown}. 
+\end{danger}
+
 \section{Shutting down your Pi safely}
 \label{section:shutdown}
 
