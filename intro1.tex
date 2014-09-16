@@ -225,7 +225,7 @@ to indicate that we've changed our current directory to \fname{python\_games} (r
 Now use the \cmnd{ls}{ls} command to list the contents of our new current working directory. You should see a long list of files: some are programs written in the Python programming language (these files end in \fname{.py}), others are images or sounds used by those programs (ending in \fname{.png} or \fname{.wav}). At the prompt type:
 
 \begin{ttoutenv}
-$ python wormy.py
+\$ python wormy.py
 \end{ttoutenv}
 
 to start a simple version of the classic `Snake' game. You can guide your green snake around the screen with the cursor keys; you score a point every time you eat one of the red squares and an extra segment gets added to the length of your snake. The game finishes if you crash into the edge of the screen or eat yourself. Once you've convinced yourself this is working (don't spend too long playing the game!), press the Escape key to return to the command prompt. You'll be writing a version of this game soon enough in the Java labs.
@@ -258,9 +258,9 @@ Apart from \fname{/} there are two more directories of special note:
 \item Your \textit{current working directory} is the one you are working in at a particular moment.
 \end{itemize}
 
-So let's see where we are in the Pi's filesystem at the moment. Assuming you're following these instructions properly you should still be in the \fname{python\_games} directory (check the command prompt to confirm this is the case). To go back to our home directory, we can use the \cmnd{cd}{cd} command without any arguments:
+So let's see where we are in the Pi's filesystem at the moment. Assuming you're following these instructions properly you should still be in the \fname{python\_games} directory (check the command prompt to confirm this is the case). To go back to our home directory, we can use the \cmnd{cd}{cd} command without an argument:
 \begin{ttoutenv}
-$ cd
+\$ cd
 \end{ttoutenv}
 
 You should see the command prompt change back to being as it was when we first logged in. So where in the filesystem is our home directory? We can find out where we currently are using the \totype{pwd} command, which stands for Print Working Directory:
@@ -288,7 +288,7 @@ which just means `change directory to the root directory' and use the \cmnd{ls}{
 
 \noindent The above commands should have produced  a fairly long list of files. Look carefully, and you'll find two names that you recognise: \cmnd{ls}{ls} and \cmnd{pwd}{pwd}. Files like these are called \concept{binary executable} files and are the programs run when the commands are used  (which is why they are in the `bin' directory, which is short for binary). In Unix, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes Unix very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
 
-We now need to get back to our home directory. You should by now be able to think of There are many ways of doing this, including the following:
+We now need to get back to our home directory.  There are many ways of doing this, including the following:
 
 \begin{enumerate}
 \item \totype{cd} on its own means `take me directly to my home directory'
@@ -306,9 +306,9 @@ Unix represents the idea of going `up' one directory with the \fname{..} symbol 
 \$ cd ..
 \end{ttoutenv}
 
-You can mix in the \fname{..} notation in relative and absolute paths anywhere you like. So, assuming you are still in \fname{python\_games}, how could you get into \fname{/bin} using only a \textit{relative} path in the \totype{cd} command? Yes, this is a slightly artificial exercise because the simplest solution would just be to use the absolute path \totype{cd /bin}, but just go with the flow for now and work it out using a relative path. The answer is shown in Figure \ref{figure:simple-navigation}.
+We use \fname{..} whenever we we want to specify a move up the directory tree. So, assuming you are still in \fname{python\_games}, how could you get into \fname{/bin} using only a \textit{relative} path in the \totype{cd} command? Yes, this is a slightly artificial exercise because the simplest solution would just be to use the absolute path \totype{cd /bin}, but just go with the flow for now and work it out using a relative path. The answer is shown in Figure \ref{figure:simple-navigation}.
 
-We can also refer to the current directory in a similar manner. Just as the directory above is referred to as \ttout{..}, the current directory can be referred to as \ttout{.}, or `dot'. So the relative pathname \fname{x/y/z} refers to exactly the same place as \fname{./x/y/z}/
+We can also refer to the current directory in a similar manner. Just as the directory above is referred to as \ttout{..}, the current directory can be referred to as \ttout{.}, or `dot'. So the relative pathname \fname{x/y/z} refers to exactly the same place as \fname{./x/y/z}
 
 
 \begin{figure}[t]
@@ -320,7 +320,7 @@ We can also refer to the current directory in a similar manner. Just as the dire
 
 The files we've looked at so far, and the behaviour of the commands we've used to manipulate them shouldn't feel too alien---we're just doing similar things on the command line to actions that you'll have performed using a graphical interface before. But the Unix take on files is rather more sophisticated than this, and to understand that, we'll need to think in a bit more detail about what a file actually is. When we think of an image or a music track as being stored `in a file', what do we actually mean? 
 
-In abstract terms, a file is just a sequence of numbers on some storage device such as a hard drive. The right program can interpret these numbers, and turn them into pictures on screen, or sounds coming out of your speakers. The wrong program would be able to make no sense of a file at all; if you could `display' an audio track on screen, or `play' an image file as sound, it would just be a meaningless mess. So there's nothing very special about a file that makes its contents mean one thing or another; it's just up to a program to interpret what's in the file correctly. So what are the properties of a file? So far we've seen that files have a filename, and a location within a file system. We've seen that some files can be executed, whereas other files contain data. But in both these cases, files are just sequences of numbers. Although we've not explored this yet, some files can be written to or modified, whereas others can only be read from; but they are still just sequences of numbers which when interpreted correctly have a particular meaning. 
+A file is actually just a sequence of numbers on some storage device such as a hard drive. The right program can interpret these numbers, and turn them into pictures on screen, or sounds coming out of your speakers. The wrong program would be able to make no sense of a file at all; if you could `display' an audio track on screen, or `play' an image file as sound, it would just be a meaningless mess. So there's nothing very special about a file that makes its contents mean one thing or another; it's just up to a program to interpret what's in the file correctly. So what are the properties of a file? So far we've seen that files have a filename, and a location within a file system. We've seen that some files can be executed, whereas other files contain data. But in both these cases, files are just sequences of numbers. Although we've not explored this yet, some files can be written to or modified, whereas others can only be read from; but they are still just sequences of numbers which when interpreted correctly have a particular meaning. 
 
 The designers of Unix exploited this idea to create a very elegant way of representing the hardware of the underlying computer, and many of the properties of the operating system by treating anything that can be thought of as behaving like a file as being a file. 
 
@@ -344,7 +344,7 @@ We're now going to explore a bit of computing history, and install and play one 
 \caption{A PDP-10 from CERN, circa 1974, reproduced with permission. \urlnop{cds.cern.ch/record/916840}. We've taken the liberty of crudely superimposing a Raspberry Pi to approximately the right scale on the operator's desk, just to give a sense of the difference in size between the two machines.}\label{figure:cern-pdp-10}
 \end{figure}
 
-Although the original FORTRAN source code for Colossal Cave still exists, the version you're going to play with is based on a re-implementation of the game on what became known as the \wikipedia{Z-machine}{Z-Machine}: a \wikipedia{Virtual_Machine}{virtual machine} specifically for running interactive fiction games.\footnote{Don't confuse the Z-machine, which is a virtual machine for adventure games, with the Z Machine, which is the largest X-ray generator in the world. Doing so is likely to make your lamp melt, and the trolls very grumpy.}
+Although the original FORTRAN source code for Colossal Cave still exists, the version you're going to play with is based on a re-implementation of the game on what became known as the \wikipedia{Z-machine}{Z-Machine}: a \wikipedia{Virtual_Machine}{virtual machine} specifically for running interactive fiction games, such as Colossal Cave.\footnote{Don't confuse the Z-machine, which is a virtual machine for adventure games, with the Z Machine, which is the largest X-ray generator in the world. Doing so is likely to make your lamp melt, and the trolls very grumpy.}
  
 \FloatBarrier
 \subsection{Installing Frotz, a Z-Machine Interpreter}
@@ -353,7 +353,7 @@ Unlike the other commands that you've used so far, the program we need to be abl
 
 But first, we're going to have to understand a command called \cmnd{sudo}{sudo}. Everything that you've done so far has involved looking at files that either belong to the `pi' user, or are parts of the system that can be read or executed by any user. But of course, installing a new piece of software involves \textit{modifying} the Pi's operating system in some way, and that's not something that you want to do casually since mistakes could potentially mess up the whole device. 
 
-You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had the major downside that all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disastrous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{sudo}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. \ttout{sudo} privileges are not normally given to every user.
+You'll be familiar with the idea of a user with \wikipedia{Administrators}{Administrator privileges} from Windows or OS X; on Linux the \wikipedia{Superuser}{superuser} that can do anything to any part of the system is called `root' (because this user can modify any part of the system from the root of the filestore downwards). In the early days of Unix, administrators would log in as the root user to modify, update and repair the system. This had the major downside that all the normal safety nets that prevent you from accidentally deleting or damaging the operating system itself are deactivated, so its much easier for a slip of the finger or a brief moment of stupidity to have disastrous effects. To avoid these problems, Unix systems now usually recommend the use of the \cmnd{sudo}{sudo} ('Super User Do') command to temporarily elevate a normal user's privilege to that of super user for a single command. \ttout{sudo} privileges are not normally given to every user on a Unix system, but the user \fname{pi} on the Raspberry Pi is trusted and s is given \ttout{sudo} rights.
 
 The system that we're going to use to install this game is called \cmnd{apt}{apt}, which stands for \wikipedia{Advanced_Packaging_Tool}{Advanced Packaging Tool}. This tool maintains a list of remote \textit{repositories} in which packages have been put that contain all the programs, libraries and data files necessary to install a particular Linux program. It can deal with fetching packages over the Internet, as well as extracting and copying their contents into the right places on your system. It also performs a series of sanity-checks to make sure that what you're adding is compatible with whatever you've already got in place.
 
@@ -399,11 +399,11 @@ The \ttout{frotz} system on its own is just a virtual machine into which you can
 
 \noindent so you can fetch it from there. Oh, hang on. No web browser. Oh dear.
 
-Rather than browsing the web in the normal way, we sometimes want to just obtain a copy of file; we can do this the command  \cmnd{curl}{curl}. First, use \cmnd{cd}{cd} to change to your home directory if you're not there already, then
+Rather than browsing the web in the normal way, we sometimes want to just obtain a copy of file; we can do this using the command  \cmnd{curl}{curl}. First, use \ttout{cd} to change to your home directory if you're not there already, then
 
 \begin{ttoutenv}
 \footnotesize
-$ curl http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5 -o Advent.z5
+\$ curl http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5 -o Advent.z5
 \end{ttoutenv} 
 
 \noindent and you'll see \totype{curl} fetch the file you need `over the web' and save it in your home directory. This is also the first time you've encountered what's called a command-line argument \concept{switch}: the \ttout{-o} switch tells \cmnd{curl}{curl} to use the next argument on the command line as the output filename. 
@@ -411,7 +411,7 @@ $ curl http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5 -o Ad
 Use \cmnd{ls}{ls} to confirm that you can see the file \fname{Advent.z5} in your home directory, then type: 
 
 \begin{ttoutenv}
-$ frotz Advent.z5
+\$ frotz Advent.z5
 \end{ttoutenv}
 
 \noindent to start playing the Colossal Cave Adventure. Once the game has started (the screen will have gone blue), type HELP to get instructions. When you've had a bit of a wander around and got the general idea of the game, you can type quit to get back to the command prompt. There are some parallels between using commands to wander around Colossal Cave and using Unix commands to navigate around the Pi's filesystem.
@@ -427,7 +427,7 @@ Use \cmnd{curl}{curl} to fetch the file hosted at
 \\
 \urlnop{studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/quake3.tar.gz}
 \\
-making sure you save it in your home directory. Remember that, by default, \ttout{curl} will just output whatever it has fetched to the screen. Use the option you learned about earlier to save it to a file called \fname{quake.tar.gz}.
+making sure you save it in your home directory. By default, \ttout{curl} will just output whatever it has fetched to the screen. Use the option you learned about earlier to save it to a file called \fname{quake.tar.gz}.
 
 Notice that this file ends with \fname{.tar.gz}. The \fname{.gz} suffix tells us that this file has been compressed using a utility called \cmnd{gzip}{gzip}, so the first task is to uncompress the file. Type:
 
@@ -471,7 +471,7 @@ To see what's in this archive, run the command
 \$ ./ioquake3.arm
 \end{ttoutenv}
 
-This command executes the file \fname{ioquake3.arm} which is in the current directory. After the startup screen, the game will ask you for a code, but you can just skip this and use the mouse to select the play option. The rest, we're sure, you can figure out for yourself. 
+This command executes the file \fname{ioquake3.arm} which is in the current directory (\fname{.}). After the startup screen, the game will ask you for a code, but you can just skip this and use the mouse to select the play option. The rest, we're sure, you can figure out for yourself. 
 
 \begin{diversion}{Multiplayer Quake?}
 You can play this version of Quake3 Arena with friends over the network. We'll leave you to figure out how to configure that yourself (hint: the \cmnd{ifconfig}{ifconfig} command will tell you what IP address has been allocated to your Pi).
@@ -509,13 +509,13 @@ Like most other computers, the Pi doesn't like having its power removed without 
 \section{Shutting down your Pi safely}
 \label{section:shutdown}
 
-When you're finished playing Quake, exit the game and get back to the command prompt. Like any other computer, it is really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely using the \cmnd{halt}{halt} command:
+When you're finished playing Quake, exit the game and get back to the command prompt. Like any other computer, it is really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely use the \cmnd{halt}{halt} command:
 
 \begin{ttoutenv}
 \$ sudo halt
 \end{ttoutenv}
 
-\noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order. When all these services have closed down tidily, the Pi will power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi. As always, please reconnect the USB cable ready for use by the desktop PC.
+\noindent You'll see the a series of messages scroll past that look rather like those you saw during the boot process. This shouldn't be surprising, since what the operating system is doing now is shutting down all the things that it started up when you booted the machine, roughly in reverse order. When all these services have closed down tidily, the Pi will power itself down; the network  and OK LEDs will go off, the screen should go black, and only the red PWD LED will remain lit on the circuit board. At this point its safe to pull the Micro-USB cable out of the Pi. As always, please reconnect the USB cable ready for use by the desktop PC and reset the monitor to get input from the PC rather than the Pi.
 
 When you have completed the work for this session, please tell the lab supervisor
 
