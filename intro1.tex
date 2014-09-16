@@ -163,8 +163,10 @@ You will learn much more about processes and the way they are managed in COMP151
 \subsection{The process `family tree'}
 \label{section:family-tree}
 
-When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in the next Pi lab), generally speaking the child cannot exist without its parent.
-%If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be its children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail later in the course.
+When the shell's started up a process to run your command, the new process (the one that's running the command) is thought of as a `child' of the shell's process. The child inherits many of the properties of its parent (you'll see why this is important in the next Pi lab).
+%generally speaking the child cannot exist without its parent.
+
+% If something caused the parent process to abort, then the child process would also die. If the child process for whatever reason itself starts up any new processes, they would be its children (and, if you like `grandchildren' of the original shell); so in this case, causing the shell to die would wipe out all its offspring. Generally this is the behaviour that you want (it certainly is for most commands issued from the shell), but some times you want a process that you've started to outlive its parent (for example, to continue running even when you've quit your shell and logged out). We'll look at this behaviour in much more detail later in the course.
 
 
 \begin{diversion}{Unix shells}

@@ -14,14 +14,17 @@
   You can then poke around the dot files and fix the problem. Often this involves removing, or just renaming, the offending dot file
 
 \end{demonote}
- Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
+
+Today we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa. 
 
 \section{Logging in}
 
 %%% BEGIN CONSOLE MODE SESSION
  Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). Remember that nothing will appear on the screen when you type your password. You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
 
-You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. Later we will be using a graphical environment, but for now we will stick to the console and start off by reading mail.
+ You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. 
+
+ The environment you are now in is known as \concept{console mode}. This is a way of interacting with  computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}. Later we will be using a graphical environment, but for now we will stick to the console and start off by reading mail.
 
 
 \section{Reading email at the console}
@@ -36,7 +39,7 @@ To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd
 \$ which mutt
 \end{ttoutenv}
 
-This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Remember in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}? Well \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot and work without them, but it just wouldn't be very useful.) 
+This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Recall that  in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential low-level commands such as \ttout{ls}; the directory \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot and work without them, but it just wouldn't be very useful.) 
 
 List the contents of \fname{/usr/bin} by typing
 \begin{ttoutenv}
@@ -58,7 +61,7 @@ So far we've been getting you to do a fair amount of typing, and now we have to 
 
 Type \ttout{ls /} but don't hit Enter, and instead press the Tab key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of directories that are in the system's root directory. Now type the letter \ttout{u} (so that the line you've typed so far should read \ttout{ls /u}) and hit Tab once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press Tab twice now, and you'll get shown the contents of \fname{/usr/}. Type \ttout{b}, and press Tab to expand the command to \fname{/usr/bin/}, and then press Enter to execute the command.
 
-The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press Tab once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then Tab will complete as far as it it can, then pressing Tab a second time shows you all of them, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. 
+The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press Tab once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then Tab will complete as far as it it can, then pressing Tab a second time shows you all of them, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options/files at the same time. Very usefully, it also saves you from making lots of typing mistakes.
 
 % \begin{note}
 % Need to work out how to explain tab complete for single things that have the same prefix
@@ -134,7 +137,7 @@ To modify the file, you'll need to use a text editor. Type
 \$ nano my-mutt-template
 \end{ttoutenv}
 
-to invoke the \ttout{nano} editor. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (remember, the caret symbol (\texttt{\textasciicircum}) is shorthand for `\ttout{ctrl}', so \texttt{\textasciicircum X} means '\ctrl{X}').
+to invoke the \ttout{nano} editor. Although fairly basic, the nano editor has all the features you'll need to make these changes, and helpfully shows you the various keyboard shortcuts to do particular things such as saving and quitting at the bottom of the screen (remember, the caret symbol (\texttt{\textasciicircum}) is shorthand for `\ttout{ctrl}', so \texttt{\textasciicircum X} means '\ctrl{X}'). (It is worth noting that, although all the key presses at the bottom of the screen are described using upper case letters, e.g. \texttt{\textasciicircum G} to obtain help, you actually have to type lower case letters in practice, e.g. \texttt{\textasciicircum g}. You will see this rather odd usage elsewhere, for example in the keyboard shortcuts shown alongside menus in Windows and Mac OS X.)
 
 Now use it to make the following changes:
 
@@ -220,7 +223,7 @@ Every Unix program has access to a number of ways of communicating with other pa
 
 The vertical bar `\verb-|-' before \cmnd{less}{less} is called the \concept{pipe} symbol, and it is used to join the output of one command to the input of another; so in this case we have connected the standard output from \cmnd{lynx}{lynx} directly to the standard input of \cmnd{less}{less}. When \cmnd{less}{less} is invoked without a filename argument, it expects to get its input from standard in.
 
-Instead of joining commands together, you can use the idea of manipulating standard in/out to create or consume files instead. Try:
+As well as being  able to join commands together, you can use the idea of manipulating standard in/out to create or consume files instead. Try:
 
 \begin{ttoutenv}
 \$ lynx -dump http://www.bbc.co.uk/weather > weather.txt
@@ -250,7 +253,7 @@ As a final flourish, let's create a new a way of accessing this new `weather in 
 \$ alias mankyweather="[YOUR COMMAND GOES HERE]"
 \end{ttoutenv}
 
-replacing [YOUR COMMAND GOES HERE] with the full command line you created to display the Manchester weather, being careful not to introduce extra spaces around \ttout{=}. Then try typing
+replacing [YOUR COMMAND GOES HERE] with the full command line you created to display the Manchester weather, being careful not to introduce extra spaces around the equals sign \ttout{=}. Then try typing
 
 \begin{ttoutenv}
 \$ mankyweather
