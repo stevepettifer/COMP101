@@ -411,26 +411,36 @@ Most of what you do in these and future labs will involve using terminal windows
 % It's a good idea to give yourself easy access to a terminal window by right clicking on the Terminal menu item and selecting \ttout{Add this launcher to panel}. You will then see a terminal icon on the top panel which you can use to start a terminal window whenever you wish to.
 
 
-\section{The Awesome Window Manager} 
-One of the interesting effects of the X architecture, shown in Figure~\ref{figure:Xstructure}, is that you can use different window managers on Linux, and can choose the one that best suits the way you work; some people like `rich' environments like GNOME, whereas others like `lean' cut-down window managers. 
+\section{Window Managers} 
+One of the interesting effects of the X architecture, shown in Figure~\ref{figure:Xstructure}, is that it separates out the system that draws stuff onto the screen from the one that deals with creating buttons, sliders and windows, and enables you to choose a window manager that best suits the way you work; some people like `rich' environments like GNOME, whereas others like `lean' cut-down window managers. 
 
-To demonstrate this, start a terminal, and use \cmnd{nano}{nano} to create a file in your home directory called \fname{.Xclients} (don't miss the leading \ttout{.} in the file name), and in that file put a single line that reads:
+Recall that a little while back you added \ttout{exec startx} to your \fname{.bash\_profile} in order to start the graphical environment when you log in. Our version of Scientific Linux here in the School has been set up so that the \ttout{startx} command without any arguments starts GNOME 
 
-\begin{ttoutenv} 
-exec awesome
-\end{ttoutenv}
- 
-The file \fname{.Xclients} is \concept{executed} as part of the process of starting the X windows system, so we need to do one more thing to  enable this. Use the following command:
-\begin{ttoutenv}
-chmod +x .Xclients
-\end{ttoutenv}
-We'll explain more about \cmnd{chmod}{chmod} and \concept{file permissions} in the next lab session.
+\small
+{
 
-Now quit GNOME, and log back in; this time, instead of GNOME (which is set to be the default desktop in the case where you've not told the system otherwise by creating a \fname{.Xclients} file), you should be given the Awesome window manager.
 
-Awesome is a very minimalist window manager, probably quite unlike anything you've used before. Most WIMP environments that you'll have used so far make you the user responsible for the position and size/shape of the windows that represent tools and applications on the desktop. The upside of this is that you can arrange things exactly as you like them; the downside is that you probably use up an amount of time doing that arrangement, and often end up with a layout that wastes some of the desktop's usable space. Awesome is what's called a `tiling' window manager; instead of giving you detailed control over the exact shape of windows, it lays them out on the screen in one of several configurations designed to maximise the use of space. Because you can't drag or resize windows with the mouse, there's no need for the usual window decorations, so you save a few pixels this way too. To create a window, use the icon in the top-left of the Awesome desktop. Make a few terminal windows, and then cycle through the different layouts available using the icon in the top right. 
+\begin{tabular}{l l p{10cm}}
+GNOME & gnome-session & A rich desktop environment that has many of the features you'll be familiar with from other graphical interfaces. The version installed here in the School uses a window manager called Metacity. \\
+KDE & startkde & Another rich desktop environment, similar in many ways to GNOME but created by a different community of developers \\
+Mwm & mwm & A lightweight, and by today's standards very minimalist window manager originally developed by the same core group that built X11.  \textbf{Hint: Click the right mouse button} \\
+Fvwm & fvwm & A lean window manager with virtual desktops \textbf{Hint: Click the left mouse button} \\
+AnotherLevelUp & ALU & A customised version of fvwm developed here here in CS by John, and still his favourite desktop environment (may contain bright colours) \textbf{Click the left mouse button}\\
+Fluxbox & fluxbox & A lean but highly customisable window manager \textbf{Click the right mouse button}\\
+Openbox & openbox & Similar to Fluxbox; lean and highly configurable. \textbf{Click the right mouse button} \\
+Awesome & awesome & A very very lean \textit{tiling} window manager \textbf{Hint: Right click on the black background. To exit press windows-shift-Q}\\
+Xmonad & xmonad & Another very very lean tiling window manager, similar to Awesome  
+\end{tabular}
 
-There's no doubt that Awesome is at the hard-core end of the window manager spectrum, and its designed for experienced users that needs very large numbers of windows open at once, probably spread over several physical displays (as in Figure \ref{figure:awesome}). Apart from the `tiling' aspect, it gives you virtually no visual cues as to how to perform various actions, most of which are designed to be invoked via keyboard shortcuts (in fact, Awesome is designed so that you can use all of its features without needing to touch the mouse at all.) Once you've remembered all the keyboard combinations, using a window manager like Awesome can be extremely efficient in terms of time and screen-space, but you may find using this at the same time as learning your way around Unix a bit daunting right now, so feel free to swap back to using the rather more friendly environment provided by GNOME. To do this, use one of the terminals to rename the \fname{.Xclients} file you created a moment ago (the command \cmnd{mv}{mv .Xclients  .Xclients.awesome} will do this), and quit Awesome using the option available via the top-left menu. Log back in again, and you should have GNOME once more. 
+}
+
+
+\begin{diversion}{Tiling window managers}
+It's likely that you are so familiar with the way that windows are managed on operating systems like Windows or OS X that you've never really thought about alternatives. 
+Awesome and Xmonad are very minimalist window managers, probably quite unlike anything you've used before. Most WIMP environments that you'll have used so far make you the user responsible for the position and size/shape of the windows that represent tools and applications on the desktop. The upside of this is that you can arrange things exactly as you like them; the downside is that you probably use up an amount of time doing that arrangement, and often end up with a layout that wastes some of the desktop's usable space. Awesome is what's called a `tiling' window manager; instead of giving you detailed control over the exact shape of windows, it lays them out on the screen in one of several configurations designed to maximise the use of space. Because you can't drag or resize windows with the mouse, there's no need for the usual window decorations, so you save a few pixels this way too. 
+
+There's no doubt that these window managers are at the hard-core end of the window manager spectrum, and its designed for experienced users that needs very large numbers of windows open at once, probably spread over several physical displays (as in Figure \ref{figure:awesome}). Apart from the `tiling' aspect, it gives you virtually no visual cues as to how to perform various actions, most of which are designed to be invoked via keyboard shortcuts (in fact, Awesome is designed so that you can use all of its features without needing to touch the mouse at all.) Once you've remembered all the keyboard combinations, using a window manager like Awesome or Xmonad can be extremely efficient in terms of time and screen-space.
+\end{diversion}
 
 \begin{figure}[htb]
   \begin{center}
