@@ -127,7 +127,9 @@ The \ttout{-X} switch (note that it's an uppercase X) tells the \cmnd{ssh}{ssh} 
 
 Confirm that you are indeed logged into your Computer Science account by checking the command prompt and using \cmnd{ls}{ls} to make sure the files in your home directory are the ones you'd expect (or use one of the techniques described in Breakout~\ref{breakout:hostname} to check the hostname), and then type:
 
-\begin{ttoutenv}{
+\begin{ttoutenv}
+\$ xeyes
+\end{ttoutenv}
 
 \wikipedia{Googly_eyes}{Googly eyes} that follow the mouse! What's not to like? Well, okay, perhaps not hugely exciting in itself, but what's actually happening here is rather interesting and quite sophisticated. The \cmnd{xeyes}{xeyes} program is running on the remote machine (the desktop PC); but the instructions to draw its graphical output are being forwarded over the secure shell connection you've made from the Pi to the remote machine, so that the Pi's X Windows system receives them. Make sure that the terminal window you used to start \cmnd{xeyes}{xeyes} is the active window, then press \ctrl{c} to quit \cmnd{xeyes}{xeyes}, and instead try running \cmnd{xterm}{xterm}. You should see a new terminal window appear on your Pi's screen (which probably looks slightly different to the terminal you launched on the Pi a moment ago; it does essentially the same thing though). This X Terminal, rather like \cmnd{xeyes}{xeyes}, is actually running on the desktop machine---only its graphical representation is appearing on your Pi (if you use \cmnd{ls}{ls} in that terminal, you'll see that its your Computer Science account that's visible, rather than your Pi's filestore and you can confirm this another way using the \cmnd{hostname}{hostname} command). Look at Figures \ref{figure:x-on-pi} and \ref{figure:x-via-ssh} for a diagrammatic representation of what's just happened. Now exit this X Terminal by typing \ctrl{d} in it. 
 
