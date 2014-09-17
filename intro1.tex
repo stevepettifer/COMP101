@@ -285,7 +285,7 @@ which just means `change directory to the root directory' and use the \cmnd{ls}{
 \$ ls
 \end{ttoutenv}
 
-\noindent Here the argument to \ttout{cd} is not an absolute pathname (starting with \ttout{/}) but a \concept{relative pathname} (not starting with \ttout{/}). A relative pathname can be thought of as a `pathname starting from here', where `here' means the current working directory. So, because we are in \fname{/usr}, the relative pathname \fname{bin} refers to the directory \fname{/usr/bin}.
+\noindent Here the argument to \ttout{cd} is not an absolute pathname (starting with \ttout{/}) but a \concept{relative pathname} (not starting with \ttout{/}). A relative pathname can be thought of as a `pathname starting from here', where `here' means the current working directory. So, because we are in \fname{/}, the relative pathname \fname{bin} refers to the directory \fname{/bin}.
 
 \noindent The above commands should have produced  a fairly long list of files. Look carefully, and you'll find two names that you recognise: \cmnd{ls}{ls} and \cmnd{pwd}{pwd}. Files like these are called \concept{binary executable} files and are the programs run when the commands are used  (which is why they are in the `bin' directory, which is short for binary). In Unix, most commands are not `built into the system', but are just programs put in a special place in the filesystem that are picked up by the shell when you type things. This makes Unix very easy to extend with new features; you just write a program to do what you want, and put it in the right place. We'll look at how the system knows where to find commands later, and explore several of the other commands you can see in this directory as well. 
 
