@@ -68,7 +68,7 @@ The \wikipedia{Autocomplete}{autocomplete} function you're using here is more co
 % \end{note}
 
 
-Here are some other very useful command line tricks:
+Here are some other very useful command line tricks for you to try out (give them each a go now so that you remember them for later):
 
 \begin{itemize}
 \item You can use the up and down arrow keys to cycle back and forth through the list of commands you've typed previously.
@@ -334,58 +334,11 @@ If you've completed step ~\ref{list:logout} you should now be back at the comman
 
 If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} (\cmnd{bash}{bash}) that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
 
-But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press Enter at a shell prompt, the  shell checks that what you've typed has a valid \concept{syntax}, and then starts up a new \concept{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of Linux, but rather just out of the graphical environment. 
-
-Now, if you're going to use the graphical environment as your primary interface (and, as the jobs we ask you to do get more complex, you're going to need to!), you may find it slightly annoying to have to log into a lab machine, start the graphical environment, log out of the graphical environment when you're done \textit{and then remember to also log out of the console environment before you leave (because if you don't do this, other people will have access to your account!)}. 
-
-Type the following:
-
-\begin{ttoutenv}
-\$ exec man ls
-\end{ttoutenv}
-
-You should find that the \texttt{man} command has done exactly what you normally would expect, but that instead of returning you to the command prompt when you exit, you've been unceremoniously logged out! Log back in again (sorry about that). 
-
-The \texttt{exec} command changes the way in which the shell deals with whatever command follows it. Instead of starting a new process in which to run your command and waiting in the background for that command to complete, the shell gives up the process in which it itself is running, and hands it over to the command you've issued. So when that command finishes, there is no shell to come back to. And because in this case the shell was the first program that got run when you logged in, the Unix system logs you out since there's nothing else you can do. 
-
-Experiment by running \cmnd{exec}{exec startx} and then logging out of the graphical environment as you did a moment ago; this time you should find that you've automatically been logged out of the console too.
-
-But although that's one step closer to what we want, there's still the issue of having to type \texttt{exec startx} every time you log in. Of course this isn't a huge deal (it's certainly not as annoying as accidentally leaving yourself logged in at a console), but we can do better than this. 
-
-When you first run the bash shell, it looks for a file in your home directory called \fname{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard. Use the \cmnd{ls}{ls -a} command to confirm that there's already a file in your home directory called \fname{.bash\_profile}, and then use \cmnd{less}{less} to look at its contents. There should also now be one called \fname{.bash\_history}, take a look at it and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
-
-\fname{.bash\_profile} should look something like this:
-
-\begin{ttoutenv}
-# .bash_profile
-
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
-
-# User specific environment and startup programs
-
-PATH=$PATH:$HOME/bin
-
-export PATH
-\end{ttoutenv}
-
-though don't worry if there are slight differences. We'll come back to what these instructions mean in a later lab. For now, start up the \cmnd{nano}{nano} editor, and use it to add a new line at the end of your \fname{.bash\_profile} that reads 
-
-\begin{ttoutenv}
-exec startx
-\end{ttoutenv}
-
-\textbf{It's really important that you don't put anything other than \ttout{exec startx} in your \fname{.bash\_profile}, so double-check you've got this right before moving on.}
-
-Now log out (either type \texttt{logout} (or press \ctrl{d} to tell the shell that its input has ended), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you select `logout' from the menu, you should be returned to the Linux login prompt. 
-
-Hurray!
+But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press Enter at a shell prompt, the  shell checks that what you've typed has a valid \concept{syntax}, and then starts up a new \concept{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of Linux, but rather just out of the graphical environment -- we'll show you how to configure things so that `log out' in the GUI really does log you out in a little while. But first, let's take a step back now and look at what the \texttt{startx} command has actually done. 
 
 \section{X Windows}
 
-Let's take a step back now and look at what the \texttt{startx} command has actually done. Unlike OS X and Windows and most mobile operating systems, Linux doesn't really `have' a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to  create the familiar WIMP environment.  If you don't know what WIMP means yet, go back and read Breakout~\ref{breakout:wimp} from the last lab session.
+Unlike OS X and Windows and most mobile operating systems, Linux doesn't really have a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to  create the familiar WIMP environment (if you don't know what WIMP means yet, go back and read Breakout~\ref{breakout:wimp} from the last lab session).
 
 \begin{figure}[htb]
   \begin{center}
@@ -395,34 +348,39 @@ Let's take a step back now and look at what the \texttt{startx} command has actu
 \label{figure:Xstructure}
 \end{figure}
 
-When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also communicates with the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120} lectures, and you'll explore the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here, first the X Windows system is running that allows stuff to be drawn to regions of the screen, and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized.
+When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also takes control of the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120} lectures, and you'll explore some aspects of the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here: first the X Windows system is running that allows stuff to be drawn to regions of the screen; and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized.
 
 \begin{danger}{Killing X}
 You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
 \end{danger}
 
-\section{Terminal windows}
-Your earlier use of the command line was on the computer's console, without X and a window manager running, but we now want to do similar things in GNOME. The tool to use here is a \concept{terminal window}. In GNOME you can fire up one of  these by clicking on the screen-like icon on the top panel.
-
-% the \ttout{Applications} menu at the top of the screen, then \ttout{System Tools}, then \ttout{Terminal}.
-
-Most of what you do in these and future labs will involve using terminal windows in one way or another.
-
-% It's a good idea to give yourself easy access to a terminal window by right clicking on the Terminal menu item and selecting \ttout{Add this launcher to panel}. You will then see a terminal icon on the top panel which you can use to start a terminal window whenever you wish to.
-
-
 \section{Window Managers} 
 One of the interesting effects of the X architecture, shown in Figure~\ref{figure:Xstructure}, is that it separates out the system that draws stuff onto the screen from the one that deals with creating buttons, sliders and windows, and enables you to choose a window manager that best suits the way you work; some people like `rich' environments like GNOME, whereas others like `lean' cut-down window managers. 
 
-Recall that a little while back you added \ttout{exec startx} to your \fname{.bash\_profile} in order to start the graphical environment when you log in. Our version of Scientific Linux here in the School has been set up so that the \ttout{startx} command without any arguments starts GNOME 
+The \cmnd{startx}{startx} command can be used to fire up window managers other than GNOME, but the syntax used for doing this varies quite a lot from one Linux distribution to another, and in the case of the version of Scientific Linux we're using, it's behaviour is a bit confusing. To make it a little easier for you to experiment with different window managers, we've provided you with a bespoke command \ttout{csstartx} that makes things a bit simpler. Because this is a program that we've added outselves to the Linux distribution, we've followed the convention of not putting it one of the system's own directories of commands (such as \fname{/opt/bin}), which means that it won't get found automatically in the way that other commands you've used so far will, so for now you'll have to explicitly type its full absolute path name, and we'll show you how to modify this behaviour shortly. 
+
+Type 
+
+\begin{ttoutenv}
+\$ /opt/teaching/bin/csstartx startkde
+\end{ttoutenv}
+
+and you should find that a different graphical desktop environment, KDE, starts up. Experiment with this for a minute or two just to get a feel for what it's like, and then quit back to the console prompt.
+
+As well as GNOME and KDE, which both follow fairly similar interaction paradigms to the graphical environments of other operating systems, there are a plethora of alternative graphical interfaces for Linux. 
+
+Use the table that follows to explore one or more of the alternative window managers by using the value from the `Command' column as the first command-line argument to \ttout{csstartx}. 
+
 
 \small
 {
 
 
 \begin{tabular}{l l p{10cm}}
-GNOME & gnome-session & A rich desktop environment that has many of the features you'll be familiar with from other graphical interfaces. The version installed here in the School uses a window manager called Metacity. \\
-KDE & startkde & Another rich desktop environment, similar in many ways to GNOME but created by a different community of developers \\
+Name & Command & Description \\
+\hline\\
+%GNOME & gnome-session & A rich desktop environment that has many of the features you'll be familiar with from other graphical interfaces.\\
+%KDE & startkde & Another rich desktop environment, similar in many ways to GNOME but created by a different community of developers \\
 Mwm & mwm & A lightweight, and by today's standards very minimalist window manager originally developed by the same core group that built X11.  \textbf{Hint: Click the right mouse button} \\
 Fvwm & fvwm & A lean window manager with virtual desktops \textbf{Hint: Click the left mouse button} \\
 AnotherLevelUp & ALU & A customised version of fvwm developed here here in CS by John, and still his favourite desktop environment (may contain bright colours) \textbf{Click the left mouse button}\\
@@ -451,6 +409,96 @@ There's no doubt that these window managers are at the hard-core end of the wind
 \end{figure}
 
 As you become more familiar with Unix principles, keep the fact that you can easily swap window managers in mind. Most likely there will come a point where the graphical niceties of environments like GNOME become unnecessary, and perhaps even a distraction from getting work done, and you might find that a slimmed down window manager suits you better as a more experienced `power user'. For the rest of these exercises, though, we'll assume you're using GNOME (if you're confident enough to use something else, then translating our instructions to make sense in whatever environment you've chosen won't be too big a problem). 
+
+
+\section{Starting a graphical environment automatically}
+
+Now, if you're going to use the graphical environment as your primary interface (and, as the jobs we ask you to do get more complex, you're going to need to!), you may find it slightly annoying to have to log into a lab machine, start the graphical environment, log out of the graphical environment when you're done \textit{and then remember to also log out of the console environment before you leave (because if you don't do this, other people will have access to your account!)}. 
+
+Back in the previous lab session we explained that when you log into a Unix machine, an interactive shell is created for you to run commands from, and that the shell is `just a program' like any other that just happens to be the one nominated to be the first thing to run when you log in. 
+
+What about nominating the graphical environment as the first thing to run instead? We've already pointed out that it's `just a program' too, so that should be okay? Although in theory it's possible to do this, in practice it's a bad idea: shells are quite simple self contained programs, whereas graphical environments are much more complex systems relying on hundreds of files to be installed in the right places in order to work. You certainly don't want to set your system up in a way that if the graphical environment gets damaged in some way you can't log in at all. 
+
+Instead we'll show you a rather safer way to get the GUI to fire up when you log in.
+
+When you first run the bash shell on login, it looks for a file in your home directory called \fname{.bash\_profile} and executes any commands it finds in there as though you'd typed them at the keyboard; so this is a useful place to put the command to start the graphical environment. Use the \cmnd{ls}{ls -a} command to confirm that there's already a file in your home directory called \fname{.bash\_profile}, and then use \cmnd{less}{less} to look at its contents (There should also now be one called \fname{.bash\_history}, take a look at it and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work).
+
+\fname{.bash\_profile} should look something like this:
+
+\begin{ttoutenv}
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH
+\end{ttoutenv}
+
+though don't worry if there are slight differences. We'll come back to what these instructions mean in a later lab.
+
+Start up the \cmnd{nano}{nano} editor, and use it to add a new line at the end of your \fname{.bash\_profile} that reads 
+
+\begin{ttoutenv}
+/opt/teaching/bin/csstartx
+\end{ttoutenv}
+
+If you've already decided you want to try out something other than GNOME as your default window manager, add the appropriate command from the table after \ttout{csstartx}. 
+
+Now log out from console mode, and log back in again; you should find that the graphical environment fires up automatically. 
+
+Next, quit out of whichever graphical environment you've chosen and\ldots oh dear, you're back at the console mode command prompt, rather than logged out completely. 
+
+Now this could be really confusing; you've created a situation where you don't have to start the graphical environment up manually, but you do have to remember to log out twice when you've finished using it, once from the GUI and again from the console prompt. Yuck.
+
+Fortunately there's a relatively easy fix for this.
+
+At the console mode command prompt, type the following:
+
+\begin{ttoutenv}
+\$ exec man ls
+\end{ttoutenv}
+
+You should find that the \texttt{man} command has done exactly what you normally would expect, but that instead of returning you to the command prompt when you've finished reading the man page, you've been unceremoniously logged out! Log back in again (sorry about that). 
+
+The \texttt{exec} command changes the way in which the shell deals with whatever command follows it. Instead of starting a new process in which to run your command and waiting in the background for that command to complete, the shell gives up the process in which it itself is running, and hands it over to the command you've issued. So when that command finishes, there is no shell to come back to. And because in this case the shell was the first program that got run when you logged in, the Unix system logs you out since there's nothing else you can do. 
+
+Experiment by running \cmnd{exec}{exec /opt/teaching/bin/csstartx} and then logging out of the graphical environment as you did a moment ago; this time you should find that you've automatically been logged out of the console too.
+
+Use the \cmnd{nano}{nano} editor to alter the line you've just added to \fname{.bash\_profile} so that it now reads 
+
+\begin{ttoutenv}
+exec /opt/teaching/bin/csstartx
+\end{ttoutenv}
+
+Now log out (either type \texttt{logout} (or press \ctrl{d} to tell the shell that its input has ended), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you quit the graphical environment, you should be returned to the Linux login prompt. 
+
+Hurray!
+
+Before we leave this section on graphical environments, there's one quirk that we've got to deal with to avoid causing problems later on. As we said earlier, instructions in the \fname{.bash\_profile} file get executed when you log in to a Unix machine
+
+This works fine when you login directly to a PC from the console, but will cause problems if you login remotely from another machine, as you will in the next lab. So we need to arrange things so that we only try to start up the graphical environment if the user has logged in from the console, and not via a remote connection. 
+
+Carefully replace the line you've just added containing \ttout{csstartx} at the end of \fname{.bash\_profile} with the lines
+
+\begin{ttoutenv}
+case `tty` in
+/dev/tty1) exec /opt/teaching/bin/csstartx
+esac 
+\end{ttoutenv}
+
+\emph{Note that the characters surrounding \ttout{tty} are back-quotes, not forward quotes. This character can be found on the keyboard of lab machines in the top left hand corner, just below \ttout{Esc}.}
+
+This piece of `shell script' reads something like `in the case where the terminal device being used is the physical console, then execute the graphical environment'. We won't explain the exact meaning of this piece of code now but will do in a lecture; for now just make sure you've typed it exactly as written here.
+
+You should now log out and login again to check that the graphical environment starts up, shuts down and logs you out as expected. 
+
+If you've mistyped any of the lines in \fname{.bash\_profile} you may find that when you try to log in, you're instantly logged out. Don't panic and call for some help from the lab staff; it's a common mistake and an easy one to rectify! 
 
 % \begin{note}
 % Could be link to JTL's ALU tutorial here. If it exists
@@ -546,8 +594,7 @@ should probably use \ttout{gedit}.
 
 \section{Shell environment variables}
 
-When you started the ARCADE client earlier, you had to type its full
-pathname, which is \fname{/opt/teaching/bin/arcade}. The directory
+When you started the ARCADE client or used the \fname{csstartx} command, you had to prefix these with their full pathname, which is \fname{/opt/teaching/bin/}. The directory
 \fname{/opt/teaching/bin} is a place where we keep lots of useful
 teaching related tools, so it would be useful if you didn't have to
 type it every time you want to use a program from there; luckily
@@ -614,19 +661,6 @@ PATH=\$PATH:/opt/teaching/bin:/opt/common/bin
 
 This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}. Run \ttout{echo \$PATH} and you will see the new value, with your own \ttout{bin} directory at the end, preceded by the two \ttout{/opt} directories.
 
-Before we move on to mail reading, we would like you to make another modification to your \fname{.bash\_profile} file. Earlier you added the line \ttout{exec startx} to fire up X automatically when you login. This works fine when you login directly to a PC, but will cause problems if you login remotely from another machine, as you will in the next lab. We won't explain the exact meaning of this piece of code now but will do in a lecture.
-
-Replace the line \ttout{exec startx} at the end of \fname{.bash\_profile} with the lines
-
-\begin{ttoutenv}
-case `tty` in
-/dev/tty1) exec startx
-esac 
-\end{ttoutenv}
-
-\emph{Note that the characters surrounding \ttout{tty} are back-quotes, not forward quotes. This character can be found on the keyboard of lab machines in the top left hand corner, just below \ttout{Esc}.}
-
-You should now logout and login again to check that GNOME has started, which means that this has worked. We now move onto configuring a mail client for you to use.
 
 \section{Configuring Thunderbird}
 
