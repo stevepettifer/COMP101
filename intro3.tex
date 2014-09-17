@@ -104,7 +104,7 @@ Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} 
 
 Conveniently, there's nothing in the \fname{.muttrc} file that is specific to the Computer Science account setup, so you can use it as-is for Mutt on the Pi (as usual, if you get stuck ask for help.)
 
-Check that the file has copied over successfully using \cmnd{less}{less}, and then start up \cmnd{mutt}{mutt} from a terminal. If everything has gone to plan, you should now be able to read and compose emails on your Pi. You can of course install other mail clients if you want to; there is a slimmed-down version of Thunderbird for the Pi called Icedove (yes, yet another play on words), or a much leaner graphical client called Claws Mail (which, if you want to, can be installed using \ttout{sudo apt-get install claws-mail}). Remember, though, that the memory-card we've given you for your Pi is fairly small, so you probably don't want to clutter it up with unnecessary packages, and you should find that Mutt is perfectly okay for sending and reading the occasional email. 
+Check that the file has copied over successfully using \cmnd{less}{less}, and then start up \cmnd{mutt}{mutt} from a terminal. If everything has gone to plan, you should now be able to read and compose emails on your Pi. You can of course install other mail clients if you want to; there is a modified version of Thunderbird for the Pi called Icedove (yes, yet another play on words), or a much leaner graphical client called Claws Mail (which, if you want to, can be installed using \ttout{sudo apt-get install claws-mail}). Remember, though, that the memory-card we've given you for your Pi is fairly small, so you probably don't want to clutter it up with unnecessary packages, and you should find that Mutt is perfectly okay for sending and reading the occasional email. 
 
 \subsection{Emailing your tutor}
 
@@ -152,7 +152,7 @@ Confirm that you are indeed logged into your Computer Science account by checkin
 
 This next exercise involves setting up a simple web server on the Pi, but before we can do that you'll need to create some basic web pages to display. 
 
-Start up a terminal on your pi, and use the \cmnd{mkdir}{mkdir} to create a directory called \fname{htmlexample1} in your home directory, and in that directory, use \ttout{nano} to create a file called \fname{index.html} with the following content:
+Start up a terminal on your Pi, and use the \cmnd{mkdir}{mkdir} command to create a directory called \fname{htmlexample1} in your home directory, and in that directory, use \ttout{nano} to create a file called \fname{index.html} with the following content:
 
 \begin{ttoutenv}
 <html>
@@ -221,7 +221,7 @@ To finish this section, start up the SimpleHTTPServer that we used earlier \text
 
 \begin{stdframe}{light-gray}%
   \centerline{\textbf{Don't Panic!}}
-The rest of this lab session exposes you a fair number of quite advanced concepts pretty quickly, and we don't expect all of them to sink in this first time round. Stay calm.  Don't panic. Just follow our instructions and everything will be fine; if you get lost or things aren't going to plan, just call a TA ask a member of lab staff to help you get back on track, and we'll revisit these ideas later labs where there will be more opportunities to put them into practice and make sure everything makes sense.
+The rest of this lab session exposes you a fair number of quite advanced concepts pretty quickly, and we don't expect all of them to sink in this first time round. Stay calm.  Don't panic. Just follow our instructions and everything will be fine; if you get lost or things aren't going to plan, just ask a member of lab staff to help you get back on track, and we'll revisit these ideas in later labs where there will be more opportunities to put them into practice and make sure everything makes sense.
 \end{stdframe}
 
 The Pi can be used as a respectable desktop machine, but it really comes into its own as a \concept{server} or controller for other pieces of hardware. In this section we'll use the Pi in what is called `headless' mode---that is without its own screen and keyboard---to create a proper web server to host your pages. 
@@ -246,7 +246,7 @@ lo        Link encap:Local Loopback
           RX bytes:8550 (8.3 KiB)  TX bytes:8550 (8.3 KiB)
 \end{ttoutenv}
 
-This tells you that the Pi has two network devices currently active: one called `eth0', which represents the physical ethernet socket into which you plugged the blue network cable, and which allows the Pi to communicate with other computers on the network (and in this case, on the internet); and a second one called `lo' which is a `virtual connection' or \concept{local loopback} connection that allows the Pi to route network traffic back to itself (this is how the `localhost' trick you used earlier to look at web pages on the Pi worked). You can learn a lot more about network configuration in the second year Computer Networks course (COMP28411). 
+This tells you that the Pi has two network devices currently active: one called `eth0', which represents the physical ethernet socket into which you plugged the blue network cable, and which allows the Pi to communicate with other computers on the network (and in this case, on the internet); and a second one called `lo' which is a `virtual connection' or \concept{local loopback} connection that allows the Pi to route network traffic back to itself (this is how the `localhost' trick you used earlier to look at web pages on the Pi worked). You can learn a lot more about network configuration in the second year Computer Networks course (\courseunit{COMP28411}). 
 
 The thing we're interested in right now is the IP Address that's been allocated to your Pi. Look for the line in the \texttt{eth0} block of text that says \texttt{inet addr:} and note down the number that follows this in your logbook (in the case of our example that is \texttt{10.2.233.1} but in your case it will probably be something else). Don't worry too much about what this number means or where it came from for now---we'll return to this in \courseunit{COMP18112} in the second semester. For now, just treat this as being a unique number that identifies your Pi on the Computer Science network. 
 
