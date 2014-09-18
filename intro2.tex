@@ -22,7 +22,7 @@ Today we're going to explore some of the features of Unix in a bit more depth, t
 %%% BEGIN CONSOLE MODE SESSION
  Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). Remember that nothing will appear on the screen when you type your password. You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
 
- You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. 
+ You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory, which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. 
 
  The environment you are now in is known as \concept{console mode}. This is a way of interacting with  computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}. Later we will be using a graphical environment, but for now we will stick to the console and start off by reading mail.
 
@@ -68,7 +68,7 @@ The \wikipedia{Autocomplete}{autocomplete} function you're using here is more co
 % \end{note}
 
 
-Here are some other very useful command line tricks for you to try out (give them each a go now so that you remember them for later):
+Here are some other handy command line tricks for you to try out (give them each a go now so that you remember them for later):
 
 \begin{itemize}
 \item You can use the up and down arrow keys to cycle back and forth through the list of commands you've typed previously.
@@ -96,7 +96,7 @@ Remember, you're going to need to use a switch argument to tell \cmnd{curl}{curl
 \$ less mutt-template
 \end{ttoutenv}
 
-
+\enlargethispage{\baselineskip}
 and you should see the following written to the screen:
 \begin{ttoutenv}
 \input{files/muttrc}
@@ -122,7 +122,7 @@ Early versions of Unix included a command called \cmnd{more}{more}, written by D
 Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the \courseunit{COMP18112} (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory. 
 
 
-Quit less (using the same technique you used to quit the \cmnd{man}{man} command in the last lab session), and then enter
+Quit \ttout{less} (using the same technique you used to quit the \cmnd{man}{man} command in the last lab session), and then enter
 
 \begin{ttoutenv}
 \$ cp mutt-template my-mutt-template
@@ -195,7 +195,7 @@ You'll probably find using \cmnd{lynx}{lynx} an unsatisfying experience: tolerab
 
 Now consider what the web `looks' like if you are visually impaired or blind and have to use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \cmnd{lynx}{lynx}. 
 
-You'll soon be designing your own web-based systems as part of the Group Project in \courseunit{COMP10120}; making them accessible to visually impaired readers is something you should keep in mind. Try using \cmnd{lynx}{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
+You'll soon be designing your own web-based systems as part of the Team Project in the later stages of \courseunit{COMP10120}; making them accessible to visually impaired readers is something you should keep in mind. Try using \cmnd{lynx}{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
 
 \subsection{Pipes and Redirects}
 \label{section:pipesandredirects}
@@ -233,7 +233,7 @@ and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has be
 
 To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!) 
 
-\ttout{grep} is a hugely powerful and useful utility, designed for searching through plain-text files. Learning to master grep will take more time than we have in this lab, since you'll have to understand the idea of \concept{regular expressions} to make full use of it (we'll come to those in a later lab). For now, we'll use it in its very simplest form. Type:
+\ttout{grep} is a hugely powerful and useful utility, designed for searching through plain-text files. Learning to master \ttout{grep} will take more time than we have in this lab, since you'll have to understand the idea of \concept{regular expressions} to make full use of it (we'll come to those in a later lab). For now, we'll use it in its very simplest form. Type:
 
 \begin{ttoutenv}
 \$ grep BBC weather.txt
@@ -332,7 +332,7 @@ It's worth understanding the pros and cons of these two different approaches to 
 
 If you've completed step ~\ref{list:logout} you should now be back at the command prompt where you typed \cmnd{startx}{startx} a little while back. Before returning to the graphical environment where you'll spend most of your time, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system. 
 
-If you remember back to the first Raspberry Pi lab, we pointed out that the \texttt{shell} (\cmnd{bash}{bash}) that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
+If you remember back to the first Raspberry Pi lab, we pointed out that the shell (\cmnd{bash}{bash}) that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
 
 But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/usr/bin} directory on the Pi). When you press Enter at a shell prompt, the  shell checks that what you've typed has a valid \concept{syntax}, and then starts up a new \concept{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of Linux, but rather just out of the graphical environment -- we'll show you how to configure things so that `log out' in the GUI really does log you out in a little while. But first, let's take a step back now and look at what the \texttt{startx} command has actually done. 
 
@@ -357,7 +357,7 @@ You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the k
 \section{Window Managers} 
 One of the interesting effects of the X architecture, shown in Figure~\ref{figure:Xstructure}, is that it separates out the system that draws stuff onto the screen from the one that deals with creating buttons, sliders and windows, and enables you to choose a window manager that best suits the way you work; some people like `rich' environments like GNOME, whereas others like `lean' cut-down window managers. 
 
-The \cmnd{startx}{startx} command can be used to fire up window managers other than GNOME, but the syntax used for doing this varies quite a lot from one Linux distribution to another, and in the case of the version of Scientific Linux we're using, it's behaviour is a bit confusing. To make it a little easier for you to experiment with different window managers, we've provided you with a bespoke command \ttout{csstartx} that makes things a bit simpler. Because this is a program that we've added outselves to the Linux distribution, we've followed the convention of not putting it one of the system's own directories of commands (such as \fname{/opt/bin}), which means that it won't get found automatically in the way that other commands you've used so far will, so for now you'll have to explicitly type its full absolute path name, and we'll show you how to modify this behaviour shortly. 
+The \cmnd{startx}{startx} command can be used to fire up window managers other than GNOME, but the syntax used for doing this varies quite a lot from one Linux distribution to another, and in the case of the version of Scientific Linux we're using, its behaviour is a bit confusing. To make it a little easier for you to experiment with different window managers, we've provided you with a bespoke command \ttout{csstartx} that makes things a bit simpler. Because this is a program that we've added outselves to the Linux distribution, we've followed the convention of not putting it one of the system's own directories of commands (such as \fname{/opt/bin}), which means that it won't get found automatically in the way that other commands you've used so far will, so for now you'll have to explicitly type its full absolute path name, and we'll show you how to modify this behaviour shortly. 
 
 Type 
 
@@ -525,7 +525,7 @@ If you've mistyped any of the lines in \fname{.bash\_profile} you may find that 
 
 We would now like you to register your access to the ARCADE server. ARCADE is the laboratory management system we use to administer coursework marks and deadlines, etc.. You can use the client query program to look up your details, laboratory timetables, marks, and so on, throughout the year. It is recommended you do this fairly regularly, if only to check that mistakes have not been made in your marks! You need to register with ARCADE before any of your lab work can be submitted, so it is much better to do it now than wait until your first deadline!
 
-In a terminal window, run the command \ttout{/opt/teaching/bin/arcade}; after a short pause, a new window will pop up. In the large text box you should find a message telling you that you are not yet authenticated, and that you have just been sent an email. If this is so, then quit the program, read the email you have just been sent by the ARCADE server, and carefully follow the instructions in it. Then you will start the ARCADE Query client again, and it should now connect you to the server. If this works, then your access is set up!
+In a terminal window, run the command \ttout{/opt/teaching/bin/arcade}; after a short pause, a new window will pop up. In the large text box you should find a message telling you that you are not yet authenticated, and that you have just been sent an email. If this is so, then quit the program, read the email you have just been sent by the ARCADE server, and carefully follow the instructions in it. Now start the ARCADE Query client again, and it should now connect you to the server. If this works, then your access is set up; if it doesn't then check you've followed the instructions precisely. If it still doesn't work then, as always, ask for help; \emph{it is very important that this registration process is completed.}
 
 Explore the various queries of the client, and familiarise yourself with the the user interface. Check that your registration details are correct. Feel free to ask for explanation if it is not obvious to you.
 
@@ -626,7 +626,7 @@ You can set the value of a shell variable at the command line, for example:
 \end{ttoutenv}
 
 
-Note that they should be no spaces either side of the \ttout{=} sign and that the variable's name is \ttout{MYVAR} and its value is obtained  by using \verb+$MYVAR+. If a variable is given a value on the command line in a terminal window like this its value is only available in the shell running in that window.
+Note that there should be no spaces either side of the \ttout{=} sign and that the variable's name is \ttout{MYVAR} and its value is obtained  by using \verb+$MYVAR+. If a variable is given a value on the command line in a terminal window like this its value is only available in the shell running in that window.
 
 In order to be able to start the ARCADE client by typing \ttout{arcade} rather than the full pathname \ttout{/opt/teaching/bin/arcade} we need to modify the \ttout{PATH} variable to include the directory \fname{/opt/teaching/bin}. We can do this on the command line by typing
 
@@ -721,12 +721,13 @@ Follow all three steps in the process described in this document.
 % \caption{}\label{figure:thunderbird}
 % \end{figure}
 
-Once your Inbox appears in Thunderbird, using it to compose and send email should be fairly self-explanatory, but if you're stuck there are plenty of Thunderbird tutorials available on the web. 
+Once your Inbox appears in Thunderbird, using it to compose and send email should be fairly self-explanatory, but if you're stuck there are plenty of Thunderbird tutorials available on the web.
 
 \section{That's all for now}
 \label{sec:thats-all-now}
 
 If you have reached this point before the end of the lab you may have gone too fast so please go back and review what you have done. You will be using many of the ideas we've just met in later labs, so it's important to understand them.
+When you are sure you have completed the work for this session, please tell the lab supervisor.
 
 
 % \section{Exploring the CS Unix environment -- which RPMs are installed}
