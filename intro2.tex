@@ -24,12 +24,13 @@ In this lab session we're going to explore some of the features of Unix in a bit
 
  You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory, which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. 
 
- The environment you are now in is known as \concept{console mode}. This is a way of interacting with  computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}. Later we will be using a graphical environment, but for now we will stick to the console and start off by reading mail.
+ The environment you are now in is known as \concept{terminal mode}. This is a way of interacting with  computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. When the terminal occupies the entire screen, as it does here, it is known as \concept{console mode}.
+A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}. Later we will be using a graphical environment, but for now we will stick to terminal mode interaction and start off by reading mail.
 
 
-\section{Reading email at the console}
+\section{Reading email in terminal mode}
 
-You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a console. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out \ttout{Alpine} as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, \ttout{Elm} (if you want a \textit{really} hardcore console-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
+You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a terminal. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out \ttout{Alpine} as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, \ttout{Elm} (if you want a \textit{really} hardcore terminal-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
 
 First, let's confirm that \cmnd{mutt}{Mutt} is actually installed. 
 
@@ -178,7 +179,7 @@ It should be reasonably clear how you use \cmnd{mutt}{mutt} to send and receive 
 
 \section{Browsing the Web}
 
-Although you will have experienced The Web so far as a highly graphical system, the technology that underpins it is for the most part text-based, and it is (just about!) possible to browse web pages using a console-mode application. It might seem like an odd thing to do, but there's an important point to be made here, so bear with us.
+Although you will have experienced The Web so far as a highly graphical system, the technology that underpins it is for the most part text-based, and it is (just about!) possible to browse web pages using a terminal-mode application. It might seem like an odd thing to do, but there's an important point to be made here, so bear with us.
 
 %and install the \cmnd{lynx}{lynx} package using \ttout{apt-get} (remembering you'll need also to use \ttout{sudo} to get root %privileges). 
 
@@ -365,7 +366,7 @@ Type:
 \$ /opt/teaching/bin/csstartx startkde
 \end{ttoutenv}
 
-and you should find that a different graphical desktop environment, KDE, starts up. Experiment with this for a minute or two just to get a feel for what it's like, and then quit back to the console prompt.
+and you should find that a different graphical desktop environment, KDE, starts up. Experiment with this for a minute or two just to get a feel for what it's like, and then quit back to the command-line prompt.
 
 As well as GNOME and KDE, which both follow fairly similar interaction paradigms to the graphical environments of other operating systems, there are many alternative graphical interfaces for Linux. 
 
@@ -413,7 +414,7 @@ As you become more familiar with Unix principles, keep the fact that you can eas
 
 \section{Starting a graphical environment automatically}
 
-Now, if you're going to use the graphical environment as your primary interface (and, as the jobs we ask you to do get more complex, you're going to need to!), you may find it slightly annoying to have to log into a lab machine, start the graphical environment, log out of the graphical environment when you're done \textit{and then remember to also log out of the console environment before you leave (because if you don't do this, other people will have access to your account!)}. 
+Now, if you're going to use the graphical environment as your primary interface (and, as the jobs we ask you to do get more complex, you're going to need to!), you may find it slightly annoying to have to log into a lab machine, start the graphical environment, log out of the graphical environment when you're done \textit{and then remember to also log out of the terminal environment before you leave (because if you don't do this, other people will have access to your account!)}. 
 
 Back in the previous lab session we explained that when you log into a Unix machine, an interactive shell is created for you to run commands from, and that the shell is `just a program' like any other that just happens to be the one nominated to be the first thing to run when you log in. 
 
@@ -450,15 +451,15 @@ Start up the \cmnd{nano}{nano} editor, and use it to add a new line at the end o
 
 If you've already decided you want to try out something other than GNOME as your default window manager, add the appropriate command from the table after \ttout{csstartx}. 
 
-Now log out from console mode, and log back in again; you should find that the graphical environment fires up automatically. 
+Now log out, and log back in again; you should find that the graphical environment fires up automatically. 
 
-Next, quit out of whichever graphical environment you've chosen and\ldots oh dear, you're back at the console mode command prompt, rather than logged out completely. 
+Next, quit out of whichever graphical environment you've chosen and\ldots oh dear, you're back at the  command prompt, rather than logged out completely. 
 
 Now this could be really confusing; you've created a situation where you don't have to start the graphical environment up manually, but you do have to remember to log out twice when you've finished using it, once from the GUI and again from the console prompt. Yuck.
 
 Fortunately there's a relatively easy fix for this.
 
-At the console mode command prompt, type the following:
+At the  command prompt, type the following:
 
 \begin{ttoutenv}
 \$ exec man ls
