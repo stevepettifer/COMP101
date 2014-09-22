@@ -96,7 +96,7 @@ Then, supposing you had edited the file \fname{mycheese.jpg} on your local machi
 \$ scp mycheese.jpg mrnoodle@mypc.example.com:newcheese.jpg
 \end{ttoutenv}
 
-We're not exactly sure why MrNoodle and cheese feature quite so prominently in this labs either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}: if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]@[HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
+We're not exactly sure why MrNoodle and cheese feature quite so prominently in this lab either, just go with the flow. To summarise the behaviour of \cmnd{scp}{scp}: if you prefix either or both of the source or destination files with the pattern \verb|[USERNAME]@[HOSTNAME]:| then you are referring to a file on a remote machine, otherwise you are referring to a local file in the same way that you would with a regular \cmnd{cp}{cp} command.
 
 Now use your new-found knowledge of \cmnd{scp}{scp} to copy the \fname{.muttrc} file from your Computer Science account onto your Pi. You could use the hostname of the PC you're sitting at as the remote host, or alternatively you could use a server called \texttt{kilburn.cs.man.ac.uk} which is also set up to be able to see your Computer Science filestore. In fact, you could use the hostname of \textit{any} of the PCs in this lab, because your Computer Science filestore is accessible to them all---but it's probably antisocial to use a machine that someone else is sitting at, so for now stick to using the one in front of you, or \texttt{kilburn.cs.man.ac.uk}. 
 

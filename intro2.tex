@@ -24,17 +24,18 @@ In this lab session we're going to explore some of the features of Unix in a bit
 
  You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory, which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore. 
 
- The environment you are now in is known as \concept{terminal mode}. This is a way of interacting with  computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. When the terminal occupies the entire screen, as it does here, it is known as \concept{console mode}.
-A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}. Later we will be using a graphical environment, but for now we will stick to terminal mode interaction and start off by reading mail.
+ The environment you are now in is known as \concept{terminal mode}. This is a way of interacting with  the computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. When the terminal occupies the entire screen, as it does here, it is known as \concept{console mode}.
+ %A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}.
+ Later we will be using a graphical environment, but for now we will stick to terminal mode interaction and start off by reading mail.
 
 
 \section{Reading email in terminal mode}
 
-You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while at a terminal. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out \ttout{Alpine} as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, \ttout{Elm} (if you want a \textit{really} hardcore terminal-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
+You're probably familiar with reading email using either a web-based interface, a graphical desktop application (such as Outlook, Thunderbird or OS X Mail) or using an app on a smartphone or tablet. Today you're going to do something slightly different, and configure a text-based mail client so that you can read your University email while using a terminal. The email client we're going to use is called \cmnd{mutt}{Mutt}, which is fairly simple to configure and straightforward to use (according to its author, Michael Elkins, ``All mail clients suck. This one just sucks less''). There are plenty of other similarly lean text-based \wikipedia{List_of_email_clients}{email clients}, and you may at some point want to check out \ttout{Alpine} as a sensible alternative to \cmnd{mutt}{Mutt} or for the historically-curious, \ttout{Elm} (if you want a \textit{really} hardcore terminal-mode experience of mail, look up \wikipedia{Mailx}{Mailx}).
 
 First, let's confirm that \cmnd{mutt}{Mutt} is actually installed. 
 
-To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd{which}{which} command. Type
+To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd{which}{which} command. Type:
 
 \begin{ttoutenv}
 \$ which mutt
@@ -47,7 +48,7 @@ List the contents of \fname{/usr/bin} by typing
 \$ ls /usr/bin
 \end{ttoutenv}
 
-and notice that here we're using \cmnd{ls}{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as an \concept{argument}. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type 
+and notice that here we're using \cmnd{ls}{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as an \concept{argument}. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type:
 
 \begin{ttoutenv}
 \$ ls /usr/bin/ma*
@@ -62,7 +63,7 @@ So far we've been getting you to do a fair amount of typing, and now we have to 
 
 Type \ttout{ls /} but don't hit \ttout{Enter}, and instead press the \ttout{Tab} key twice. You'll be shown a list of sensible things that could follow what you've typed---in this case it's the list of the contents of the system's root directory. Now type the letter \ttout{u} (so that the line you've typed so far should read \ttout{ls /u}) and hit \ttout{Tab} once. This time your command will be expanded automatically to \ttout{ls /usr/} since that's the only possible option. Press \ttout{Tab} twice now, and you'll get shown the contents of \fname{/usr/}. Type \ttout{b}, and press \ttout{Tab} to expand the command to \fname{/usr/bin/}, and then press \ttout{Enter} to execute the command.
 
-The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press \ttout{Tab} once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then \ttout{Tab} will complete as far as it it can, then pressing \ttout{Tab} a second time shows you all of them, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you browse the options at the same time. Very usefully, it also saves you from making lots of typing mistakes.
+The \wikipedia{Autocomplete}{autocomplete} function you're using here is more commonly called \concept{tab complete} by Unix users. If you press \ttout{Tab} once and there's exactly one possible option that would autocomplete what you've typed so far, then that option gets selected; if there are multiple possible things that could complete your command, then \ttout{Tab} will complete as far as it it can, then pressing \ttout{Tab} a second time shows you all of them, giving you the option to type another character or two to narrow down the list. Learning to use this will save you a lot of typing, because not only does it reduce the number of characters you type, it also helps you see the possibilities at the same time. Very usefully, it also saves you from making lots of typing mistakes.
 
 % \begin{note}
 % Need to work out how to explain tab complete for single things that have the same prefix
@@ -71,12 +72,15 @@ The \wikipedia{Autocomplete}{autocomplete} function you're using here is more co
 
 Here are some other handy command line tricks for you to try out (give them each a go now so that you remember them for later):
 
+%%% Add ctrl-U
+%% Look at Ctrl-c vs ctrl-C etc
+
 \begin{itemize}
 \item You can use the up and down arrow keys to cycle back and forth through the list of commands you've typed previously.
-\item The left and right arrows do what you expect, and move the insertion point back and forth. Pressing \ctrl{a} will move you to the start of the line, and \ctrl{e} to the end of the line (much faster than moving backwards and forwards character-by-character). 
+\item The left and right arrows do what you expect, and move the insertion point (often referred to as the \concept{cursor}) back and forth. Pressing \ctrl{a} will move you to the start of the line, and \ctrl{e} to the end of the line (much faster than moving backwards and forwards character-by-character). 
 \item \ctrl{c} aborts the current line, so if you've typed a line of gibberish, don't waste time deleting it one character at at time, just \ctrl{c} it!
 \item Typing \ttout{history} lists all the commands you've typed in the recent past, useful if you've forgotten something.
-\item Pressing \ctrl{r} allows you to retrieve a command from your history by typing part of the line (e.g. if you searched for `\ttout{whi}' now, it'll probably find the `\ttout{which mutt}' line you typed a while back). Pressing \ctrl{r} again steps through possible matches (if there is more than one)
+\item Pressing \ctrl{r} allows you to retrieve a command from your history by typing part of the line (e.g. if you searched for `\ttout{whi}' now, it'll probably find the `\ttout{which mutt}' line you typed a while back). Pressing \ctrl{r} again steps through possible matches (if there is more than one).
 \item Pressing \ctrl{t} swaps the two characters before your cursor around. What, really? Yes: you'll be surprised how often you type characters in the wrong order! 
 \end{itemize}
 
@@ -113,6 +117,7 @@ The \cmnd{less}{less} command is used to display textual content from files and 
 Because of its roots in the early days of computing long before the advent of graphical user interfaces, Unix filenames tend not to have spaces in them because this conflicts with the use of a space to separate out commands and their arguments. The Unix filesystem does allow spaces in filenames, but you'll have to use a technique called `escaping' if you want to manipulate them from the command line; this involves prefixing spaces in filenames with the backslash character \textbackslash{} to tell the command line not to interpret what follows the space as a new argument. For example, a file called \fname{my diary.txt} would be typed as \fname{my\textbackslash{} diary.txt}. It's a bit ugly, but it works fine. 
 \end{linux} 
 
+%% Mention quotes?
 \begin{diversion}{Less is more}
 \label{diversion:less}
 As we've mentioned before, many of Unix's commands are plays on words, puns, or jokes that seemed funny to the command's creator at the time. Though this gives Unix a rich historical background, it does rather obscure the purpose of some commands. A prime example of this is the \cmnd{less}{less} command, used to page through text files that are too large to fit on a single screen without scrolling. 
@@ -168,7 +173,7 @@ Rather like \cmnd{cp}{cp}, \cmnd{mv}{mv} takes two arguments; but instead of mak
 
 Type \ttout{ls} to confirm that the file name has changed as you'd expect. 
 
-Oh. But it's gone! Actually, no, it's still there, it's just hidden! There's a Unix convention that filenames  starting with a full-stop symbol don't appear when you type \ttout{ls} in its basic form, because these are normally configuration files that you don't need to see on a day to day basis (the `\concept{rc}' part of the \fname{.muttrc} name stands for \concept{resource configuration}, another Unix convention). So to see these files you'll need to add an extra switch argument to \cmnd{ls}{ls}. Use the \cmnd{man}{man} command to find out what this switch is, and then use the switch to confirm that the \fname{.muttrc} file does indeed exist. 
+Oh. But it's gone! Actually, no, it's still there, it's just hidden! There's a Unix convention that filenames  starting with a full-stop symbol don't appear when you type \ttout{ls} in its basic form, because these are normally configuration files that you don't need to see on a day to day basis (the `\concept{rc}' part of the \fname{.muttrc} name stands for \concept{resource configuration}, another Unix convention). So to see these files you'll need to add an extra switch argument to \cmnd{ls}{ls}. Use the \cmnd{man}{man} command, with an appropriate argument, to find out what this switch is, and then use the switch to confirm that the \fname{.muttrc} file does indeed exist. 
 
 Using this switch on \cmnd{ls}{ls} will reveal several other so-called \concept{dotfiles} that have been lurking in your home directory all along.
 %Use \cmnd{less}{less} to look at the contents of the one called \fname{.bash\_history} and it should become obvious how the \ttout{history} command, and the `reverse search' function you used earlier work.
@@ -232,7 +237,7 @@ As well as being  able to join commands together, you can use the idea of manipu
 
 and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol \concept{redirects} the standard out of the \cmnd{lynx}{lynx} command so that instead of going to the screenit gets put into a named file. 
 
-To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!) 
+To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!). 
 
 \ttout{grep} is a hugely powerful and useful utility, designed for searching through plain-text files. Learning to master \ttout{grep} will take more time than we have in this lab, since you'll have to understand the idea of \concept{regular expressions} to make full use of it (we'll come to those in a later lab). For now, we'll use it in its very simplest form. Type:
 
@@ -242,7 +247,7 @@ To finish off this first contact with pipes and redirects, we'll use a new comma
 
 and you should see a list of all the lines from \ttout{weather.txt} that contain the word `BBC'. Use \cmnd{less}{less} to have a look for other terms to `\ttout{grep}' for (you might want to try something like `Sunny' to give you a list of all the places where the weather is nice, for example). 
 
-Rather like \cmnd{less}{less}, if \cmnd{grep}{grep} isn't given the name of a file as its last command-line argument (in this case we used \fname{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \cmnd{lynx}{lynx} and \cmnd{grep}{grep} so that the output is a single line describing the weather in Manchester right now. The output should look something like:
+Rather like \cmnd{less}{less}, if \cmnd{grep}{grep} isn't given the name of a file as its last command-line argument (in this case we used \fname{weather.txt}), it will operate on standard-input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \cmnd{lynx}{lynx} and \cmnd{grep}{grep} so that the output is a single line describing the weather in Manchester at the time we run the command. The output should look something like:
 
 \begin{ttoutenv}
    [33]Manchester 22\textdegree{}C 72\textdegree{}F
@@ -303,7 +308,8 @@ It's quite common to refer to GNOME as a `window manager', but technically it is
 
 Perform the following tasks:
 \begin{enumerate}
-\item Find two different ways to start the Firefox web-browser.
+\item Find two different ways to start a terminal window.
+\item Find two different ways to start the Firefox web-browser. 
 \item Use Firefox to visit the School UG home page
   \urlnop{studentnet.cs.manchester.ac.uk/ugt/} and make this your
   home page in Firefox.
@@ -384,11 +390,11 @@ Name & Command & Description \\
 %KDE & startkde & Another rich desktop environment, similar in many ways to GNOME but created by a different community of developers \\
 Mwm & \ttout{mwm} & A lightweight, and by today's standards very minimalist window manager originally developed by the same core group that built X11.  \textbf{Hint: Click the right mouse button.} \\
 Fvwm & \ttout{fvwm} & A lean window manager with virtual desktops \textbf{Hint: Click the left mouse button.} \\
-AnotherLevelUp & \ttout{ALU} & A customised version of fvwm developed  here in CS by John, and still his favourite desktop environment (may contain bright colours) \textbf{Click the left mouse button.}\\
-Fluxbox & \ttout{fluxbox} & A lean but highly customisable window manager \textbf{Click the right mouse button}.\\
-Openbox & \ttout{openbox} & Similar to Fluxbox; lean and highly configurable. \textbf{Click the right mouse button.} \\
-Awesome & \ttout{awesome} & A very very lean \textit{tiling} window manager \textbf{Hint: Right click on the black background. To exit press windows-shift-Q.}\\
-Xmonad & \ttout{xmonad} & Another very very lean tiling window manager, similar to Awesome.  
+AnotherLevelUp & \ttout{ALU} & A customised version of fvwm developed  here in CS by John, and still his favourite desktop environment (may contain bright colours). \textbf{Hint: Click the left mouse button.}\\
+Fluxbox & \ttout{fluxbox} & A lean but highly customisable window manager. \textbf{Hint: Click the right mouse button}.\\
+Openbox & \ttout{openbox} & Similar to Fluxbox; lean and highly configurable. \textbf{Hint: Click the right mouse button.} \\
+Awesome & \ttout{awesome} & A very very lean \textit{tiling} window manager. \textbf{Hint: Right click on the black background. To exit press windows-shift-Q.}\\
+%Xmonad & \ttout{xmonad} & Another very very lean tiling window manager, similar to Awesome.  \textbf{Hint: Alt-P}.
 \end{tabular}
 
 }
@@ -408,6 +414,8 @@ There's no doubt that these window managers are at the hard-core end of the wind
 \caption{The Awesome window manager showing around 20 windows tiled over 6 physical displays. Reproduced from \urlnop{awesome.naquadah.org} with kind permission of Julien Danjou, one of Awesome's primary authors.}
 \label{figure:awesome}
 \end{figure}
+
+%%% Try Xclock
 
 As you become more familiar with Unix principles, keep the fact that you can easily swap window managers in mind. Most likely there will come a point where the graphical niceties of environments like GNOME become unnecessary, and perhaps even a distraction from getting work done, and you might find that a slimmed down window manager suits you better as a more experienced `power user'. For the rest of these exercises, though, we'll assume you're using GNOME (if you're confident enough to use something else, then translating our instructions to make sense in whatever environment you've chosen won't be too big a problem). 
 
@@ -477,7 +485,7 @@ Use the \cmnd{nano}{nano} editor to alter the line you've just added to \fname{.
 exec /opt/teaching/bin/csstartx
 \end{ttoutenv}
 
-Now log out (either type \texttt{logout} (or press \ctrl{d} to tell the shell that its input has ended), and log back in again. If all has gone to plan then you should see the graphical environment fire up automatically; and when you quit the graphical environment, you should be returned to the Linux login prompt. 
+Now log out, either by typing \texttt{logout},  or  pressing \ctrl{d} to tell the shell that its input has ended. Now log back in again; if all has gone to plan then you should see the graphical environment fire up automatically; and when you quit the graphical environment, you should be returned to the Linux login prompt. 
 
 Hurray!
 
@@ -493,7 +501,7 @@ case `tty` in
 esac 
 \end{ttoutenv}
 
-\emph{Note that the characters surrounding \ttout{tty} are back-quotes, not forward quotes. This character can be found on the keyboard of lab machines in the top left hand corner, just below \ttout{Esc}.}
+\emph{Note that the characters surrounding \ttout{tty} are back-quotes, not forward quotes. This character can be found on the keyboard of lab machines in the top left hand corner, just below \ttout{Esc}. Also the character after \ttout{/dev/tty} is the digit \ttout{1} and not the letter \ttout{l}.}
 
 This piece of `shell script' reads something like `in the case where the terminal device being used is the physical console, then execute the graphical environment'. We won't explain the exact meaning of this piece of code now but will do in a lecture; for now just make sure you've typed it exactly as written here.
 
@@ -619,7 +627,7 @@ much sense to you at the moment, but among them are \ttout{HOME},
 \ttout{PWD} and \ttout{HOSTNAME}; you can check their values using
 \cmnd{echo}{echo}. What do think their values represent?
 
-You can set the value of a shell variable at the command line, for example:
+You can set the value of a shell variable at the command line, for example type:
 
 \begin{ttoutenv}
 \$ MYVAR=42
@@ -660,7 +668,7 @@ PATH=\$PATH:/opt/teaching/bin:/opt/common/bin:/opt/scripts
 \end{ttoutenv}
 
 
-This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}. Run \ttout{echo \$PATH} and you will see the new value, with your own \ttout{bin} directory at the end, preceded by the three \ttout{/opt} directories.
+This won't have any effect until you logout and login again. So do that now and try starting \ttout{arcade}. Run \ttout{echo \$PATH} and you will see the new value, which contains  your own \ttout{bin} directory, now preceded by the three \ttout{/opt} directories.
 
 
 \section{Configuring Thunderbird}
