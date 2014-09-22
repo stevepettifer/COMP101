@@ -666,7 +666,7 @@ Now try
 %
 Our previous use of \ttout{*} has always been in conjunction with \cmnd{ls}{ls} which might have led you to think that the wild card was being expanded by \cmnd{ls}{ls}. In fact the expansion is done by the \emph{shell}, \cmnd{bash}{bash}, which means that the effect is true for anything you type on the command line. Wildcards are a very powerful and useful feature of the command line, and as with anything powerful and useful can be used or mis-used, so it's important that you know what you're doing with them.
 
-One place where you have take care with wild cards is provided by the dotfiles---these are files
+One place where you must take care with wild cards is the dotfiles---these are files
 whose names begin with a dot (\ttout{.}), and the asterisk will not match a
 \ttout{.} at the start of a file name. To see what this means try the
 following
