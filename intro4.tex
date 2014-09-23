@@ -956,6 +956,41 @@ So, now type just
 \end{ttoutenv}
 
 and bask in the wisdom of your newly created cow guru. 
+\subsection{Doing several things at a time: background running}
+
+The command \cmdname{xclock} fires up a clock displaying the current time; try it now.
+
+You will notice that there's a problem with running clocks from an \ttout{xterm}.
+If you type:
+
+\begin{ttoutenv}
+ xclock\return
+\end{ttoutenv}
+a clock does indeed appear. However, you then can't type any more
+commands in the \ttout{xterm} window, because it is waiting for the
+clock program to finish, and of course the clock program is designed
+to run forever (or at least until you logout). In this situation you can, of course quit the clock, using \ctrl{c}  in the
+ \cmdname{xterm} window. However, if you want to keep the clock running and still get on with other things in the same \ttout{xterm} you can just add an ampersand (\ttout{\&}) on the end of a command, so in this case,
+\begin{ttoutenv}
+xclock \&
+\end{ttoutenv}
+Adding the ampersand ensures that the program is run \textbf{in the
+   background}, that is, separately from the \cmdname{xterm} window.
+ This way you can have several clocks at once and continue typing
+ other commands in the \cmdname{xterm} window.
+
+Try both of these approaches.
+
+Work out from the manual page for \ttout{xclock} how to use its various options, and experiment with producing a range of clocks.
+(You should ignore the section of the manual page entitled \ttout{X
+ DEFAULTS} -- for now.)
+
+Work out the \textbf{command line arguments} needed to make a clock have red
+hands with blue edges.
+
+One situation where the use of background processes is particularly useful is when you fire up an editor, such as \ttout{gedit}. You can start the editor and still continue to do other things in the same \ttout{xterm} window.
+
+% If you have time \emph{later}, try to figure out how to make a clock have a yellow background -- hint: there is only a good clue in the xclock man page, you will need to look at another man page to get the answer.
 
 \subsection{Printing text files: lpr}
 
@@ -1157,4 +1192,4 @@ Steve, Graham, Toby and John.
 \end{table}
 
 \section{Acknowledgements}
-These notes are largely our own work, but have been inspired in places by previous lab exercises created by Pete Jinks, John Sargeant and Ian Watson. We're very grateful to Alex Day, Alex Constantin, Hamza Mahmud and Ben Mulpeter for test driving and debugging the exercises.
+These notes are largely our own work, but have been inspired in places by previous lab exercises created by Pete Jinks, John Sargeant and Ian Watson. We're very grateful to Paul Waring, Alex Day, Alex Constantin, Hamza Mahmud and Ben Mulpeter for test driving and debugging the exercises.
