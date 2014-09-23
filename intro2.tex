@@ -376,7 +376,7 @@ and you should find that a different graphical desktop environment, KDE, starts 
 
 As well as GNOME and KDE, which both follow fairly similar interaction paradigms to the graphical environments of other operating systems, there are many alternative graphical interfaces for Linux. 
 
-Use the table that follows to explore some of these  by using the value from the `Command' column as the first command-line argument to \ttout{csstartx} instead of \ttout{startkde}/. 
+Use the table that follows to explore some of these  by using the value from the `Command' column as the first command-line argument to \ttout{csstartx} instead of \ttout{startkde}/. In each window manager make sure you figure out how to create a terminal window, so you can get some work done!
 
 
 \small
@@ -451,11 +451,13 @@ export PATH
 
 though don't worry if there are slight differences. We'll come back to what these instructions mean in a later lab.
 
-Start up the \cmnd{nano}{nano} editor, and use it to add a new line at the end of your \fname{.bash\_profile} that reads 
+Start up the \cmnd{nano}{nano} editor, and use it to add the following as a  new line at the end of your \fname{.bash\_profile}:
 
 \begin{ttoutenv}
 /opt/teaching/bin/csstartx
 \end{ttoutenv}
+
+Use \ttout{less} to check that this line has now been added to your file.
 
 If you've already decided you want to try out something other than GNOME as your default window manager, add the appropriate command from the table after \ttout{csstartx}. 
 
