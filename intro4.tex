@@ -322,7 +322,7 @@ often \ttout{cd ..}, or even \ttout{cd ../x/y} and so forth.
 
 Speaking of \cmdname{ls}, you will from time to time need to use its
 \ttout{-a} switch argument to ask it to show `hidden' files beginning with a dot,
-and/or \ttout{-l} to make it show details about the files it lists.
+and/or \ttout{-l} (a letter \ttout{l}, not a digit \ttout{1}) to make it show details about the files it lists.
 
 \subsection{Creating a directory structure}
 
@@ -458,6 +458,7 @@ For example
 makes a copy of the file \fname{file1} and calls it \fname{file2}.  If
 a file called file2 already exists, \emph{the existing \fname{file2} will be  overwritten
 with a copy of \fname{file1} and lost without warning}.
+%% mention -i
 
 The second form is slightly different:
 \begin{ttoutenv}
@@ -470,7 +471,7 @@ For example
 \$  cp file1 file2 file3 dirname \return
 \end{ttoutenv}
 
-This copies the files \fname{file1}, \fname{file2}, \fname{file3} into
+This copies the files \fname{file1}, \fname{file2} and \fname{file3} into
 the directory \fname{dirname}, again overwriting any files already
 there with the same names.
 
@@ -496,7 +497,7 @@ and
 \$  mv [FILENAME(S)] [DIRECTORYNAME] \return
 \end{ttoutenv}
 
-The effect is like a copying followed by removing the sources of the copy,
+The effect is similar to copying followed by removing the sources of the copy,
 except it is more efficient than that (most of the time).
 For example
 \begin{ttoutenv}
@@ -667,9 +668,8 @@ Now try
 Our previous use of \ttout{*} has always been in conjunction with \cmnd{ls}{ls} which might have led you to think that the wild card was being expanded by \cmnd{ls}{ls}. In fact the expansion is done by the \emph{shell}, \cmnd{bash}{bash}, which means that the effect is true for anything you type on the command line. Wildcards are a very powerful and useful feature of the command line, and as with anything powerful and useful can be used or mis-used, so it's important that you know what you're doing with them.
 
 One place where you must take care with wild cards is the dotfiles---these are files
-whose names begin with a dot (\ttout{.}), and the asterisk will not match a
-\ttout{.} at the start of a file name. To see what this means try the
-following
+whose names begin with a dot (\ttout{.}), because the asterisk will not match a
+\ttout{.} at the start of a file name. To see what this means try the following
 \begin{ttoutenv}
 \$  cd \return
 \$  ls *bash* \return
@@ -834,11 +834,10 @@ will appear in the exercises.
 
 Standard output sent to the screen may come so fast that it
 disappears off the top before you have had a chance to read it.
-There is a simple way around this problem by piping the output into the command \cmdname{less}
-  which arranges to stop after each pageful (or screenful, or window-ful) of output. For example,
-  \begin{ttoutenv}
-  ls -la | less
-  \end{ttoutenv}
+There is a simple way around this problem by piping the output into the command \cmdname{less} which arranges to stop after each pageful (or screenful, or window-ful) of output. For example,
+\begin{ttoutenv}
+\$ ls -la | less
+\end{ttoutenv}
   would be a wise precaution if the current working directory held
   more than a screenful of entries. When \cmdname{less} has shown you the
   first screenful, press the space bar to see the next screenful,
@@ -960,26 +959,26 @@ and bask in the wisdom of your newly created cow guru.
 
 The command \cmdname{xclock} fires up a clock displaying the current time; try it now.
 
-You will notice that there's a problem with running clocks from an \ttout{xterm}.
+You will notice that there's a problem with running clocks from a terminal window.
 If you type:
 
 \begin{ttoutenv}
- xclock\return
+\$ xclock\return
 \end{ttoutenv}
 a clock does indeed appear. However, you then can't type any more
-commands in the \ttout{xterm} window, because it is waiting for the
+commands in the terminal window, because it is waiting for the
 clock program to finish, and of course the clock program is designed
 to run forever (or at least until you logout). In this situation you can, of course quit the clock, using \ctrl{c}  in the
- \cmdname{xterm} window. However, if you want to keep the clock running and still get on with other things in the same \ttout{xterm} you can just add an ampersand (\ttout{\&}) on the end of a command, so in this case,
+ \cmdname{xterm} window. However, if you want to keep the clock running and still get on with other things in the same terminal window you can just add an ampersand (\ttout{\&}) on the end of a command, so in this case,
 \begin{ttoutenv}
-xclock \&
-\end{ttoutenv}
+\$ xclock \&
+\end{ttoutenv} 
 Adding the ampersand ensures that the program is run \textbf{in the
-   background}, that is, separately from the \cmdname{xterm} window.
+   background}, that is, separately from the terminal window.
  This way you can have several clocks at once and continue typing
- other commands in the \cmdname{xterm} window.
+ other commands carrying on from where you were.
 
-Try both of these approaches.
+Try running an \ttout{xclock} in the background now.
 
 Work out from the manual page for \ttout{xclock} how to use its various options, and experiment with producing a range of clocks.
 (You should ignore the section of the manual page entitled \ttout{X
@@ -988,8 +987,13 @@ Work out from the manual page for \ttout{xclock} how to use its various options,
 Work out the \textbf{command line arguments} needed to make a clock have red
 hands with blue edges.
 
-One situation where the use of background processes is particularly useful is when you fire up an editor, such as \ttout{gedit}. You can start the editor and still continue to do other things in the same \ttout{xterm} window.
+One situation where the use of background processes is particularly useful is when you fire up an editor, such as \ttout{gedit}. You can start the editor and still continue to do other things in the same terminal window. Try this now
+\begin{ttoutenv}
+\$ gedit \&
+\end{ttoutenv}
+You can also start \ttout{gedit} (and many other editors) with a filename argument to edit a particular file; in fact this is probably the way you will normally use it.
 
+Sometimes you might forget the \ttout{\&} and want to put a process into the background while it is already running. This is easy to do; first you \concept{suspend} the process by typing \ctrl{z}, then type \ttout{bg} to put into the background. Try this now with a \ttout{gedit} window.  You can bring a background process back into the foreground by typing \ttout{fg}. If you have more than one suspended or background job then you just add the background process count as an argument; you can find which process has which count by using the shell command \cmdname{jobs}.
 % If you have time \emph{later}, try to figure out how to make a clock have a yellow background -- hint: there is only a good clue in the xclock man page, you will need to look at another man page to get the answer.
 
 \subsection{Printing text files: lpr}
