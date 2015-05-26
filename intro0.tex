@@ -268,36 +268,36 @@ left, and white text that scrolls up the screen as the Pi boots.
 \caption{The Input Selection menu on the monitor. This image  of the Dell U2412M Monitor has been reproduced with the kind permission of Dell. All rights reserved.}\label{figure:monitorswitch}
 \end{figure}
 
-When the boot process finishes for the first time (it will take somewhere
-about 20--30 seconds), if all has gone well you should see the NOOBS (New Out Of Box)
-installation tool appear (see Figure \ref{figure:noobs-install-screen}).
+%When the boot process finishes for the first time (it will take somewhere
+%about 20--30 seconds), if all has gone well you should see the NOOBS (New Out Of Box)
+%installation tool appear (see Figure \ref{figure:noobs-install-screen}).
 
-\begin{figure}
-\centerline{\includegraphics[width=13cm]{images/noobs-install-screen}}
-\caption{NOOBS Install Screen}\label{figure:noobs-install-screen}
-\end{figure}
+%\begin{figure}
+%\centerline{\includegraphics[width=13cm]{images/noobs-install-screen}}
+%\caption{NOOBS Install Screen}\label{figure:noobs-install-screen}
+%\end{figure}
 
-\subsection{Installing Raspbian}
+%\subsection{Installing Raspbian}
 
-The SD card that comes with your Pi is set up so that when you first start the device you can choose to install one of a variety of different operating systems that are compatible with the Raspberry Pi hardware. We are going to use Raspbian for all of the labs, so scroll down the list until you see an option labelled Raspbian with an SD card icon to the right, and check the left hand box as shown in Figure \ref{figure:noobs-select-raspbian}. \emph{Take care not to select the other Raspbian option with a network connection icon, as this will attempt to download Raspbian over the network.}
+%The SD card that comes with your Pi is set up so that when you first start the device you can choose to install one of a variety of different operating systems that are compatible with the Raspberry Pi hardware. We are going to use Raspbian for all of the labs, so scroll down the list until you see an option labelled Raspbian with an SD card icon to the right, and check the left hand box as shown in Figure \ref{figure:noobs-select-raspbian}. \emph{Take care not to select the other Raspbian option with a network connection icon, as this will attempt to download Raspbian over the network.}
 
-\begin{figure}
-\centerline{\includegraphics[width=13cm]{images/noobs-select-raspbian}}
-\caption{Selecting Raspbian}\label{figure:noobs-select-raspbian}
-\end{figure}
+%\begin{figure}
+%\centerline{\includegraphics[width=13cm]{images/noobs-select-raspbian}}
+%\caption{Selecting Raspbian}\label{figure:noobs-select-raspbian}
+%\end{figure}
 
-Click the Install button and you will see a final warning message as in Figure~\ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete, so while you're waiting for Figure~\ref{figure:raspi-config} to appear please use the time to read Section~\ref{sec:unix-linux} in the separate handout then come back here to complete the installation process.
-\label{page:raspbian-install}
+%Click the Install button and you will see a final warning message as in Figure~\ref{figure:noobs-install-warning}. Click Yes to confirm, and the installation process shown in Figure \ref{figure:noobs-install-progress} will begin. This process will take around 15 minutes to complete, so while you're waiting for Figure~\ref{figure:raspi-config} to appear please use the time to read Section~\ref{sec:unix-linux} in the separate handout then come back here to complete the installation process.
+%\label{page:raspbian-install}
 
-\begin{figure}
-\centerline{\includegraphics[width=13cm]{images/noobs-install-warning}}
-\caption{Final warning/confirmation from NOOBS}\label{figure:noobs-install-warning}
-\end{figure}
+%\begin{figure}
+%\centerline{\includegraphics[width=13cm]{images/noobs-install-warning}}
+%\caption{Final warning/confirmation from NOOBS}\label{figure:noobs-install-warning}
+%\end{figure}
 
-\begin{figure}
-\centerline{\includegraphics{images/noobs-install-progress}}
-\caption{NOOBS installation progress}\label{figure:noobs-install-progress}
-\end{figure}
+%\begin{figure}
+%\centerline{\includegraphics{images/noobs-install-progress}}
+%\caption{NOOBS installation progress}\label{figure:noobs-install-progress}
+%\end{figure}
 
 \begin{rpi}{Raspbian}
   Raspbian is a version of the Debian release of Linux, tuned for the Pi. If you manage to corrupt the operating system, or just want to start from scratch, then re-writing the SD card with a fresh image is reasonably straightforward: simply reboot your Pi and press the Shift key when the initial splash screen loads (you will need to be quick, as it only appears for a few seconds). This will present you with a list of options. Ensure that Raspbian is selected and then click the Install icon to re-write the SD card with a fresh image. This will erase all of the data on the Pi, so it's crucial that you make sure that you have a backup of anything important.
@@ -320,7 +320,7 @@ As an aside, you may want to consider this: if you need a text editor to write p
 \caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using cursor keys.}\label{figure:raspi-config}
 \end{figure}
 
-Once Raspbian has finished installing, the Pi will reboot and you will
+Once Raspbian has finished booting, you will
 be presented with a configuration screen as shown in Figure \ref{figure:raspi-config}.
 At this stage you could tweak various other options that affect the
 display and the layout of keyboard being used; but conveniently the
