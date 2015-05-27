@@ -30,7 +30,7 @@ You should now see:
 
 %
 
-The last line of this text (which is shown in bold here but will be green and blue on your screen) is the \wikipedia{Command_Prompt}{command prompt}. It might look innocent enough, but in the right hands, the command prompt is one of the most powerful ways of controlling a computer. Your previous interaction with a computer was probably via  a \wikipedia{Graphical_User_Interface}{graphical user interface}, or GUI, such as that provided by Windows or Mac OS X, so  it may feel a bit odd at first to be issuing instructions to a machine via a textual command-line. However, this is a crucial skill that you'll need during your studies here at University, and also in your future career. In fact, employers have often said that our students' abilities with the command line come as a very pleasant surprise to them and set them apart from many other students.
+The last line of this text (which is shown in bold here but will be green and blue on your screen) is the \wikipedia{Command_Prompt}{command prompt}. It might look innocent enough, but in the right hands, the command prompt is one of the most powerful ways of controlling a computer. Your previous interaction with a computer was probably via  a \wikipedia{Graphical_User_Interface}{graphical user interface}, or GUI, such as that provided by Windows or Mac OS X, so  it may feel a bit odd at first to be issuing instructions to a machine via a textual command-line. However, this is a crucial skill that you'll need during your studies here at University, and also in your future career. In fact, employers have often said that our students' abilities with the command-line come as a very pleasant surprise to them and set them apart from many other students.
 
 
 \begin{diversion}{Don't be a WIMP}
@@ -45,7 +45,7 @@ What's really fascinating here, though, is that although the keyboard versus mou
 
 In any case, you should definitely learn the keyboard shortcuts for the most common operations in your favourite tools, and a handful of useful command-line tools. For example, when you're writing code you'll be saving files very regularly; maybe even several times a minute when you're debugging. There are two options for this: 1) move hand off keyboard to mouse; use pointer to find the `File' menu, from the file menu move the pointer to the `Save' option; move hand from mouse back to keyboard. Or 2) Press the combination of keys that perform the `save' function. Which do you think is faster?
 
-And think carefully about the best tool for the job; sometimes it'll be the mouse/menu combination, but perhaps more often than you might think, a few selected commands may get the job done considerably more quickly. You've probably had more experience of doing things the GUI-way up until now so, during these labs,  please use the command line wherever possible to built up your familiarity until you are able to judge the pros and cons of both approaches to make an informed decision each time.
+And think carefully about the best tool for the job; sometimes it'll be the mouse/menu combination, but perhaps more often than you might think, a few selected commands may get the job done considerably more quickly. You've probably had more experience of doing things the GUI-way up until now so, during these labs,  please use the command-line wherever possible to built up your familiarity until you are able to judge the pros and cons of both approaches to make an informed decision each time.
 
 %so if it's not obvious which is the better choice for a particular task, we suggest you go for the command-line option until you're familiar enough with the pros and cons of both approaches to make an informed decision each time.
 \end{diversion}
@@ -319,7 +319,7 @@ We can also refer to the current directory in a similar manner. Just as the dire
 
 \subsection{Files in more detail}
 
-The files we've looked at so far, and the behaviour of the commands we've used to manipulate them shouldn't feel too alien---we're just doing similar things on the command line to actions that you'll have performed using a graphical interface before. But the Unix take on files is rather more sophisticated than this, and to understand that, we'll need to think in a bit more detail about what a file actually is. When we think of an image or a music track as being stored `in a file', what do we actually mean?
+The files we've looked at so far, and the behaviour of the commands we've used to manipulate them shouldn't feel too alien---we're just doing similar things on the command-line to actions that you'll have performed using a graphical interface before. But the Unix take on files is rather more sophisticated than this, and to understand that, we'll need to think in a bit more detail about what a file actually is. When we think of an image or a music track as being stored `in a file', what do we actually mean?
 
 A file is actually just a sequence of numbers on some storage device such as a hard drive. The right program can interpret these numbers, and turn them into pictures on screen, or sounds coming out of your speakers. The wrong program would be able to make no sense of a file at all; if you could `display' an audio track on screen, or `play' an image file as sound, it would just be a meaningless mess. So there's nothing very special about a file that makes its contents mean one thing or another; it's just up to a program to interpret what's in the file correctly. So what are the properties of a file? So far we've seen that files have a filename, and a location within a file system. We've seen that some files can be executed, whereas other files contain data. But in both these cases, files are just sequences of numbers. Although we've not explored this yet, some files can be written to or modified, whereas others can only be read from; but they are still just sequences of numbers which when interpreted correctly have a particular meaning.
 
@@ -407,7 +407,7 @@ Rather than browsing the web in the normal way, we sometimes want to just obtain
 \$ curl http://studentnet.cs.manchester.ac.uk/ugt/COMP10120/files/Advent.z5 -o Advent.z5
 \end{ttoutenv}
 
-\noindent and you'll see \totype{curl} fetch the file you need `over the web' and save it in your home directory. This is also the first time you've encountered what's called a command-line argument \concept{switch}: the \ttout{-o} switch tells \cmnd{curl}{curl} to use the next argument on the command line as the output filename.
+\noindent and you'll see \totype{curl} fetch the file you need `over the web' and save it in your home directory. This is also the first time you've encountered what's called a command-line argument \concept{switch}: the \ttout{-o} switch tells \cmnd{curl}{curl} to use the next argument on the command-line as the output filename.
 
 Use \cmnd{ls}{ls} to confirm that you can see the file \fname{Advent.z5} in your home directory, then type:
 
