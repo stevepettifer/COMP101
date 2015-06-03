@@ -392,13 +392,13 @@ which reads as `modify the permissions of the directory \fname{/var/www} and any
 
 Now if all has gone to plan, the user pi should be able to read and write to the directory \fname{/var/www}. Try this out by editing the content of the \fname{index.html} file that's in that directory (and which was created when you installed Apache) to say something different from the default text.
 
-We're finally ready to start Apache. Use the Apache Control command:
+We're finally ready to start Apache. Use the following command:
 
 \begin{ttoutenv}
-\$ sudo apachectl start
+\$ sudo service apache2 start
 \end{ttoutenv}
 
-to initialise the server (you can use a similar command with \texttt{stop} to shut it down again), and then use \cmnd{ps}{ps waux} to confirm that you can see several processes with \texttt{apache} in the name now running. Note that although you started the server with \cmnd{sudo}{sudo} which runs things as root, that the owner of the apache processes is \fname{www-data}. The \ttout{apachectl} command has restricted apache to running as a regular, non-root user, and you should by now be able to work out why having a web server running as root would be a Bad Thing from a security point of view.
+to initialise the server (you can use a similar command with \texttt{stop} to shut it down again), and then use \cmnd{ps}{ps waux} to confirm that you can see several processes with \texttt{apache} in the name now running. Note that although you started the server with \cmnd{sudo}{sudo} which runs things as root, that the owner of the Apache processes is \fname{www-data}. The \ttout{service apache2 start} command has restricted Apache to running as a regular, non-root user, and you should by now be able to work out why having a web server running as root would be a Bad Thing from a security point of view.
 
 On the desktop machine use a web browser to see what content the Pi is now serving. The URL will be
 
