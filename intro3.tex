@@ -382,7 +382,7 @@ to add the \ttout{pi} user to the \ttout{www-contrib} group. The \cmnd{usermod}{
 % Explain what the other groups are for
 % \end{diversion}
 
-We now need to make the \fname{/var/www} folder \concept{writable} by members of our new group, so do that using the command
+We now need to make the \fname{/var/www} folder \concept{writable} by members of our new group, so do that using the command:
 
 \begin{ttoutenv}
 \$ sudo chmod -R g+w /var/www
@@ -392,7 +392,7 @@ which reads as `modify the permissions of the directory /var/www and any files/d
 
 Now if all has gone to plan, the user pi should be able to read and write to the directory \fname{/var/www}. Try this out by editing the content of the \fname{index.html} file that's in that directory (and which was created when you installed Apache) to say something different from the default text.
 
-We're finally ready to start Apache. Use the Apache Control command
+We're finally ready to start Apache. Use the Apache Control command:
 
 \begin{ttoutenv}
 \$ sudo apachectl start
