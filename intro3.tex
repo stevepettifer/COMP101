@@ -363,7 +363,7 @@ Change the group ownership of \fname{/var/www} to be \ttout{www-contrib} using t
 \$ sudo chgrp -R www-contrib /var/www
 \end{ttoutenv}
 
-and check that this has changed using \ttout{ls -l}. Note that we're using the \ttout{-R} option to \cmnd{chgrp}{chgrp}, which means `apply this change not only to /var/www itself, but to all files and directories contained within it' (\ttout{R} here stands for \wikipedia{Recursion}{recursive}). Next we need to add the pi user to that group. Type
+and check that this has changed using \ttout{ls -l}. Note that we're using the \ttout{-R} option to \cmnd{chgrp}{chgrp}, which means `apply this change not only to /var/www itself, but to all files and directories contained within it' (\ttout{R} here stands for \wikipedia{Recursion}{recursive}). Next we need to add the \ttout{pi} user to that group. Type
 
 \begin{ttoutenv}
 \$ groups
