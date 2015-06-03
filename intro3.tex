@@ -388,7 +388,7 @@ We now need to make the \fname{/var/www} folder \concept{writable} by members of
 \$ sudo chmod -R g+w /var/www
 \end{ttoutenv}
 
-which reads as `modify the permissions of the directory /var/www and any files/directories in it to add write access for members of its group'.
+which reads as `modify the permissions of the directory \fname{/var/www} and any files/directories in it to add write access for members of its group'.
 
 Now if all has gone to plan, the user pi should be able to read and write to the directory \fname{/var/www}. Try this out by editing the content of the \fname{index.html} file that's in that directory (and which was created when you installed Apache) to say something different from the default text.
 
