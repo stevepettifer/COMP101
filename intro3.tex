@@ -400,7 +400,7 @@ We're finally ready to start Apache. Use the following command:
 
 to initialise the server (you can use a similar command with \texttt{stop} to shut it down again), and then use \cmnd{ps}{ps waux} to confirm that you can see several processes with \texttt{apache} in the name now running. Note that although you started the server with \cmnd{sudo}{sudo} which runs things as root, that the owner of the Apache processes is \fname{www-data}. The \ttout{service apache2 start} command has restricted Apache to running as a regular, non-root user, and you should by now be able to work out why having a web server running as root would be a Bad Thing from a security point of view.
 
-On the desktop machine use a web browser to see what content the Pi is now serving. The URL will be
+On the desktop machine use a web browser to see what content the Pi is now serving. The URL will be:
 
 \begin{ttoutenv}
 http://[IPADDRESSOFPI]
