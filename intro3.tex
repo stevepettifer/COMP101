@@ -292,7 +292,7 @@ For this to work, it means that both the Unix file system and its way of dealing
 
 Working from right to left in Figure \ref{figure:longformls}, column \protect\circled{7} contains the filename, column \protect\circled{6} gives the date that the file was last modified (the exact format of the date will vary so as to always be `useful'; older files will have a year instead of an exact time, for example) and column \protect\circled{5} shows the size of the file in bytes. Columns \protect\circled{4} and \protect\circled{3} give the group and user to which the file belongs; we'll come back to this in a moment. Column \protect\circled{2} shows the number of links associated with the file (ignore this for now), and finally column \protect\circled{1} gives a summary of the file's permissions, which we'll look at again shortly.
 
-In our example, the file's user (Column \protect\circled{3}) is not surprisingly `pi', which is the username under which you logged in. Run
+In our example, the file's user (Column \protect\circled{3}) is not surprisingly `pi', which is the username under which you logged in. Run:
 
 \begin{ttoutenv}
 \$ ls -l /
@@ -326,7 +326,7 @@ If you think back to what you learned about the hierarchical relationship betwee
 
 Anyway, let's get back to setting up the Apache web server. When you ran the Python web server, that was a process owned by you, and because we didn't do anything special to protect it, if you closed the shell/terminal that was used to start it, it too would die. Generally speaking, you'd want a web server to continue running whether anyone was logged into the machine or not, so this isn't ideal. The other issue with starting a web server in this way is that because the process is owned by you, it has access to all your files---so if a malicious hacker was able to take control of the web server process, he or she would be able to read or even delete your work, which clearly isn't a good thing.
 
-So to set up a web server properly we need to
+So to set up a web server properly we need to:
 
 \begin{itemize}
 \item make sure that it can continue to function after you've logged out, and
