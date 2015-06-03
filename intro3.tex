@@ -375,7 +375,7 @@ to see what groups your user is already a member of (you'll see things like \tto
 \$ sudo usermod -a -G www-contrib pi
 \end{ttoutenv}
 
-to add the \ttout{pi} user to the \ttout{www-contrib} group. The \ttout{usermod} command can be used to modify lots of things about a user; here we are using with the combination of \ttout{-a} and \ttout{-G} to mean `append this group to the user's list of groups'. You'll need to log out and back in again to see this change take effect, so do that now and then run the \ttout{groups} command to confirm that \ttout{pi} is now indeed a member of group \ttout{www-contrib} as well as the other original groups.
+to add the \ttout{pi} user to the \ttout{www-contrib} group. The \cmnd{usermod}{usermod} command can be used to modify lots of things about a user; here we are using with the combination of \ttout{-a} and \ttout{-G} to mean `append this group to the user's list of groups'. You'll need to log out and back in again to see this change take effect, so do that now and then run the \ttout{groups} command to confirm that \ttout{pi} is now indeed a member of group \ttout{www-contrib} as well as the other original groups.
 
 % \begin{diversion}{About groups}
 % \label{diversion:aboutgroups}
