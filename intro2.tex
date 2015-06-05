@@ -237,7 +237,7 @@ As well as being  able to join commands together, you can use the idea of manipu
 
 and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol \concept{redirects} the standard out of the \cmnd{lynx}{lynx} command so that instead of going to the screen it gets put into a named file.
 
-To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!).
+To finish off this first contact with pipes and redirects, we'll use a new command called \cmnd{grep}{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!).
 
 \ttout{grep} is a hugely powerful and useful utility, designed for searching through plain-text files. Learning to master \ttout{grep} will take more time than we have in this lab, since you'll have to understand the idea of \concept{regular expressions} to make full use of it (we'll come to those in a later lab). For now, we'll use it in its very simplest form. Type:
 
@@ -247,7 +247,7 @@ To finish off this first contact with pipes and redirects, we'll use a new comma
 
 and you should see a list of all the lines from \ttout{weather.txt} that contain the word `BBC'. Use \cmnd{less}{less} to have a look for other terms to `\ttout{grep}' for (you might want to try something like `Sunny' to give you a list of all the places where the weather is nice, for example).
 
-Rather like \cmnd{less}{less}, if \cmnd{grep}{grep} isn't given the name of a file as its last command-line argument (in this case we used \fname{weather.txt}), it will operate on standard input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \cmnd{lynx}{lynx} and \cmnd{grep}{grep} so that the output is a single line describing the weather in Manchester at the time we run the command. The output should look something like:
+Rather like \cmnd{less}{less}, if \ttout{grep} isn't given the name of a file as its last command-line argument (in this case we used \fname{weather.txt}), it will operate on standard input instead of grepping through a file (yes, it's quite okay to use grep as a verb from now, no one will look at you funny). Use this knowledge to join together \cmnd{lynx}{lynx} and \cmnd{grep}{grep} so that the output is a single line describing the weather in Manchester at the time we run the command. The output should look something like:
 
 \begin{ttoutenv}
    [33]Manchester 22\textdegree{}C 72\textdegree{}F
