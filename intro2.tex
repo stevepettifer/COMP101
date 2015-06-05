@@ -494,7 +494,7 @@ Before we leave this section on graphical environments, there's one quirk that w
 
 This works fine when you login directly to a PC from the console, but will cause problems if you login remotely from another machine, as you will in the next lab. So we need to arrange things so that we only try to start up the graphical environment if the user has logged in from the console, and not via a remote connection.
 
-Carefully replace the line you've just added containing \ttout{csstartx} at the end of \fname{.bash\_profile} with the lines
+Carefully replace the line you've just added containing \ttout{csstartx} at the end of \fname{.bash\_profile} with the lines:
 
 \begin{ttoutenv}
 case `tty` in
