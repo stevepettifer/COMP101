@@ -136,7 +136,7 @@ Quit \ttout{less} (using the same technique you used to quit the \cmnd{man}{man}
 
 Did you type all of that? If so, you've wasted several precious key presses! You could have typed \ttout{cp mu}, and then pressed \ttout{Tab} to expand it to \ttout{cp mutt-template}, and then do the same thing again to create the start of the second argument, finally adding on the \ttout{-copy} bit yourself. It's a good habit to get into and will save you a lot of time over the next few years.
 
-The basic form of the \ttout{cp} command takes two arguments, the first being the file you want to copy, and the second being the name of the file that will be created. Confirm that there is indeed a new file in your home directory using \ttout{ls}, and that its contents are what you expect using \ttout{less} (how would you find out what else the \ttout{cp} command could do?).
+The basic form of the \cmnd{cp}{cp} command takes two arguments, the first being the file you want to copy, and the second being the name of the file that will be created. Confirm that there is indeed a new file in your home directory using \ttout{ls}, and that its contents are what you expect using \ttout{less} (how would you find out what else the \ttout{cp} command could do?).
 
 To modify the file, you'll need to use a text editor. Type
 \begin{ttoutenv}
@@ -169,7 +169,7 @@ Now, \ttout{mutt} expects the file containing its configuration information to h
 
 \ttout{mv} may seem like an odd name for a command that is used to rename a file, but it actually has a number of uses, including moving a file from one part of the file hierarchy to another. You'll see more examples of this in a later lab session.
 
-Rather like \cmnd{cp}{cp}, \cmnd{mv}{mv} takes two arguments; but instead of making a copy of the file, \cmnd{mv}{mv} just changes the name of the file given as the first argument to that of the second.
+Rather like \ttout{cp}, \cmnd{mv}{mv} takes two arguments; but instead of making a copy of the file, \cmnd{mv}{mv} just changes the name of the file given as the first argument to that of the second.
 
 Type \ttout{ls} to confirm that the file name has changed as you'd expect.
 
