@@ -22,7 +22,7 @@ In this lab session we're going to explore some of the features of Unix in a bit
 %%% BEGIN CONSOLE MODE SESSION
  Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). Remember that nothing will appear on the screen when you type your password. You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
 
- You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/} is your username. This is your home directory, which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore.
+ You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/home/} is your username. This is your home directory, which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore.
 
  The environment you are now in is known as \concept{terminal mode}. This is a way of interacting with  the computer via a screen containing only text, without the now familiar windows and images. All interaction is done using a \concept{command line interface} (CLI), typing commands into a program known as a \concept{shell}. When the terminal occupies the entire screen, as it does here, it is known as \concept{console mode}.
  %A useful summary of the history of the term console can be found at \urlnop{www.linfo.org/console.html}.
@@ -41,23 +41,23 @@ To see if \cmnd{mutt}{Mutt} is installed and is accessible to you, use the \cmnd
 \$ which mutt
 \end{ttoutenv}
 
-This should respond with \fname{/usr/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/usr/bin} directory on our system. Recall that  in the last sessions we looked at the contents of the \fname{/bin} directory that contained essential  commands such as \ttout{ls}; the directory \fname{/usr/bin} contains commands that aren't quite as essential, but have been installed for the users' benefit (i.e. the system would boot and work without them, but it just wouldn't be very useful).
+This should respond with \fname{/bin/mutt}, telling us that the \fname{mutt} command has been put in the \fname{/bin} directory on our system.
 
-List the contents of \fname{/usr/bin} by typing
+List the contents of \fname{/bin} by typing
 \begin{ttoutenv}
-\$ ls /usr/bin
+\$ ls /bin
 \end{ttoutenv}
 
 and notice that here we're using \cmnd{ls}{ls} to look at the contents of a directory other than the one we're currently in by passing the directory name as an \concept{argument}. A whole load of things should scroll past on the screen; most of them won't mean anything to you right now, but don't worry, we'll look at some of the important ones soon enough. Now that's a lot of stuff to look through, and depending on the size of your screen the command we're looking for may have scrolled off the top. So let's try to narrow our results down a bit. Type:
 
 \begin{ttoutenv}
-\$ ls /usr/bin/ma*
+\$ ls /bin/ma*
 \end{ttoutenv}
 
 
-and you should be given a much smaller list of things from the \fname{/usr/bin} directory; only those starting with the letters \ttout{ma}. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/usr/bin} directory, showing only files that start with the letters \ttout{ma} and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results).
+and you should be given a much smaller list of things from the \fname{/bin} directory; only those starting with the letters \ttout{ma}. The asterisk symbol is interpreted as being a `wildcard' that stands for `anything of any length, including length zero', so the command you've just typed means `list the contents of the \fname{/bin} directory, showing only files that start with the letters \ttout{ma} and then are followed by zero or more other characters' (notice that the \ttout{man} command that you used in the last session is there amongst the results).
 
-You could narrow this down even further by typing \ttout{ls /usr/bin/man*}, in which case you'll only get files from \fname{/usr/bin} that start with the letters \ttout{man}. Note that if you leave off the asterisk from your command, you'll be asking for files that are called \textit{exactly} \ttout{ma} or \ttout{man}, which isn't what you want here.
+You could narrow this down even further by typing \ttout{ls /bin/man*}, in which case you'll only get files from \fname{/bin} that start with the letters \ttout{man}. Note that if you leave off the asterisk from your command, you'll be asking for files that are called \textit{exactly} \ttout{ma} or \ttout{man}, which isn't what you want here.
 
 So far we've been getting you to do a fair amount of typing, and now we have to admit that you've been typing a lot more than you actually need to (it's good practice though, so we're not feeling too guilty at this stage). The default Linux command line has a feature similar to autocomplete that you'll have seen on web forms and in graphical tools, that saves you typing full commands by suggesting possible alternatives.
 
