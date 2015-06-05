@@ -497,12 +497,12 @@ This works fine when you login directly to a PC from the console, but will cause
 Carefully replace the line you've just added containing \ttout{csstartx} at the end of \fname{.bash\_profile} with the lines:
 
 \begin{ttoutenv}
-case `tty` in
+case $(tty) in
 /dev/tty1) exec /opt/teaching/bin/csstartx
 esac
 \end{ttoutenv}
 
-\emph{Note that the characters surrounding \ttout{tty} are back-quotes, not forward quotes. This character can be found on the keyboard of lab machines in the top left hand corner, just below \ttout{Esc}. Also the character after \ttout{/dev/tty} is the digit \ttout{1} and not the letter \ttout{l}.}
+\emph{Note that the character after \ttout{/dev/tty} is the digit \ttout{1} and not the letter \ttout{l}.}
 
 This piece of `shell script' reads something like `in the case where the terminal device being used is the physical console, then execute the graphical environment'. We won't explain the exact meaning of this piece of code now but will do in a lecture; for now just make sure you've typed it exactly as written here.
 
