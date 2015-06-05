@@ -235,7 +235,7 @@ As well as being  able to join commands together, you can use the idea of manipu
 \$ lynx -dump http://www.bbc.co.uk/weather > weather.txt
 \end{ttoutenv}
 
-and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol \concept{redirects} the standard out of the \cmnd{lynx}{lynx} command so that instead of going to the screenit gets put into a named file.
+and then use \ttout{ls} to confirm that a file called \ttout{weather.txt} has been created, and use \ttout{less} to look at its contents (which should be just the text from the weather web-page we've been looking at already). Here the \verb-`>'- symbol \concept{redirects} the standard out of the \cmnd{lynx}{lynx} command so that instead of going to the screen it gets put into a named file.
 
 To finish off this first contact with pipes and redirects, we'll use a new command called \ttout{grep} along with lynx to create a simple command of our own that tells you what the weather is like in Manchester (there are very few labs with windows onto the outside world in the Kilburn Building, so this may be more useful than you think!).
 
