@@ -5,7 +5,7 @@ V="-v"
 ## Needs to be run from the dir containing the COMP101 notes
 
 ## Things to update
-YEAR=2014
+YEAR=2015
 COMP101HOME=.
 USR=graham
 
@@ -31,7 +31,7 @@ if [ X$V = X-q ]
 then
    :
 else
-    echo 'Updating waldorf'
+    echo "Updating files for $YEAR on waldorf"
 fi
 
 ## Use sonofis7 so can update from outside School
