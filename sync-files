@@ -36,7 +36,7 @@ fi
 
 ## Use sonofis7 so can update from outside School
 
-for file in all-introlabs.pdf intro0.pdf intro1.pdf intro2.pdf intro3.pdf intro4.pdf introappendix.pdf
+for file in all-introlabs.pdf intro0.pdf intro1.pdf intro2.pdf intro3.pdf intro4.pdf introappendix.pdf intro0-large.pdf intro1-large.pdf intro2-large.pdf intro3-large.pdf intro4-large.pdf
 do 
 echo $file
 done | rsync -a  $V  -e  'ssh -p1001' --files-from=- . $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/labscripts
