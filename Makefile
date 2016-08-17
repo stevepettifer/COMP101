@@ -18,7 +18,7 @@ STY=${wildcard *.sty}
 stu: stuintro
 stuintro: all-introlabs.pdf ${PDFINTRO}
 
-all: staff stu stularge
+all: staff stu large
 
 staff: staffintro
 staffintro: all-introlabs-staff.pdf ${PDFINTROSTAFF}

@@ -1,8 +1,11 @@
+\begin{firstonly}
+  
 \chapter{Using the Linux desktop in CS}
 
 \minitoc
 
 \notesurl{intro2}
+\end{firstonly}
 
 \begin{demonote}
   Part of this lab involves editing dot files. Any mistake here can result in a student not being able to login. To fix this, login yourself (either on a new virtual terminal or another machine), then
@@ -15,7 +18,11 @@
 
 \end{demonote}
 
+\begin{firstonly}
+
 In this lab session we're going to explore some of the features of Unix in a bit more depth, this time using the desktop PCs rather than your Raspberry Pi (we'll return to using that in the next lab). We'll explore some of the more advanced features of the command line and various useful tools that will help you understand how a typical Unix system is organised. Almost everything that you learn using Linux on the desktop machine is equally applicable to the Raspberry Pi, and vice versa.
+  
+\end{firstonly}
 
 \section{Logging in}
 
@@ -202,7 +209,11 @@ You'll probably find using \cmnd{lynx}{lynx} an unsatisfying experience: tolerab
 
 Now consider what the web `looks' like if you are visually impaired or blind and have to use a screen-reader (a voice-synthesiser program that vocalises the text that's on-screen) to interact with your computer. Whereas a sighted person can easily cope with a two-dimensional layout that allows you to be aware of multiple things at the same time (i.e. you can be reading the main content of the page, but conscious of the fact that there's a navigation bar on the left for when you need it), if instead you are listening to a voice reading the contents of the page out to you, it's only possible to be hearing one thing at a time. And what's more, you have to remember what has been read out in the past in order to make sense of what you are hearing now; you can't just `flick back' a paragraph or two by moving your eyes, instead you have to instruct the screen reader to backtrack and re-read something. So the experience of using the web if you are visually impaired has some things in common to interacting with web-pages using \cmnd{lynx}{lynx}.
 
+\begin{firstonly}
+  
 You'll soon be designing your own web-based systems as part of the Team Project in the later stages of \courseunit{COMP10120}; making them accessible to visually impaired readers is something you should keep in mind. Try using \cmnd{lynx}{lynx} to browse some of your favourite websites, and you'll almost certainly find that the level of `accessibility' on the Web varies considerably!
+
+\end{firstonly}
 
 \subsection{Pipes and Redirects}
 \label{section:pipesandredirects}
@@ -309,7 +320,12 @@ Take a few minutes to explore the graphical environment. Even if you've never us
 It's quite common to refer to GNOME as a `window manager', but technically it is much more than that; it's actually a collection of tools, applications and other programs that together form a graphical desktop environment. The window manager component of GNOME 3 is called \wikipedia{Mutter_(software)}{Mutter}.
 \end{linux}
 
+\begin{firstonly}
+
 \noindent but you'll probably be able to work out everything you need to get you going by poking around at the various buttons. Unlike the Raspberry Pi where you have complete control over the operating system via the \texttt{sudo} command, the lab machines are configured so that you can't do any long-term damage to the setup. Apart from accidentally deleting your own files (and right now you have very little important stuff to accidentally delete!), there's nothing much you can do that will cause problems, so feel free to explore a bit.
+
+  
+\end{firstonly}
 
 Perform the following tasks:
 \begin{enumerate}
@@ -349,7 +365,7 @@ But what do we mean by `execute commands'? You've probably got the hang of the f
 
 \section{X Windows}
 
-Unlike OS X and Windows and most mobile operating systems, Linux doesn't really have a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to  create the familiar WIMP environment (if you don't know what WIMP means yet, go back and read Breakout~\ref{breakout:wimp} from the last lab session).
+Unlike OS X and Windows and most mobile operating systems, Linux doesn't really have a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to  create the familiar WIMP environment (if you don't know what WIMP means yet, go back and read Breakout~\ref{breakout:wimp} from earlier in these notes).
 
 \begin{figure}[htb]
   \begin{center}
@@ -359,9 +375,12 @@ Unlike OS X and Windows and most mobile operating systems, Linux doesn't really 
 \label{figure:Xstructure}
 \end{figure}
 
-When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game. The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also takes control of the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120} lectures, and you'll explore some aspects of the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here: first the X Windows system is running that allows stuff to be drawn to regions of the screen; and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized.
+\begin{firstonly}
+  When you ran Quake and the snake game on the Pi in the previous lab, these programs took direct control of the graphics subsystem in order to display the game.
+The \texttt{startx} command runs a system called \wikipedia{X_Window_System}{X Windows}, which also takes control of the computer's graphics system, but on its own doesn't really do anything very exciting apart from allow other programs to then share the display. Along with X Windows, another system called a \wikipedia{Window_manager}{Window Manager} was started, and this is what you see drawing the buttons and menus and window controls for the graphical user interface. We'll look at how X Windows really works in one of the forthcoming \courseunit{COMP10120} lectures, and you'll explore some aspects of the architecture of X Windows in a lot more detail in \courseunit{COMP18112} (Fundamentals of Distributed Systems) in the second semester. For now, it's enough to understand that there are two things going on here: first the X Windows system is running that allows stuff to be drawn to regions of the screen; and second the Window Manager which is doing all the WIMPy stuff like providing all the controls that allow windows to be moved and resized.
+\end{firstonly}
 
-%\begin{danger}{Killing X}
+% \begin{danger}{Killing X}
 %You can abort X Windows at any point by pressing Ctrl + Alt + Backspace on the keyboard, but this will abruptly kill the window manager as well as any other processes that you may be running, and is almost always a bad thing to do. Rather like removing the power from a computer without shutting it down properly, quitting X Windows in this way may cause you to lose data, or corrupt files, so should only use this as a last resort if more graceful ways of shutting things down have failed.
 %\end{danger}
 
@@ -538,6 +557,7 @@ If you've mistyped any of the lines in \fname{.bash\_profile} you may find that 
 
 % TODO Cannot check this as a member of staff - get a vacation student
 % TODO to verify that it still works? PW
+\begin{firstonly}
 \section{ARCADE}
 
 We would now like you to register your access to the ARCADE server. ARCADE is the laboratory management system we use to administer coursework marks and deadlines, etc.. You can use the client query program to look up your details, laboratory timetables, marks, and so on, throughout the year. It is recommended you do this fairly regularly, if only to check that mistakes have not been made in your marks! You need to register with ARCADE before any of your lab work can be submitted, so it is much better to do it now than wait until your first deadline!
@@ -545,6 +565,8 @@ We would now like you to register your access to the ARCADE server. ARCADE is th
 In a terminal window, run the command \ttout{/opt/teaching/bin/arcade}; after a short pause, a new window will pop up. In the large text box you should find a message telling you that you are not yet authenticated, and that you have just been sent an email. If this is so, then quit the program, read the email you have just been sent by the ARCADE server, and carefully follow the instructions in it. Now start the ARCADE Query client again, and it should now connect you to the server. If this works, then your access is set up; if it doesn't then check you've followed the instructions precisely. If it still doesn't work then, as always, ask for help; \emph{it is very important that this registration process is completed.}
 
 Explore the various queries of the client, and familiarise yourself with the the user interface. Check that your registration details are correct. Feel free to ask for explanation if it is not obvious to you.
+  
+\end{firstonly}
 
 \section{Text Editors}
 
@@ -611,7 +633,7 @@ should probably use \ttout{gedit}.
 
 \section{Shell environment variables}
 
-When you started the ARCADE client or used the \fname{csstartx} command, you had to prefix these with their full pathname, which is \fname{/opt/teaching/bin/}. The directory
+When you used the \fname{csstartx} command, you had to prefix these with their full pathname, which is \fname{/opt/teaching/bin/}. The directory
 \fname{/opt/teaching/bin} is a place where we keep lots of useful
 teaching related tools, so it would be useful if you didn't have to
 type it every time you want to use a program from there; luckily
@@ -740,12 +762,15 @@ Follow all three steps in the process described in this document.
 
 Once your Inbox appears in Thunderbird, using it to compose and send email should be fairly self-explanatory, but if you're stuck there are plenty of Thunderbird tutorials available on the web.
 
+\begin{firstonly}
+  
 \section{That's all for now}
 \label{sec:thats-all-now}
 
 If you have reached this point before the end of the lab you may have gone too fast so please go back and review what you have done. You will be using many of the ideas we've just met in later labs, so it's important to understand them.
 When you are sure you have completed the work for this session, please tell the lab supervisor.
 
+\end{firstonly}
 
 % \section{Exploring the CS Unix environment -- which RPMs are installed}
 

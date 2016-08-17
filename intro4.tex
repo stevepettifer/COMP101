@@ -4,11 +4,14 @@
 \newcommand{\moodle}{Moodle}
 \newcommand{\Moodle}{Moodle}
 
+\begin{firstonly}
 \chapter[\Moodle\ Intro and command line skills]{Introduction to \Moodle\ and command line skills}
 
 \minitoc
 
 \notesurl{intro4}
+  
+\end{firstonly}
 
 
 %\begin{note}
@@ -37,6 +40,8 @@
 %
 %\end{note}
 
+
+\begin{firstonly}
 
 This is the last of the introductory labs, and is designed to
 introduce you to one of the virtual learning environments that's used
@@ -256,6 +261,8 @@ You won't be using it for this course unit, but for your other course units you 
 
 That's all we want to say about Moodle and VLEs. The second part of this lab is about using the command line in Linux.
 
+  
+\end{firstonly}
 
 \section{Reinforcing your command line skills}
 \newcommand{\ilinput}[1]{\ttout{#1}}
@@ -395,12 +402,15 @@ below your current working directory (as with other commands we've encountered b
 \end{ttoutenv}
 %
 
+\begin{firstonly}
+
 Next make a directory in your home directory for the
 \courseunit{COMP16121} course unit with sub-directories for each of the 10
 exercises associated with that course (these aren't imaginary exercises, you'll be starting on them next week). You \emph{must} use the same
 convention as above: capital \texttt{COMP16121} and lower case \texttt{ex1} and so on.
 
 You must get your directory structure right before continuing---be extremely careful that you get this right.
+  
 
 %ask a member of the lab staff to check it at this point.
 
@@ -430,6 +440,8 @@ Now try the following sequence of \texttt{cd}s, checking where you are by runnin
   cd ../.. \return
 \end{ttoutenv}
 %
+
+\end{firstonly}
 
 \subsection{Copying, moving, and removing files}
 
@@ -814,7 +826,7 @@ warning, so be careful of this kind of use).
 % \$  ls | cat -n > fred3
 % \end{ttoutenv}
 
-In the previous Intro lab session we met the idea of a \concept{pipe}, using the \verb+|+ symbol to connect the \concept{standard
+\firstcommand{In the previous Intro lab session}\pgtcommand{Earlier} we met the idea of a \concept{pipe}, using the \verb+|+ symbol to connect the \concept{standard
 output} of one command  to be \concept{piped} to the
 \concept{standard input} of a second.
 
@@ -1050,6 +1062,8 @@ All students have a printing account which is used to `pay' for their printing. 
 
 The printing allowance we give you means that you will be able to to print 500 sides during the year if you use the double-sided A4 mono option (at 8p per page). Note: the allowance would only cover 400 sides if you use the A4 single-sided option, at 5p per page, so clearly printing double-sided is your better option.
 
+\begin{firstonly}
+  
 \subsection{Time for a checkup}
 \label{sec:time-checkup}
 
@@ -1073,6 +1087,8 @@ If you don't understand what the script is telling you to do, please do take thi
 Once you've fixed any problems that the script has identified, please re-run the script to check everything is now okay, and then repeat this process until the script reports that everything is `good'.
 
 \end{roadblock}
+
+\end{firstonly}
 
 \subsection{Exercises}
 
@@ -1149,8 +1165,10 @@ in the dictionary which contain the string `red'.
 \end{enumerate}
 
 You have now finished the lab, but we encourage you to try the exercises
-contained in the file \fname{\Dcrsname/extras}. Don't worry if you find them
+contained in the file \\\fname{\Dcrsname/extras}. Don't worry if you find them
 tricky---they are.
+
+\begin{firstonly}
 
 \subsection{The end of the beginning}
 
@@ -1194,5 +1212,7 @@ Steve, Graham, Toby and John.
 \end{tabular}
 \end{table}
 
+  
+\end{firstonly}
 \section{Acknowledgements}
 These notes are largely our own work, but have been inspired in places by previous lab exercises created by Pete Jinks, John Sargeant and Ian Watson. We're very grateful to Paul Waring, Alex Day, Alex Constantin, Hamza Mahmud and Ben Mulpeter for test driving and debugging the exercises.

@@ -8,12 +8,28 @@
 \section{Welcome}
 
 
-Hello and welcome. In this first, introductory, lab we're going to
+\begin{firstonly}
+  Hello and welcome. In this first, introductory, lab we're going to
 cover some of the basic things you'll need to know about the IT
-infrastructure here in the School of Computer Science, and get your Raspberry Pi set up so that you can get going quickly in the next lab.
-Some of what we
-tell you may well seem very obvious to you, and if that's the case
-we'd ask you to be patient. Some other things might not be so obvious...
+infrastructure here in the School of Computer Science, and get your
+Raspberry Pi set up so that you can get going quickly in the next lab.
+Some of what we tell you may well seem very obvious to you, and if
+that's the case we'd ask you to be patient. Some other things might
+not be so obvious...
+
+\end{firstonly}
+
+\begin{pgtonly}
+  
+  Hello and welcome. In this introductory, lab we're going to
+cover some of the basic things you'll need to know about the IT
+infrastructure here in the School of Computer Science.
+Some of what we tell you may well seem very obvious to you, and if
+that's the case we'd ask you to be patient. Some other things might
+not be so obvious...
+
+These notes are a modified version of some that we use in our first year Undergraduate programme. We have tailored them for PGT students, but there may be some places where they betray their origins.
+\end{pgtonly}
 
 In this and every lab there will be staff, consisting of academic staff and postgraduate students, around to help you. If you're stuck or find something that you really can't understand, then \emph{please ask for help}; that's what the lab staff are here for, don't just sit there getting frustrated. The postgraduate students are known as \concept{Teaching Assistants}, or \concept{TAs} for short, although up to 2014 they were referred to as \concept{Demonstrators}. We will try to use the new name, but inevitably both will be used for a while.
 
@@ -26,10 +42,16 @@ Scattered throughout the main text of these exercises there are information boxe
 
 \begin{tabular}{m{1.5cm}m{12cm}}
 {\includegraphics[width=1.5cm]{images/bomb}} & \textbf{Danger!} The bomb icon explains problems and pitfalls, and how to avoid them. It's really important that you read these sections, or you may regret it later.\\
-\\
+  \\
+
+\begin{firstonly}
+    
 \includegraphics[width=1.5cm]{images/rpi-logo} & \textbf{Raspberry Pi Facts and Factoids.} These sections explain useful but non-essential things about the Raspberry Pi. If you're pushed for time, you can safely skip these boxes and perhaps come back to them another time.\\
 \\
-\includegraphics[width=1.5cm]{images/diversion} & \textbf{We digress\ldots} Boxes marked with this icon contain digressions and facts that are hopefully interesting but are probably tangential to the main flow of the exercise.\\
+
+\end{firstonly}
+
+  \includegraphics[width=1.5cm]{images/diversion} & \textbf{We digress\ldots} Boxes marked with this icon contain digressions and facts that are hopefully interesting but are probably tangential to the main flow of the exercise.\\
 \includegraphics[width=1.5cm]{images/roadblock} & \textbf{Stop here\ldots} Boxes marked with this icon contain checkpoint activities that you should complete before proceeding further.\\
 \end{tabular}
 
@@ -128,11 +150,14 @@ University's Office365 system. This is a system that
 gives you 25GB of email storage space and an integrated calendar. You should
 see a page looking something like Figure~\ref{figure:welc-mail365}.
 
+\begin{firstonly}
 Have a look around for a few minutes and check what mail you've
 got. In particular, look for one with `The Monday Mail' in the
 Subject line. This is an important mail you'll receive every Monday
 (hence the name) throughout your 3 or 4 years with us in the
 School which  tells you what's going on each week. Take a moment to read it now. You can always read the Monday Mail, by the way, at the archive located at\\  \urlnop{studentnet.cs.manchester.ac.uk/ugt/mondaymail/}
+  
+\end{firstonly}
 
 \begin{figure}
 \centerline{\includegraphics[width=15cm]{images/mymanchester.pdf}}
@@ -188,7 +213,10 @@ The system will shut down and after a while we'll be back to the boot selection 
 screen we saw earlier in Figure~\ref{figure:welc-grub}. This time, press space immediately, then use
 the up/down arrow keys to select \ttout{EPS Linux (Scientific
   Linux)}. Linux will now start, and after a short while you should
-see a black screen, with a white login prompt. We won't login to Linux
+see a black screen, with a white login prompt.
+
+\pgtcommand{\endinput}
+We won't login to Linux
 at this stage, that can wait until a later lab, next week. We would,
 however, like you to read the rest of this document, which gives you
 some useful and interesting background information about Linux. If you

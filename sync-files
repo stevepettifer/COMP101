@@ -5,7 +5,7 @@ V="-v"
 ## Needs to be run from the dir containing the COMP101 notes
 
 ## Things to update
-YEAR=2015
+YEAR=2016
 COMP101HOME=.
 USR=graham
 
