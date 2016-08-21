@@ -27,7 +27,7 @@ In this lab session we're going to explore some of the features of Unix in a bit
 \section{Logging in}
 
 %%% BEGIN CONSOLE MODE SESSION
- Make sure the desktop PC is booted into Linux, and log in using your University username and password (\emph{not} the username and password you used on the Pi). Remember that nothing will appear on the screen when you type your password. You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
+ Make sure the desktop PC is booted into Linux, and log in using your University username and password \firstcommand{(\emph{not} the username and password you used on the Pi)}. Remember that nothing will appear on the screen when you type your password. You should be greeted with a similar, but rather longer, command prompt to the one you saw in the previous lab.
 
  You are now logged in to a PC that is part of our School Linux network. Type \cmnd{pwd}{pwd} to find out which directory you are in. It should be something like \ttout{/home/mbaXXXXX}, where the part after the \ttout{/home/} is your username. This is your home directory, which is not actually stored on the desktop PC but on a central fileserver. This means that, whichever machine you use in the lab, you will always see the same home filestore.
 
@@ -132,7 +132,7 @@ As we've mentioned before, many of Unix's commands are plays on words, puns, or 
 Early versions of Unix included a command called \cmnd{more}{more}, written by Daniel Halbert from University of California, Berkeley in 1978, which would display a page's worth of text before prompting the user to press the space bar in order to see \textit{more} of the file. A more sophisticated paging tool, called \texttt{less} on the jokey premise that `less is more' was written by Mark Nudelman in the mid 1980s, and is now used in preference to  \texttt{more} in most Unix systems, including Linux.
 \end{diversion}
 
-Don't worry too much about the details of this file for now. If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the \courseunit{COMP18112} (Fundamentals of Distributed Systems) course in the second semester. For now, we just need to edit that file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory.
+Don't worry too much about the details of this file for now. \firstcommand{If you're already familiar with how IMAP and SMTP work together to provide your email service, then you'll be able to see what the contents of this template mean; if you're not, don't worry, it'll all be explained in detail in the \courseunit{COMP18112} (Fundamentals of Distributed Systems) course in the second semester.} We just need to edit the file to contain your details rather than the fake ones in the template you've just downloaded. But let's play it safe: rather than editing the actual file you downloaded, just in case you make a mistake, let's first make a copy of the file in your home directory.
 
 
 Quit \ttout{less} (using the same technique you used to quit the \cmnd{man}{man} command in the last lab session), and then enter
@@ -359,13 +359,13 @@ It's worth understanding the pros and cons of these two different approaches to 
 
 If you've completed step ~\ref{list:logout} you should now be back at the command prompt where you typed \cmnd{startx}{startx} a little while back. Before returning to the graphical environment where you'll spend most of your time, it's important to understand how the graphical interface you've just been using works as part of the Unix operating system.
 
-If you remember back to the first Raspberry Pi lab, we pointed out that the shell (\cmnd{bash}{bash}) that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
+\firstorpgt{If you remember back to the first Raspberry Pi lab, we pointed out}{It is important to understand} that the shell (\cmnd{bash}{bash}) that you're using to interpret commands is `just a program' that happens to interpret input from the user, execute commands, and display the results. The graphical environment you've just used is similar---just a program (or actually, collection of programs) that runs on the operating system.
 
 But what do we mean by `execute commands'? You've probably got the hang of the fact by now that most of the things that happen in Unix are just programs stored somewhere on the file system (remember, you found some of them in the \texttt{/bin} directory). When you press \ttout{Enter} at a shell prompt, the  shell checks that what you've typed has a valid \concept{syntax}, and then starts up a new \concept{process} in which that program executes. The process is mostly independent of the shell program that started it, gets on with doing whatever it was designed to do, and when it finishes it tells the shell that it's done, and the shell gives you another prompt for the next instruction. Something very similar happens when you run the \texttt{startx} command: the graphical environment starts executing, and when you select the `log out' option, it returns you back to the shell so you can issue another command. Notice that you haven't been `logged out' of Linux, but rather just out of the graphical environment -- we'll show you how to configure things so that `log out' in the GUI really does log you out in a little while. But first, let's take a step back now and look at what the \texttt{startx} command has actually done.
 
 \section{X Windows}
 
-Unlike OS X and Windows and most mobile operating systems, Linux doesn't really have a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to  create the familiar WIMP environment (if you don't know what WIMP means yet, go back and read Breakout~\ref{breakout:wimp} from earlier in these notes).
+Unlike OS X and Windows and most mobile operating systems, Linux doesn't really have a graphical windowing environment `built in'; what you've seen just now is a series of programs that co-operate with one another to  create the familiar WIMP environment \firstcommand{(if you don't know what WIMP means yet, go back and read Breakout~\ref{breakout:wimp} from earlier in these notes)}.
 
 \begin{figure}[htb]
   \begin{center}
@@ -402,8 +402,8 @@ As well as GNOME and KDE, which both follow fairly similar interaction paradigms
 Use the table that follows to explore some of these  by using the value from the `Command' column as the first command-line argument to \ttout{csstartx} instead of \ttout{startkde}. In each window manager make sure you figure out how to create a terminal window, so you can get some work done!
 
 
-\small
 {
+\small 
 
 
 \begin{tabular}{l l p{10cm}}
@@ -440,6 +440,7 @@ There's no doubt that these window managers are at the hard-core end of the wind
 
 %%% Try Xclock
 
+\normalsize
 As you become more familiar with Unix principles, keep the fact that you can easily swap window managers in mind. Most likely there will come a point where the graphical niceties of environments like GNOME become unnecessary, and perhaps even a distraction from getting work done, and you might find that a slimmed down window manager suits you better as a more experienced `power user'. For the rest of these exercises, though, we'll assume you're using GNOME (if you're confident enough to use something else, then translating our instructions to make sense in whatever environment you've chosen won't be too big a problem).
 
 
