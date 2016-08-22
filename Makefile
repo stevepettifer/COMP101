@@ -1,5 +1,6 @@
 ROOTINTRO=allintro
 ROOTPGT=pgt-intro
+ROOTPGTLARGE=pgt-intro-large
 ROOTINTROSTAFF=${ROOTINTRO}-staff-version
 ROOTINTROLARGE=${ROOTINTRO}-large
 TEXINTRO=intro0.tex intro1.tex intro2.tex intro3.tex intro4.tex introappendix.tex
@@ -27,8 +28,9 @@ staffintro: all-introlabs-staff.pdf ${PDFINTROSTAFF}
 
 
 
-large: stuintrolarge
+large: stuintrolarge pgtlarge
 stuintrolarge: all-introlabs-large.pdf ${PDFINTROLARGE}
+pgtlarge: pgt-intro-large.pdf
 
 all-introlabs.pdf: ${ROOTINTRO}.tex intro-body.tex ${TEXINTRO}  ${STY}
 	echo > includes.tex
@@ -46,6 +48,10 @@ all-introlabs-staff.pdf: ${ROOTINTRO}.tex intro-body.tex ${TEXINTRO}  ${STY}
 pgt-intro.pdf: ${ROOTPGT}.tex intro-body-pgt.tex ${TEXINTRO}  ${STY}
 	echo > includes.tex
 	pdflatex ${ROOTPGT}; biber ${ROOTPGT}; pdflatex ${ROOTPGT}; pdflatex ${ROOTPGT}
+
+pgt-intro-large.pdf: ${ROOTPGTLARGE}.tex intro-body-pgt.tex ${TEXINTRO}  ${STY}
+	echo > includes.tex
+	pdflatex ${ROOTPGTLARGE}; biber ${ROOTPGTLARGE}; pdflatex ${ROOTPGTLARGE}; pdflatex ${ROOTPGTLARGE}
 
 intro%-staff.pdf: intro%.tex ${ROOTINTROSTAFF}.tex ${STY}
 	echo '\includeonly{'intro$*'}' > includes.tex
