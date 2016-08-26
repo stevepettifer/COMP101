@@ -269,12 +269,12 @@ It's important that you connect the Pi up in exactly the order specified here---
 
 
 \begin{itemize}
-\item The monitors in the LF31 Lab are all fitted with an extra video lead for connecting up the Pis. Locate the HDMI lead (labelled \protect\circled{1} in Figure \ref{figure:cables}), and plug this into the socket marked \circled{1} on Figure~\ref{figure:bare-rpi}.
+\item The monitors in the LF31 Lab are all fitted with an extra video lead for connecting up the Pis. We try to standardise on blue cables for connecting to a Pi. Locate the HDMI lead (labelled \protect\circled{1} in Figure \ref{figure:cables}), and plug this into the socket marked \circled{1} on Figure~\ref{figure:bare-rpi}.
 \item Next we'll need to connect a keyboard and mouse. Separate the male and female USB connectors marked \protect\circled{2} on Figure \ref{figure:cables}, and plug the male end into one of the two USB sockets on your Pi (marked with \protect\circled{2} on the Figure~\ref{figure:bare-rpi}). It doesn't matter which USB socket you choose, but please make sure to reconnect this to the PC when you're done with these experiments as a courtesy to the next user.
 \item \textbf{Do not connect the power or network connectors at this stage!}
 \end{itemize}
 
-Next, we need to insert the memory card that contains the Pi's operating system, and on which you'll be storing your own files (note although this is a `memory card', for the Raspberry Pi it's behaving like the `hard disk' of a regular computer, not like the \textit{memory} of a regular computer). The card you've been given comes in a little caddy that allows it to be used as a full-sized Secure Digital card, but for the Raspberry Pi Model 2 we just need the little mico SD card it contains. Carefully pop that out of the caddy and then refer to Figure ~\ref{figure:bare-rpi-underside} to see where it goes on the Pi's board. It should slide in smoothly, and you can get it out again by pushing it in again to release it. Don't force the card in or you might damage it or the Pi -- if you're not sure, get some help.
+Next, we need to insert the memory card that contains the Pi's operating system, and on which you'll be storing your own files (note although this is a `memory card', for the Raspberry Pi it's behaving like the `hard disk' of a regular computer, not like the \textit{memory} of a regular computer). The card you've been given comes in a little caddy that allows it to be used as a full-sized Secure Digital card, but for the Raspberry Pi Model 2 we just need the little mico SD card it contains. Carefully pop that out of the caddy and then refer to Figure ~\ref{figure:bare-rpi-underside} to see where it goes on the Pi's board. It should slide both in and out smoothly. Don't force the card in or you might damage it or the Pi -- if you're not sure, get some help.
 
 
 
@@ -390,7 +390,28 @@ You will then see a screen which contains a prompt looking like
 \begin{ttoutenv}
 \textbf{pi@raspberrypi ~ \$  }
 \end{ttoutenv}
-on which you should type the command
+
+The latest generation of the Pi automatically starts a graphical user
+interface; as we need to be more flexible, we will issue some commands to
+disable this behaviour. Once this is done your Pi will subsequently start
+from a simple command line prompt.
+
+On the screen you will see a panel of tool icons on the left. Click on the
+penultimate one - it looks like a monitor screen. This runs a command line
+terminal that you can enter commands in. Don't worry at this stage exactly
+what the commands mean. Type:
+
+\begin{ttoutenv}
+sudo raspi-config
+\end{ttoutenv}
+
+followed by the Return key.
+
+You should see a configuration screen. Use the mouse to select Boot
+Options; then select the first option, which is command line boot with
+login. Then, select Finish. You should now be back in the command line
+Terminal, where you can stop the Pi by typing
+
 % $
 
 \begin{ttoutenv}
