@@ -351,19 +351,12 @@ So why is starting a computer a bootstrapping process? In order for you as a use
 As an aside, you may want to consider this: if you need a text editor to write programs, how did the first text editor (which is itself a program) get written?
 \end{diversion}
 
-\begin{figure}
-\centerline{\includegraphics[width=13cm]{images/raspi-config.png}}
-\caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using cursor keys.}\label{figure:raspi-config}
-\end{figure}
-
-Once Raspbian has finished booting, you will
-be presented with a configuration screen as shown in Figure \ref{figure:raspi-config}.
-At this stage you could tweak various other options that affect the
-display and the layout of keyboard being used; but conveniently the
-defaults set on the Pi will do just fine for now (it is a mostly
-British invention after all, so it defaults to UK keyboard layout!)
-Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit
-Enter again.
+% At this stage you could tweak various other options that affect the
+% display and the layout of keyboard being used; but conveniently the
+% defaults set on the Pi will do just fine for now (it is a mostly
+% British invention after all, so it defaults to UK keyboard layout!)
+% Use the Tab key to move the red highlight to \ttout{<Finish>}, and hit
+% Enter again;.
 % Confirm that the Pi should reboot (an example of what
 % this looks like is shown in Figure \ref{figure:piboot}) and this time
 % when the process finishes you'll be presented by a Unix login prompt
@@ -385,21 +378,21 @@ Enter again.
 %\label{sec:shutting-down-pi}
 
 %Like any other computer, its really important that you shut your Pi down properly; if you just pull the power cord out there's a chance of corrupting the filesystem. To shut the Pi down safely you first need to login using the username \ttout{pi} and the password \ttout{raspberry}. \textbf{Note that, so that anyone standing behind you cannot even see the length of your password,  the username will appear on screen as you type it, but the password will not}.
-You will then see a screen which contains a prompt looking like
+% You will then see a screen which contains a prompt looking like
 
-\begin{ttoutenv}
-\textbf{pi@raspberrypi ~ \$  }
-\end{ttoutenv}
+% \begin{ttoutenv}
+% \textbf{pi@raspberrypi ~ \$  }
+% \end{ttoutenv}
 
 The latest generation of the Pi automatically starts a graphical user
 interface; as we need to be more flexible, we will issue some commands to
 disable this behaviour. Once this is done your Pi will subsequently start
 from a simple command line prompt.
 
-On the screen you will see a panel of tool icons on the left. Click on the
-penultimate one - it looks like a monitor screen. This runs a command line
-terminal that you can enter commands in. Don't worry at this stage exactly
-what the commands mean. Type:
+On the screen you will see a panel of tool icons on the top
+left. Click on the icon that looks like a monitor screen. This runs a
+command line terminal that you can enter commands in. Don't worry at
+this stage exactly what the commands mean. Type:
 
 \begin{ttoutenv}
 sudo raspi-config
@@ -407,12 +400,19 @@ sudo raspi-config
 
 followed by the Return key.
 
-You should see a configuration screen. Use the mouse to select Boot
-Options; then select the first option, which is command line boot with
-login. Then, select Finish. You should now be back in the command line
-Terminal, where you can stop the Pi by typing
+\begin{figure}
+\centerline{\includegraphics[width=13cm]{images/raspi-config.png}}
+\caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using cursor keys.}\label{figure:raspi-config}
+\end{figure}
 
-% $
+% Once Raspbian has finished booting, you will  
+% be presented with a configuration screen as shown in Figure \ref{figure:raspi-config}. as shown in Figure \ref{figure:raspi-config}.  
+
+You should see a configuration screen as shown in Figure \ref{figure:raspi-config}. Use the arrow keys to select Boot
+Options, then press Tab several times  until \verb+<Select>+ is highlighted, then press Return. This will bring up another configuration screen. This time use the arrow keys to select the option `Text console, requiring user to login'. Again use Tab  several times  until \verb+<Select>+ is highlighted, then press Return. You should now be back at the original configuration screen where you should Tab to select \verb+<Finish>+ then press Return. 
+
+You should now be back in the command line Terminal, where you can stop the Pi by typing
+%$
 
 \begin{ttoutenv}
 sudo halt
