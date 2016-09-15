@@ -402,14 +402,21 @@ followed by the Return key.
 
 \begin{figure}
 \centerline{\includegraphics[width=13cm]{images/raspi-config.png}}
-\caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using cursor keys.}\label{figure:raspi-config}
+\caption{The Raspberry Pi config tool. The highlight bar can be moved between the different controls using the Tab key, or up and down in the menu using the arrow keys.}\label{figure:raspi-config}
 \end{figure}
 
 % Once Raspbian has finished booting, you will  
 % be presented with a configuration screen as shown in Figure \ref{figure:raspi-config}. as shown in Figure \ref{figure:raspi-config}.  
 
-You should see a configuration screen as shown in Figure \ref{figure:raspi-config}. Use the arrow keys to select Boot
-Options, then press Tab several times  until \verb+<Select>+ is highlighted, then press Return. This will bring up another configuration screen. This time use the arrow keys to select the option `Text console, requiring user to login'. Again use Tab  several times  until \verb+<Select>+ is highlighted, then press Return. You should now be back at the original configuration screen where you should Tab to select \verb+<Finish>+ then press Return. 
+You should see a configuration screen as shown in Figure
+\ref{figure:raspi-config}. Use the arrow keys to select `Boot Options',
+then press Tab until \verb+<Select>+ is highlighted,
+then press Return. This will bring up another configuration
+screen. This time use the arrow keys to select the option `Text
+console, requiring user to login'. Again use Tab until
+\verb+<OK>+ is highlighted, then press Return. You should now be
+back at the previous configuration screen where you should Tab to
+select \verb+<Finish>+ then press Return. You should now see a screen asking `Would you like to reboot?'. Tab to \verb+<No>+ then press return.
 
 You should now be back in the command line Terminal, where you can stop the Pi by typing
 %$
