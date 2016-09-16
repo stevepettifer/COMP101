@@ -42,7 +42,7 @@ echo $file
 done | rsync -a  $V  -e  'ssh -p1001' --files-from=- . $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/labscripts
 
 
-for file in mutt-template Advent.z5 quake3.tar.gz mrnoodle.tar.gz
+for file in mutt-template Advent.z5 quake3.tar.gz mrnoodle.tar.gz BlackboardIntro.pdf
 do 
 echo $file
 done | rsync -a  $V  -e  'ssh -p1001' --files-from=- files $USR@sonofis7.cs.man.ac.uk:/www/virtualHosts/studentnet/ugt/$YEAR/COMP10120/files/
