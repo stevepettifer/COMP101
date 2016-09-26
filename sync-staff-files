@@ -1,0 +1,28 @@
+#!/bin/sh
+V="-v"
+
+while getopts qnu: c
+do
+    case $c in
+	v) V=${V}v;;
+	q) V=-q;;
+	n) V=${V}n;;
+	u) USR=$OPTARG;;
+    esac
+done
+
+if [ X$V = X-q ]
+then
+   :
+else
+    echo `basename $0`
+fi
+
+### Staff versions
+for file in  intro0 intro1 intro2 intro3 intro4
+do 
+    staffv=$file-staff.pdf 
+    echo $staffv 
+done | rsync -a  $V  -e ssh --files-from=- . graham@sphere.cs.man.ac.uk:/home/graham/public_html/COMP101labs
+   
+
