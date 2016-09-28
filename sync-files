@@ -7,7 +7,7 @@ V="-v"
 ## Things to update
 YEAR=2016
 COMP101HOME=.
-USR=graham
+USR=srp
 
 while getopts qnu: c
 do
